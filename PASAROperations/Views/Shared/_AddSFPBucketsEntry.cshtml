@@ -1,0 +1,38 @@
+﻿<div id="add_sfpbuckets_entry" style="height: 50%;">
+    <b>SFP Buckets Form</b>
+    <br />
+    <br />
+    <table class="af_time_table">
+        <tr>
+            <td rowspan="2" class="label_datetype">Date: &nbsp;</td>
+            <td class="af_date_td">
+                <input id="start_date_input" type="text" style="float: left;" value="@ViewBag.SFP_DDate.ToString("MM/dd/yyyy")" /></td>
+            <td style="width: 40px;"><input type="button" style="float: right; margin-left: 0px !important" value="Add" id="add_sfpbuckets_btn" /></td>
+        </tr>
+    </table>
+    @*<div>
+        <input type="button" style="float: right;" value="Add" id="add_sfpbuckets_btn" />
+    </div>*@
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#start_date_input").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: serverpath + '/Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: true
+        });
+
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+
+        });
+
+    });
+
+
+</script>

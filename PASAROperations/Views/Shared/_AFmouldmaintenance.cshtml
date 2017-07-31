@@ -1,0 +1,110 @@
+﻿@{
+    ViewBag.Title = "_AFmouldmaintenance";
+}
+
+<div id="mold_div">
+<div class="hidden_element" id=""></div>
+
+<strong>Customer:</strong>
+<div style="display: inline; width: 170px; height: 25px;">@Html.DropDownList("c_list", (SelectList)ViewBag.c_list,"--Select--")</div>
+    <br><br>
+<strong>Lot No.</strong>
+<div style="display: inline; width: 170px; height: 25px;">@Html.DropDownList("l_list", (SelectList)ViewBag.l_list,"--Select--")</div>
+<br><br>
+<strong>Mould Code:</strong>
+<div style="display: inline; width: 170px; height: 25px;"><span id="moldcode"></span>
+  
+
+</div>
+<br>   
+<br>
+
+    <input id="save_mould_btn" type="button" value="Add" />&nbsp;
+    <input id="load_mould_btn" type="button" value="&#x21bb;" />&nbsp;
+<br><br>
+    <div class="mouldiv_in">
+    <table class="table_mould" id="table_mould">
+        <thead>
+            <tr>
+                <th colspan="4">Mould</th>
+
+            </tr>
+            <tr>
+                <th class="thshort" id="starttime_th">Mould Code</th>
+                <th class="thshort" id="endtime_th">Status</th>
+                <th colspan="2" class="thshort" id="act_">Action</th>
+                
+            </tr>
+        </thead>
+    
+         <tbody id="tbody">
+           <tr style="display: none;"></tr>
+        </tbody>
+    </table>
+       </div>
+
+      <div class="mouldiv_in" id="div_mould_modify">
+          <span title="Close" class="btn_label_span" id="mcls_lnk" style="left: 226px; top:100px; display: inline; position: absolute;"><b>Close</b></span>
+    <table class="table_mould" id="table_mould_modify">
+        <thead>
+            <tr>
+                <th colspan="4">Mould Modify</th>
+
+            </tr>
+            <tr>
+                <td id="mcode"></td>
+                <td id="mstat"><select id="slect_stat"></select></td>                               
+            </tr>
+    
+    </table>
+    
+       <span title="Save" class="btn_label_span" id="mould_edit" style="left: 185px; top:100px; position: absolute;"><b>Save</b></span>
+        </div>
+    <span id="mcode_id" style="visibility:hidden;"></span>
+        </div>
+      
+
+
+<script type="text/javascript">
+
+      
+    
+
+    $(document).ready(function () {
+
+        $('#div_mould_modify').hide();
+
+        $("#mcls_lnk").live('click', function () {
+            $('#div_mould_modify').hide();
+        });
+
+        $('#mould_edit').click(function () {
+            save_mould_modification();
+        });
+       
+        $("#save_mould_btn").live('click', function () {
+            save_mould();
+        });
+
+      
+        $('#c_list,#l_list').live('change', function () {
+
+            load_mould_save();
+        });
+
+        $('#load_mould_btn').live('click', function () {
+
+            load_mould_save();
+        });                       
+
+    });
+
+
+
+
+
+
+
+
+</script>
+

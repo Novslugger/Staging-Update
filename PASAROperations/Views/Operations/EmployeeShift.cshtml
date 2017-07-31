@@ -1,0 +1,150 @@
+﻿@{
+    ViewBag.Title = "Employee Shift";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="employee_shift_div">
+
+<div id="employee_left">
+<div id="employee_shift_assignshift">
+   <div><h6>I. Create Shift Plan</h6></div>
+    <br />
+    Date :  <input id="date_assignshiftform" type="text" />
+    <br />
+     <br />
+     <br />
+    <div>Supervisor : @Html.DropDownList("TypeShiftlist_Supervisor", (SelectList)ViewBag.TypeShiftlist, new {@class="typeshiftlist"})</div>
+      <br /> <br /> <br />
+    <div>Skimmer 1 : @Html.DropDownList("TypeShiftlist_Skimmer1", (SelectList)ViewBag.TypeShiftlist, new {@class="typeshiftlist"})</div>
+      <br />
+    <div>Skimmer 2 : @Html.DropDownList("TypeShiftlist_Skimmer2", (SelectList)ViewBag.TypeShiftlist, new {@class="typeshiftlist"})</div>
+      <br />
+      <div>Skimmer 3 : @Html.DropDownList("TypeShiftlist_Skimmer3", (SelectList)ViewBag.TypeShiftlist, new {@class="typeshiftlist"})</div>
+      <br />
+      <div>Skimmer 4 : @Html.DropDownList("TypeShiftlist_Skimmer4", (SelectList)ViewBag.TypeShiftlist, new {@class="typeshiftlist"})</div>
+      <br />
+      <div>Skimmer 5 : @Html.DropDownList("TypeShiftlist_Skimmer5", (SelectList)ViewBag.TypeShiftlist, new {@class="typeshiftlist"})</div>
+      <br />
+      <div>Skimmer 6 : @Html.DropDownList("TypeShiftlist_Skimmer6", (SelectList)ViewBag.TypeShiftlist, new {@class="typeshiftlist"})</div>
+      <br /><br /> <br />
+
+    <div>Ctrl Room Engr : &nbsp;&nbsp; @Html.DropDownList("TypeShiftlist_Operator", (SelectList)ViewBag.TypeShiftlist, new {@class="typeshiftlist"})</div>
+    <br />
+    <br />
+    <input id="employee_typeshift_btn_ok" type="button" value="OK" />
+</div>
+
+</div>
+<div id="employee_shiftsched">
+    <div><h6>III. Employee Shift Schedule</h6></div>
+     <div id="employee_shiftsched_date">Date: <input id="date_employeeshiftsched" type="text" />&nbsp;&nbsp;<input id="employee_shiftsched_btn_ok" type="button" value="OK" /></div>
+    <br />
+  
+    <div id="employeeshiftsched_table_div">
+        <div><h6>I. 7 to 7 Shift</h6></div>
+        <br />
+    <table id="employeeshiftsched_table">
+        <tr>
+            <th>Shift Date</th>
+            <th>Position</th>
+            <th>Shift (7AM-7PM)</th>
+            <th>Shift (7PM-7AM)</th>
+      </tr>
+    </table>
+
+         <div><h6>II. Three Shift</h6></div>
+        <br />
+    <table id="emplyeeshiftsched_table3shift">
+        <tr>
+            <th>Shift Date</th>
+            <th>Position</th>
+            <th>Shift (6AM-2PM)</th>
+            <th>Shift (2PM-10PM)</th>
+            <th>Shift (10PM-6AM)</th>
+      </tr>
+    </table>
+
+
+</div>
+
+</div>
+    <div id="employee_form">
+   
+    <div><h6>II. Assign Employee per Shift</h6></div>
+  
+     <br />
+    <div class="dateinput_calendar">Date : <input id="date_employeeform" type="text" />
+     
+    </div>
+      <br />
+    <div id="employee_shift_form_div">Shift : @Html.DropDownList("Shiftlist", (SelectList)ViewBag.ShiftTypeList, new {@class="employeelist"})</div>
+    <div>Type Shift: <span id="typeshift_span"></span></div>
+     <br />
+     <br />
+         <br />
+    <div><b>Assign Employee on Shift for:</b></div>
+    <br />
+     <div>Supervisor : &nbsp; @Html.DropDownList("Supervisorlist", (SelectList)ViewBag.SupervisorList, new {@class="employeelist"})</div>
+    <br />
+     <br />
+    <div>Skimmer 1 : &nbsp; @Html.DropDownList("Skimmer1list", (SelectList)ViewBag.SkimmerList, new {@class="employeelist"})</div>
+    <div>Skimmer 2 : &nbsp; @Html.DropDownList("Skimmer2list", (SelectList)ViewBag.SkimmerList, new {@class="employeelist"})</div>
+    <div>Skimmer 3 : &nbsp; @Html.DropDownList("Skimmer3list", (SelectList)ViewBag.SkimmerList, new {@class="employeelist"})</div>
+    <div>Skimmer 4 : &nbsp; @Html.DropDownList("Skimmer4list", (SelectList)ViewBag.SkimmerList, new {@class="employeelist"})</div>
+    <div>Skimmer 5 : &nbsp; @Html.DropDownList("Skimmer5list", (SelectList)ViewBag.SkimmerList, new {@class="employeelist"})</div>
+    <div>Skimmer 6 : &nbsp; @Html.DropDownList("Skimmer6list", (SelectList)ViewBag.SkimmerList, new {@class="employeelist"})</div>
+     <br />
+     <br />
+    <div>Ctrl Room Engr :&nbsp;  @Html.DropDownList("Operatorlist", (SelectList)ViewBag.OperatorList, new {@class="employeelist"})</div>
+    <br />
+    <br />
+    <div id="employee_shift_btn_div"><input id="employee_shift_btn_ok" type="button" value="OK" /></div>
+</div>
+
+
+
+</div>
+
+  @Scripts.Render("~/bundles/jquery") 
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#date_employeeform").datepicker({
+                showOn: 'button',
+                buttonText: 'Show Date',
+                buttonImageOnly: true,
+                buttonImage: '../Images/calendar.png',
+                dateFormat: 'mm/dd/yy',
+                constrainInput: true
+            });
+			
+            $("#date_employeeshiftsched").datepicker({
+                showOn: 'button',
+                buttonText: 'Show Date',
+                buttonImageOnly: true,
+                buttonImage: '../Images/calendar.png',
+                dateFormat: 'mm/dd/yy',
+                constrainInput: true
+            });
+
+            $("#date_assignshiftform").datepicker({
+                showOn: 'button',
+                buttonText: 'Show Date',
+                buttonImageOnly: true,
+                buttonImage: '../Images/calendar.png',
+                dateFormat: 'mm/dd/yy',
+                constrainInput: true
+            });
+
+            $(".ui-datepicker-trigger").mouseover(function() {
+                $(this).css('cursor', 'pointer');
+            });
+         
+            disablelist_employee();
+            $('#Shiftlist').prop("disabled", true);
+            
+
+        });
+            
+
+    </script>

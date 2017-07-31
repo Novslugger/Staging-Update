@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "_CFaddmg";
+}
+@model IEnumerable<PASAROperations.Models.VWCF_MatteGrade>
+   
+      <div id="addacfmg_div">
+          <p id="get_mgval" style="display:none;"></p> <br />
+          <input type="button" id="manual_mtgrade_btn" value="Manual Set" style="float: right; margin-right: -28px" />
+          <input id="manual_mtgrade" type="text" onkeypress="return NumericOnly(event)" style="float: left; width: 100px; border: 1px solid grey; text-align: center"/><br /><br />
+        <b>Matte grade list: Top 5</b>
+        <br /><br />  
+       <table id="mgtable" >
+               <tr id="mg_table">
+                   <th>No.</th>
+                   <th>Timestamp</th>
+                   <th class="yellow">Matte Grade</th>
+               </tr>
+            @foreach (var item in Model)
+                
+            { 
+                <tr>
+                   <td><center>@item.rownum</center></td>
+
+                    <td><center>@item.timestamp</center></td>
+
+                     <td class="mg_val"><center><b>@item.MatteGrade</b></center></td>
+                </tr> 
+            }
+       </table>
+       @* <input id="get_mg_val" type="button" value="Add" />*@
+    </div>
+
+
+     
+<br />
+<br /><br /><br />
+  
+     
+
+<script type="text/javascript">
+
+    $('#mgtable td').click(function (event) {
+        $('#mgtable td').removeClass('focus'); //Remove focus from other TDs
+        $(this).addClass('focus');
+    });
+
+</script>

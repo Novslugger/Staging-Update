@@ -1,0 +1,218 @@
+﻿<div id="add_2ndcastingtime_div">
+<b>2nd Casting Time</b>
+<br />
+
+    <br />
+    <br />
+
+
+     <table class="af_time_table">
+            <tr>
+                <td rowspan="2" class="label_datetype">Start Time : &nbsp;</td>
+            <td class="label_date">Date</td>
+            <td class="label_date">Time (hh:mm)</td>
+            </tr>
+              
+            <tr>
+            <td class="af_date_td">
+                <input id="start_date_input2" type="text"  value="@ViewBag.Cast_StartDate.ToString("MM/dd/yyyy")"/></td>
+                <td class="af_time_td">
+            <select id="start_time_hr_input">
+            @{
+                int hr = Int32.Parse(ViewBag.Cast_StartDate.ToString("HH"));
+                 int min_ = Int32.Parse(ViewBag.Cast_StartDate.ToString("mm"));
+               
+                        for (int x = 0; x <= 23; x++)
+                { 
+                            if (@x <= 9)
+                            {
+
+                    if (@x == @hr)
+                    {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                else
+                                { <option value="@x">@("0" + @x)</option> }
+                } 
+                            else
+                            {
+
+                     if (@x == @hr)
+                          {  <option value="@x" selected="selected">@x</option> }
+                                else
+                                { <option value="@x">@x</option> }
+                
+
+                      }
+                }
+                }
+                                                          
+            </select>&nbsp;:
+            <select id="start_time_min_input">
+              @{
+                  int min = Int32.Parse(ViewBag.Cast_StartDate.ToString("mm"));
+                
+                
+                    for (int x = 0; x <= 59; x++)
+                { 
+                        if (@x <= 9)
+                        {
+
+                    if (@x == @min)
+                    {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                            else
+                            { <option value="@x">@("0" + @x)</option> }
+                }
+                      
+                      
+                        else
+                        {
+
+                          if (@x == @min)
+                          {  <option value="@x" selected="selected">@x</option> }
+                            else
+                            { <option value="@x">@x</option> }
+                
+
+                      }
+                }
+                }                                               
+            </select>
+
+            </td>
+        </tr>
+       </table>
+
+    <table id="end_time_table">
+        <tr>
+            <td rowspan="2" class="label_datetype">End Time : &nbsp;&nbsp;</td>
+               
+            </tr>
+              
+            <tr>
+            <td class="af_date_td">
+                <input id="end_date_input2" type="text"  value="@ViewBag.Cast_EndDate.ToString("MM/dd/yyyy")"/></td>
+
+
+                <td class="af_time_td">
+            <select id="end_time_hr_input">
+            @{
+                
+                
+                        if (min_ == 60)
+                        {
+
+                    hr = Int32.Parse(ViewBag.Cast_EndDate.ToString("HH")) + 1;
+                    
+                        }
+                        else
+                        {
+                    hr = Int32.Parse(ViewBag.Cast_EndDate.ToString("HH"));
+                }
+                
+                
+                        for (int x = 0; x <= 23; x++)
+                        {
+                            if (@x <= 9)
+                { 
+
+                    if (@x == @hr)
+                    {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                else
+                                { <option value="@x">@("0" + @x)</option> }
+                }
+                      
+                      
+                            else
+                            {
+
+                     if (@x == @hr)
+                          {  <option value="@x" selected="selected">@x</option> }
+                                else
+                                { <option value="@x">@x</option> }
+                
+
+                      }
+                }
+                }
+                                                          
+            </select>&nbsp;:
+            <select id="end_time_min_input">
+              @{
+                
+                  int min_end = Int32.Parse(ViewBag.Cast_EndDate.ToString("mm"));
+                  
+                    for (int x = 0; x <= 59; x++)
+                    {
+                        if (@x <= 9)
+                { 
+
+                    if (@x == @min_end)
+                    {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                            else
+                            { <option value="@x">@("0" + @x)</option> }
+                }
+                      
+                      
+                        else
+                        {
+
+                          if (@x == @min_end)
+                          {  <option value="@x" selected="selected">@x</option> }
+                            else
+                            { <option value="@x">@x</option> }
+                
+
+                      }
+                }
+                }                                               
+            </select>
+
+            </td>
+        </tr>
+       </table>
+
+
+
+
+    <br />
+     <br />
+    <input id="add_casting2ndtime_ok_btn" type="button" value="OK" />
+   
+    <br />
+    <br />
+</div>
+
+<script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#end_date_input2").datepicker({
+                showOn: 'button',
+                buttonText: 'Show Date',
+                buttonImageOnly: true,
+                buttonImage: serverpath + '/Images/calendar.png',
+                dateFormat: 'mm/dd/yy',
+                constrainInput: true
+            });
+
+            $(".ui-datepicker-trigger").mouseover(function () {
+                $(this).css('cursor', 'pointer');
+
+            });
+
+            $("#start_date_input2").datepicker({
+                showOn: 'button',
+                buttonText: 'Show Date',
+                buttonImageOnly: true,
+                buttonImage: serverpath + '/Images/calendar.png',
+                dateFormat: 'mm/dd/yy',
+                constrainInput: true
+            });
+
+            $(".ui-datepicker-trigger").mouseover(function () {
+                $(this).css('cursor', 'pointer');
+
+            });
+       
+        });
+            
+
+    </script>

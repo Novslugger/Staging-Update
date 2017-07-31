@@ -1,0 +1,34 @@
+﻿@model IEnumerable<PASAROperations.Models.CYCLE_STAGE_CHANGE_Result>  
+<div id="addstage_div">
+    <h6>CF Stages</h6>
+    <br />
+    <table id="addstage_table">
+        <tr>
+            <th>Stage</th>
+            <th>Add</th>
+            <th>Disable</th>
+        </tr>
+      @foreach (var item in Model)
+      { 
+      <tr>
+          <td id="td_stage_@Html.ValueFor(modelItem => item.StageId)">@Html.ValueFor(modelItem => item.StageName)</td>
+          <td>@{ if (@Html.ValueFor(modelItem => item.Addbtn).ToString() == "x")
+                 { 
+                 <a href="#" onclick="add_cfstage(@Html.ValueFor(modelItem => item.StageId));return false;">Add</a>
+                 }
+                 }</td>
+          <td>@{ if (@Html.ValueFor(modelItem => item.ActiveStatus).ToString() == "True")
+                 {
+<a href="#" onclick="edit_cfstage_stat(@Html.ValueFor(modelItem => item.CycleStageId), 0);return false;">Disable</a>
+                 }
+                 else if (@Html.ValueFor(modelItem => item.ActiveStatus).ToString() == "False")
+                 {
+<a href="#" onclick="edit_cfstage_stat(@Html.ValueFor(modelItem => item.CycleStageId), 1, @Html.ValueFor(modelItem => item.StageId));return false;">Enable</a>
+                 }
+                 
+                 
+                 }</td>
+      </tr>
+      }
+    </table>
+</div>

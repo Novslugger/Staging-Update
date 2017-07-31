@@ -1,0 +1,47 @@
+﻿<div id="edit_new_downtimeidtroub_div">
+    <h7><b>Add New Trouble</b></h7>
+    <div style="width: 447px; margin-top: 3px; margin-left: 0px; background-color: rgba(255, 255, 255, 1); border: 0px solid #C0C0C0; height: 170px">
+        <br />
+        <table style="background-color: rgba(255, 255, 255, 1)">
+            <tr>
+                <td style="width: 110px; font-size: 12px;">Machine:</td>
+                <td style="width: 110px; font-size: 12px;">@Html.DropDownList("ref_tmachinelist", (SelectList)ViewBag.machine_lists, "Select Machine", new { @id = "ref_troublemid", @class = "color:yellow" })</td>
+            </tr>
+            <tr>
+                <td style="width: 110px; font-size: 12px;">Machine Code:</td>
+                <td>
+                    <label id="ref_tmcode" style="width: 70px; font-size: 14px; font-weight: bold; background-color: rgba(255, 255, 204, 1) !important"></label>
+                </td>
+            </tr>
+            <tr>
+                <td style="width: 110px; font-size: 12px;">Trouble Code:</td>
+                <td>
+                    <input disabled="disabled" id="ref_maxtcode" type="text" style="width: 70px; font-size: 14px; font-weight: bold; background-color: rgba(255, 255, 204, 1) !important" /></td>
+            </tr>
+            <tr>
+                <td style="width: 110px; font-size: 12px;">Description:</td>
+                <td>
+                    <textarea id="ref_tcodedesc" style="font-size: 12px; width: 300px;" cols="5" rows="4"></textarea></td>
+            </tr>
+            <tr>
+                <td>Responsible:</td>
+                <td>@Html.DropDownList("ref_tresplist", (SelectList)ViewBag.resp_lists, "--Select--", new { @id = "trespid", @class = "color:yellow" })
+                    </td>
+            </tr>
+        </table>
+    </div>
+    <br />
+    <div>
+        <input type="button" id="ref_addtreason" value="Add" onclick="partial_savenewtrouble()" /></div>
+</div>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#ref_troublemid').on('change', function () {
+
+            trigger_troublemcode_select();
+            trigger_getMaxCode_select();
+        });
+    });
+</script>

@@ -1,0 +1,32 @@
+﻿<div id="targets_container">
+    <div id="top_div">
+        <h6>SFP Targets</h6>
+        <img style="float: left" id="sfp_targets_save_btn" class="save_btn" src="../Images/diskette.png" width="20" title="Save Changes" />
+        <br />
+        <br />
+        <div id="targets_tabs-container">
+            <ul class="targets_tabs-menu">
+            </ul>
+        </div>
+        <div class="targets_tab">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        load_targets_tbl_names();
+        $('input').live('change', function () {
+            $(this).css({ 'background-color': '#DFD8D1' });
+            $(this).parents('td').css({ 'background-color': '#DFD8D1 !important' });
+            $(this).addClass('changed');
+        });
+        $(".targets_tabs-menu a").live('click', function (event) {
+            event.preventDefault();
+            $(this).parent().addClass("current");
+            $(this).parent().siblings().removeClass("current");
+            var tab = $(this).attr("href");
+            $(".targets_tab-content").not(tab).css("display", "none");
+            $(tab).fadeIn();
+        });
+    });
+</script>

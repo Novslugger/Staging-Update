@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "AF Blister Receive";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+  @Scripts.Render("~/bundles/jquery") 
+
+<div id="Dialog_AFBlisterAdd" style="overflow: hidden;"></div>
+<div id="Dialog_AFBlisterEdit" style="overflow: hidden;"></div>
+
+ @Html.Partial("~/Views/Shared/_AFLotNoSelect.cshtml")
+
+<div class="hidden_element" id="aflotid_"></div>
+<div id="cf_wrapperdiv">
+<div id="cf_sidediv">&nbsp;</div>
+<div id="cf_maindiv">
+
+        <h6>AF Blister Receiving  <img id="af_blister_rcv_btn" width="20" height="20" title="Add Now" src="../Images/red_plus.png" /> 
+            <span id="afblister_link" title="Add Now" class="btn_label_span">Add Blister Receive </span></h6>
+   <br />
+        <table id="afblister_tbl" border="0">
+            <tr>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>CF</th>
+                <th>Cycle No</th>
+                <th>Weight</th>
+                <th>ppm Sulfur</th>
+                <th>Temperature</th>
+                <th colspan="2">Actions</th>
+            </tr>
+        </table>
+</div>
+</div>
+
+<script type="text/javascript">
+
+  //  alert('test');
+
+    $(document).ready(function () {
+
+        $(function () {
+            $('#Dialog_AFBlisterAdd').dialog({
+                autoOpen: false,
+                width: 400,
+                height: 600,
+                resizable: false,
+                draggable: true,
+                title: 'Add AF Blister',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [850, 100]
+            });
+
+            $('#Dialog_AFBlisterEdit').dialog({
+                autoOpen: false,
+                width: 400,
+                height: 600,
+                resizable: false,
+                draggable: true,
+                title: 'Edit AF Blister',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [850, 100]
+            });
+
+
+
+            
+        });
+
+    })
+
+</script>

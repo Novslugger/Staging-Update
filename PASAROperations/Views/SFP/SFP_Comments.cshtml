@@ -1,0 +1,34 @@
+﻿@{
+    ViewBag.Title = "SFP Daily Comments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+  @Scripts.Render("~/bundles/jquery") 
+
+
+<div id="fsfe_log_wrapper">
+    <div id="fsfe_log_wrapper_left">
+        <div class="thetabs">
+
+            <div class="verticaltabs">
+
+                <dl class="tabs vertical">
+                    <dd class="active"><a href="#" onclick="ddactive_sfpcrew('SFP_KPI_Comments');return false;">Process Review</a></dd>
+                    <dd><a href="#" onclick="ddactive_sfpcrew('SFP_DPM_Comments');return false;">DPM Comments</a></dd>
+                </dl>
+
+            </div>
+        </div>
+    </div>
+    <div id="fsfe_log_wrapper_right">
+        <div class="horizontaltabs">
+            <div class="tabs-content">
+
+                <div class="content active" id="htab-panel1">
+                    @Html.Partial("~/Views/Shared/SFP_KPI_Comments.cshtml")
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

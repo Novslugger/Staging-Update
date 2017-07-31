@@ -1,0 +1,36 @@
+﻿<div id="add_mouldreplace_div">
+    <b>Mould Replace</b>
+    <br />
+     <br />
+     <br />
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Wheel:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<select id="mreplace_wheel_ddl">
+                    <option value="1">Wheel 1</option>
+                    <option value="2">Wheel 2</option>
+                 </select>
+
+    </div>
+    <br />
+     <br />
+   
+    <div>Mould Number: &nbsp;&nbsp;&nbsp;<select id="mreplace_mouldnum_ddl">
+                  @for (int x = 1; x <= 18; x++)
+                  {
+                      <option value="@x" selected="selected">@x</option>
+                  }
+
+                 </select></div>
+    <br />
+    <br />
+    <div>Mould Status: &nbsp;&nbsp;&nbsp;<select id="mreplace_mstatus_ddl">
+                    <option value="1">Replaced</option>
+                    <option value="2">Not Replaced</option>
+                 </select>
+    </div>
+    <br />
+   <br />
+      <br />
+   
+    <input id="mouldreplace_ok_btn" type="button" value="Ok" />
+    <br />
+    <br />
+</div>

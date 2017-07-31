@@ -1,0 +1,246 @@
+﻿
+@model IEnumerable<PASAROperations.Models.AF_ActivityCode>
+
+<div id="add_afblister_div">
+<b>Casting Form</b>
+<br />
+<br />
+      <h6 style="float:right;"></h6>
+      <div id="addactpc_rightdiv">
+        <h6>Select Activity</h6>
+       <table id="act_code_table">
+               <tr id="act_code_table_header">
+                   <th><i>Code</i></th>
+                   <th><i>Description</i></th>
+               </tr>
+            @foreach (var item in Model)
+            { 
+                <tr>
+                    <td class="act_code_td">@Html.ValueFor(modelItem => item.AF_ActivityCodeName)</td>
+                    <td class="act_code_desc_td_cast">@Html.ValueFor(modelItem => item.AF_ActivityDesc)</td>
+                    
+                </tr> 
+            }
+       </table>
+       
+    </div>
+
+    <table class="af_time_table">
+            <tr><td rowspan="2" class="label_datetype">Start Time : &nbsp;</td>
+                <td class="label_date">Date</td><td class="label_date">Time (hh:mm)</td>
+            </tr>
+              
+            <tr>
+                <td class="af_date_td"><input @*disabled="disabled"*@ id="start_date_input_editpcact" type="text"  value="@ViewBag.starttime.ToString("MM/dd/yyyy")"/></td>
+                <td class="af_time_td">
+            <select id="start_time_hr_input_editpcact" @*disabled="disabled"*@>
+            @{
+                 int hr;
+                 int min_ = Int32.Parse(ViewBag.starttime.ToString("mm"));
+                if (min_ == 60){
+
+                    hr = Int32.Parse(ViewBag.starttime.ToString("HH"));
+                    
+                }else{
+                    hr = Int32.Parse(ViewBag.starttime.ToString("HH"));
+                }
+                
+                
+                for (int x = 0; x <= 23; x++ )
+                { 
+                if (@x <= 9){
+
+                    if (@x == @hr)
+                    {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                    else { <option value="@x">@("0" + @x)</option> }          
+                }
+                      
+                      
+                      else{
+
+                     if (@x == @hr)
+                          {  <option value="@x" selected="selected">@x</option> }
+                    else { <option value="@x">@x</option> }          
+                
+
+                      }
+                }
+                }
+                                                          
+            </select>&nbsp;:
+            <select id="start_time_min_input_editpcact" @*disabled="disabled"*@>
+              @{
+                  int min = Int32.Parse(ViewBag.starttime.ToString("mm"));
+                
+                
+                for (int x = 0; x <= 59; x++ )
+                { 
+                if (@x <= 9){
+
+                    if (@x == @min)
+                    {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                    else { <option value="@x">@("0" + @x)</option> }          
+                }
+                      
+                      
+                      else{
+
+                          if (@x == @min)
+                          {  <option value="@x" selected="selected">@x</option> }
+                    else { <option value="@x">@x</option> }          
+                
+
+                      }
+                }
+                }                                               
+            </select>
+
+</td></tr>
+       </table>
+
+    <table id="end_time_table">
+            <tr><td rowspan="2" class="label_datetype">End Time : &nbsp;&nbsp;</td>
+               
+            </tr>
+              
+            <tr>
+                <td class="af_date_td"><input @*disabled="disabled"*@ id="end_date_input_editpcact" type="text"  value="@ViewBag.endtime.ToString("MM/dd/yyyy")"/></td>
+
+
+                <td class="af_time_td">
+            <select id="end_time_hr_input_editpcact" @*disabled="disabled"*@>
+            @{
+              
+  
+                if (min_ == 60){
+
+                    hr = Int32.Parse(ViewBag.endtime.ToString("HH"));
+                    
+                }else{
+                    hr = Int32.Parse(ViewBag.endtime.ToString("HH"));
+                }
+                
+                
+                for (int x = 0; x <= 23; x++ )
+                { 
+                if (@x <= 9){
+
+                    if (@x == @hr)
+                    {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                    else { <option value="@x">@("0" + @x)</option> }          
+                }
+                      
+                      
+                      else{
+
+                     if (@x == @hr)
+                          {  <option value="@x" selected="selected">@x</option> }
+                    else { <option value="@x">@x</option> }          
+                
+
+                      }
+                }
+                }
+                                                          
+            </select>&nbsp;:
+            <select id="end_time_min_input_editpcact" @*disabled="disabled"*@>
+              @{
+                  int mine = Int32.Parse(ViewBag.endtime.ToString("mm"));
+                
+                for (int x = 0; x <= 59; x++ )
+                { 
+                if (@x <= 9){
+
+                    if (@x == @mine)
+                    {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                    else { <option value="@x">@("0" + @x)</option> }          
+                }
+                      
+                      
+                      else{
+
+                          if (@x == @mine)
+                          {  <option value="@x" selected="selected">@x</option> }
+                    else { <option value="@x">@x</option> }          
+                
+
+                      }
+                }
+                }                                               
+            </select>
+
+</td></tr>
+       </table>
+
+<br />
+<div class="actcode_id hidden_div">@ViewBag.actcode_id </div>
+<div>Activity Code:<br><input class="act_add_code_input" id="pc_actcode" type="text" value="@ViewBag.ActivityCodeName" maxlength="3"/></div> <br>
+Activity Description:
+<br/>
+<br/>
+<d id="Act_Desc_div">-@ViewBag.ActivityDesc</d>
+<br/>
+<br/>
+<d>Duration:
+    <br>
+    <br>
+    <d id="the_dur1">@ViewBag.Duration</d>
+    <br />
+    <br />
+<div>Remarks: <textarea class="border_color" id="pc_remarks_edit">@ViewBag.remarks</textarea></div>
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <br />
+     <input id="edit_precast_ok_btn" type="button" value="Edit Activity" />
+     <br />
+     <br />
+     <span id="error_msg_time_pc_edit"></span>
+     <span id="error_code"></span>
+     <br />
+     <br />
+     <div id="pc_timelog_Id" class="hidden_div">@ViewBag.AF_TimeLogId<div/>
+</div>
+
+<script type="text/javascript">
+     
+    $(document).ready(function () {
+
+            $("#end_date_input_editpcact").datepicker({
+                showOn: 'button',
+                buttonText: 'Show Date',
+                buttonImageOnly: true,
+                buttonImage: serverpath + '/Images/calendar.png',
+                dateFormat: 'mm/dd/yy',
+                constrainInput: true
+            });
+
+            $(".ui-datepicker-trigger").mouseover(function () {
+                $(this).css('cursor', 'pointer');
+
+            });
+
+            $("#start_date_input_editpcact").datepicker({
+                showOn: 'button',
+                buttonText: 'Show Date',
+                buttonImageOnly: true,
+                buttonImage: serverpath + '/Images/calendar.png',
+                dateFormat: 'mm/dd/yy',
+                constrainInput: true
+            });
+
+            $(".ui-datepicker-trigger").mouseover(function () {
+                $(this).css('cursor', 'pointer');
+
+            });
+
+                  validation_perbtn_precast_for_edit($("#add_pc_actcode_id").text());
+
+        });
+            
+
+    </script>

@@ -1,0 +1,458 @@
+﻿@{
+    ViewBag.Title = "AF Refining";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+ @Scripts.Render("~/bundles/jquery") 
+ @Styles.Render("~/Content/themes/base/css")
+
+<div id="Dialog_AFManPower" style="overflow: hidden;"></div>
+<div id="Dialog_AFStage" style="overflow: hidden;"></div>
+
+
+ @Html.Partial("~/Views/Shared/_AFLotNoSelect.cshtml")
+
+<h6 class="lbl_title">Refining</h6>
+
+<div class="container_div">
+<div class="left_div">
+    <div class="left_top_div">
+        <div>
+            <table class="af_tbl">
+                <tr>
+                        <th colspan="5">ANODE FURNACE MANPOWER
+                            <img id="af_manpower_btn" width="20" height="20" src="../Images/red_plus.png" />
+                            <span id="af_manpower_link" class="btn_label_span">Man Power </span></th>
+                </tr>
+                  <tr>
+                    <th>&nbsp;</th>
+                    <th colspan="2">Refining</th>
+                    <th colspan="2">Casting</th>
+                </tr>
+                 <tr>
+                    <th>&nbsp;</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Start</th>
+                    <th>End</th>
+                </tr>
+                 <tr>
+                        <th class="td_left">Date</th>
+                    <td id="stdate_refining">&nbsp;</td>
+                    <td id="etdate_refining">&nbsp;</td>
+                     <td id="stdate_casting">&nbsp;</td>
+                    <td id="etdate_casting">&nbsp;</td>
+                 
+                </tr>
+                 <tr>
+                        <th class="td_left">Time</th>
+                     <td id="sttime_refining">&nbsp;</td>
+                     <td id="ettime_refining">&nbsp;</td>
+                     <td id="sttime_casting">&nbsp;</td>
+                     <td id="ettime_casting">&nbsp;</td>
+                </tr>
+                <tr>
+                        <th class="td_left">Operator</th>
+                    <td id="st_roperator">&nbsp;</td>
+                    <td id="et_roperator">&nbsp;</td>
+                    <td id="st_coperator">&nbsp;</td>
+                    <td id="et_coperator">&nbsp;</td>
+                </tr>
+                <tr>
+                        <th class="td_left">Supervisor</th>
+                     <td id="st_rsupervisor">&nbsp;</td>
+                     <td id="et_rsupervisor">&nbsp;</td>
+                     <td id="st_csupervisor">&nbsp;</td>
+                     <td id="et_csupervisor">&nbsp;</td>
+                </tr>
+
+            </table>
+
+        </div>
+        
+        
+    </div>
+    <div class="left_bottom_div">
+        <div class="left_bottom_div_tbl">
+                <table class="af_tbl" width="800">
+               <tr>
+                        <th class="th_stage_label" rowspan="9">SKIMMING
+                            <br />
+                            (30 mins.)</th>
+                    <th>&nbsp;</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Endpoint</th>
+                    <th>Target</th>
+                    <th>Actual</th>
+                </tr>
+                 <tr>
+                        <th class="td_left" id="skim1">1st</th>
+                    <td id="st_skim1st">&nbsp;</td>
+                    <td id="et_skim1st">&nbsp;</td>
+                        <th class="td_left">% Oxygen</th>
+                    <td id="skO2_target">&nbsp;</td>
+                    <td id="skO2_val">&nbsp;</td>
+                </tr>
+              <tr>
+                        <th class="td_left" id="skim2">2nd</th>
+                    <td id="st_skim2nd">&nbsp;</td>
+                    <td id="et_skim2nd">&nbsp;</td>
+                        <th class="td_left">ppm Sulfur</th>
+                        <td id="paramid_140">&nbsp;</td>
+                    <td id="skS_val">&nbsp;</td>
+                </tr>
+              <tr>
+                        <th class="td_left" id="skimh">&nbsp;&nbsp;&nbsp;&nbsp;Heat-up&nbsp;&nbsp;&nbsp;&nbsp;</th>
+                    <td id="st_skimheatup">&nbsp;</td>
+                    <td id="et_skimheatup">&nbsp;</td>
+                        <th class="td_left">ppm Lead (Pb)</th>
+                    <td id="skPb_target">&nbsp;</td>
+                    <td id="skPb_val">&nbsp;</td>
+                </tr>
+             <tr>
+                        <th rowspan="5" class="td_left">Delays</th>
+                        <th id="" rowspan="5" colspan="2" class="td_left">
+                            @Html.DropDownList("af_delay1", (SelectList)ViewBag.dreason_List1, new { @id = "delay_skim" })
+                            <img style="float: right;" id="skim_savebtn" class="save_btn_img_smalls" src="../Images/diskette.png" title="Skimming save button" disabled="disabled" />
+                        </th>
+
+                        <th class="td_left">ppm Arsenic (As)</th>
+                    <td id="skAs_target">&nbsp;</td>
+                    <td id="skAs_val">&nbsp;</td>
+                </tr>
+             <tr>
+                        <th class="td_left">Draft Pressure (mmH2O)</th>
+                    <td id="ptarget_93">&nbsp;</td>
+                    <td id="sk_dpressure">&nbsp;</td>
+             </tr>
+              <tr>
+                        <th class="td_left">Combustion air (Nm3/h)</th>
+                    <td id="ptarget_94">&nbsp;</td>
+                    <td id="sk_combair">&nbsp;</td>
+             </tr>
+               <tr>
+                        <th class="td_left">HFO Firing rate (l/h)</th>
+                    <td id="ptarget_95">&nbsp;</td>
+                    <td id="sk_hforate">&nbsp;</td>
+             </tr>
+                <tr>
+                        <th class="td_left">Temperature (degC)</th>
+                     <td id="ptarget_8">&nbsp;</td>
+                    <td id="skimtemp">&nbsp;</td>
+             </tr>
+              <tr>
+                        <th class="th_stage_label" rowspan="8">OXIDATION
+                            <br />
+                            (2 hrs.)</th>
+                        <th>&nbsp;<span style="display: none;" id="st_blister"></span></th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Endpoint</th>
+                    <th>Target</th>
+                    <th>Actual</th>
+                </tr>
+              <tr>
+                        <th class="td_left" id="oxp">Partial</th>
+                    <td id="st_oxpartial">&nbsp;</td>
+                    <td id="et_oxpartial">&nbsp;</td>
+                        <th class="td_left">% Oxygen</th>
+                    <td id="oxO2_target">&nbsp;</td>
+                    <td id="oxO2_val">&nbsp;</td>
+                </tr>
+                 <tr>
+                        <th class="td_left" id="ox1">1st</th>
+                    <td id="st_ox1st">&nbsp;</td>
+                    <td id="et_ox1st">&nbsp;</td>
+                        <th class="td_left">ppm Sulfur</th>
+                        <td id="paramid_142">&nbsp;</td>
+                    <td id="oxS_val">&nbsp;</td>
+                </tr>
+              <tr>
+                        <th class="td_left" id="ox2">2nd</th>
+                    <td id="st_ox2nd">&nbsp;</td>
+                    <td id="et_ox2nd">&nbsp;</td>
+                        <th class="td_left">Tuyere Pressure</th>
+                    <td id="ptarget_99">&nbsp;</td>
+                    <td>&nbsp;</td>
+                </tr>
+              <tr>
+                        <th class="td_left" id="oxh">Heat-up</th>
+                    <td id="st_oxheatup">&nbsp;</td>
+                    <td id="et_oxheatup">&nbsp;</td>
+                        <th class="td_left">Draft Pressure (mmH2O)</th>
+                    <td id="ptarget_98">&nbsp;</td>                   
+                    <td id="ox_dpressure">&nbsp;</td>
+                </tr>
+             <tr>
+                        <th rowspan="3" class="td_left">Delays</th>
+                        <th id="" rowspan="3" colspan="2" class="td_left">
+                            @Html.DropDownList("af_delay2", (SelectList)ViewBag.dreason_List2, new { @id = "delay_ox" })
+                            <img style="float: right;" id="oxid_savebtn" class="save_btn_img_smalls" src="../Images/diskette.png" title="Oxidation save button" disabled="disabled" />
+                        </th>
+                        <th class="td_left">Combustion air (Nm3/h)</th>
+                     <td id="ptarget_100">&nbsp;</td>
+                    <td id="ox_combair">&nbsp;</td>
+                </tr>
+             <tr>
+                        <th class="td_left">HFO Firing rate (l/h)</th>
+                   <td id="ptarget_101">&nbsp;</td>
+                        <td id="ox_hforate">&nbsp;</td>
+             </tr>
+              <tr>
+                        <th class="td_left">Temperature (degC)</th>
+                        <td id="paramid_143">&nbsp;</td>
+                    <td id="oxtemp">&nbsp;</td>
+             </tr>
+                
+              <tr>
+                        <th class="td_stage_label" rowspan="9">REDUCTION
+                            <br />
+                            (2.5 hrs.)</th>
+                    <th>&nbsp;</th>
+                    <th>Start</th>
+                    <th>End</th>
+                    <th>Endpoint</th>
+                    <th>Target</th>
+                    <th>Actual</th>
+                </tr>
+                 <tr>
+                        <th class="td_left" id="poll1">1st</th>
+                    <td id="st_poll1st">&nbsp;</td>
+                    <td id="et_poll1st">&nbsp;</td>
+                        <th class="td_left">% Oxygen</th>
+                        <td id="paramid_145">&nbsp;</td>
+                    <td id="reO2_val">&nbsp;</td>
+                </tr>
+              <tr>
+                        <th class="td_left" id="poll2">2nd</th>
+                    <td id="st_poll2nd">&nbsp;</td>
+                    <td id="et_poll2nd">&nbsp;</td>
+                        <th class="td_left">ppm Sulfur</th>
+                        <td id="paramid_146">&nbsp;</td>
+                    <td id="reS_val">&nbsp;</td>
+                </tr>
+              <tr>
+                        <th class="td_left" id="pollh">Heat-up</th>
+                    <td id="st_pollheatup">&nbsp;</td>
+                    <td id="et_pollheatup">&nbsp;</td>
+                        <th class="td_left">Tuyere Pressure</th>
+                    <td id="ptarget_106">&nbsp;</td>
+                    <td>&nbsp;</td>
+                   
+                </tr>
+             <tr>
+                        <th rowspan="5" class="td_left">Delays</th>
+                        <th id="" rowspan="5" colspan="2" class="td_left">
+                            @Html.DropDownList("af_delay3", (SelectList)ViewBag.dreason_List3, new { @id = "delay_poll" })
+                            <img style="float: right;" id="reduc_savebtn" class="save_btn_img_smalls" src="../Images/diskette.png" title="Reduction save button" disabled="disabled" />
+                        </th>
+                        <th class="td_left">Steam Pressure</th>
+                     <td id="ptarget_108">&nbsp;</td>
+                    <td>&nbsp;</td>               
+                </tr>
+             <tr>
+                        <th class="td_left">Draft Pressure (mmH2O)</th>
+                    <td id="ptarget_104">&nbsp;</td>
+                    <td id="red_dpressure">&nbsp;</td>       
+             </tr>
+
+              <tr>
+                        <th class="td_left">Combustion air (Nm3/h)</th>
+                    <td id="ptarget_107">&nbsp;</td>
+                    <td id="red_combair">&nbsp;</td>
+             </tr>
+              <tr>
+                        <th class="td_left">LPG Firing rate (l/h)</th>
+                    <td id="ptarget_105">&nbsp;</td>
+                        <td id="red_lpgrate">&nbsp;</td>
+              </tr>
+              
+                <tr>
+                        <th class="td_left">Temperature (degC)</th>
+                        <td id="paramid_147">&nbsp;</td>
+                    <td id="polltemp">&nbsp;</td>
+             </tr>
+
+
+                 
+
+            </table>
+            </div>
+       
+            <div class="right_bottom_div">
+                <img id="af_stage_btn" width="20" height="20" src="../Images/red_plus.png" />
+                <span id="af_stage_link" class="btn_label_span">AF Stage </span>
+            </div>
+    </div>
+  
+</div>
+<div class="right_div">
+  
+    <div>
+            <table class="af_tbl" width="254">
+                <tr>
+                    <th colspan="2">LPG READINGS</th>
+                </tr>
+                  <tr>
+                    <th>Poling</th>
+                    <th>Totalizer</th>
+                </tr>
+                 <tr>
+                    <th class="td_left">Start</th>
+                    <td id="lpg_start">&nbsp;</td>
+                </tr>
+                 <tr>
+                    <th class="td_left">End</th>
+                    <td id="lpg_end">&nbsp;</td>
+                </tr>
+             <tr>
+                    <th class="td_left">Consumed</th>
+                    <td id="lpg_consumed">&nbsp;</td>
+                </tr>
+            </table>
+    </div>
+
+
+
+        <div id="tuyere_div">
+        <table class="af_tbl">
+                <tr>
+                    <th colspan="3">TUYERE MEASUREMENT<img id="tuyere_imgbtn" class="save_btn_img_small" src="../Images/diskette.png" /></th>
+                </tr>
+                  <tr>
+                    <th>&nbsp;</th>
+                    <th>West</th>
+                    <th>East</th>
+                </tr>
+                 <tr>
+                    <th class="td_left">Top</th>
+                    <td>
+                        <input id="textb_westtop" class="input_textbox" type="text" /></td>
+                    <td>
+                        <input id="textb_easttop" class="input_textbox" type="text" /></td>
+                </tr>
+                 <tr>
+                    <th class="td_left">Bottom</th>
+                    <td>
+                        <input id="textb_westbottom" class="input_textbox" type="text" /></td>
+                    <td>
+                        <input id="textb_eastbottom" class="input_textbox" type="text" /></td>
+                </tr>
+            </table>
+
+    </div>
+    <div id="consumable_div">
+            <table class="af_tbl" width="254">
+                <tr>
+                    <th colspan="2">CONSUMABLES<img id="cosumable_imgbtn" class="save_btn_img_small" src="../Images/diskette.png" /></th>
+                </tr>
+                  <tr>
+                    <th>Description</th>
+                    <th>Quantity</th>
+                </tr>
+                 <tr>
+                    <th class="td_left">Lead bars(pcs)</th>
+                    <td>
+                        <input id="textb_leadbars" class="input_textbox" type="text" /></td>
+                </tr>
+                 <tr>
+                    <th class="td_left">Scrap Anode(MT)</th>
+                    <td>
+                        <input id="textb_scrapanode" class="input_textbox" type="text" /></td>
+                </tr>
+             <tr>
+                    <th class="td_left">Short Tuyere(pcs)</th>
+                    <td>
+                        <input id="textb_shorttuyere" class="input_textbox" type="text" /></td>
+                </tr>
+            </table>
+
+    </div>
+      <div>
+            <table class="af_tbl" width="254">
+                <tr>
+                    <th colspan="3">FUEL READING</th>
+                </tr>
+                  <tr>
+                    <th>&nbsp;</th>
+                    <th>HFO</th>
+                    <th>LFO</th>
+                </tr>
+                 <tr>
+                    <th class="td_left">Start of tdis lot (Li)</th>
+                    <td id="hfo_start">&nbsp;</td>
+                    <td id="lfo_start">&nbsp;</td>
+                </tr>
+                 <tr>
+                    <th class="td_left">End of tdis lot (Li)</th>
+                    <td id="hfo_end">&nbsp;</td>
+                    <td id="lfo_end">&nbsp;</td>
+                </tr>
+                  <tr>
+                    <th class="td_left">Consumption (Li)</th>
+                     <td id="hfo_consumed">&nbsp;</td>
+                     <td id="lfo_consumed">&nbsp;</td>
+                </tr>
+            </table>
+
+
+        </div>
+    <div id="ref_remarks_div">
+            <h8>Remarks <img id="remarks_imgbtn" class="save_btn_img_small" src="../Images/diskette.png" /></h8>
+            <br />
+            <br />
+            <textarea id="txtarea_ref_remarks" class="txt_area" cols="50" rows="6"></textarea>
+
+        </div>
+
+</div>
+</div>
+<script type="text/javascript">
+
+  //  alert('test');
+
+    $(document).ready(function () {
+
+        $(function () {
+            $('#Dialog_AFManPower').dialog({
+                autoOpen: false,
+                width: 400,
+                height: 600,
+                resizable: false,
+                draggable: true,
+                title: 'AF Man Power',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [1150, 170]
+            });
+
+            $('#Dialog_AFStage').dialog({
+                autoOpen: false,
+                width: 450,
+                height: 600,
+                resizable: false,
+                draggable: true,
+                title: 'AF Stage',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [850, 100]
+            });        
+        });
+        $('#delay_skim').multiselect({
+            selectedText: '# selected',
+        });
+        $('#delay_ox').multiselect({
+            selectedText: '# selected',
+        });
+        $('#delay_poll').multiselect({
+            selectedText: '# selected',
+        });
+
+        $('#delay_skim_ms').prop('disabled', true);
+        $('#delay_ox_ms').prop('disabled', true);
+        $('#delay_poll_ms').prop('disabled', true);
+
+    })
+
+</script>

@@ -1,0 +1,35 @@
+﻿<div id="edit_new_downtimeidtroub_div">
+    <h7><b>Add New Responsible</b></h7><label id="hide_edit_res" hidden="hidden" style="margin-top:-18px"></label>
+    <div style="width: 447px; margin-top: 3px; margin-left: 0px; background-color: rgba(255, 255, 255, 1); border: 0px solid #C0C0C0; height: 210px">
+        <br />
+        <table style="background-color: rgba(255, 255, 255, 1)">
+            <tr>
+                <td style="width: 125px; font-size: 12px;">New Responsible:</td>
+                <td style="width: 110px; font-size: 12px;">
+                    <input type="text" id="new_rid" onkeyup="Key_ups()" style="width:200px" placeholder="Type here" /></td>
+                <td>
+                    <input type="button" id="ref_add_edit_respon" value="Add" onclick="AddNewResponsible()" /></td>
+
+            </tr>
+            <tr>
+                <td style="width: 110px; font-size: 12px; font-weight:bold">List of Responsible</td>
+            </tr>
+        </table>
+        <div style="margin-top:-18px;margin-left:130px;float:inherit; overflow: scroll; height: 145px; width:260px">
+        <table id="list_responsibleId" class="reflogsheet_pcresponsible" >
+            <tr>
+                <th>Responsible</th>
+                <th></th>
+            </tr>
+            <tbody></tbody>
+            <tr></tr>
+        </table>
+            </div>
+    </div>
+   </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            LoadResponsibleList();
+            
+        });
+    </script>

@@ -1,0 +1,32 @@
+﻿@*<div id="rpp_log_header">
+     Date:
+    <input id="fsfe_shiftdate" type="text" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input id="spp_date_btn" type="button" value="Select" />
+    <div id="fsfe_prod_id"></div>
+</div>*@
+@{
+    ViewBag.Title = "RefineryTimelogs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/bundles/jquery")
+<br/>
+<div id="spp_wrapper">
+    <div id="spp_wrap_header">
+        <div class="horizontaltabsspp">
+            <dl class="tabs horizontal_ref">
+                <dd class="active"><a href="#" onclick="ddactive_rpp('Refinery_ProdPlanMonthly');return false;"><h6>&#x1f4c5; Production Plan Monthly</h6></a></dd>
+                <dd><a href="#" onclick="ddactive_rpp('Refinery_KeyPlan');return false;"><h6>&#x2634; Production Plan Weekly</h6></a></dd>
+                <dd><a href="#" onclick="ddactive_rpp('Refinery_PlanVsActual');return false;"><h6>&#x2600; Production Plan Daily</h6></a></dd>
+
+            </dl>
+        </div>
+        <div class="refinery-tabs-content horizontaltabs_ref">
+            <div class="content active" id="htab-panel1">
+                @Html.Partial("~/Views/Shared/Refinery_ProdPlanMonthly.cshtml")
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+  
+</script>

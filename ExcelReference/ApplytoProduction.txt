@@ -1,0 +1,140 @@
+1. Create a View VWCycleActiveStage
+
+Select cycs.*, s.StageName from CycleStage cycs left join stage s ON cycs.StageId = s.StageId where cycs.ActiveStatus = 1 order by cycs.stageid
+
+2. Change StoredProc CYCLE_STAGE_CHANGE
+
+USE [PASAROperation]
+GO
+/****** Object:  StoredProcedure [dbo].[CYCLE_STAGE_CHANGE]    Script Date: 10/19/2014 12:48:29 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[CYCLE_STAGE_CHANGE] (@cycleid int)
+AS BEGIN
+	
+	declare @stage_stat1 int, @stage_stat6 int, @stage_stat7 int, @stage_stat int, @stage_statall int, @stage_stat_6 int
+
+	Select @stage_stat = count(*)  from vwcyclestage where  cycleid = @cycleid and  stageid in (1,2,3,4,5)
+
+--Add Line
+	Select @stage_stat_6 = count(*)  from vwcyclestage where  cycleid = @cycleid and  stageid in (1,2,3,4,5,6)
+--Add
+
+	Select @stage_stat1 = count(*)  from vwcyclestage where cycleid = @cycleid and stageid = 1
+	Select @stage_stat6 = count(*)  from vwcyclestage where cycleid = @cycleid and stageid = 6
+	Select @stage_stat7 = count(*)  from vwcyclestage where cycleid = @cycleid and stageid = 7
+	Select @stage_statall = count(*)  from vwcyclestage where  cycleid = @cycleid
+
+	
+
+	 if (@stage_statall = 7)
+
+	Select *, Addbtn = 'o' FROM vwcyclestage 
+
+	else if (@stage_stat7 = 1)
+
+		Select *, CASE WHEN StageId = @stage_stat + 1 then 'x' 
+				   ELSE 'o' end as Addbtn FROM vwcyclestage
+
+--Add
+	else if (@stage_stat_6 = 6)
+
+	Select *, CASE WHEN StageId = 7 then 'x' 
+				   ELSE 'o' end as Addbtn FROM vwcyclestage
+--Add	
+
+	else if (@stage_stat6 = 1)
+
+	Select *, CASE WHEN StageId = @stage_stat + 1 then 'x' 
+				   WHEN StageId = 7 then 'x' 
+				   ELSE 'o' end as Addbtn FROM vwcyclestage
+
+
+
+	else if (@stage_stat1 = 0)
+
+	Select *, CASE WHEN StageId = @stage_stat1 + 1 then 'x' ELSE 'o' end as Addbtn FROM vwcyclestage
+
+	
+
+	ELSE 
+
+	 Select *, CASE WHEN StageId = @stage_stat + 1 then 'x' 
+					WHEN StageId = 6 then 'x' 
+					ELSE 'o' end as Addbtn
+	 FROM vwcyclestage
+
+END
+
+
+   
+3. Remove Relationship 'FK_Activity_TimeUsage' Relationship for 'Activity' Table
+
+4. Add new view 'VWActivitySequence'
+
+SELECT        ROW_NUMBER() OVER (ORDER BY act.StageId, act.ActSequence ASC) AS Sequence, act.ActivityId, act.ActSequence, act.CycleId, act.StageId, stg.StageName, 
+actc.ActivityDesc, actc.ActivityCodeName, act.ActDuration, act.FSFE_Quantity, act.CF_Quantity, act.AF_Quantity, act.ActComment
+FROM            Activity act LEFT JOIN
+                         ActivityCode actc ON act.ActivityCodeId = actc.ActivityCodeId LEFT JOIN
+                         Stage stg ON act.StageId = stg.StageId
+
+
+
+
+5. Add new StoredProc 'CYCLE_ACTIVITY_PERSTAGE'
+
+USE [PASAROperation]
+GO
+/****** Object:  StoredProcedure [dbo].[CYCLE_ACTIVITY_PERSTAGE]    Script Date: 10/19/2014 9:58:40 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+ALTER PROCEDURE [dbo].[CYCLE_ACTIVITY_PERSTAGE] (@cycleid int, @stageid int)
+AS BEGIN
+
+	
+	declare @1SB_dur float, @2SB_dur float, @3SB_dur float, @4SB_dur float, @5SB_dur float, @COB_dur float, 
+	@CUR_dur float, @cycstart_time datetime
+
+	Select @cycstart_time = Cycle_Start_Time from Cycle where CycleId = @cycleid
+
+
+	Select @1SB_dur = SUM(ActDuration)  from VWActivitySequence WHERE StageId = 1
+	Select @2SB_dur = SUM(ActDuration)  from VWActivitySequence WHERE StageId IN (1, 2)
+	Select @3SB_dur = SUM(ActDuration)  from VWActivitySequence WHERE StageId IN (1, 2, 3)
+	Select @4SB_dur = SUM(ActDuration)  from VWActivitySequence WHERE StageId IN (1, 2, 3, 4)
+	Select @5SB_dur = SUM(ActDuration)  from VWActivitySequence WHERE StageId IN (1, 2, 3, 4, 5)
+	Select @COB_dur = SUM(ActDuration)  from VWActivitySequence WHERE StageId IN (1, 2, 3, 4, 5, 6)
+	
+
+	
+
+	Select @CUR_dur = CASE 
+					WHEN @stageid = 1 then 0
+				    WHEN @stageid = 2 then @1SB_dur
+					WHEN @stageid = 3 then @2SB_dur 
+				    WHEN @stageid = 4 then @3SB_dur 
+					WHEN @stageid = 5 then @4SB_dur 
+				    WHEN @stageid = 6 then @5SB_dur 
+					WHEN @stageid = 7 then @COB_dur
+
+				   ELSE 0 END
+
+	
+Select @cycstart_time = DATEADD(mi, @CUR_dur, @cycstart_time)
+
+
+Select *
+, DATEADD(mi,(coalesce((Select sum(ActDuration) from VWActivitySequence  vwactseq1 where vwactseq1.Sequence < vwactseq.Sequence AND StageId = @stageid AND CycleId = @cycleid), 0)), @cycstart_time) as StartTime
+
+, DATEADD(mi,(coalesce((Select sum(ActDuration) from VWActivitySequence vwactseq1 where vwactseq1.Sequence <= vwactseq.Sequence AND StageId = @stageid AND CycleId = @cycleid), 0)), @cycstart_time) as EndTime
+
+
+from VWActivitySequence vwactseq  WHERE StageId = @stageid AND CycleId = @cycleid order by Sequence asc
+
+
+END
+

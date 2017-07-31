@@ -1,0 +1,109 @@
+﻿<div>
+    <div id="interfaceid">13</div>
+    <div id="prodid" style="display: none;"></div>
+    <div id="top_div">
+        <h6>FSF Build-up Management</h6>
+        <img style="float: left" id="fsf_bldup_save_btn" class="save_btn" src="../Images/diskette.png" width="20" title="Save Changes" />
+        <br />
+        <br />
+
+        <table class="af_tbl" id="fsf_bldup_tbl1" style="width: 30%; float: left;">
+            <tr>
+                <th colspan="2">Daily Values
+                </th>
+            </tr>
+            <tr>
+                <th>Build-up Measurement</th>
+                <td id="paramid_463">
+                    <input type="number" onkeypress="return NumericOnly(event)"  /></td>
+            </tr>
+            <tr>
+                <th>SH1</th>
+                <td id="paramid_453">
+                    <input type="number" onkeypress="return NumericOnly(event)"  /></td>
+            </tr>
+            <tr>
+                <th>SH2</th>
+                <td id="paramid_454">
+                    <input type="number" onkeypress="return NumericOnly(event)"  /></td>
+            </tr>
+            <tr>
+                <th>SH3</th>
+                <td id="paramid_455">
+                    <input type="number" onkeypress="return NumericOnly(event)"  /></td>
+            </tr>
+            <tr>
+                <th>SH4</th>
+                <td id="paramid_456">
+                    <input type="number" onkeypress="return NumericOnly(event)"  /></td>
+            </tr>
+            <tr>
+                <th>SH5</th>
+                <td id="paramid_457">
+                    <input type="number" onkeypress="return NumericOnly(event)"  /></td>
+            </tr>
+            <tr>
+                <th>SFO1</th>
+                <td id="paramid_458">
+                    <input type="number" onkeypress="return NumericOnly(event)"  /></td>
+            </tr>
+            <tr>
+                <th>SFO2</th>
+                <td id="paramid_459">
+                    <input type="number" onkeypress="return NumericOnly(event)"  /></td>
+            </tr>
+            <tr>
+                <th>SFO3</th>
+                <td id="paramid_460">
+                    <input type="number" onkeypress="return NumericOnly(event)"  /></td>
+            </tr>
+            <tr>
+                <th>SFO4</th>
+                <td id="paramid_461">
+                    <input type="number" onkeypress="return NumericOnly(event)"  /></td>
+            </tr>
+            <tr>
+                <th>LMH</th>
+                <td id="paramid_462">
+                    <input type="number" onkeypress="return NumericOnly(event)"  /></td>
+            </tr>
+        </table>
+        <table class="af_tbl" id="fsf_bldup_tbl2" style="width: 30%; float: left;">
+            <tr>
+                <th colspan="2">Shift Values
+                </th>
+            </tr>
+            <tr>
+                <th>Pig Iron Charge</th>
+                <td id="paramid_464">
+                    <input type="number" onkeypress="return NumericOnly(event)"  /></td>
+            </tr>
+            <tr>
+                <th>Matte Skulls Charge</th>
+                <td id="paramid_465">
+                    <input type="number" onkeypress="return NumericOnly(event)"  /></td>
+            </tr>
+            <tr>
+                <th>WHB Dust</th>
+                <td id="paramid_466">
+                    <input type="number" onkeypress="return NumericOnly(event)"  /></td>
+            </tr>
+            <tr>
+                <th>Dust Removed in Dusthouse</th>
+                <td id="paramid_467">
+                    <input type="number" onkeypress="return NumericOnly(event)"  /></td>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        load_fsf_buildup_daily();
+        load_fsf_buildup_shift();
+        $('td[id*="paramid_"] input').change(function () {
+            $(this).css({ "background": "#DFD8D1 !important" });
+            $(this).addClass('changed');
+        });
+    });
+</script>

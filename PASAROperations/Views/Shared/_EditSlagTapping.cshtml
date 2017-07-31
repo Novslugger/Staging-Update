@@ -1,0 +1,220 @@
+﻿<div id="add_mtapping_div">
+<b>Slag Tapping</b>
+<br />
+<br />
+    <div id="stapping_id">@ViewBag.SlagTapId</div>
+<div>
+    <tr>
+        <td>Ready date and time :<input id="ready_date" type="text"  value="@ViewBag.StappingReadyDate_Edit.ToString("MM/dd/yyyy")"/></td>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <td id="ready_date_id">
+                    <select id="start_time_readyhr_input">
+                        @{
+                            int readyhr = Int32.Parse(ViewBag.StappingReadyDate_Edit.ToString("HH"));
+                
+                            for (int x = 0; x <= 23; x++ )
+                            { 
+                            if (@x <= 9){
+
+                                if (@x == @readyhr)
+                                     { <option value="@x" selected="selected">@("0" + @x)</option> }
+                                else { <option value="@x">@("0" + @x)</option> }          
+                                }
+                                else{
+                                if (@x == @readyhr)
+                                      {  <option value="@x" selected="selected">@x</option> }
+                                else  {  <option value="@x">@x</option> }                        
+                                  }}}                               
+                    </select>&nbsp;:
+                    <select id="start_time_readymin_input">
+                          @{
+                              int readymin = Int32.Parse(ViewBag.StappingReadyDate_Edit.ToString("mm"));
+                
+                
+                            for (int x = 0; x <= 59; x++ )
+                            { 
+                            if (@x <= 9){
+
+                                if (@x == @readymin)
+                                {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                else { <option value="@x">@("0" + @x)</option> }          
+                            }
+                                else {
+                                if (@x == @readymin)
+                                {  <option value="@x" selected="selected">@x</option> }
+                                else  { <option value="@x">@x</option> }  
+                                  
+                            }}}                                               
+            </select>
+</td>
+    </tr>
+    <table id="start_time_table">
+            <tr><td rowspan="2" class="label_datetype">Start Time : &nbsp;</td>
+                <td class="label_date">Date</td><td class="label_date">Time (hh:mm)</td>
+            </tr>
+              
+            <tr>
+                <td id="start_date_addact_mtap"><input id="start_date_input_stapedit" type="text"  value="@ViewBag.SlagTappingStartDate_Edit.ToString("MM/dd/yyyy")"/></td>
+                <td id="start_time_addact_mtap">
+                    <select id="start_time_hr_input_stapedit">
+                        @{
+                            int hr = Int32.Parse(ViewBag.SlagTappingStartDate_Edit.ToString("HH"));
+                
+                            for (int x = 0; x <= 23; x++ )
+                            { 
+                            if (@x <= 9){
+
+                                if (@x == @hr)
+                                     { <option value="@x" selected="selected">@("0" + @x)</option> }
+                                else { <option value="@x">@("0" + @x)</option> }          
+                                }
+                                else{
+                                if (@x == @hr)
+                                      {  <option value="@x" selected="selected">@x</option> }
+                                else  {  <option value="@x">@x</option> }                        
+                                  }}}                               
+                    </select>&nbsp;:
+                    <select id="start_time_min_input_stapedit">
+                          @{
+                              int min = Int32.Parse(ViewBag.SlagTappingStartDate_Edit.ToString("mm"));
+                
+                
+                            for (int x = 0; x <= 59; x++ )
+                            { 
+                            if (@x <= 9){
+
+                                if (@x == @min)
+                                {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                else { <option value="@x">@("0" + @x)</option> }          
+                            }
+                                else {
+                                if (@x == @min)
+                                {  <option value="@x" selected="selected">@x</option> }
+                                else  { <option value="@x">@x</option> }  
+                                  
+                            }}}                                               
+            </select>
+</td></tr></table>
+
+    <table id="end_time_table">
+            <tr><td rowspan="2" class="label_datetype">End Time : &nbsp;</td>
+                <td class="label_date">Date</td><td class="label_date">Time (hh:mm)</td>
+            </tr>
+              
+            <tr>
+                <td id="end_date_addact"><input id="end_date_input_stapedit" type="text"  value="@ViewBag.SlagTappingEndDate_Edit.ToString("MM/dd/yyyy")"/></td>
+                <td id="end_time_addact">
+                    <select id="end_time_hr_input_stapedit">
+                        @{
+                            int hr_e = Int32.Parse(ViewBag.SlagTappingEndDate_Edit.ToString("HH"));
+                
+                            for (int x = 0; x <= 23; x++ )
+                            { 
+                            if (@x <= 9){
+
+                                if (@x == @hr_e)
+                                {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                else { <option value="@x">@("0" + @x)</option> }          
+                            }
+                             else{
+
+                                 if (@x == @hr_e)
+                                      {  <option value="@x" selected="selected">@x</option> }
+                                else { <option value="@x">@x</option> }    
+                                                          
+                                  }}}                               
+                    </select>&nbsp;:
+                    <select id="end_time_min_input_stapedit">
+                          @{
+                              int min_e = Int32.Parse(ViewBag.SlagTappingEndDate_Edit.ToString("mm"));
+                
+                
+                            for (int x = 0; x <= 59; x++ )
+                            { 
+                            if (@x <= 9){
+
+                                if (@x == @min_e)
+                                {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                else { <option value="@x">@("0" + @x)</option> }          
+                            }
+                                else {
+                                    if (@x == @min_e)
+                                {  <option value="@x" selected="selected">@x</option> }
+                                else  { <option value="@x">@x</option> }  
+                                  
+                            }}}                                               
+            </select>
+</td></tr></table>
+</div>
+    <br />  
+  @*  <div>Slag Temperature : <input id="add_slagtemp" type="text" value="@ViewBag.SlagTemp" /> <b>°C</b></div>*@
+ <br />  
+@*<div>Launder No: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="add_slag_laddlepit" type ="text"  value="@ViewBag.LaddlePit" ></div>
+<br /> 
+<div>Slag Tender: &nbsp;&nbsp;&nbsp;<span id="stender_emp" >@ViewBag.SlagTend</span></div>
+<br /> *@
+
+<div>Launder No : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="add_slag_laddlepit" type="text" value="@ViewBag.launder1">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Slag Tender : &nbsp;&nbsp;&nbsp;<span id="stender_emp">@*@ViewBag.slagtender1*@</span><span style="display:none;" id="stender_emp_id">-</span>
+</div>
+<br /> 
+<div>Launder No : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="add_slag_laddlepit2" type="text" value="@ViewBag.launder2">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Slag Tender : &nbsp;&nbsp;&nbsp;<span id="stender_emp2">@*@ViewBag.slagtender2*@</span><span style="display:none;" id="stender_emp2_id">-</span></div>
+<br /> 
+        Slag Pot No : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="number" id="edit_slogpotno" onkeypress="return NumericOnly(event)" value="@ViewBag.SlogPotNo"/>
+<div>
+
+<div>
+    <br />
+  <br /> <br /> 
+
+    <input id="edit_stapping_ok_btn" type="button" value="Edit" />&nbsp;@*<input id="edit_stapping_close_btn" type="button" value="Cancel" />*@
+
+</div>
+</div>
+ <script type="text/javascript">
+     
+
+     $(document).ready(function () {
+       
+         load_assign_slagtender("#DialogSlagTappingEdit_Select");
+
+         $("#ready_date").datepicker({
+             showOn: 'button',
+             buttonText: 'Show Date',
+             buttonImageOnly: true,
+             buttonImage: serverpath + '/Images/calendar.png',
+             dateFormat: 'mm/dd/yy',
+             constrainInput: true
+         });
+
+
+         $("#end_date_input_stapedit").datepicker({
+             showOn: 'button',
+             buttonText: 'Show Date',
+             buttonImageOnly: true,
+             buttonImage: serverpath + '/Images/calendar.png',
+             dateFormat: 'mm/dd/yy',
+             constrainInput: true
+         });
+
+         $("#start_date_input_stapedit").datepicker({
+             showOn: 'button',
+             buttonText: 'Show Date',
+             buttonImageOnly: true,
+             buttonImage: serverpath + '/Images/calendar.png',
+             dateFormat: 'mm/dd/yy',
+             constrainInput: true
+         });
+
+         $(".ui-datepicker-trigger").mouseover(function () {
+             $(this).css('cursor', 'pointer');
+
+         });
+
+     });
+
+
+    </script>

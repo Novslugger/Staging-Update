@@ -1,0 +1,130 @@
+﻿@{
+    ViewBag.Title = "CoolingWaterAnalysis";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/jquery")
+
+<div class="container"> 
+    <div class="energy_left">
+        <table>
+            <tr>
+                <td>
+                    <img id="pp_save_btn" class="save_btn" src="../Images/diskette.png" width="20" title="Save Changes" />&nbsp
+                </td>
+                <td>
+                    <input id="pp_date" type="text" />
+                </td>
+            </tr>
+        </table>
+        <div id="access_controler_left">
+            <table id="ppgroup_1" class="af_tbl">
+                <tr class="header expand">
+                    <th colspan="3">Total Hardness<span class="sign" style="float: right"></span></th>
+                </tr>
+            </table>
+            <table id="ppgroup_2" class="af_tbl">
+                <tr class="header expand">
+                    <th colspan="3">Alkalinity - P<span class="sign" style="float: right"></span></th>
+                </tr>
+            </table>
+            <table id="ppgroup_3" class="af_tbl">
+                <tr class="header expand">
+                    <th colspan="3">Alkalinity - M<span class="sign" style="float: right"></span></th>
+                </tr>
+            </table>
+            <table id="ppgroup_4" class="af_tbl">
+                <tr class="header expand">
+                    <th colspan="3">Alkalinity - OH<span class="sign" style="float: right"></span></th>
+                </tr>
+            </table>
+            <table id="ppgroup_5" class="af_tbl">
+                <tr class="header expand">
+                    <th colspan="3">Total Dissolved Solids<span class="sign" style="float: right"></span></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="energy_right">
+        <br />
+        <div id="access_controler_right">
+            <table id="ppgroup_6" class="af_tbl">
+                <tr class="header expand">
+                    <th colspan="3">pH<span class="sign" style="float: right"></span></th>
+                </tr>
+            </table>
+            <table id="ppgroup_7" class="af_tbl">
+                <tr class="header expand">
+                    <th colspan="3">Cl2<span class="sign" style="float: right"></span></th>
+                </tr>
+            </table>
+            <table id="ppgroup_8" class="af_tbl">
+                <tr class="header expand">
+                    <th colspan="3">SiO2<span class="sign" style="float: right"></span></th>
+                </tr>
+            </table>
+            <table id="ppgroup_9" class="af_tbl">
+                <tr class="header expand">
+                    <th colspan="3">PO4<span class="sign" style="float: right"></span></th>
+                </tr>
+            </table>
+            <table id="ppgroup_10" class="af_tbl">
+                <tr class="header expand">
+                    <th colspan="3">Cycles<span class="sign" style="float: right"></span></th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('input').live('change', function () {
+            $(this).css({ 'background-color': '#DFD8D1' });
+            $(this).addClass('changed');
+        });
+
+        //$("#access_controler_left *").attr("disabled", "disabled").off('click');
+        //$("#access_controler_right *").attr("disabled", "disabled").off('click');
+
+        $('#htab-panel1').css({ 'display': 'block' });
+
+        $("#pp_date").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: '../Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: true,
+            onSelect: function (date) {
+                $('#fsfe_log_header').css({ 'background-color': '#0099FF !important' });
+                $('#fsf_btn').prop('disabled', true);
+                $('#cf_btn').prop('disabled', true);
+                $('#afca_btn').prop('disabled', true);
+                //alert('x');
+
+                //diri iclear ang cells
+                WaterAnalysis_tbl_clear_data('WaterAnalysis_tbl_names', 1);
+                //alert('on select');
+            }
+        });
+        $('#ui-datepicker-div').css('display', 'none');
+        $('#pp_date').datepicker('setDate', 'today');
+
+        $(".ui-datepicker-trigger").mouseover(function () {
+
+            $(this).css('cursor', 'pointer');
+
+        });
+
+        //$('#pp_date').onSelect(
+        //function () {
+        //    alert('x');
+        //});
+
+        load_WaterAnalysis_tbl_names('WaterAnalysis_tbl_names', 1);
+        load_WaterAnalysis_tbl_data('WaterAnalysis_tbl_data', 1);
+        //alert('on ready');
+    });
+
+</script>

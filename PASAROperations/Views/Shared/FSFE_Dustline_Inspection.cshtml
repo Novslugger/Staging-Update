@@ -1,0 +1,155 @@
+﻿@{
+    ViewBag.Title = "FSFE_Dustline_Inspection";
+}
+
+<h6 id="h6_fsfe">Dustline Inspection</h6>
+<div id="interfaceid">12</div>
+<div id ="fsfe_dustline_inspections_div">
+   
+    <div id="fsfe_dustline_inspections_label_div">
+        <table id="table_dustline_inspections_label">
+          @*  <tr>
+                <td><input type="button" class="per_start" id="get_period" value="Get Period"/></td>
+            </tr>*@
+            <tr>
+                <td><b class="label_b">Period Start :</b> </td>
+                <td id="start_period">@*<input type="text" class="per_start" id="start_period" size="100"/>*@</td>
+                @*<td id="start_period"></td>*@
+            </tr>
+           
+             <tr>
+                <td><b class="label_b">Period&nbsp; End :</b></td>
+                 <td id="end_period">@*<input type="text" class="per_end" id="end_period" size="100"/>*@</td>
+               @* <td id="end_period"></td>*@
+            </tr>
+          
+        </table>
+        
+    </div>
+    <div id="fsfe_dustline_inspections_table_div">
+        <br />
+      @* <b>POINTS FOR INSPECTION</b>*@
+        <br />
+         <div class="btn_add_div_fsfe_dustline_inspections">
+             <img id="add_dustline_inspections_btn" width="20" height="20"  src="../Images/red_plus.png" />
+              <span id="add_dustline_inspections_link" class="btn_label_span">Add Time, Photos and Remarks </span>
+             
+        </div>
+             
+        <table id="table_fsfe_dustline_inspections">
+            <thead>
+                <tr>
+                    <th style="width: 25%">Areas</th>
+                    <th style="width: 25%">TIME</th>
+                    <th style="width: 30%">PICTURES</th>
+                    <th style="width: 45%">REMARKS</th>
+                    <th style="width: 90%" colspan="2">Action</th>
+                    
+                </tr>
+                <tr>
+                    <th id="param_176">Air Slide Cleaning</th>
+                </tr>
+                @* <tr>
+                   <th id="param_179">WHB Hopper 1</th>
+                </tr>
+                <tr>
+                   <th id="param_182">WHB Hopper 2</th> 
+                </tr>
+                 <tr>
+                   <th id="param_185">WHB Hopper 3</th>   
+                </tr>
+                  <tr>
+                   <th id="param_188">EP Dust</th>  
+                </tr>*@
+                 <tr>
+                   <th id="param_191">WHB Dust</th>  
+                </tr>
+                 <tr>
+                   <th id="param_468">FSF Charged Dust</th>  
+                </tr>
+            </thead>
+         @*   <tbody class="no_border_textarea">
+                <tr>
+                    <th>Air Slide Cleaning</th>
+                    <td id="paramid_176"></td>
+                    <td id ="paramid_177"></td>
+                    <td id ="paramid_178"></td>
+                </tr>
+                <tr>
+                   <th>WHB Hopper 1</th>
+                   <td id ="paramid_179"></td>
+                   <td id ="paramid_180"></td>
+                   <td id ="paramid_181"></td>
+                </tr>
+                <tr>
+                   <th>WHB Hopper 2</th>
+                   <td id ="paramid_182"></td>
+                   <td id ="paramid_183"></td>
+                   <td id ="paramid_184"></td>
+                </tr>
+                <tr>
+                   <th>WHB Hopper 3</th>
+                   <td id ="paramid_185"></td>
+                   <td id ="paramid_186"></td>
+                   <td id ="paramid_187"></td>
+                </tr>
+                <tr>
+                   <th>EP Dust</th>
+                   <td id ="paramid_188"></td>
+                   <td id ="paramid_189"></td>
+                   <td id ="paramid_190"></td>
+                </tr>
+                <tr>
+                   <th>WHB Dust</th>
+                   <td id ="paramid_191"></td>
+                   <td id ="paramid_192"></td>
+                   <td id ="paramid_193"></td>
+                </tr>
+               
+            </tbody>*@
+        </table>
+
+    </div>
+   
+</div>
+<script type="text/javascript">
+   
+
+    $(document).ready(function () {
+
+        var fsfe_stageid = $('#fsfe_shiftdate_select').val();
+        load_fsfe_dustline_inspect(fsfe_stageid);
+
+        $(function () {
+            $('#DialogDustline_Inspections_Select').dialog({
+                autoOpen: false,
+                width: 350,
+                height: 360,
+                resizable: false,
+                draggable: true,
+                title: 'Adding Time,Photo and Remarks',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [900, 260]
+            });
+
+            $('#DialogDustlineInspectEdit_Select').dialog({
+                autoOpen: false,
+                width: 350,
+                height: 360,
+                resizable: false,
+                draggable: true,
+                title: 'Updating Time,Photo and Remarks',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [900, 260]
+            });
+
+        });
+
+        //load_fsfe_fii_label();
+        //load_fsfe_fii();
+
+    });
+   
+</script>

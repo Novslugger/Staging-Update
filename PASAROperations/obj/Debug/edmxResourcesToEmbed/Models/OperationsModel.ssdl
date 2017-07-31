@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DEV_KPIModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="DEV_KPIModelStoreContainer" />
+  <Function Name="SP_PI_CFCYLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="cyclenum" Type="nvarchar" Mode="In" />
+    <Parameter Name="udstartdate" Type="date" Mode="In" />
+    <Parameter Name="udenddate" Type="date" Mode="In" />
+  </Function>
+</Schema>

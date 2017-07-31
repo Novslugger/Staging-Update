@@ -1,0 +1,114 @@
+﻿@*@{
+    ViewBag.Title = "_EditDustlineInspection";
+}*@
+
+@*<h2>_EditDustlineInspection</h2>*@
+@*@{
+    ViewBag.Title = "_FSFE_Dustline_Inspect_form";
+}*@
+<div id="add_dustline_inspections_div">
+    @*<b>Dustline Inspection</b>*@
+    <div>
+        Areas : 
+        @Html.DropDownList("fsfedustline_arealist_ddl", (SelectList)ViewBag.fsfe_dustline_arealist, new { @disabled = "disabled" })
+        <br />
+        <br />
+        Time : 
+        <td class="" id="fsfe_inspectime">
+            <select id="edit_start_time_hr_input">
+                @{
+                    int hr;
+                    int min_ = Int32.Parse(ViewBag.DateTime.ToString("mm"));
+                    if (min_ == 60)
+                    {
+
+                        hr = Int32.Parse(ViewBag.DateTime.ToString("HH"));
+
+                    }
+                    else
+                    {
+                        hr = Int32.Parse(ViewBag.DateTime.ToString("HH"));
+                    }
+
+
+                    for (int x = 0; x <= 23; x++)
+                    {
+                        if (@x <= 9)
+                        {
+
+                            if (@x == @hr)
+                            {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                            else
+                            { <option value="@x">@("0" + @x)</option> }
+                        }
+
+
+                        else
+                        {
+
+                            if (@x == @hr)
+                            {  <option value="@x" selected="selected">@x</option> }
+                            else
+                            { <option value="@x">@x</option> }
+
+
+                        }
+                    }
+                }
+
+            </select>&nbsp;:
+            <select id="edit_start_time_min_input">
+                @{
+                    int min = Int32.Parse(ViewBag.DateTime.ToString("mm"));
+
+
+                    for (int x = 0; x <= 59; x++)
+                    {
+                        if (@x <= 9)
+                        {
+
+                            if (@x == @min)
+                            {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                            else
+                            { <option value="@x">@("0" + @x)</option> }
+                        }
+
+
+                        else
+                        {
+
+                            if (@x == @min)
+                            {  <option value="@x" selected="selected">@x</option> }
+                            else
+                            { <option value="@x">@x</option> }
+
+
+                        }
+                    }
+                }
+            </select>
+
+        </td>
+        <br />
+        <br />
+        <br />
+        Picture:
+        <input id="fileUploadDustline_Inspections_edit" type="file" value="@ViewBag.dustlineinspectImagePath"/>
+        <br />
+        Remarks:
+    <br />
+        <br />
+        <textarea id="edit_dustline_inspections_txtarea">@ViewBag.dustlineinspectRemarks</textarea>
+        <br />
+        <br />
+        <input id="edit_dustline_inspections_upload_btn" type="button" value="Save" />
+    </div>
+    <span id="dustlineinspectId" style="display:none;">@ViewBag.dustlineinspectId</span>
+
+</div>
+
+<script type="text/javascript">
+
+    load_fsfe_dustline_inspectime();
+    
+</script>

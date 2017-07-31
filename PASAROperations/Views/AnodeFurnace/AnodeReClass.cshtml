@@ -1,0 +1,205 @@
+﻿@{
+    ViewBag.Title = "AnodeReClass";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/bundles/jquery")
+
+ @Html.Partial("~/Views/Shared/_AFLotNoSelect.cshtml")
+
+<div id="dialog_ancharged_add"></div>
+
+
+<div class="" id="ancharged_data">
+    <div id="cf_wrapperdiv">
+        <div id="cf_maindiv">
+       <div class="af_wd_div">
+            <br>
+            <br>
+           @* <img class="btn_label_span" style="padding: 2px 2px 10px 15px;" width="20" height="20" title="Add Now" id="anodetrans_add_btn" src="../Images/red_plus.png">
+            <span title="Add Now" class="btn_label_span" id="anodetrans_add_lnk">Add Item </span> *@<div id="pageNavPosition"></div> 
+           @*  <input type="button" value="Calculate Good Anodes" id="calc_good_btn" style="left: 290px; position: absolute;" />     *@   
+            <br><br>
+            <div id="anodetrans_add_div" style="width: 350px; height: 325px; border: 1px solid #cdcdcd; background-color: #fafafa; position: absolute;">
+                <div style="background-color: #004993; width: 350px; height: 19px; position: absolute; left: -10px; top: -1px;">
+                    <span style="color: white; font-size: 15px;">Anode Transfer</span>
+                    <span id="anodetrans_close_btn" style="position: absolute; left: 290px; color: white; font-size: 15px; cursor: pointer;">Close[X]</span>
+
+                </div>
+                <br>
+                <br>
+                <table id="anode_entry_tbl" style="background-color: #fafafa;">
+                    <tr>
+                        <td><b>Date:</b></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="border_color" id="select_antrans_date" style="width: 180px; height: 25px; display: inline;" type="text" /></td>
+                    </tr>
+
+                    <tr>
+                        <td><b>Lot:<b></td>
+                    </tr>
+                    <tr>
+                        <td>@Html.DropDownList("antrans_lotlist", (SelectList)ViewBag.antrans_lotlist, "--Select--")</td>
+                    </tr>
+                    <tr>
+                        <td><b>Sales:</b></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="extratbl_input border_color" id="an_sales" style="width: 180px; height: 25px; display: inline;" onkeypress="return NumericOnly(event)" type="text" /></td>
+                    </tr>
+
+                    <tr>
+                        <td><b>APM Reject Charged to CF:</b></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="extratbl_input border_color" id="an_apm" style="width: 180px; height: 25px; display: inline;" onkeypress="return NumericOnly(event)" type="text" /></td>
+                    </tr>
+                    <tr>
+                        <td><b>Anodes Charged to CF from Inventory:</b></td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input class="extratbl_input border_color" id="an_inv" style="width: 180px; height: 25px; display: inline;" onkeypress="return NumericOnly(event)" type="text" /></td>
+                    </tr>
+                </table>
+                <input type="button" value="Add" id="antrans_save_btn" style="left: 290px; position: absolute;" />
+                <input type="button" value="Edit" id="antrans_edit_btn" style="left: 290px; position: absolute;" />
+                <div id="anstransfer_Id" class="hidden_div"></div>
+            </div>           
+            <table id="anodeReclass_tbl" class="anodeReclass_tbl">
+                <tr>
+                    <th colspan="12" style="font-size: 20px">Anode ReClassification</th>
+                </tr>
+                <tr>
+                   @* <th colspan="11">
+                    <input id="ans_monthyear" class="ans_monthyear" type="text" style="width: 100%; font-size: 15px; border: 0.5px solid; text-align:center;" />
+                    </th>*@
+                </tr>
+                <tr>                  
+                    <th style="width: 2%;">Lot</th>
+                    <th style="width: 2%;">Customer</th>
+                    <th style="width: 2%;">Total</th>
+                    <th style="width: 2%;">Good Anodes</th>
+                    <th style="width: 2%;">Reworkable</th>
+                    <th style="width: 2%;">Reject</th>
+                    <th style="width: 2%;">RDC</th>
+                    <th style="width: 2%;">Reject@Port</th>
+                    <th style="width: 2%;">FLL</th>
+                    <th style="width: 2%;">Re-Class</th>
+                    <th style="width: 2%;" colspan="2">Action</th>
+                </tr>
+            </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+<script type="text/javascript">
+
+    $('#anodetrans_add_div').hide();
+
+    $(document).ready(function () {
+
+        load_reclass_customer();
+      
+
+        $('#anodetrans_add_div').draggable();
+        $('.antrans_lotid').hide();
+     
+
+        $('#anodetrans_add_btn,#anodetrans_add_lnk').click(function () {
+            $('#select_antrans_date').attr('disabled', false);
+           //refreshdate();
+            $('#antrans_lotlist').attr('disabled', false);          
+            $('#antrans_save_btn').show();
+            $('#antrans_edit_btn').hide();
+            $('#anodetrans_add_div').show();
+           //$('#select_antrans_date').datepicker('setDate', 'today');
+            clear_anode_trans();
+        });
+        $('#anodetrans_close_btn').click(function () {
+            $('#antrans_save_btn').show();
+            $('#antrans_edit_btn').hide();
+            $('#anodetrans_add_div').hide();
+           // $('#select_antrans_date').datepicker('setDate', 'today');
+            clear_anode_trans();
+        });
+
+        function refreshdate() {
+            //$("#select_antrans_date").datepicker({
+            //    showOn: 'button',
+            //    buttonText: 'Show Date',
+            //    buttonImageOnly: true,
+            //    buttonImage: serverpath + '/Images/calendar.png',
+            //    dateFormat: 'mm/dd/yy',
+            //    constrainInput: true,
+            //    onSelect: function (date) {
+            //    }
+            //});
+        }
+
+        //$("#ans_monthyear").datepicker({
+        //    changeMonth: true,
+        //    changeYear: true,
+        //    dateFormat: 'MM yy',
+        //    showButtonPanel: true,
+        //    onClose: function () {
+        //        var iMonth = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+        //        var iYear = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+        //        $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+        //        $(this).datepicker('refresh');
+
+        //        $('thead #tr_param').remove();
+        //        $('#tbody tr').filter(function () {
+        //            return $(this).has('input');
+        //        }).remove();
+
+        //        var date = $('#ans_monthyear').val();
+        //        load_anode_trans(date);
+        //    },
+
+        //    beforeShow: function () {
+        //        if ((selDate = $(this).val()).length > 0) {
+        //            iYear = selDate.substring(selDate.length - 4, selDate.length);
+        //            iMonth = jQuery.inArray(selDate.substring(0, selDate.length - 5), $(this).datepicker('option', 'monthNames'));
+        //            $(this).datepicker('option', 'defaultDate', new Date(iYear, iMonth, 1));
+        //            $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+        //        }
+        //    }
+        //});
+
+        //$("#ans_monthyear").focus(function () {
+        //    $(".ui-datepicker-calendar").hide();
+        //    $("#ui-datepicker-div").position({
+        //        my: "center top",
+        //        at: "center bottom",
+        //        of: $(this)
+        //    });
+        //});
+
+        //$("#ans_monthyear").blur(function () {
+        //    $(".ui-datepicker-calendar").hide();
+        //});
+
+        //$('#ans_monthyear').datepicker('setDate', 'today');
+        //$('#select_antrans_date').datepicker('setDate', 'today');
+
+        //$(".ui-datepicker-trigger").mouseover(function () {
+        //    $(this).css('cursor', 'pointer');
+        //});
+
+        //$('#ans_monthyear').focus();
+
+        
+    });
+
+
+</script>

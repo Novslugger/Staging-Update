@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Smelter Production Plan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/jquery")
+
+<div id="fsfe_log_header">
+    Date:
+    <input id="fsfe_shiftdate" type="text" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <input id="spp_date_btn" type="button" value="Select" />
+    <div id="fsfe_prod_id"></div>
+</div>
+
+
+<div id="spp_wrapper">
+    <div id="spp_wrap_header">
+        <div class="horizontaltabsspp">
+            <dl class="tabs horizontal">
+                @*<dd class="active"><a href="#" onclick="ddactive_spp('SmeltPlan_BatchPlan');return false;">Batch Plan</a></dd>*@
+                <dd class="active"><a href="#" onclick="ddactive_spp('SmeltPlan_KeyIn');return false;">Key In</a></dd>
+                <dd><a href="#" onclick="ddactive_spp('SmeltPlan_Plan');return false;">Plan</a></dd>
+                <dd><a href="#" onclick="ddactive_spp('SmeltPlan_PlanVsActual');return false;">Plan vs Actual</a></dd>
+            </dl>
+        </div>
+        <div class="tabs-content">
+            <div class="content active" id="htab-panel1" style="display: none;">
+                @Html.Partial("~/Views/SmeltPlan/SmeltPlan_KeyIn.cshtml")
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //Key-In Form Loading Modal
+        $('.tabs-content').css({ 'background': 'white !important' });
+        $('#htab-panel1').css({ 'display': 'block' });
+
+        $("#fsfe_shiftdate").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: '../Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: true,
+            onSelect: function (date) {
+                $('#fsfe_log_header').css({ 'background-color': '#0099FF !important' });
+                $('#fsf_btn').prop('disabled', true);
+                $('#cf_btn').prop('disabled', true);
+                $('#afca_btn').prop('disabled', true);
+            }
+        });
+        $('#ui-datepicker-div').css('display', 'none');
+        $('#fsfe_shiftdate').datepicker('setDate', 'today');
+
+
+        $(".ui-datepicker-trigger").mouseover(function () {
+
+
+            $(this).css('cursor', 'pointer');
+
+        });
+    });
+
+</script>
+@*@Scripts.Render("~/bundles/jsPDF")*@
+@Scripts.Render("~/Scripts/SPPLogsheet.js")

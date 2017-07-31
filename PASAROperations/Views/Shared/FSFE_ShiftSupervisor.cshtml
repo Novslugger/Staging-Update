@@ -1,0 +1,175 @@
+﻿<h6 id="h6_fsfe">Man Power Assignment</h6>
+
+<div id="interfaceid">1</div>
+<div id ="fsfe_shift_div">
+      <div id="fsfe_shift_left_div">
+<div id="fsfe_manpower_div"><h6 class="h6_fsfe_lbl">I. Man Power</h6>
+
+  <div id="fsfe_manpower_table_left">
+   <br />
+    <table id="fsfe_manpower_table">
+         <tr>
+            <td>
+                <b>Select Crew : </b>&nbsp;
+                 <br><br><br><br><td style="height: 95px; vertical-align:text-top; background-color:transparent !important;" >&nbsp;@Html.DropDownList("FSFcrewmanpowerlist", (SelectList)ViewBag.FSFCrewList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+            </td>
+            
+        </tr>
+         <br />
+         @*<tr style="height: 70px; vertical-align:text-top;">
+             <td >
+                 <b>Select Crew : </b>
+                 &nbsp;
+             </td>
+             <td>&nbsp;@Html.DropDownList("FSFcrewmanpowerlist", (SelectList)ViewBag.FSFCrewList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+         </tr>*@
+           <tr><td >Sr CRE : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_1", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td></tr>
+           <tr><td>Jr CRE : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_2", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td></tr>
+           <tr><td>Field Supervisor : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_3", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td></tr>
+           <tr><td >Steam Dryer Operator : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_4", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td></tr>
+           <tr><td>SPO Tapper : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_5", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td></tr>
+           <tr><td>Matte Tapper 1 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_6", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td></tr>
+           <tr><td>Matte Tapper 2 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_7", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td></tr>
+           <tr><td>Matte Tapper 3 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_8", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td></tr>
+         <tr><td>Matte Tapper 4 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_9", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td></tr>
+           <tr><td>Slag Tapper 1 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_10", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td></tr>
+           <tr><td>Slag Tapper 2 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_11", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td></tr>
+           <tr><td>Slag Tapper 3 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_12", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td></tr>
+           <tr><td>SPO Inspection : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_13", (SelectList)ViewBag.FSFEEmpList,  "-- Select --",new {@class="fsfe_emplist", @disabled = "disabled"})</td></tr>
+           <tr><td>Furnaceman : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_14", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td></tr>
+           <tr><td>Dust Line Tender : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_15", (SelectList)ViewBag.FSFEEmpList,  "-- Select --",new {@class="fsfe_emplist", @disabled = "disabled"})</td></tr>
+
+    </table>
+      </div>
+    <div id="fsfe_manpower_table_right">
+        <img id="fsfe_manpower_btn" width="25" height="25"  src="../Images/diskette.png" />
+            <span id="savemanpower_link" class="btn_label_span">Save Man Power </span>
+         <br />
+     @*  <table class="fsfe_manpower_label">
+         
+
+        </table>*@
+   @* hide <table id="fsfe_manpower_table_2">*@
+        
+        
+         @*<tr style="height: 70px; vertical-align:text-top;">
+             <td >
+                 <b>Select Crew : </b>
+                 &nbsp;
+             </td>
+             <td>&nbsp;@Html.DropDownList("FSFcrewmanpowerlist", (SelectList)ViewBag.FSFCrewList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+         </tr>*@
+        
+           @*  hide  <br /><br />*@
+            @* hide  <p id="left_lab">First 4 Hours&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Last 4 Hours</p>
+        *@
+            @*   <p id="right_lab"></p>*@
+          
+            @* hide  <br />*@
+          
+          @* hide <tr>
+               <td>Optional Crew 1: &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_1a", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+               <td>Optional Crew 2: &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_1b", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+           </tr>
+           <tr>
+               <td>Optional Crew 1 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_2a", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+               <td>Optional Crew 2 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_2b", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+           </tr>
+         <tr>
+               <td>Optional Crew 1: &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_3a", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+               <td>Optional Crew 2: &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_3b", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+           </tr>
+           <tr>
+               <td>Optional Crew 1 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_4a", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+               <td>Optional Crew 2 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_4b", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+           </tr>
+         <tr>
+               <td>Optional Crew 1: &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_5a", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+               <td>Optional Crew 2: &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_5b", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+           </tr>
+           <tr>
+               <td>Optional Crew 1 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_6a", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+               <td>Optional Crew 2 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_6b", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+           </tr>
+         <tr>
+               <td>Optional Crew 1: &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_7a", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+               <td>Optional Crew 2: &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_7b", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+           </tr>
+           <tr>
+               <td>Optional Crew 1 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_8a", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+               <td>Optional Crew 2 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_8b", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+           </tr>
+         <tr>
+               <td>Optional Crew 1 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_9a", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+               <td>Optional Crew 2 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_9b", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+         </tr>
+         <tr>
+               <td>Optional Crew 1 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_10a", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+               <td>Optional Crew 2 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_10b", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+           </tr>
+        <tr>
+               <td>Optional Crew 1 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_11a", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+               <td>Optional Crew 2 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_11b", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+         </tr>
+         <tr>
+               <td>Optional Crew 1 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_12a", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+               <td>Optional Crew 2 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_12b", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+           </tr>
+        <tr>
+               <td>Optional Crew 1 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_13a", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+               <td>Optional Crew 2 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_13b", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+         </tr>
+         <tr>
+               <td>Optional Crew 1 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_14a", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+               <td>Optional Crew 2 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_14b", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+           </tr>
+         <tr>
+               <td>Optional Crew 1 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_15a", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+               <td>Optional Crew 2 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_15b", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist", @disabled = "disabled"})</td>
+           </tr>
+*@
+
+           
+          
+
+@*   hide </table>*@
+    </div>
+
+</div>
+          <br />
+   
+   </div>
+
+</div>
+
+<!-- -->
+<script type="text/javascript">
+    $('select').change(function () {
+        $(this).css({ 'background-color': '#DFD8D1' });
+        //$(this).addClass('changed');
+    });
+
+    select_manpower();
+
+    $('#fsfe_manpower_table select').each(function () {
+        $(this).live('change', function () {
+            var id = $(this).attr('id');
+            var val = $(this).val();
+
+            if (val == "") {
+                $('#fsfe_manpower_table_2').find('select[id="' + id + 'a"]').prop('disabled', false);
+                $('#fsfe_manpower_table_2').find('select[id="' + id + 'b"]').prop('disabled', false);
+            }
+            else {
+                $('#fsfe_manpower_table_2').find('select[id="' + id + 'a"]').prop('disabled', true);
+                $('#fsfe_manpower_table_2').find('select[id="' + id + 'b"]').prop('disabled', true);
+            }
+        });
+    });
+
+</script>

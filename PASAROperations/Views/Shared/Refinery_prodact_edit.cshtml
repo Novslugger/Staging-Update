@@ -1,0 +1,299 @@
+﻿@model IEnumerable<PASAROperations.Models.REFTH_PP_Actcode>
+
+<div class="rpp_ref_act_div">
+    <div id="ref_prodact_rightdiv">
+        <h6>Activities</h6>
+        List of activities.
+          
+       <table id="act_code_table">
+           <tr id="act_code_table_header">
+               <th><i>Code</i></th>
+               <th><i>Description</i></th>
+           </tr>
+           @foreach (var item in Model)
+           { 
+               <tr>
+                   <td class="ref_code_td"@* disabled="disabled"*@>@Html.ValueFor(modelItem => item.REFTH_ActCode)</td>
+                   <td class="ref_code_desc_td"@*disabled="disabled"*@>@Html.ValueFor(modelItem => item.REFTH_ActCodeDesc)</td>
+                   @* <td class="fsfe_charge">@Html.ValueFor(modelItem => item.FSFE_Charge)</td>
+                    <td class="cf_charge">@Html.ValueFor(modelItem => item.CF_Charge)</td>
+                    <td class="af_charge">@Html.ValueFor(modelItem => item.AF_Charge)</td>*@
+               </tr> 
+             
+           }
+       </table>
+
+        <table style="padding-left: 212px;">
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td class="border_color">
+                    <input type="button" value="Save" onclick="edit_ref_prodact(this)" id="btn_prod" /></td>
+            </tr>
+        </table>
+    </div>
+
+    <table class="refinery_partial_tbl">
+
+        <tr>
+            <td rowspan="2" class="label_datetype">Start Time:</td>
+            <td class="label_date">Date</td>
+            <td class="label_date">Time (hh:mm)</td>
+        </tr>
+
+        <tr>
+            <td class="af_date_td ">
+                <input @*disabled="disabled"*@id="start_date_ref_edit_act" class="ref_date" type="text" value="@ViewBag.starttime.ToString("MM/dd/yyyy")" onchange="validation_ref_prodact_edit(this.id)"/></td>
+            <td class="af_time_td">
+                <select id="start_time_hr_ref_edit_act" class="ref_hr" @*disabled="disabled"*@ onchange="validation_ref_prodact_edit(this.id)">
+                    @{
+                        int hr;
+                        int min_ = Int32.Parse(ViewBag.starttime.ToString("mm"));
+                        if (min_ == 60)
+                        {
+
+                            hr = Int32.Parse(ViewBag.starttime.ToString("HH"));
+
+                        }
+                        else
+                        {
+                            hr = Int32.Parse(ViewBag.starttime.ToString("HH"));
+                        }
+
+
+                        for (int x = 0; x <= 23; x++)
+                        {
+                            if (@x <= 9)
+                            {
+
+                                if (@x == @hr)
+                                {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                else
+                                { <option value="@x">@("0" + @x)</option> }
+                            }
+
+
+                            else
+                            {
+
+                                if (@x == @hr)
+                                {  <option value="@x" selected="selected">@x</option> }
+                                else
+                                { <option value="@x">@x</option> }
+
+
+                            }
+                        }
+                    }
+
+                </select>&nbsp;:
+            <select id="start_time_min_ref_edit_act" class="ref_min" @*disabled="disabled"*@ onchange="validation_ref_prodact_edit(this.id)">
+                @{
+                    int min = Int32.Parse(ViewBag.starttime.ToString("mm"));
+
+
+                    for (int x = 0; x <= 59; x++)
+                    {
+                        if (@x <= 9)
+                        {
+
+                            if (@x == @min)
+                            {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                            else
+                            { <option value="@x">@("0" + @x)</option> }
+                        }
+
+
+                        else
+                        {
+
+                            if (@x == @min)
+                            {  <option value="@x" selected="selected">@x</option> }
+                            else
+                            { <option value="@x">@x</option> }
+
+
+                        }
+                    }
+                }
+            </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td rowspan="2" class="label_datetype">End Time:</td>
+
+        </tr>
+
+        <tr>
+            <td class="af_date_td ">
+                <input id="end_date_ref_edit_act" class="ref_date" type="text"  value="@ViewBag.endtime.ToString("MM/dd/yyyy")" onchange="validation_ref_prodact_edit(this.id)"/></td>
+
+
+            <td class="af_time_td">
+                <select id="end_time_hr_ref_edit_act" class="ref_hr" onchange="validation_ref_prodact_edit(this.id)">
+                    @{
+               
+  
+                        if (min_ == 60)
+                        {
+
+                            hr = Int32.Parse(ViewBag.endtime.ToString("HH"));
+
+                        }
+                        else
+                        {
+                            hr = Int32.Parse(ViewBag.endtime.ToString("HH"));
+                        }
+
+
+                        for (int x = 0; x <= 23; x++)
+                        {
+                            if (@x <= 9)
+                            {
+
+                                if (@x == @hr)
+                                {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                else
+                                { <option value="@x">@("0" + @x)</option> }
+                            }
+
+
+                            else
+                            {
+
+                                if (@x == @hr)
+                                {  <option value="@x" selected="selected">@x</option> }
+                                else
+                                { <option value="@x">@x</option> }
+
+
+                            }
+                        }
+                    }
+
+                </select>&nbsp;:
+            <select id="end_time_min_ref_edit_act" class="ref_min" onchange="validation_ref_prodact_edit(this.id)">
+                @{
+                    int mine_ = Int32.Parse(ViewBag.endtime.ToString("mm"));
+
+                    for (int x = 0; x <= 59; x++)
+                    {
+                        if (@x <= 9)
+                        {
+
+                            if (@x == @mine_)
+                            {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                            else
+                            { <option value="@x">@("0" + @x)</option> }
+                        }
+
+
+                        else
+                        {
+
+                            if (@x == @mine_)
+                            {  <option value="@x" selected="selected">@x</option> }
+                            else
+                            { <option value="@x">@x</option> }
+
+
+                        }
+                    }
+                }
+            </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="label_datetype">Block:</td>
+            <td class="border_color">
+                @Html.DropDownList("blockid", (SelectList)ViewBag.blockpairlist, "--Select--")
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="label_datetype">Activity Code:</td>
+            <td class="border_color">
+                <input class="extratbl_input border_color" type="text" id="REFTH_PP_Actcode" style="text-transform: uppercase" value="@ViewBag.REFTH_ActCode" />
+            </td>
+        </tr>
+
+    </table>
+    <div>
+        <span class="label_datetype">Description:</span>
+        <br>
+        <br>
+        <span id="REFTH_ActCodeDesc" class="bold_text_ref"></span>
+        <br>
+        <br>
+        <textarea class="border_color" id="ref_prodact_note">@ViewBag.REFTH_Remarks</textarea>
+        <br>
+        <br>
+        <span id="error_msg_time_ref"></span>
+    </div>
+
+    <span id="REFTH_PP_Actcode_Id" style="visibility: hidden;">@ViewBag.REFTH_PPcodeId</span>
+    <span id="REFTH_PPId" style="visibility: hidden;">@ViewBag.REFTH_PPId</span>
+
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        var dialog = "#" + $(".rpp_ref_act_div").closest('div.ui-dialog-content').attr('id');
+
+        $(function () {
+            $(dialog + " #start_date_ref_edit_act").datepicker({
+                showOn: 'button',
+                buttonText: 'Show Date',
+                buttonImageOnly: true,
+                buttonImage: serverpath + '/Images/calendar.png',
+                dateFormat: 'mm/dd/yy',
+                constrainInput: false
+            });
+            $(".ui-datepicker-trigger").mouseover(function () {
+                $(this).css('cursor', 'pointer');
+
+            });
+
+            $(dialog + " #end_date_ref_edit_act").datepicker({
+                showOn: 'button',
+                buttonText: 'Show Date',
+                buttonImageOnly: true,
+                buttonImage: serverpath + '/Images/calendar.png',
+                dateFormat: 'mm/dd/yy',
+                constrainInput: true
+            });
+            $(".ui-datepicker-trigger").mouseover(function () {
+                $(this).css('cursor', 'pointer');
+
+            });
+        });
+        var actcode_val = $(dialog + " #REFTH_PP_Actcode").val();
+        Refinery_ActivityCode(actcode_val, dialog);       
+
+
+        $(dialog + " #REFTH_PP_Actcode").on('keyup', function () {
+            upperCase_actcode(this);
+            var actcode_val = $(this).val();
+            Refinery_ActivityCode(actcode_val, dialog);
+        });
+       
+    });
+
+</script>

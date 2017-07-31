@@ -1,0 +1,85 @@
+﻿@{
+    ViewBag.Title = "CFCycles";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="logsheet_camp">Campaign Number: @Html.DropDownList("camplist", ViewData["camp_list"] as SelectList) &nbsp;&nbsp;&nbsp;<input id="cycle_list_btn" type="button" value="Refresh" /></div>
+
+<div>
+    <div id="cfcyc_1" class="cfcyc">
+        <h5>CF1</h5>
+        <div class="div_cfcycles">
+        <table class="table_cf1cycle">
+            <tr class="rowhead_cfcycle">
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th class="smallth">Cycle #</th>
+                <th>Status</th>
+            </tr>
+
+        </table>
+            </div>
+    </div>
+
+
+    <div id="cfcyc_2" class="cfcyc">
+          <h5>CF2</h5>
+        <div class="div_cfcycles">
+        <table class="table_cf2cycle">
+            <tr class="rowhead_cfcycle">
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th class="smallth">Cycle #</th>
+                <th>Status</th>
+            </tr>
+
+        </table>
+            </div>
+    </div>
+    <div id="cfcyc_3" class="cfcyc">
+       <h5>CF3</h5>
+        <div class="div_cfcycles">
+        <table class="table_cf3cycle">
+            <tr class="rowhead_cfcycle">
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th class="smallth">Cycle #</th>
+                <th>Status</th>
+            </tr>
+
+        </table>
+            </div>
+
+    </div>
+
+    <div id="cfcyc_4" class="cfcyc">
+                  <h5>CF4</h5>
+        <div class="div_cfcycles">
+        <table class="table_cf4cycle">
+            <tr class="rowhead_cfcycle">
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th class="smallth">Cycle #</th>
+                <th>Status</th>
+            </tr>
+
+        </table>
+            </div>
+
+
+    </div>
+</div>
+
+  @Scripts.Render("~/bundles/jquery") 
+  
+    <script type="text/javascript">
+        $(document).ready(function () {
+            listofcycles(1, 'table_cf1cycle', @ViewBag.Camp1);
+            listofcycles(2, 'table_cf2cycle', @ViewBag.Camp2);
+            listofcycles(3, 'table_cf3cycle', @ViewBag.Camp3);
+            listofcycles(4, 'table_cf4cycle', @ViewBag.Camp4);
+
+
+        });
+        
+        </script>

@@ -1,0 +1,970 @@
+﻿@{
+    ViewBag.Title = "AF-QIG";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/jquery") 
+
+<div id="Dialog_QIGInspect" style="overflow: hidden;"></div>
+
+
+@*@Html.Partial("~/Views/Shared/_AFLotNoSelect.cshtml")*@
+@*<div id="afqig_div">*@
+
+<div id="aflot_div">
+    <br />
+    <b>Lot No: </b>@Html.DropDownList("aflot_ddl", (SelectList)ViewBag.af_lot_list, new { @onchange = "load_default_proddate(this.value)" })
+    &nbsp;&nbsp;&nbsp;  
+    <input id="af_qig_date" type="text" style="width: 120px; border: 1px solid lightgrey; display: inline" />
+    &nbsp;&nbsp;&nbsp;  
+    <input id="select_aflot_btn" type="button" value="Select" />
+
+    @*<font color="white">*@
+    <span id="lot_details">AF:  
+            <b><span id="afnum_span"></span></b>&nbsp; | &nbsp;&nbsp;Status: 
+            <b><span id="aflot_status_span"></span></b>
+        <span class="">&nbsp; | &nbsp;&nbsp;Lot No: </span>
+        <span id="aflotnum_lbl"></span></span>
+    <br>
+    <br>
+    @* </font>*@
+</div>
+
+<div id="afqig_div" class="container">
+    <br />
+    <div id="afqig_div_title">
+        <h5>ANODE INSPECTION LOGSHEET</h5>
+        <span class="qig_subtitle">Smelter Division/Anode Furnace and Casting Area</span>
+    </div>
+    <br />
+
+
+@*<div><span class="makesapce"></span>*@
+    <div class="header_qig">
+        <span class=""></span>
+        <b>Date Cast: </b><span id="date_cast_qig" class="makesapce">-</span>
+        <b>Start Time: </b><span id="stime_cast_qig" class="makesapce">-</span>
+        <b>End Time: </b><span id="etime_cast_qig" class="makesapce">-</span>
+        <b>Lot no: </b><span id="lot_cast_qig" class="makesapce">-</span>
+
+    @*<img id="afqig_imgbtn" width="20" height="20"  src="../Images/red_plus.png" /> 
+            <span id="afqig_link" class="btn_label_span">QIG Inspect</span>*@
+    </div>
+    <br />
+
+    @*<div id="qig_wrapper">
+    <div id="qig_wrap_header">
+        <div class="horizontaltabs_qig">
+            <dl class="tabs_content_qig">
+                <dd class="active"><a href="#" onclick="ddactive_qig('');return false;">Key In</a></dd>
+                <dd><a href="#" onclick="ddactive_qig('');return false;">Plan</a></dd>
+                <dd><a href="#" onclick="ddactive_qig('');return false;">Plan vs Actual</a></dd>
+            </dl>
+        </div>
+        <div class="tabs-content">
+            <div class="content active" id="htab-panelqig" style="display: none;">
+
+            </div>
+        </div>
+    </div>
+</div>*@
+
+
+    <div id="tabs-container">
+        <ul class="tabs-menu">
+            <li class="current"><a href="#tab-1"><b>Casting Wheel 1</b></a></li>
+            <li><a href="#tab-2"><b>Casting Wheel 2</b></a></li>
+        </ul>
+        <br />
+        <br />
+        <div class="tab">
+            <!-- Casting Wheel 1 Tab-->
+            <div id="tab-1" class="tab-content">
+                <div class="save_tbn_qig">
+                    <img id="qig_save_rew_btn_cw1" class="save_btn_img_smalls_qig" src="../Images/diskette.png" title="Save" onclick="save_afqig_input();" />
+</div>
+                <!-- Rework Casting Wheel 1 -->
+    <table id="af_qig_rework_tbl" class="af_tbl">
+                    <tr class="qigth_height">
+                        <th colspan="26" class="qig_header">Reworkables - Casting Wheel 1</th>
+                    </tr>
+        <tr id="">
+
+                        <th class="qig_header"></th>
+                        <th class="qig_header"></th>
+                        <th class="qig_header" colspan="2">1st 2 rounds</th>
+                        <th class="qig_header" colspan="2">1st hour</th>
+                        <th class="qig_header" colspan="2">2nd hour</th>
+                        <th class="qig_header" colspan="2">3rd hour</th>
+                        <th class="qig_header" colspan="2">4th hour</th>
+                        <th class="qig_header" colspan="2">5th hour</th>
+                        <th class="qig_header" colspan="2">6th hour</th>
+                        <th class="qig_header" colspan="2">7th hour</th>
+                        <th class="qig_header" colspan="2">8th hour</th>
+                        <th class="qig_header" colspan="2">9th hour</th>
+                        <th class="qig_header" colspan="2">10th hour</th>
+                        <th class="qig_header" colspan="2">Total</th>
+        </tr>
+
+        <tr>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+           
+            
+        </tr>
+    </table>
+   
+                <!-- Grade A Casting Wheel 1 -->
+                @*<div class="save_tbn_qig">*@
+                    @*  <img id="qig_save_cast_btn_cw1" class="save_btn_img_smalls_qig" src="../Images/diskette.png" title="Save Cast Pcs" />*@
+               @* </div>
+                <table id="af_qig_grade_a_tbl" class="af_tbl">*@
+                    @*Grade A*@
+                  @*  <tr class="qigth_height">
+                        <th colspan="26" class="qig_header">Grade A - Casting Wheel 1</th>
+                    </tr>
+                    <tr id="">
+
+                        <th class="qig_header"></th>
+                        <th class="qig_header"></th>
+                        <th class="qig_header" colspan="2">1st 2 rounds</th>
+                        <th class="qig_header" colspan="2">1st hour</th>
+                        <th class="qig_header" colspan="2">2nd hour</th>
+                        <th class="qig_header" colspan="2">3rd hour</th>
+                        <th class="qig_header" colspan="2">4th hour</th>
+                        <th class="qig_header" colspan="2">5th hour</th>
+                        <th class="qig_header" colspan="2">6th hour</th>
+                        <th class="qig_header" colspan="2">7th hour</th>
+                        <th class="qig_header" colspan="2">8th hour</th>
+                        <th class="qig_header" colspan="2">9th hour</th>
+                        <th class="qig_header" colspan="2">10th hour</th>
+                        <th class="qig_header" colspan="2">Total</th>
+                    </tr>
+
+                    <tr>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+
+
+                    </tr>
+                    <tr class="td_graded">
+                        <th colspan="2" style="width: 137px;"><strong>&nbsp;&nbsp;&nbsp;&nbsp;Grade A</strong></th>
+                    </tr>
+
+                </table>*@
+
+                <!-- Grade B Casting Wheel 1 -->
+               @* <table id="af_qig_grade_b_tbl" class="af_tbl">*@
+                    @*Grade B*@
+                   @* <tr class="qigth_height">
+                        <th colspan="26" class="qig_header">Grade B - Casting Wheel 1</th>
+                    </tr>
+                    <tr id="">
+
+                        <th class="qig_header"></th>
+                        <th class="qig_header"></th>
+                        <th class="qig_header" colspan="2">1st 2 rounds</th>
+                        <th class="qig_header" colspan="2">1st hour</th>
+                        <th class="qig_header" colspan="2">2nd hour</th>
+                        <th class="qig_header" colspan="2">3rd hour</th>
+                        <th class="qig_header" colspan="2">4th hour</th>
+                        <th class="qig_header" colspan="2">5th hour</th>
+                        <th class="qig_header" colspan="2">6th hour</th>
+                        <th class="qig_header" colspan="2">7th hour</th>
+                        <th class="qig_header" colspan="2">8th hour</th>
+                        <th class="qig_header" colspan="2">9th hour</th>
+                        <th class="qig_header" colspan="2">10th hour</th>
+                        <th class="qig_header" colspan="2">Total</th>
+                    </tr>
+
+                    <tr>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                    </tr>
+                    <tr class="td_graded">
+                        <th colspan="2" style="width: 137px;"><strong>&nbsp;&nbsp;&nbsp;&nbsp;Grade B</strong></th>
+                    </tr>
+
+                </table>*@
+
+                <!-- Grade Casted Pcs Casting Wheel 1 -->
+    <table id="af_qig_casted_tbl" class="af_tbl">
+                    @*Grade casted pcs*@
+                    <tr class="qigth_height">
+                        <th colspan="26" class="qig_header">Casted Pcs - Casting Wheel 1</th>
+                    </tr>
+                    <tr id="">
+
+                        <th class="qig_header"></th>
+                        <th class="qig_header"></th>
+                        <th class="qig_header" colspan="2">1st 2 rounds</th>
+                        <th class="qig_header" colspan="2">1st hour</th>
+                        <th class="qig_header" colspan="2">2nd hour</th>
+                        <th class="qig_header" colspan="2">3rd hour</th>
+                        <th class="qig_header" colspan="2">4th hour</th>
+                        <th class="qig_header" colspan="2">5th hour</th>
+                        <th class="qig_header" colspan="2">6th hour</th>
+                        <th class="qig_header" colspan="2">7th hour</th>
+                        <th class="qig_header" colspan="2">8th hour</th>
+                        <th class="qig_header" colspan="2">9th hour</th>
+                        <th class="qig_header" colspan="2">10th hour</th>
+                        <th class="qig_header" colspan="2">Total</th>
+                    </tr>
+
+                    <tr>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+
+
+                    </tr>
+        <tr class="td_data">
+                        <th colspan="2" style="width: 137px;"><strong>&nbsp;&nbsp;&nbsp;&nbsp;Cast Pcs</strong></th>
+                    </tr>
+                </table>
+            
+                <!-- Reject Casted Pcs Casting Wheel 1 -->
+                <div class="save_tbn_qig">
+                    @*    <img id="qig_save_rej_btn_cw1" class="save_btn_img_smalls_qig" src="../Images/diskette.png" title="Save Reject" />*@
+                </div>
+                <table id="af_qig_reject_tbl" class="af_tbl">
+                    <tr class="qigth_height">
+                        <th class="qig_header" colspan="26">Rejects - Casting Wheel 1</th>
+                    </tr>
+                    <tr>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header"></th>
+                        <th class="qig_header" colspan="2">1st 2 rounds</th>
+                        <th class="qig_header" colspan="2">1st hour</th>
+                        <th class="qig_header" colspan="2">2nd hour</th>
+                        <th class="qig_header" colspan="2">3rd hour</th>
+                        <th class="qig_header" colspan="2">4th hour</th>
+                        <th class="qig_header" colspan="2">5th hour</th>
+                        <th class="qig_header" colspan="2">6th hour</th>
+                        <th class="qig_header" colspan="2">7th hour</th>
+                        <th class="qig_header" colspan="2">8th hour</th>
+                        <th class="qig_header" colspan="2">9th hour</th>
+                        <th class="qig_header" colspan="2">10th hour</th>
+                        <th class="qig_header" colspan="2">Total</th>
+                    </tr>
+                    <tr>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Casting Wheel 2 Tab-->
+            <div id="tab-2" class="tab-content">
+                <div class="save_tbn_qig">
+                    <img id="qig_save_rew_btn_cw2" class="save_btn_img_smalls_qig" src="../Images/diskette.png" title="Save" onclick="save_afqig_input();" />
+                </div>
+                <!-- Rework Casting Wheel 2 -->
+                <table id="af_qig_rework_cw2_tbl" class="af_tbl">
+                    <tr class="qigth_height">
+                        <th colspan="26" class="qig_header">Reworkables - Casting Wheel 2</th>
+                    </tr>
+                    <tr id="">
+
+                        <th class="qig_header"></th>
+                        <th class="qig_header"></th>
+                        <th class="qig_header" colspan="2">1st 2 rounds</th>
+                        <th class="qig_header" colspan="2">1st hour</th>
+                        <th class="qig_header" colspan="2">2nd hour</th>
+                        <th class="qig_header" colspan="2">3rd hour</th>
+                        <th class="qig_header" colspan="2">4th hour</th>
+                        <th class="qig_header" colspan="2">5th hour</th>
+                        <th class="qig_header" colspan="2">6th hour</th>
+                        <th class="qig_header" colspan="2">7th hour</th>
+                        <th class="qig_header" colspan="2">8th hour</th>
+                        <th class="qig_header" colspan="2">9th hour</th>
+                        <th class="qig_header" colspan="2">10th hour</th>
+                        <th class="qig_header" colspan="2">Total</th>
+                    </tr>
+
+                    <tr>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+
+
+                    </tr>
+                </table>
+
+                <!-- Grade A Casting Wheel 2 -->
+              @*  <div class="save_tbn_qig">*@
+                    @* <img id="qig_save_cast_btn_cw2" class="save_btn_img_smalls_qig" src="../Images/diskette.png" title="Save Cast Pcs" />*@
+              @*  </div>
+                <table id="af_qig_grade_cw2_a_tbl" class="af_tbl">*@
+
+
+                    @*Grade A*@
+                   @* <tr class="qigth_height">
+                        <th colspan="26" class="qig_header">Grade A - Casting Wheel 2</th>
+                    </tr>
+                    <tr id="">
+
+                        <th class="qig_header"></th>
+                        <th class="qig_header"></th>
+                        <th class="qig_header" colspan="2">1st 2 rounds</th>
+                        <th class="qig_header" colspan="2">1st hour</th>
+                        <th class="qig_header" colspan="2">2nd hour</th>
+                        <th class="qig_header" colspan="2">3rd hour</th>
+                        <th class="qig_header" colspan="2">4th hour</th>
+                        <th class="qig_header" colspan="2">5th hour</th>
+                        <th class="qig_header" colspan="2">6th hour</th>
+                        <th class="qig_header" colspan="2">7th hour</th>
+                        <th class="qig_header" colspan="2">8th hour</th>
+                        <th class="qig_header" colspan="2">9th hour</th>
+                        <th class="qig_header" colspan="2">10th hour</th>
+                        <th class="qig_header" colspan="2">Total</th>
+                    </tr>
+
+                    <tr>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+
+            
+        </tr>
+                    <tr class="td_graded">
+                        <th colspan="2" style="width: 137px;"><strong>&nbsp;&nbsp;&nbsp;&nbsp;Grade A</strong></th>
+                    </tr>
+
+    </table>*@
+   
+                <!-- Grade B Casting Wheel 2 -->
+              @*  <table id="af_qig_grade_cw2_b_tbl" class="af_tbl">*@
+                    @*Grade B*@
+                  @*  <tr class="qigth_height">
+                        <th colspan="26" class="qig_header">Grade B - Casting Wheel 2</th>
+                    </tr>
+                    <tr id="">
+
+                        <th class="qig_header"></th>
+                        <th class="qig_header"></th>
+                        <th class="qig_header" colspan="2">1st 2 rounds</th>
+                        <th class="qig_header" colspan="2">1st hour</th>
+                        <th class="qig_header" colspan="2">2nd hour</th>
+                        <th class="qig_header" colspan="2">3rd hour</th>
+                        <th class="qig_header" colspan="2">4th hour</th>
+                        <th class="qig_header" colspan="2">5th hour</th>
+                        <th class="qig_header" colspan="2">6th hour</th>
+                        <th class="qig_header" colspan="2">7th hour</th>
+                        <th class="qig_header" colspan="2">8th hour</th>
+                        <th class="qig_header" colspan="2">9th hour</th>
+                        <th class="qig_header" colspan="2">10th hour</th>
+                        <th class="qig_header" colspan="2">Total</th>
+                    </tr>
+
+        <tr>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+
+
+                    </tr>
+                    <tr class="td_graded">
+                        <th colspan="2" style="width: 137px;"><strong>&nbsp;&nbsp;&nbsp;&nbsp;Grade B</strong></th>
+                    </tr>
+
+                </table>*@
+
+                <!-- Grade Casted Pcs Casting Wheel 2 -->
+                <table id="af_qig_casted_cw2_tbl" class="af_tbl">
+                    @*Grade casted pcs*@
+                    <tr class="qigth_height">
+                        <th colspan="26" class="qig_header">Casted Pcs - Casting Wheel 2</th>
+                    </tr>
+                    <tr id="">
+
+                        <th class="qig_header"></th>
+                        <th class="qig_header"></th>
+                        <th class="qig_header" colspan="2">1st 2 rounds</th>
+                        <th class="qig_header" colspan="2">1st hour</th>
+                        <th class="qig_header" colspan="2">2nd hour</th>
+                        <th class="qig_header" colspan="2">3rd hour</th>
+                        <th class="qig_header" colspan="2">4th hour</th>
+                        <th class="qig_header" colspan="2">5th hour</th>
+                        <th class="qig_header" colspan="2">6th hour</th>
+                        <th class="qig_header" colspan="2">7th hour</th>
+                        <th class="qig_header" colspan="2">8th hour</th>
+                        <th class="qig_header" colspan="2">9th hour</th>
+                        <th class="qig_header" colspan="2">10th hour</th>
+                        <th class="qig_header" colspan="2">Total</th>
+        </tr>
+
+        <tr>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+
+
+                    </tr>
+                    <tr class="td_data">
+                        <th colspan="2" style="width: 137px;"><strong>&nbsp;&nbsp;&nbsp;&nbsp;Cast Pcs</strong></th>
+        </tr>
+    </table>
+
+                <!-- Reject Casted Pcs Casting Wheel 2 -->
+                <div class="save_tbn_qig">
+                    @*  <img id="qig_save_rej_btn_cw2" class="save_btn_img_smalls_qig" src="../Images/diskette.png" title="Save Reject" />*@
+                </div>
+                <table id="af_qig_reject_cw2_tbl" class="af_tbl">
+
+
+                    <tr class="qigth_height">
+                        <th class="qig_header" colspan="26">Rejects - Casting Wheel 2</th>
+                    </tr>
+                    <tr>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header"></th>
+                        <th class="qig_header" colspan="2">1st 2 rounds</th>
+                        <th class="qig_header" colspan="2">1st hour</th>
+                        <th class="qig_header" colspan="2">2nd hour</th>
+                        <th class="qig_header" colspan="2">3rd hour</th>
+                        <th class="qig_header" colspan="2">4th hour</th>
+                        <th class="qig_header" colspan="2">5th hour</th>
+                        <th class="qig_header" colspan="2">6th hour</th>
+                        <th class="qig_header" colspan="2">7th hour</th>
+                        <th class="qig_header" colspan="2">8th hour</th>
+                        <th class="qig_header" colspan="2">9th hour</th>
+                        <th class="qig_header" colspan="2">10th hour</th>
+                        <th class="qig_header" colspan="2">Total</th>
+                    </tr>
+                    <tr>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header">&nbsp;</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                        <th class="qig_header">Default</th>
+                        <th class="qig_header">Others</th>
+                    </tr>
+                </table>
+
+</div>
+
+</div>
+
+</div>
+
+    @*left div*@
+    <div class="div_float_right">
+        <br />
+        <h8>Remarks: &nbsp;&nbsp;
+            @*<img id="qig_remarks_imgbtn" class="save_btn_img_small" src="../Images/diskette.png" />*@
+             <img id="qig_remarks_imgbtn" class="save_btn_img_small" src="../Images/diskette.png" />
+        </h8> 
+        <br />
+        <br />
+        <textarea id="txtarea_qig_remarks" class="txt_area_qig" cols="10" rows="6"></textarea>
+
+        <br />
+
+        <img id="qig_anode_cust_btn" class="save_btn_img_small" src="../Images/diskette.png" />
+        <table class="af_tbl" id="qig_summary_tbl">
+            <tr>
+                <th colspan="7">Anode Customer</th>
+            </tr>
+            <tr>
+                <th class="td_left">Casting Wheels</th>
+                <th class="td_left">Customers</th>
+                <th class="td_left">Reworkables</th>
+                <th class="td_left">Good</th>
+                <th class="td_left">Rejects</th>
+                <th class="td_left" colspan="2">Total Weights</th>
+            </tr>
+
+            <tr>
+
+                <th class="td_left">1 </th>
+                @*<td>@Html.DropDownList("cw1_cust_ddl", (SelectList)ViewBag.Cust_List)</td>*@
+                <td id="cw1_cust_td">@*<input id="cw1_cust_ddl" type="text" readonly /><input id="cw1_cust_ddl_hidden" type="text" readonly style="display: none" />*@
+                    @Html.DropDownList("cw1_cust_ddl_hidden", (SelectList)ViewBag.Cust_List, new { @class = "" })
+                    @*  <select id="cw1_cust_ddl_hidden" class="cust_reclass" disabled="disabled"></select>*@
+                </td>
+                <td class="qigsm_input">
+                    <input type="text" class="qigsm_input" name="rework_1" id="rework_1" onkeypress="return NumericOnly(event)" readonly /></td>
+                <td class="qigsm_input">
+                    <input type="text" class="qigsm_input" id="good_1" onkeypress="return NumericOnly(event)" readonly /></td>
+                <td class="qigsm_input">
+                    <input type="text" class="qigsm_input" id="reject_1" onkeypress="return NumericOnly(event)" readonly /></td>
+                <td class="qigsm_input">
+                    <input type="text" class="qigsm_input_withbg" id="tw_1" onkeypress="return NumericOnly(event)" /></td>
+                <td class="qigsm_input" rowspan="2">
+                    <input type="text" id="paramid_1628" class="input_apm_rejects qigsm_input" readonly="" /></td>
+
+            </tr>
+        <tr>
+                <th class="td_left">1</th>
+                @*<td>@Html.DropDownList("cw1_cust_othr_ddl", (SelectList)ViewBag.Cust_List)</td>*@
+                <td id="cw1_cust_othr_td">@*<input id="cw1_cust_othr_ddl" type="text" readonly /><input id="cw1_cust_othr_ddl_hidden" type="text" readonly style="display: none" />*@
+                    @Html.DropDownList("cw1_cust_othr_ddl_hidden", (SelectList)ViewBag.Cust_List, new { @class = "" })
+                    @* <select id="cw1_cust_othr_ddl_hidden" class="cust_reclass" disabled="disabled"></select>*@
+                </td>
+                <td class="qigsm_input">
+                    <input type="text" class="qigsm_input" name="rework_2" id="rework_2" onkeypress="return NumericOnly(event)" readonly /></td>
+                <td class="qigsm_input">
+                    <input type="text" class="qigsm_input" id="good_2" onkeypress="return NumericOnly(event)" readonly /></td>
+                <td class="qigsm_input">
+                    <input type="text" class="qigsm_input" id="reject_2" onkeypress="return NumericOnly(event)" readonly /></td>
+                <td class="qigsm_input">
+                    <input type="text" class="qigsm_input_withbg" id="tw_2" onkeypress="return NumericOnly(event)" /></td>
+        </tr>
+        <tr>
+                <th class="td_left">2</th>
+                @*<td>@Html.DropDownList("cw2_cust_ddl", (SelectList)ViewBag.Cust_List)</td>*@
+                <td id="cw2_cust_td">@*<input id="cw2_cust_ddl" type="text" readonly /><input id="cw2_cust_ddl_hidden" type="text" readonly style="display: none" />*@
+                    @Html.DropDownList("cw2_cust_ddl_hidden", (SelectList)ViewBag.Cust_List, new { @class = "" })
+                    @*   <select id="cw2_cust_ddl_hidden" class="cust_reclass" disabled="disabled"></select>*@
+                </td>
+                <td class="qigsm_input">
+                    <input type="text" class="qigsm_input" id="rework_3" onkeypress="return NumericOnly(event)" readonly /></td>
+                <td class="qigsm_input">
+                    <input type="text" class="qigsm_input" id="good_3" onkeypress="return NumericOnly(event)" readonly /></td>
+                <td class="qigsm_input">
+                    <input type="text" class="qigsm_input" id="reject_3" onkeypress="return NumericOnly(event)" readonly /></td>
+                <td class="qigsm_input">
+                    <input type="text" class="qigsm_input_withbg" id="tw_3" onkeypress="return NumericOnly(event)" /></td>
+                <td class="qigsm_input" rowspan="2">
+                    <input type="text" id="paramid_1629" class="input_apm_rejects qigsm_input" readonly="" /></td>
+        </tr>
+        <tr>
+                <th class="td_left">2</th>
+                @*<td>@Html.DropDownList("cw2_cust_othr_ddl", (SelectList)ViewBag.Cust_List)</td>*@
+                <td id="cw2_cust_othr_td">@*<input id="cw2_cust_othr_ddl" type="text" readonly /><input id="cw2_cust_othr_ddl_hidden" type="text" readonly style="display: none" />*@
+                    @Html.DropDownList("cw2_cust_othr_ddl_hidden", (SelectList)ViewBag.Cust_List, new { @class = "" })
+                    @* <select id="cw2_cust_othr_ddl_hidden" class="cust_reclass" disabled="disabled"></select>*@
+                </td>
+                <td class="qigsm_input">
+                    <input type="text" class="qigsm_input" id="rework_4" onkeypress="return NumericOnly(event)" readonly /></td>
+                <td class="qigsm_input">
+                    <input type="text" class="qigsm_input" id="good_4" onkeypress="return NumericOnly(event)" readonly /></td>
+                <td class="qigsm_input">
+                    <input type="text" class="qigsm_input" id="reject_4" onkeypress="return NumericOnly(event)" readonly /></td>
+                <td class="qigsm_input">
+                    <input type="text" class="qigsm_input_withbg" id="tw_4" onkeypress="return NumericOnly(event)" /></td>
+        </tr>
+
+
+        </table>
+
+        <!-- -->
+        @* <img id="qig_twc_imgbtn" class="save_btn_img_small" src="../Images/diskette.png" /><br />
+    <table id="af_twc_imgbtn_tbl" class="af_tbl">
+        <tr>
+            <th colspan="2">Total Weight Casted</th>
+        </tr>
+        <tr>
+            <th>&nbsp;</th>
+            <th>&nbsp;MT</th>
+        </tr>
+        <tr>
+            <th>CW 1</th>
+            <td>
+                <input type="text" id="paramid_1628" class="input_apm_rejects" /></td>
+        </tr>
+        <tr>
+            <th>CW 2</th>
+            <td>
+                <input type="text" id="paramid_1629" class="input_apm_rejects" /></td>
+        </tr>
+
+    </table>*@
+        <!-- -->
+
+        @*<img id="qig_others_imgbtn" class="save_btn_img_small" src="../Images/diskette.png" />*@<br />
+        <table id="af_others_tbl_qig" class="af_tbl" style="display: none">
+            <tr>
+                <th colspan="10">&nbsp;Reduction During Casting (RDC)</th>
+                <td class="bg_color_qig">
+                    <input type="text" id="paramid_119" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <th colspan="10">Failed Lug to Lug(FLL)</th>
+                <td class="bg_color_qig">
+                    <input type="text" id="paramid_120" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+        </table>
+        <!-- -->
+        <img id="qig_weight_imgbtn" class="save_btn_img_small" src="../Images/diskette.png" /><br />
+        <table id="af_weight_imgbtn_tbl" class="af_tbl">
+            <tr>
+                <th>&nbsp;End Point</th>
+                <th>&nbsp;Weights</th>
+            </tr>
+            <tr>
+                <th>1st Hour</th>
+                <td>
+                    <input type="text" id="paramid_1620" class="input_weight extratbl_input" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <th>2nd Hour</th>
+                <td>
+                    <input type="text" id="paramid_1621" class="input_weight extratbl_input" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <th>3rd Hour</th>
+                <td>
+                    <input type="text" id="paramid_1622" class="input_weight extratbl_input" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <th>4th Hour</th>
+                <td>
+                    <input type="text" id="paramid_1631" class="input_weight extratbl_input" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+        </table>
+        <!-- -->
+
+        <!-- -->
+        @*<img id="qig_ar_imgbtn" class="save_btn_img_small" src="../Images/diskette.png" /><br />
+    <table id="af_ar_imgbtn_tbl" class="af_tbl">
+        <tr>
+            <th colspan="2">APM Rejects</th>
+        </tr>
+        <tr>
+            <th>&nbsp;</th>
+            <th>&nbsp;Pcs</th>
+        </tr>
+        <tr>
+            <th>By Count</th>
+            <td>
+                <input type="text" id="paramid_1626" class="input_apm_rejects" /></td>
+        </tr>
+        <tr>
+            <th>By Lug</th>
+            <td>
+                <input type="text" id="paramid_1627" class="input_apm_rejects" /></td>
+        </tr>
+
+    </table>*@
+        <!-- -->
+
+    </div>
+
+
+
+<script type="text/javascript">
+
+
+
+  //  alert('test');
+
+    $(document).ready(function () {
+
+            // function load_cast_sum_all() {
+
+            //var sum = $('.casted_cw1').text() - $('#reject_cw1').text() - $('#rework_cw1').text();
+            //var sum2 = $('.casted_cw1_othr').val();
+            //var sum3 = $('.casted_cw2').val();
+            //var sum4 = $('.casted_cw2_othr').val();
+            //$('#good_1').val(sum);
+            //$('#good_2').val(sum2);
+            //$('#good_3').val(sum3);
+            //$('#good_4').val(sum4);
+
+            //}
+            //$(document).ready(function () {
+            $('td, input,textarea,select').blur(
+            function () {
+                $(this).css({ 'background-color': '#FFFFEEE' });
+            });
+
+            $('td.default').change(
+            function () {
+                //$(this).css({ 'background-color': '#DFD8D1' });
+                $(this).addClass('change');
+            });
+
+            $('input.others').change(
+            function () {
+                //$(this).css({ 'background-color': '#DFD8D1' });
+                // $(this).addClass('changed');
+                $(this).closest('td').prev('td').find('input.default').addClass('change');
+            });
+            //  });
+
+            $(".tabs-menu a").click(function (event) {
+
+                event.preventDefault();
+                $(this).parent().addClass("current");
+
+                $(this).parent().siblings().removeClass("current");
+
+                var tab = $(this).attr("href");
+                $(".tab-content").not(tab).css("display", "none");
+                $(tab).fadeIn();
+            });
+
+        $(function () {
+            $('#Dialog_QIGInspect').dialog({
+                autoOpen: false,
+                width: 400,
+                height: 600,
+                resizable: false,
+                draggable: true,
+                title: 'QIG Inspect',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [1150, 170]
+            });
+
+            });
+
+            $("#af_qig_date").datepicker({
+                showOn: 'button',
+                buttonText: 'Show Date',
+                buttonImageOnly: true,
+                buttonImage: '../Images/calendar.png',
+                dateFormat: 'mm/dd/yy',
+                constrainInput: true,
+                onSelect: function (date) {
+
+                }
+            });
+            $('#ui-datepicker-div').css('display', 'none');
+            $('#af_qig_date').datepicker('setDate', 'today');
+
+            $(".ui-datepicker-trigger").mouseover(function () {
+
+                $(this).css('cursor', 'pointer');
+       
+        });
+
+            $('#paramid_1628').val('');
+            $('#paramid_1629').val('');
+
+        });
+
+</script>

@@ -1,0 +1,16 @@
+﻿<div id="edit_regcrew_div">
+<b>Edit Regular Crew</b>
+<br />
+<br />
+    <div id="regcrew_id">@ViewBag.RegcrewId</div>
+<div>Regular Crew: @Html.DropDownList("edit_regularcrew_ddl", (SelectList)ViewBag.fsfe_emplist)</div>
+<br />
+    <br />
+<div>Special Activity:
+    <br /><br />
+    <textarea id="edit_regcrew_txtarea">@ViewBag.SpecialAct</textarea>
+    <br />
+    <input id="edit_regcrew_ok_btn" type="button" value="Edit" />&nbsp;<input id="edit_regcrew_close_btn" type="button" value="Close" />
+
+</div>
+</div>

@@ -1,0 +1,96 @@
+﻿@{
+    ViewBag.Title = "Inventory";
+     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/bundles/jquery") 
+
+<div id="aflot_div"><br><b>Date :</b><br><br>
+    <input type="text" id="thedate" name="date" class="line" placeholder="select date"/>
+    <input id="select_date" class="enable_btn" type="button" alt="Select Button" title="Select Date" value="Select" disabled="disabled"  />
+</div>
+<div id="afqig_div" class="container">
+    <br>
+    <div id="afqig_div_title">
+        <h5>ANODE INVENTORY LOGSHEET</h5><br>
+    </div>
+    <br><br>
+</div>
+<div class="f-box">
+
+    <table class="inv_emp" id="inv_emp">
+    <tr>
+        <th class="extratbl_input df">Quality Inspector:</th>
+        <th class="extratbl_input df">Shift Supervisor:</th>
+        <th class="extratbl_input df">Reviewed By:</th>
+     </tr>
+      <tr>
+          <td class="extratbl_input" id="ids_1">@Html.DropDownList("af_inspect", (SelectList)ViewBag.QI_List, "Choose your option" , new { @disabled = "disabled", @id = "af_86", @class = "color"} )</td>
+          <td class="extratbl_input" id="ids_2"> @Html.DropDownList("af_inspect", (SelectList)ViewBag.QI_List, "Choose your option" , new { @disabled = "disabled", @id = "af_87", @class = "color" })</td>
+          <td class="extratbl_input" id="ids_3"> @Html.DropDownList("af_inspect", (SelectList)ViewBag.QI_List, "Choose your option" , new { @disabled = "disabled", @id = "af_88", @class = "color" })</td>
+     </tr> 
+    </table> 
+</div>
+   
+
+
+<div class="floating-box">
+    <img id="af_inventory_imgbtn" class="save_btn" src="../Images/diskette.png" width="30" disabled="disabled"/> 
+</div>
+
+<div class="floating-box">
+    @*<input id="btn_inv" type="button" value="Calculate" class="right_side" disabled/> *@
+</div>
+
+
+<div class="left_div_tbl">
+    <table > 
+            @Html.Partial("~/Views/Shared/_Tables.cshtml")
+    </table>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('input').keyup(function (e) {
+            if (e.which == 39)
+                $(this).closest('td').next().find('input').focus();
+            else if (e.which == 37)
+                $(this).closest('td').prev().find('input').focus();
+            else if (e.which == 40)
+                $(this).closest('tr').next().find('td:eq(' + $(this).closest('td').index() + ')').find('input').focus();
+            else if (e.which == 38)
+                $(this).closest('tr').prev().find('td:eq(' + $(this).closest('td').index() + ')').find('input').focus();
+        });
+    });
+    // different 
+    //$(document).ready(function () {
+    //    $('input[type="text"],textarea').keyup(function (e) {
+    //        if (e.which == 39) {
+    //            $(this).closest('td').next().find('input[type="text"],textarea').focus();
+    //        } else if (e.which == 37) {
+    //            $(this).closest('td').prev().find('input[type="text"],textarea').focus();
+    //        } else if (e.which == 40) {
+    //            var t = $(this).closest('tr').next().find('td:eq(' + $(this).closest('td').index() + ')').find('input[type="text"],textarea');
+    //            if (t.length == 0) {
+    //                t = $(document).find('table:eq(' + ($('table').index($(this).closest('table')) + 1) + ')').find('tbody tr td').parent().first().find('td:eq(' + $(this).closest('td').index() + ')').find('input[type="text"]:not([readonly]),textarea');
+    //            }
+    //            t.focus();
+    //        } else if (e.which == 38) {
+    //            var t = $(this).closest('tr').prev().find('td:eq(' + $(this).closest('td').index() + ')').find('input[type="text"],textarea');
+    //            if (t.length == 0) {
+    //                t = $(document).find('table:eq(' + ($('table').index($(this).closest('table')) - 1) + ')').find('tbody tr td').parent().last().find('td:eq(' + $(this).closest('td').index() + ')').find('input[type="text"]:not([readonly]),textarea');
+    //            }
+    //            t.focus();
+    //        }
+    //    });
+    //});
+    //End
+    function isNumber(evt) {
+        evt = (evt) ? evt : window.event;
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if (charCode > 31 && (charCode < 48 || charCode > 57)) {
+            return false;
+        }
+        return true;
+    }
+</script>

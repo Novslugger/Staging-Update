@@ -1,0 +1,91 @@
+﻿<div id="targets_container">
+    <div id="top_div">
+        <h6>MBF Actual</h6>
+        <img style="float: left" id="mbf_actual_save_btn" class="save_btn" src="../Images/diskette.png" width="20" title="Save Changes" />
+        <input type="text" id="mbf_actual_date" class="mbf_date" style="float: left; margin-left: 10px; border: solid 1px black;" title="Select Date"/>
+        <br />
+        <br />
+        <div id="targets_tabs-container">
+            <ul class="targets_tabs-menu">
+            </ul>
+        </div>
+        <div class="targets_tab">
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('table').css({ "width": "300px" });
+        $('input').live('change', function () {
+            $(this).css({ 'background-color': '#DFD8D1' });
+            $(this).addClass('changed');
+        });
+        $("#mbf_actual_date").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'MM yy',
+            showButtonPanel: true,
+            onClose: function () {
+                var iMonth = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                var iYear = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+                $(this).datepicker('refresh');
+                $('#tbody tr').filter(function () {
+                    return $(this).has('input');
+                }).remove();
+
+                var select = $(this).datepicker().val();
+                load_mbf_actual_data(select);
+            },
+
+            beforeShow: function () {
+                if ((selDate = $(this).val()).length > 0) {
+                    iYear = selDate.substring(selDate.length - 4, selDate.length);
+                    iMonth = jQuery.inArray(selDate.substring(0, selDate.length - 5), $(this).datepicker('option', 'monthNames'));
+                    $(this).datepicker('option', 'defaultDate', new Date(iYear, iMonth, 1));
+                    $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+                }
+            }
+        });
+
+        $("#mbf_actual_date").focus(function () {
+            $(".ui-datepicker-calendar").hide();
+            $("#ui-datepicker-div").position({
+                my: "center top",
+                at: "center bottom",
+                of: $(this)
+            });
+        });
+
+        $("#mbf_actual_date").blur(function () {
+            $(".ui-datepicker-calendar").hide();
+        });
+
+        $('#mbf_actual_date').datepicker('setDate', 'today');
+        var date = $('#mbf_actual_date').val();
+        load_mbf_actual_tables(date);
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+        });
+        $('input').live('change', function () {
+            $(this).css({ 'background-color': '#DFD8D1' });
+            $(this).addClass('changed');
+        });
+
+        $('input').live('change', function () {
+            $(this).css({ 'background-color': '#DFD8D1' });
+            $(this).parents('td').css({ 'background-color': '#DFD8D1 !important' });
+            $(this).addClass('changed');
+        });
+        $(".targets_tabs-menu a").live('click', function (event) {
+            event.preventDefault();
+            $(this).parent().addClass("current");
+            $(this).parent().siblings().removeClass("current");
+            var tab = $(this).attr("href");
+            $(".targets_tab-content").not(tab).css("display", "none");
+            $(tab).fadeIn();
+        });
+
+    });
+</script>

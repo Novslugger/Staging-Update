@@ -1,0 +1,147 @@
+﻿@{
+    ViewBag.Title = "FSFE_Equip_Issues";
+}
+
+<h6 id="h6_fsfe">Equipment Issues</h6>
+<div id="interfaceid">11</div>
+<div id ="fsfe_equipment_issues_div">
+   
+   
+    <div id="fsfe_equipment_issues_table_div"> 
+         <div class="btn_add_div_fsfe_equip_issue">
+             <img id="fsfe_equipment_issues_btn" width="20" height="20"  src="../Images/diskette.png" />
+              <span id="save_equipment_issues_link" class="btn_label_span">Save Equipment Issues </span>
+        </div>
+        <br />
+        <table id="table_fsfe_equipment_issues">
+            <thead>
+                <tr>
+                    <th style="width: 25%">AREA</th>
+                    <th style="width: 30%">ISSUES</th>
+                    <th style="width: 45%">TURNOVER</th>
+                </tr>
+            </thead>
+            <tbody class="no_border_textarea">
+                <tr>
+                    <th>Conc Blending and Conveying</th>
+                  
+                    <td id="paramid_155"></td>
+                    <td id ="paramid_156"></td>
+                </tr>
+                 <tr>
+                    <th>Concentrate Steam Dryer</th>
+                  
+                    <td id="paramid_158"></td>
+                    <td id ="paramid_159"></td>
+                </tr>
+                <tr>
+                    <th>Pneumatic Conveying System</th>
+                  
+                    <td id="paramid_160"></td>
+                    <td id ="paramid_161"></td>
+                </tr>
+                <tr>
+                    <th>Flash Smelting Furnace</th>
+                  
+                    <td id="paramid_162"></td>
+                    <td id ="paramid_163"></td>
+                </tr>
+                <tr>
+                    <th>WHB Spring Hammer System</th>
+                  
+                    <td id="paramid_164"></td>
+                    <td id ="paramid_165"></td>
+                </tr>
+                <tr>
+                    <th>Cooling Water System</th>
+                  
+                    <td id="paramid_166"></td>
+                    <td id ="paramid_167"></td>
+                </tr>
+                <tr>
+                    <th>Off Gas Cleaning System</th>
+                  
+                    <td id="paramid_168"></td>
+                    <td id ="paramid_169"></td>
+                </tr>
+                <tr>
+                    <th>Dust Handling System</th>
+                  
+                    <td id="paramid_170"></td>
+                    <td id ="paramid_171"></td>
+                </tr>
+                <tr>
+                    <th>Fugitive Gas Handling System</th>
+                  
+                    <td id="paramid_172"></td>
+                    <td id ="paramid_173"></td>
+                </tr>
+                 <tr>
+                    <th>Other Concerns</th>
+                  
+                    <td id="paramid_174"></td>
+                    <td id ="paramid_175"></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>
+<script type="text/javascript">
+    var count = 2;
+    load_fsfe_equipment_issues();
+
+    $("#paramid_158").focus(function () {
+        if (document.getElementById('paramid_158').value === '') {
+            document.getElementById('paramid_').value += 1 + '. ';
+        }
+    });
+    $("#paramid_").keyup(function (event) {
+        var keycode = (event.keyCode ? event.keyCode : event.which);
+        if (keycode == '13') {
+            document.getElementById('paramid_').value += count++ + '. ';
+        }
+        var txtval = document.getElementById('paramid_').value;
+        if (txtval.substr(txtval.length - 1) == '\n') {
+            document.getElementById('paramid_').value = txtval.substring(0, txtval.length - 1);
+        }
+    });
+
+</script>                                                                                                                               
+          
+@*<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(function () {
+            $('#DialogFII_Select').dialog({
+                autoOpen: false,
+                width: 350,
+                height: 360,
+                resizable: false,
+                draggable: true,
+                title: 'Add FII',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [900, 260]
+            });
+
+            $('#DialogFIIEdit_Select').dialog({
+                autoOpen: false,
+                width: 350,
+                height: 360,
+                resizable: false,
+                draggable: true,
+                title: 'Edit FII',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [900, 260]
+            });
+
+        });
+
+        load_fsfe_fii_label();
+        load_fsfe_fii();
+
+
+    });
+</script>*@

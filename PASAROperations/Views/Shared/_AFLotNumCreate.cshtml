@@ -1,0 +1,23 @@
+﻿<div id="add_lotnum_div" class="add_lotnum_div">
+<b>Create Lot No</b>
+<br />
+<br />
+
+<div>AF Number: @Html.DropDownList("afnum_ddl", (SelectList)ViewBag.afnum_slist)</div>
+<br />
+<br />
+
+<p class="hidden_element" id="maxlotaf1">@ViewBag.maxlotnum_af1</p>
+<p class="hidden_element" id="maxlotaf2">@ViewBag.maxlotnum_af2</p>
+
+<p class="hidden_element" id="maxaf1prodyear">@ViewBag.af1_prodyearid</p>
+<p class="hidden_element" id="maxaf2prodyear">@ViewBag.af2_prodyearid</p>
+
+<div>Lot Number: <span id="createlot_span">@ViewBag.maxlotnum_af1</span>
+    <br /><br />
+    <br />
+    <input id="add_clotnum_ok_btn" type="button" value="Add" />&nbsp;
+   @* <input id="add_clotnum_close_btn" type="button" value="Close" />*@
+
+</div>
+</div>      

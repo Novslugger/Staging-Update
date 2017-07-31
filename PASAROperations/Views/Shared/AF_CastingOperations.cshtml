@@ -1,0 +1,3037 @@
+﻿@{
+    ViewBag.Title = "AF_CastingOperations";
+}
+
+
+
+<div id="Dialog_mouldmain" style="overflow: hidden;"></div>
+
+<div id="afcasting_tbl1_div">
+    <div id="Dialog_addafcasting_tblnew" style="overflow: hidden;"></div>
+    <div id="Dialog_editafcasting_tblnew" style="overflow: hidden;"></div>
+    <div class="val_enddate" style="position: absolute; top: -7px;">
+        <h3>
+            <img width="25" height="25" title="Add new Casting" id="afcasting_tbl1addrow_btn" src="~/Images/red_plus.png" class="cpointer">&nbsp;&nbsp;<span title="Add new Casting" class="btn_label_span cpointer" id="afcasting_tbl1addrow_lnk"><b>Add new (Please input Mould Casting Activities before Anode Casting here)</b></span></h3>
+    </div>
+    <input type="text" id="search_afcasting_tbl1" placeholder="Type to search..." style="width: 200px; position: absolute; left: 1338px;" />
+    <table class="afcasting_tbl1" id="afcasting_tbl1">
+        <thead>
+            <tr>
+                <th colspan="8">Mould casting and other delays before the actual start of casting</th>
+            </tr>
+            <tr>
+                <th rowspan="2" class="thlong" id="thcasting_starttime_th">Start Time</th>
+                <th rowspan="2" class="thlong" id="th_casting_endtime_th">End Time</th>
+                <th rowspan="2" class="thshort">Activity Code</th>
+                <th rowspan="2" class="thlong">Activity</th>
+                <th rowspan="2" class="thshort">Duration(hrs)</th>
+                <th rowspan="2" class="thlong">Remarks</th>
+                <th colspan="3" class="tshort">Actions</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <tr id="" style="display: none;"></tr>
+        </tbody>
+
+    </table>
+
+</div>
+
+<div id="cw1_div_aflogsheet">
+
+
+    <input type="text" id="search_af_act_cw1" placeholder="Type to search..." style="width: 200px;" />
+
+    <table class="aftable_cast" id="aftable_cast1">
+        <thead>
+            <tr>
+                <th colspan="10">Casting Wheel 1 Activity &nbsp;
+                   
+                 <div style="width: 100px; font-size: 12px;">Customer:&nbsp;@Html.DropDownList("MC_1593", (SelectList)ViewBag.mcc_list, new { @disabled = "disabled" })  <input type="button" value=" Copy &#x279C" id="click_to_copy"  onclick="save_copycheckbox()" style="color: Black; padding: 2px 12px; font-size: 12px;margin-left:650px;margin-top:-3px"/></div>
+                </th>
+                @*<th colspan="4"><div style="width:100px; font-size:12px;">Customer:&nbsp;@Html.DropDownList("MC_1593",(SelectList)ViewBag.mcc_list)</div></th>*@
+            </tr>
+            @*<tr>
+               <th colspan="9"><div style="width:100px; font-size:12px;">Customer:&nbsp;@Html.DropDownList("MC_1593",(SelectList)ViewBag.mcc_list)</div></th>
+            </tr>*@
+            <tr>
+
+                <th rowspan="2" class="thshort" id="starttime_th">StartTime</th>
+                <th rowspan="2" class="thshort" id="endtime_th">EndTime</th>
+                <th rowspan="2" class="thshort">Code</th>
+                <th rowspan="2" class="thlong">Activity</th>
+                <th rowspan="2" class="thshort">Duration</th>
+                <th rowspan="2" class="thlong">Remarks</th>
+                <th colspan="2" class="thshort">Actions</th>
+                <th style="padding-top: 1px; padding-bottom: 0px">
+                    <input type="checkbox" id="ckb_all" name="ckball" style="text-align: center" name="datatobecopy" /></th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <tr style="display: none;"></tr>
+        </tbody>
+    </table>
+
+    <div style="margin-left: 692px">
+       
+
+</div>
+</div>
+
+<div id="cw2_div_aflogsheet">
+    <input type="text" id="search_af_act_cw2" placeholder="Type to search..." style="width: 200px;" />
+
+    <table class="aftable_cast" id="aftable_cast2">
+        <thead>
+            <tr>
+                <th colspan="9">Casting Wheel 2 Activity&nbsp;
+                     <div style="width: 100px; font-size: 12px;">Customer:&nbsp;@Html.DropDownList("MC_1595", (SelectList)ViewBag.mcc_list, new { @disabled = "disabled" })</div>
+                </th>
+
+            </tr>
+            <tr>
+                <th rowspan="2" class="thshort" id="starttime_th">StartTime</th>
+                <th rowspan="2" class="thshort" id="endtime_th">EndTime</th>
+                <th rowspan="2" class="thshort">Code</th>
+                <th rowspan="2" class="thlong">Activity</th>
+                <th rowspan="2" class="thshort">Duration</th>
+                <th rowspan="2" class="thlong">Remarks</th>
+                <th colspan="3" class="thshort">Actions</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <tr style="display: none;"></tr>
+        </tbody>
+    </table>
+
+</div>
+
+
+<div id="mould_div_aflogsheet" style="float: left;">
+    <h6><font color="black">Mould Condemnation</font></h6>
+    <table id="aflogsheet_pcmouldr">
+        <tr>
+            <th></th>
+            <th>CW1</th>
+            <th>Reason</th>
+            <th>CW2</th>
+            <th>Reason</th>
+
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>
+                <input type="checkbox" value="1" id="cw_1_1" class="cw11 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_1_1_1_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+            <td>
+                <input type="checkbox" value="1" id="cw_1_2" class="cw22 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_1_2_2_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>
+                <input type="checkbox" value="2" id="cw_2_1" class="cw11 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_2_1_1_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+            <td>
+                <input type="checkbox" value="2" id="cw_2_2" class="cw22 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_2_2_2_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>
+                <input type="checkbox" value="3" id="cw_3_1" class="cw11 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_3_1_1_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+            <td>
+                <input type="checkbox" value="3" id="cw_3_2" class="cw22 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_3_2_2_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>
+                <input type="checkbox" value="4" id="cw_4_1" class="cw11 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_4_1_1_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+            <td>
+                <input type="checkbox" value="4" id="cw_4_2" class="cw22 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_4_2_2_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+        </tr>
+        <tr>
+            <td>5</td>
+            <td>
+                <input type="checkbox" value="5" id="cw_5_1" class="cw11 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_5_1_1_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+            <td>
+                <input type="checkbox" value="5" id="cw_5_2" class="cw22 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_5_2_2_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+        </tr>
+        <tr>
+            <td>6</td>
+            <td>
+                <input type="checkbox" value="6" id="cw_6_1" class="cw11 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_6_1_1_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+            <td>
+                <input type="checkbox" value="6" id="cw_6_2" class="cw22 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_6_2_2_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+        </tr>
+        <tr>
+            <td>7</td>
+            <td>
+                <input type="checkbox" value="7" id="cw_7_1" class="cw11 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_7_1_1_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+            <td>
+                <input type="checkbox" value="7" id="cw_7_2" class="cw22 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_7_2_2_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>
+                <input type="checkbox" value="8" id="cw_8_1" class="cw11 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_8_1_1_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+            <td>
+                <input type="checkbox" value="8" id="cw_8_2" class="cw22 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_8_2_2_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+        </tr>
+        <tr>
+            <td>9</td>
+            <td>
+                <input type="checkbox" value="9" id="cw_9_1" class="cw11 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_9_1_1_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+            <td>
+                <input type="checkbox" value="9" id="cw_9_2" class="cw22 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_9_2_2_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+        </tr>
+        <tr>
+            <td>10</td>
+            <td>
+                <input type="checkbox" value="10" id="cw_10_1" class="cw11 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_10_1_1_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+            <td>
+                <input type="checkbox" value="10" id="cw_10_2" class="cw22 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_10_2_2_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+        </tr>
+        <tr>
+            <td>11</td>
+            <td>
+                <input type="checkbox" value="11" id="cw_11_1" class="cw11 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_11_1_1_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+            <td>
+                <input type="checkbox" value="11" id="cw_11_2" class="cw22 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_11_2_2_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+        </tr>
+        <tr>
+            <td>12</td>
+            <td>
+                <input type="checkbox" value="12" id="cw_12_1" class="cw11 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_12_1_1_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+            <td>
+                <input type="checkbox" value="12" id="cw_12_2" class="cw22 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_12_2_2_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+        </tr>
+        <tr>
+            <td>13</td>
+            <td>
+                <input type="checkbox" value="13" id="cw_13_1" class="cw11 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_13_1_1_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+            <td>
+                <input type="checkbox" value="13" id="cw_13_2" class="cw22 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_13_2_2_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+        </tr>
+        <tr>
+            <td>14</td>
+            <td>
+                <input type="checkbox" value="14" id="cw_14_1" class="cw11 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_14_1_1_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+            <td>
+                <input type="checkbox" value="14" id="cw_14_2" class="cw22 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_14_2_2_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+        </tr>
+        <tr>
+            <td>15</td>
+            <td>
+                <input type="checkbox" value="15" id="cw_15_1" class="cw11 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_15_1_1_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+            <td>
+                <input type="checkbox" value="15" id="cw_15_2" class="cw22 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_15_2_2_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+        </tr>
+        <tr>
+            <td>16</td>
+            <td>
+                <input type="checkbox" value="16" id="cw_16_1" class="cw11 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_16_1_1_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+            <td>
+                <input type="checkbox" value="16" id="cw_16_2" class="cw22 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_16_2_2_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+        </tr>
+        <tr>
+            <td>17</td>
+            <td>
+                <input type="checkbox" value="17" id="cw_17_1" class="cw11 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_17_1_1_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+            <td>
+                <input type="checkbox" value="17" id="cw_17_2" class="cw22 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_17_2_2_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+        </tr>
+        <tr>
+            <td>18</td>
+            <td>
+                <input type="checkbox" value="18" id="cw_18_1" class="cw11 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_18_1_1_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+            <td>
+                <input type="checkbox" value="18" id="cw_18_2" class="cw22 extratbl_input"></td>
+            <td>@Html.DropDownList("cw_18_2_2_S", (SelectList)ViewBag.reason_list, "--Select--")</td>
+        </tr>
+    </table>
+</div>
+
+
+
+
+<div id="comouldr_div_aflogsheet">
+    <h6><font color="black">Mould Condemnation</font>&nbsp;&nbsp;<span title="Add" id="addmould_btn" style="cursor: pointer;"></span></h6>
+    <span id="cust_vald" style="color: red; visibility: hidden; font-size: 10px;">Only Two(2) Customers per Casting Wheel</span>
+    <br>
+    @*<input type="checkbox" id="checkAllcw1" > Check All CW1
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="checkbox" id="checkAllcw2" > Check All CW1*@
+
+
+    <table id="aflogsheet_condem_mould" class="aflogsheet_condem_mould">
+        <tr>
+            <th colspan="3">CW1
+            <div style="visibility: hidden;">
+                <select id="count1_cust" class="">
+                    <option value="0">--Select--</option>
+                </select>
+            </div>
+            </th>
+            <th colspan="2">CW2
+            <div style="visibility: hidden;">
+                <select id="count2_cust" class="">
+                    <option value="0">--Select--</option>
+                </select>
+            </div>
+            </th>
+
+        </tr>
+        <tr>
+            <th>Mould No.</th>
+            <th class="thid">ID</th>
+            @* <th>CW1</th>*@
+            <th class="">Mould</th>
+            <th>Action</th>
+            @* <th>Reason</th>*@
+            <th class="thid">ID</th>
+            @* <th>CW2</th>*@
+            <th class="">Mould</th>
+            <th>Action</th>
+            @*<th>Reason</th>*@
+        </tr>
+        <tr>
+            <td id="tdcmould">1</td>
+            <td id="tdcmould" class="tdid1_1  m1 thid"></td>
+            <td id="tdcmould" class="check_class">
+                <input type="checkbox" value="1" id="cmw_1_1" class="cw1"></td>
+            <td class="sw ss1" id="cmw_1_1_S">---</td>
+            <td class="codeid ww1" id="cmw_1_1_SS">---</td>
+
+            <td class="td_mould_div"><a id="w_1_1">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_1_1">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_1_1_1_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst1" })</d>
+                    @*<d><select id="cmw_1_1_1_" class=""><option value="0">--Select--</option></select></d>*@
+                    <b>Mould:</b>
+                    <d><select id="cmw_1_1_1" class="dropdown1"><option value="0">--Select--</option></select></d>
+                    <b>Reason:</b>
+                    @Html.DropDownList("cmw_1_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })
+                    <br>
+
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk1_1"><b>Save</b></span>
+                </div>
+            </td>
+
+            <td id="tdcmould" class="tdid1_2 m2 thid"></td>
+            <td id="tdcmould" class="check_class">
+                <input type="checkbox" value="1" id="cmw_1_2" class="cw2"></td>
+            <td class="sw ss2" id="cmw_1_2_S">---</td>
+            <td class="codeid ww2" id="cmw_1_2_SS">---</td>
+
+            <td class="td_mould_div"><a id="w_1_2">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_1_2">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+
+                    <d>@Html.DropDownList("cmw_1_2_2_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst2" })</d>
+                    <b>Mould:</b>
+
+                    <d><select id="cmw_1_2_2" class="dropdownb1"><option value="0">--Select--</option></select></d>
+                    <b>Reason:</b>
+                    @Html.DropDownList("cmw_1_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })
+                    <br />
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk1_2"><b>Save</b></span>
+                </div>
+            </td>
+
+
+            @*<td class="selectw">@Html.DropDownList("cmw_1_2_2", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdownb1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_1_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })</td>*@
+        </tr>
+        <tr>
+            <td id="tdcmould">2</td>
+            <td id="tdcmould" class="tdid2_1 m1 thid"></td>
+            <td id="tdcmould" class="check_class">
+                <input type="checkbox" value="2" id="cmw_2_1" class="cw1"></td>
+            <td class="sw ss1" id="cmw_2_1_S">---</td>
+            <td class="codeid ww1" id="cmw_2_1_SS">---</td>
+
+            <td class="td_mould_div"><a id="w_2_1">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_2_1">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+
+                    <d>@Html.DropDownList("cmw_2_1_1_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst1" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_2_1_1" class="dropdown1"><option>--Select--</option></select></d>
+
+                    <b>Reason:</b>
+                    @Html.DropDownList("cmw_2_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk2_1"><b>Save</b></span>
+                </div>
+            </td>
+
+
+
+            @*<td class="selectw">@Html.DropDownList("cmw_2_1_1", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdown1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_2_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })</td>
+            *@
+
+
+            <td id="tdcmould" class="tdid2_2 m2 thid"></td>
+            <td id="tdcmould" class="check_class">
+                <input type="checkbox" value="2" id="cmw_2_2" class="cw2"></td>
+            <td class="sw ss2" id="cmw_2_2_S">---</td>
+            <td class="codeid ww2" id="cmw_2_2_SS">---</td>
+
+            <td class="td_mould_div"><a id="w_2_2">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_2_2">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+
+                    <d>@Html.DropDownList("cmw_2_2_2_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst2" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_2_2_2" class="dropdownb1"><option>--Select--</option></select>
+                            <b>Reason:</b>
+                            @Html.DropDownList("cmw_2_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })
+                                    <br>
+                                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk2_2"><b>Save</b></span>
+                </div>
+            </td>
+
+
+            @* <td class="selectw">@Html.DropDownList("cmw_2_2_2", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdownb1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_2_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })</td>*@
+        </tr>
+        <tr>
+            <td id="tdcmould">3</td>
+            <td id="tdcmould" class="tdid3_1 m1 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="3" id="cmw_3_1" class="cw1"></td>
+            <td class="sw ss1" id="cmw_3_1_S">---</td>
+            <td class="codeid ww1" id="cmw_3_1_SS">---</td>
+
+            <td class="td_mould_div"><a id="w_3_1">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_3_1">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_3_1_1_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst1" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_3_1_1" class="dropdown1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>
+                    @Html.DropDownList("cmw_3_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk3_1"><b>Save</b></span>
+                </div>
+            </td>
+
+            @*<td class="selectw">@Html.DropDownList("cmw_3_1_1", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdown1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_3_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })</td>*@
+            <td id="tdcmould" class="tdid3_2 m2 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="3" id="cmw_3_2" class="cw2"></td>
+            <td class="sw ss2" id="cmw_3_2_S">---</td>
+            <td class="codeid ww2" id="cmw_3_2_SS">---</td>
+
+            <td class="td_mould_div"><a id="w_3_2">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_3_2">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_3_2_2_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst2" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_3_2_2" class="dropdownb1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_3_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk3_2"><b>Save</b></span>
+                </div>
+            </td>
+
+            @*<td class="selectw">@Html.DropDownList("cmw_3_2_2", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdownb1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_3_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })</td>*@
+        </tr>
+        <tr>
+            <td id="tdcmould">4</td>
+            <td id="tdcmould" class="tdid4_1 m1 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="4" id="cmw_4_1" class="cw1"></td>
+            <td class="sw ss1" id="cmw_4_1_S">---</td>
+            <td class="codeid ww1" id="cmw_4_1_SS">---</td>
+
+            <td class="td_mould_div"><a id="w_4_1">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_4_1">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_4_1_1_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst1" })<b>Mould:</b>
+                                <d><select id="cmw_4_1_1" class="dropdown1"><option>--Select--</option></select> </d>
+                        <b>Reason:</b>@Html.DropDownList("cmw_4_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })
+                                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk4_1"><b>Save</b></span>
+                </div>
+            </td>
+
+
+            @*<td class="selectw">@Html.DropDownList("cmw_4_1_1", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdown1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_4_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })</td>*@
+            <td id="tdcmould" class="tdid4_2 m2 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="4" id="cmw_4_2" class="cw2"></td>
+            <td class="sw ss2" id="cmw_4_2_S">---</td>
+            <td class="codeid ww2" id="cmw_4_2_SS">---</td>
+
+            <td class="td_mould_div"><a id="w_4_2">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_4_2">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_4_2_2_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst2" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_4_2_2" class="dropdownb1"><option>--Select--</option></select> </d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_4_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk4_2"><b>Save</b></span>
+                </div>
+            </td>
+
+            @*     <td class="selectw">@Html.DropDownList("cmw_4_2_2", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdownb1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_4_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })</td>*@
+        </tr>
+        <tr>
+            <td id="tdcmould">5</td>
+            <td id="tdcmould" class="tdid5_1 m1 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="5" id="cmw_5_1" class="cw1"></td>
+            <td class="sw ss1" id="cmw_5_1_S">---</td>
+            <td class="codeid ww1" id="cmw_5_1_SS">---</td>
+
+            <td class="td_mould_div"><a id="w_5_1">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_5_1">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_5_1_1_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst1" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_5_1_1" class="dropdown1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>
+                    @Html.DropDownList("cmw_5_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk5_1"><b>Save</b></span>
+                </div>
+            </td>
+
+            @*<td class="selectw">@Html.DropDownList("cmw_5_1_1", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdown1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_5_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })</td>*@
+            <td id="tdcmould" class="tdid5_2 m2 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="5" id="cmw_5_2" class="cw2"></td>
+            <td class="sw ss2" id="cmw_5_2_S">---</td>
+            <td class="codeid ww2" id="cmw_5_2_SS">---</td>
+
+            <td class="td_mould_div"><a id="w_5_2">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_5_2">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_5_2_2_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst2" })</d>
+
+                    <b>Mould:</b>
+                    <d><select id="cmw_5_2_2" class="dropdownb1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>
+                    @Html.DropDownList("cmw_5_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk5_2"><b>Save</b></span>
+                </div>
+            </td>
+
+            @* <td class="selectw">@Html.DropDownList("cmw_5_2_2", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdownb1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_5_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })</td>*@
+        </tr>
+        <tr>
+            <td id="tdcmould">6</td>
+            <td id="tdcmould" class="tdid6_1 m1 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="6" id="cmw_6_1" class="cw1"></td>
+            <td class="sw ss1" id="cmw_6_1_S">---</td>
+            <td class="codeid ww1" id="cmw_6_1_SS">---</td>
+
+            <td class="td_mould_div"><a id="w_6_1">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_6_1">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_6_1_1_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst1" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_6_1_1" class="dropdown1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_6_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk6_1"><b>Save</b></span>
+                </div>
+            </td>
+            @*  <td class="selectw">@Html.DropDownList("cmw_6_1_1", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdown1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_6_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })</td>*@
+
+            <td id="tdcmould" class="tdid6_2 m2 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="6" id="cmw_6_2" class="cw2"></td>
+            <td class="sw ss2" id="cmw_6_2_S">---</td>
+            <td class="codeid ww2" id="cmw_6_2_SS">---</td>
+
+            <td class="td_mould_div"><a id="w_6_2">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_6_2">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_6_2_2_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst2" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_6_2_2" class="dropdownb1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_6_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk6_2"><b>Save</b></span>
+                </div>
+            </td>
+            @*  <td class="selectw">@Html.DropDownList("cmw_6_2_2", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdownb1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_6_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })</td>*@
+        </tr>
+        <tr>
+            <td id="tdcmould">7</td>
+            <td id="tdcmould" class="tdid7_1 m1 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="7" id="cmw_7_1" class="cw1"></td>
+            <td class="sw ss1" id="cmw_7_1_S">---</td>
+            <td class="codeid ww1" id="cmw_7_1_SS">---</td>
+
+            <td class="td_mould_div"><a id="w_7_1">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_7_1">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_7_1_1_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst1" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_7_1_1" class="dropdown1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_7_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk7_1"><b>Save</b></span>
+                </div>
+            </td>
+
+            @*  <td class="selectw">@Html.DropDownList("cmw_7_1_1", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdown1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_7_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })</td>*@
+
+            <td id="tdcmould" class="tdid7_2 m2 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="7" id="cmw_7_2" class="cw2"></td>
+            <td class="sw ss2" id="cmw_7_2_S">---</td>
+            <td class="codeid ww2" id="cmw_7_2_SS">---</td>
+
+            <td class="td_mould_div"><a id="w_7_2">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_7_2">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_7_2_2_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst2" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_7_2_2" class="dropdownb1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_7_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk7_2"><b>Save</b></span>
+                </div>
+            </td>
+
+            @*<td class="selectw">@Html.DropDownList("cmw_7_2_2", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdownb1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_7_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })</td>*@
+
+        </tr>
+        <tr>
+            <td id="tdcmould">8</td>
+            <td id="tdcmould" class="tdid8_1 m1 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="8" id="cmw_8_1" class="cw1"></td>
+            <td class="sw ss1" id="cmw_8_1_S">---</td>
+            <td class="codeid ww1" id="cmw_8_1_SS">---</td>
+
+
+            <td><a id="w_8_1">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_8_1">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_8_1_1_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst1" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_8_1_1" class="dropdown1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>
+                    @Html.DropDownList("cmw_8_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk8_1"><b>Save</b></span>
+                </div>
+            </td>
+
+
+            @*  <td class="selectw">@Html.DropDownList("cmw_8_1_1", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdown1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_8_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })</td>*@
+            <td id="tdcmould" class="tdid8_2 m2 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="8" id="cmw_8_2" class="cw2"></td>
+            <td class="sw ss2" id="cmw_8_2_S">---</td>
+            <td class="codeid ww2" id="cmw_8_2_SS">---</td>
+
+            <td><a id="w_8_2">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_8_2">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_8_2_2_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst2" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_8_2_2" class="dropdownb1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_8_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })
+
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk8_2"><b>Save</b></span>
+                </div>
+            </td>
+            @*   <td class="selectw">@Html.DropDownList("cmw_8_2_2", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdownb1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_8_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })</td>*@
+        </tr>
+        <tr>
+            <td id="tdcmould">9</td>
+            <td id="tdcmould" class="tdid9_1 m1 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="9" id="cmw_9_1" class="cw1"></td>
+            <td class="sw ss1" id="cmw_9_1_S">---</td>
+            <td class="codeid ww1" id="cmw_9_1_SS">---</td>
+
+            <td><a id="w_9_1">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_9_1">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_9_1_1_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst1" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_9_1_1" class="dropdown1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>
+                    @Html.DropDownList("cmw_9_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk9_1"><b>Save</b></span>
+                </div>
+            </td>
+
+            @*  <td class="selectw">@Html.DropDownList("cmw_9_1_1", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdown1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_9_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })</td>*@
+            <td id="tdcmould" class="tdid9_2 m2 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="9" id="cmw_9_2" class="cw2"></td>
+            <td class="sw ss2" id="cmw_9_2_S">---</td>
+            <td class="codeid ww2" id="cmw_9_2_SS">---</td>
+
+            <td><a id="w_9_2">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_9_2">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_9_2_2_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst2" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_9_2_2" class="dropdownb1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_9_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })
+                    <br>
+                    <span title="Close" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk9_2"><b>Save</b></span>
+                </div>
+            </td>
+            @*   <td class="selectw">@Html.DropDownList("cmw_9_2_2", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdownb1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_9_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })</td>*@
+        </tr>
+        <tr>
+            <td id="tdcmould">10</td>
+            <td id="tdcmould" class="tdid10_1 m1 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="10" id="cmw_10_1" class="cw1"></td>
+            <td class="sw ss1" id="cmw_10_1_S">---</td>
+            <td class="codeid ww1" id="cmw_10_1_SS">---</td>
+
+            <td><a id="w_10_1">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_10_1">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_10_1_1_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst1" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_10_1_1" class="dropdown1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>
+                    @Html.DropDownList("cmw_10_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk10_1"><b>Save</b></span>
+                </div>
+            </td>
+
+            @*   <td class="selectw">@Html.DropDownList("cmw_10_1_1", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdown1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_10_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })</td>*@
+            <td id="tdcmould" class="tdid10_2 m2 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="10" id="cmw_10_2" class="cw2"></td>
+            <td class="sw ss2" id="cmw_10_2_S">---</td>
+            <td class="codeid ww2" id="cmw_10_2_SS">---</td>
+
+            <td><a id="w_10_2">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_10_2">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_10_2_2_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst2" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_10_2_2" class="dropdownb1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_10_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk10_2"><b>Save</b></span>
+                </div>
+            </td>
+            @*  <td class="selectw">@Html.DropDownList("cmw_10_2_2", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdownb1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_10_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })</td>*@
+        </tr>
+        <tr>
+            <td id="tdcmould">11</td>
+            <td id="tdcmould" class="tdid11_1 m1 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="11" id="cmw_11_1" class="cw1"></td>
+            <td class="sw ss1" id="cmw_11_1_S">---</td>
+            <td class="codeid ww1" id="cmw_11_1_SS">---</td>
+
+            <td><a id="w_11_1">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_11_1">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_11_1_1_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst1" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_11_1_1" class="dropdown1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_11_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk11_1"><b>Save</b></span>
+                </div>
+            </td>
+            @*  <td class="selectw">@Html.DropDownList("cmw_11_1_1", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdown1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_11_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })</td>*@
+            <td id="tdcmould" class="tdid11_2 m2 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="11" id="cmw_11_2" class="cw2"></td>
+            <td class="sw ss2" id="cmw_11_2_S">---</td>
+            <td class="codeid ww2" id="cmw_11_2_SS">---</td>
+
+            <td><a id="w_11_2">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_11_2">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_11_2_2_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst2" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_11_2_2" class="dropdownb1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_11_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk11_2"><b>Save</b></span>
+                </div>
+            </td>
+            @*  <td class="selectw">@Html.DropDownList("cmw_11_2_2", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdownb1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_11_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })</td>*@
+        </tr>
+        <tr>
+            <td id="tdcmould">12</td>
+            <td id="tdcmould" class="tdid12_1 m1 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="12" id="cmw_12_1" class="cw1"></td>
+            <td class="sw ss1" id="cmw_12_1_S">---</td>
+            <td class="codeid ww1" id="cmw_12_1_SS">---</td>
+
+            <td><a id="w_12_1">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_12_1">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_12_1_1_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst1" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_12_1_1" class="dropdown1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_12_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk12_1"><b>Save</b></span>
+                </div>
+            </td>
+            @*<td class="selectw">@Html.DropDownList("cmw_12_1_1", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdown1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_12_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })</td>*@
+            <td id="tdcmould" class="tdid12_2 m2 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="12" id="cmw_12_2" class="cw2"></td>
+            <td class="sw ss2" id="cmw_12_2_S">---</td>
+            <td class="codeid ww2" id="cmw_12_2_SS">---</td>
+
+            <td><a id="w_12_2">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_12_2">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_12_2_2_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst2" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_12_2_2" class="dropdownb1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_12_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk12_2"><b>Save</b></span>
+                </div>
+            </td>
+            @*   <td class="selectw">@Html.DropDownList("cmw_12_2_2", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdownb1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_12_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })</td>*@
+        </tr>
+        <tr>
+            <td id="tdcmould">13</td>
+            <td id="tdcmould" class="tdid13_1 m1 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="13" id="cmw_13_1" class="cw1"></td>
+            <td class="sw ss1" id="cmw_13_1_S">---</td>
+            <td class="codeid ww1" id="cmw_13_1_SS">---</td>
+
+            <td><a id="w_13_1">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_13_1">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_13_1_1_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst1" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_13_1_1" class="dropdown1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_13_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk13_1"><b>Save</b></span>
+                </div>
+            </td>
+            @* <td class="selectw">@Html.DropDownList("cmw_13_1_1", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdown1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_13_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })</td>*@
+            <td id="tdcmould" class="tdid13_2 m2 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="13" id="cmw_13_2" class="cw2"></td>
+            <td class="sw ss2" id="cmw_13_2_S">---</td>
+            <td class="codeid ww2" id="cmw_13_2_SS">---</td>
+
+            <td><a id="w_13_2">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_13_2">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_13_2_2_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst2" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_13_2_2" class="dropdownb1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_13_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk13_2"><b>Save</b></span>
+                </div>
+            </td>
+            @* <td class="selectw">@Html.DropDownList("cmw_13_2_2", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdownb1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_13_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })</td>*@
+        </tr>
+        <tr>
+            <td id="tdcmould">14</td>
+            <td id="tdcmould" class="tdid14_1 m1 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="14" id="cmw_14_1" class="cw1"></td>
+            <td class="sw ss1" id="cmw_14_1_S">---</td>
+            <td class="codeid ww1" id="cmw_14_1_SS">---</td>
+
+            <td><a id="w_14_1">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_14_1">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_14_1_1_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst1" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_14_1_1" class="dropdown1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_14_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk14_1"><b>Save</b></span>
+                </div>
+            </td>
+            @*  <td class="selectw">@Html.DropDownList("cmw_14_1_1", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdown1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_14_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })</td>*@
+            <td id="tdcmould" class="tdid14_2 m2 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="14" id="cmw_14_2" class="cw2"></td>
+            <td class="sw ss2" id="cmw_14_2_S">---</td>
+            <td class="codeid ww2" id="cmw_14_2_SS">---</td>
+
+            <td><a id="w_14_2">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_14_2">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_14_2_2_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst2" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_14_2_2" class="dropdownb1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_14_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk14_2"><b>Save</b></span>
+                </div>
+            </td>
+            @*<td class="selectw">@Html.DropDownList("cmw_14_2_2", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdownb1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_14_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })</td>*@
+        </tr>
+        <tr>
+            <td id="tdcmould">15</td>
+            <td id="tdcmould" class="tdid15_1 m1 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="15" id="cmw_15_1" class="cw1"></td>
+            <td class="sw ss1" id="cmw_15_1_S">---</td>
+            <td class="codeid ww1" id="cmw_15_1_SS">---</td>
+
+            <td><a id="w_15_1">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_15_1">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_15_1_1_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst1" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_15_1_1" class="dropdown1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>
+                    @Html.DropDownList("cmw_15_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk15_1"><b>Save</b></span>
+                </div>
+            </td>
+            @* <td class="selectw">@Html.DropDownList("cmw_15_1_1", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdown1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_15_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })</td>*@
+            <td id="tdcmould" class="tdid15_2 m2 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="15" id="cmw_15_2" class="cw2"></td>
+            <td class="sw ss2" id="cmw_15_2_S">---</td>
+            <td class="codeid ww2" id="cmw_15_2_SS">---</td>
+
+            <td><a id="w_15_2">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_15_2">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_15_2_2_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst2" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_15_2_2" class="dropdownb1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_15_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk15_2"><b>Save</b></span>
+                </div>
+            </td>
+            @* <td class="selectw">@Html.DropDownList("cmw_15_2_2", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdownb1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_15_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })</td>*@
+        </tr>
+        <tr>
+            <td id="tdcmould">16</td>
+            <td id="tdcmould" class="tdid16_1 m1 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="16" id="cmw_16_1" class="cw1"></td>
+            <td class="sw ss1" id="cmw_16_1_S">---</td>
+            <td class="codeid ww1" id="cmw_16_1_SS">---</td>
+
+            <td><a id="w_16_1">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_16_1">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_16_1_1_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst1" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_16_1_1" class="dropdown1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_16_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk16_1"><b>Save</b></span>
+                </div>
+            </td>
+            @*  <td class="selectw">@Html.DropDownList("cmw_16_1_1", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdown1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_16_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })</td>*@
+            <td id="tdcmould" class="tdid16_2 m2 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="16" id="cmw_16_2" class="cw2"></td>
+            <td class="sw ss2" id="cmw_16_2_S">---</td>
+            <td class="codeid ww2" id="cmw_16_2_SS">---</td>
+
+            <td><a id="w_16_2">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_16_2">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_16_2_2_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst2" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_16_2_2" class="dropdownb1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>
+                    @Html.DropDownList("cmw_16_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk16_2"><b>Save</b></span>
+                </div>
+            </td>
+            @*  <td class="selectw">@Html.DropDownList("cmw_16_2_2", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdownb1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_16_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })</td>*@
+        </tr>
+        <tr>
+            <td id="tdcmould">17</td>
+            <td id="tdcmould" class="tdid17_1 m1 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="17" id="cmw_17_1" class="cw1"></td>
+            <td class="sw ss1" id="cmw_17_1_S">---</td>
+            <td class="codeid ww1" id="cmw_17_1_SS">---</td>
+
+            <td><a id="w_17_1">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_17_1">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_17_1_1_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst1" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_17_1_1" class="dropdown1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_17_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk17_1"><b>Save</b></span>
+                </div>
+            </td>
+            @*   <td class="selectw">@Html.DropDownList("cmw_17_1_1", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdown1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_17_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })</td>*@
+            <td id="tdcmould" class="tdid17_2 m2 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="17" id="cmw_17_2" class="cw2"></td>
+            <td class="sw ss2" id="cmw_17_2_S">---</td>
+            <td class="codeid ww2" id="cmw_17_2_SS">---</td>
+
+            <td><a id="w_17_2">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_17_2">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_17_2_2_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst2" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_17_2_2" class="dropdownb1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_17_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk17_2"><b>Save</b></span>
+                </div>
+            </td>
+            @* <td class="selectw">@Html.DropDownList("cmw_17_2_2", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdownb1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_17_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })</td>*@
+        </tr>
+        <tr>
+            <td id="tdcmould">18</td>
+            <td id="tdcmould" class="tdid18_1 m1 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="18" id="cmw_18_1" class="cw1"></td>
+            <td class="sw ss1" id="cmw_18_1_S">---</td>
+            <td class="codeid ww1" id="cmw_18_1_SS">---</td>
+
+            <td><a id="w_18_1">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_18_1">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_18_1_1_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst1" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_18_1_1" class="dropdown1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_18_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk18_1"><b>Save</b></span>
+                </div>
+            </td>
+            @* <td class="selectw">@Html.DropDownList("cmw_18_1_1", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdown1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_18_1_1_1", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdown2" })</td>*@
+            <td id="tdcmould" class="tdid18_2 m2 thid"></td>
+            <td class="check_class">
+                <input type="checkbox" value="18" id="cmw_18_2" class="cw2"></td>
+            <td class="sw ss2" id="cmw_18_2_S">---</td>
+            <td class="codeid ww2" id="cmw_18_2_SS">---</td>
+
+            <td><a id="w_18_2">Change &#9660;</a>
+                <div class="div_changemould" id="div_changemould_18_2">
+                    <span title="Close" class="btn_label_span close_lnk_1" style="left: 185px; position: absolute;" id="close_lnk_1"><b>Close</b></span>
+                    <br />
+                    <b>Customer:</b>
+                    <d>@Html.DropDownList("cmw_18_2_2_", (SelectList)ViewBag.mcc_list, "--Select--", new { @class = "scust sucst2" })</d>
+                    <b>Mould:</b>
+                    <d><select id="cmw_18_2_2" class="dropdownb1"><option>--Select--</option></select></d>
+                    <b>Reason:</b>@Html.DropDownList("cmw_18_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })
+                    <br>
+                    <span title="Save" class="btn_label_span" style="left: 185px; position: absolute;" id="mouldsave_lnk18_2"><b>Save</b></span>
+                </div>
+            </td>
+            @* <td class="selectw">@Html.DropDownList("cmw_18_2_2", (SelectList)ViewBag.m_list, "--Select--", new { @class = "dropdownb1" })</td>
+            <td class="selectw">@Html.DropDownList("cmw_18_2_2_2", (SelectList)ViewBag.reason_list, "--Select--", new { @class = "dropdownb2" })</td>*@
+        </tr>
+    </table>
+
+
+</div>
+
+<div id="molten_div_aflogsheet">
+
+    <table id="tbl_molten" class="tbl_molten">
+        <tr>
+            <td>
+                <h6>Barite Brand:</h6>
+            </td>
+            <td style="font-size: 14px; width: 70px;">@Html.DropDownList("MMT_1589", (SelectList)ViewBag.brand_list)</td>
+        </tr>
+
+        <tr>
+            <th>End Point</th>
+            <th>Barite Density</th>
+        </tr>
+        <tr>
+            <td>Start</td>
+            <td id="" class="border_color">
+                <input id="MMT_1590" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+        <tr>
+            <td>Middle</td>
+
+            <td id="" class="border_color">
+                <input id="MMT_1591" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+        <tr>
+            <td>End</td>
+
+            <td id="" class="border_color">
+                <input id="MMT_1592" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+
+
+    </table>
+
+</div>
+
+<div class="molten_temp_div_aflogsheet">
+
+    <table id="tbl_molten_temp" class="tbl_molten_temp">
+
+        <tr>
+            <td colspan="2">
+                <h6>Molten Metal Temp</h6>
+            </td>
+        </tr>
+        <tr>
+            <th>End Point</th>
+            <th class="label_date">Time &nbsp;&nbsp;(hh:mm)</th>
+            <th>Temp</th>
+        </tr>
+        <tr>
+            <td>Start</td>
+            <td class="af_timeclass border_color">
+                <select id="start_time_1614_hr_input_launder_st1" style="width: 40px;" class="nearselecthr">
+                    @{
+                        int hr_t1;
+                        int min_t1 = Int32.Parse(ViewBag.datetime.ToString("mm"));
+                        if (min_t1 == 60)
+                        {
+
+                            hr_t1 = Int32.Parse(ViewBag.datetime.ToString("HH"));
+
+                        }
+                        else
+                        {
+                            hr_t1 = Int32.Parse(ViewBag.datetime.ToString("HH"));
+                        }
+
+
+                        for (int x = 0; x <= 23; x++)
+                        {
+                            if (@x <= 9)
+                            {
+
+                                if (@x == @hr_t1)
+                                {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                else
+                                { <option value="@x">@("0" + @x)</option> }
+                            }
+
+
+                            else
+                            {
+
+                                if (@x == @hr_t1)
+                                {  <option value="@x" selected="selected">@x</option> }
+                                else
+                                { <option value="@x">@x</option> }
+
+
+                            }
+                        }
+                    }
+
+                </select>&nbsp;:
+            <select id="start_time_1614_min_input_launder_st1" style="width: 40px;" class="nearselectmin">
+                @{
+                    int min_t11 = Int32.Parse(ViewBag.datetime.ToString("mm"));
+
+
+                    for (int x = 0; x <= 59; x++)
+                    {
+                        if (@x <= 9)
+                        {
+
+                            if (@x == @min_t11)
+                            {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                            else
+                            { <option value="@x">@("0" + @x)</option> }
+                        }
+
+
+                        else
+                        {
+
+                            if (@x == @min_t11)
+                            {  <option value="@x" selected="selected">@x</option> }
+                            else
+                            { <option value="@x">@x</option> }
+
+
+                        }
+                    }
+                }
+            </select>
+
+            </td>
+
+            <td id="" class="border_color">
+                <input id="start_time_1615" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+
+
+        </tr>
+        <tr>
+            <td>Middle</td>
+            <td class="af_timeclass border_color">
+                <select id="start_time_1616_hr_input_launder_st3" style="width: 40px;" class="nearselecthr">
+                    @{
+                        int hr2;
+                        int min_2 = Int32.Parse(ViewBag.datetime.ToString("mm"));
+                        if (min_2 == 60)
+                        {
+
+                            hr2 = Int32.Parse(ViewBag.datetime.ToString("HH"));
+
+                        }
+                        else
+                        {
+                            hr2 = Int32.Parse(ViewBag.datetime.ToString("HH"));
+                        }
+
+
+                        for (int x = 0; x <= 23; x++)
+                        {
+                            if (@x <= 9)
+                            {
+
+                                if (@x == @hr2)
+                                {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                else
+                                { <option value="@x">@("0" + @x)</option> }
+                            }
+
+
+                            else
+                            {
+
+                                if (@x == @hr2)
+                                {  <option value="@x" selected="selected">@x</option> }
+                                else
+                                { <option value="@x">@x</option> }
+
+
+                            }
+                        }
+                    }
+
+                </select>&nbsp;:
+            <select id="start_time_1616_min_input_launder_st3" style="width: 40px;" class="nearselectmin">
+                @{
+                    int min3 = Int32.Parse(ViewBag.datetime.ToString("mm"));
+
+
+                    for (int x = 0; x <= 59; x++)
+                    {
+                        if (@x <= 9)
+                        {
+
+                            if (@x == @min3)
+                            {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                            else
+                            { <option value="@x">@("0" + @x)</option> }
+                        }
+
+
+                        else
+                        {
+
+                            if (@x == @min3)
+                            {  <option value="@x" selected="selected">@x</option> }
+                            else
+                            { <option value="@x">@x</option> }
+
+
+                        }
+                    }
+                }
+            </select>
+
+            </td>
+
+            <td id="" class="border_color">
+                <input id="start_time_1617" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+
+
+
+        </tr>
+
+
+        <tr>
+            <td>End</td>
+            <td class="af_timeclass border_color">
+                <select id="start_time_1618_hr_input_launder_st5" style="width: 40px;" class="nearselecthr">
+                    @{
+                        int hr5;
+                        int min_5 = Int32.Parse(ViewBag.datetime.ToString("mm"));
+                        if (min_5 == 60)
+                        {
+
+                            hr5 = Int32.Parse(ViewBag.datetime.ToString("HH"));
+
+                        }
+                        else
+                        {
+                            hr5 = Int32.Parse(ViewBag.datetime.ToString("HH"));
+                        }
+
+
+                        for (int x = 0; x <= 23; x++)
+                        {
+                            if (@x <= 9)
+                            {
+
+                                if (@x == @hr5)
+                                {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                else
+                                { <option value="@x">@("0" + @x)</option> }
+                            }
+
+
+                            else
+                            {
+
+                                if (@x == @hr5)
+                                {  <option value="@x" selected="selected">@x</option> }
+                                else
+                                { <option value="@x">@x</option> }
+
+
+                            }
+                        }
+                    }
+
+                </select>&nbsp;:
+            <select id="start_time_1618_min_input_launder_st5" style="width: 40px;" class="nearselectmin">
+                @{
+                    int min5 = Int32.Parse(ViewBag.datetime.ToString("mm"));
+
+
+                    for (int x = 0; x <= 59; x++)
+                    {
+                        if (@x <= 9)
+                        {
+
+                            if (@x == @min5)
+                            {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                            else
+                            { <option value="@x">@("0" + @x)</option> }
+                        }
+
+
+                        else
+                        {
+
+                            if (@x == @min5)
+                            {  <option value="@x" selected="selected">@x</option> }
+                            else
+                            { <option value="@x">@x</option> }
+
+
+                        }
+                    }
+                }
+            </select>
+
+            </td>
+
+            <td id="" class="border_color">
+                <input id="start_time_1619" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+
+
+        </tr>
+
+
+    </table>
+
+
+
+</div>
+
+
+
+
+<div id="launder_div_aflogsheet">
+
+    <div id="launderdiv">
+        <span title="Close" class="btn_label_span" style="left: 210px; position: absolute;" id="launderclose_lnk"><b>Close</b></span>
+        <br>
+        <table id="tbl_launder_add" class="tbl_launder_add">
+
+            <tr>
+                @*<td class="af_date_td"><input disabled="disabled" id="start_date_input_cast" type="text" value="@ViewBag.datetime.ToString("MM/dd/yyyy")"/></td>*@
+                <th class="label_date">Time &nbsp;&nbsp;(hh:mm)</th>
+                <td class="af_time_td border_color">
+                    <select id="start_time_hr_input_launder">
+                        @{
+                            int hr;
+                            int min_ = Int32.Parse(ViewBag.datetime.ToString("mm"));
+                            if (min_ == 60)
+                            {
+
+                                hr = Int32.Parse(ViewBag.datetime.ToString("HH"));
+
+                            }
+                            else
+                            {
+                                hr = Int32.Parse(ViewBag.datetime.ToString("HH"));
+                            }
+
+
+                            for (int x = 0; x <= 23; x++)
+                            {
+                                if (@x <= 9)
+                                {
+
+                                    if (@x == @hr)
+                                    {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                    else
+                                    { <option value="@x">@("0" + @x)</option> }
+                                }
+
+
+                                else
+                                {
+
+                                    if (@x == @hr)
+                                    {  <option value="@x" selected="selected">@x</option> }
+                                    else
+                                    { <option value="@x">@x</option> }
+
+
+                                }
+                            }
+                        }
+
+                    </select>&nbsp;:
+            <select id="start_time_min_input_launder">
+                @{
+                    int min = Int32.Parse(ViewBag.datetime.ToString("mm"));
+
+
+                    for (int x = 0; x <= 59; x++)
+                    {
+                        if (@x <= 9)
+                        {
+
+                            if (@x == @min)
+                            {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                            else
+                            { <option value="@x">@("0" + @x)</option> }
+                        }
+
+
+                        else
+                        {
+
+                            if (@x == @min)
+                            {  <option value="@x" selected="selected">@x</option> }
+                            else
+                            { <option value="@x">@x</option> }
+
+
+                        }
+                    }
+                }
+            </select>
+
+                </td>
+            </tr>
+            <tr class="tr_data">
+                <th>Input Temp 1</th>
+                <td class="border_color">
+                    <input id="temp_1" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input t1" placeholder="0" /></td>
+            </tr>
+
+            <tr class="tr_data">
+                <th>Input Temp 2</th>
+                <td class="border_color">
+                    <input id="temp_2" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input t2 btn_label_span" placeholder="0" />
+                <td>
+            </tr>
+
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td class="btn_label_span" id="add_launder"><b>Add</b>
+                <td>
+            </tr>
+        </table>
+
+    </div>
+
+
+    @*<img width="20" height="20" style="position:relative; left:250px;"  title="Add new" id="save_launder" src="~/Images/diskette.png">*@
+    <img width="20" height="20" title="Add new Inventory" id="launder_btn" class="btn_label_span" src="~/Images/red_plus.png">
+    <span title="Add new Inventory" class="btn_label_span" id="launder_lnk"><b>Add new</b></span>
+    <div id="launderdiv_in">
+        <table id="tbl_launder" class="tbl_launder">
+            <tr>
+                <td colspan="4">
+                    <h6>Launder Temp</h6>
+                </td>
+            </tr>
+            <tr>
+                <th style="visibility: hidden;"></th>
+                <th>E-Launder Time</th>
+                <th>Temp 1</th>
+                <th>Temp 2</th>
+                <th>Action</th>
+
+            </tr>
+
+            <tbody></tbody>
+
+
+
+        </table>
+    </div>
+</div>
+
+
+<div id="mcast_div_aflogsheet">
+    @* <b>Customer:</b>*@
+    @*<table  id="tbl_mcast_cust" class="tbl_mcast">
+    <tr>
+        <th>CW1:</th>
+        <td>@Html.DropDownList("MC_1593",(SelectList)ViewBag.mcc_list)</td>
+    </tr>
+     <tr>
+        <th>CW2:</th>
+        <td>@Html.DropDownList("MC_1595",(SelectList)ViewBag.mcc_list)</td>
+     </tr>
+    </table>  *@
+    <table id="tbl_mcast" class="tbl_mcast">
+        <tr>
+            <td colspan="2">
+                <h6>Mould Casting</h6>
+            </td>
+        </tr>
+        <tr>
+            <th></th>
+            <th>Customer</th>
+            <th>Temp</th>
+            <th>Nos.</th>
+        </tr>
+        <tr>
+            <td class="border_color">CIM Moulds Nos:</td>
+            <td class="af_mouldcastingcust border_color">@Html.DropDownList("MC_1623", (SelectList)ViewBag.mcc_list, "--Select--")</td>
+            <td id="" class="border_color">
+                <input id="MC_1596" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+            <td id="" class="border_color">
+                <input id="MC_1597" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+        <tr>
+            <td class="border_color">PRESS Moulds Nos.</td>
+            <td class="af_mouldcastingcust border_color">@Html.DropDownList("MC_1624", (SelectList)ViewBag.mcc_list, "--Select--")</td>
+            <td id="" class="border_color">
+                <input id="MC_1598" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+            <td id="" class="border_color">
+                <input id="MC_1599" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+        <tr>
+            <td class="border_color">Mould Tubs Casted:</td>
+            <td class="af_mouldcastingcust border_color">@Html.DropDownList("MC_1625", (SelectList)ViewBag.mcc_list, "--Select--")</td>
+            <td id="" class="border_color">
+                <input id="MC_1600" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+            <td id="" class="border_color">
+                <input id="MC_1601" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+
+        @* <tr>
+               <td>CRL Moulds</td>
+               <td id=""class="border_color"><input id="MC_1602" type="text"  onkeypress="return NumericOnly(event)"  class="extratbl_input" placeholder="0"/></td>
+                    <td id=""class="border_color"><input id="MC_1603" type="text"  onkeypress="return NumericOnly(event)"  class="extratbl_input" placeholder="0"/></td>
+            </tr>*@
+
+        <tr>
+            <td></td>
+            <td>Total Moulds</td>
+            <td id="" class="border_color">
+                <input disabled="disabled" id="MC_totalt" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+            <td id="" class="border_color">
+                <input disabled="disabled" id="MC_totaln" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+
+
+
+
+    </table>
+
+</div>
+
+
+<div id="anodecast_div_aflogsheet">
+
+    <table id="tbl_anodecast" class="tbl_anodecast">
+        <tr>
+            <td colspan="2">
+                <h6>Turn Over (Anode Casted)</h6>
+            </td>
+        </tr>
+
+        @*<tr>
+            <th>Unit</th>
+            <th>Value</th>
+        </tr>*@
+        @* <tr>
+            <td>Blister, MT</td>
+            <td id="" class="border_color">
+                <input id="TO_1604" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>*@
+        @* <tr>
+            <td>Anodes, MT</td>
+            <td id="" class="border_color">
+                <input id="TO_1605" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+        <tr>
+            <td>Anodes Casted(Pcs.)</td>
+            <td id="" class="border_color">
+                <input id="TO_1606" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>% Yield:</td>
+            <td>Casting Rate:</td>
+        </tr>
+        <tr>
+            <td id="" class="border_color">
+                <input id="TO_1607" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+            <td id="" class="border_color">
+                <input id="TO_1608" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>*@
+
+        <tr>
+            <td colspan="2" align="center" style="background-color: #004993; color: white; padding: 4px;">Anode Bundle Weighing</td>
+        </tr>
+        <tr>
+            <td>KG:</td>
+            <td>PCS:</td>
+        </tr>
+        <tr>
+            <td id="" class="border_color">
+                <input id="TO_1610" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+            <td id="" class="border_color">
+                <input id="TO_1611" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+    </table>
+</div>
+
+
+<div class="anodecusttbl_div">
+    <b>Anode Casted/Customer</b><br>
+    <br>
+    <table id="anodecust_tbl" class="anodecust_tbl">
+
+        <tr>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+            <th>Casting Wheel</th>
+            <th>Customer</th>
+            <th>Total Anode</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+
+        </tr>
+
+        <tr>
+            <td class="border_color">
+                <center><span id="anode-1-w" >1</span></center>
+            </td>
+            <td class="border_color">@Html.DropDownList("anode-1", (SelectList)ViewBag.mcc_list, "--Select--")</td>
+            <td id="" class="border_color">
+                <input id="anode-1-1" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+
+            <td class="border_color">
+                <center><span id="anode-1-w" >1</span></center>
+            </td>
+            <td class="border_color">@Html.DropDownList("anode-1-1-1", (SelectList)ViewBag.mcc_list, "--Select--")</td>
+            <td id="" class="border_color">
+                <input id="anode-1-1-1-1" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+
+        </tr>
+
+        <tr>
+            <td class="border_color" rowspan="2">
+                <center><span id="anode-2-w">2</span></center>
+            </td>
+            <td class="border_color">@Html.DropDownList("anode-2", (SelectList)ViewBag.mcc_list, "--Select--")</td>
+            <td id="" class="border_color">
+                <input id="anode-2-2" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+
+            <td class="border_color" rowspan="2">
+                <center><span id="anode-2-w">2</span></center>
+            </td>
+            <td class="border_color">@Html.DropDownList("anode-2-2-2", (SelectList)ViewBag.mcc_list, "--Select--")</td>
+            <td id="" class="border_color">
+                <input id="anode-2-2-2-2" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+
+        </tr>
+
+    </table>
+
+</div>
+<span id="casting_lotid" style="visibility: hidden;"></span>
+<span id="chk_cust" style=""></span>
+
+@*<div id="afcasting_tbl2_div">
+    <div id="Dialog_addafcasting_tbl2new" style="overflow: hidden;"></div>
+    <div id="Dialog_editafcasting_tbl2new" style="overflow: hidden;"></div>
+    <div class="val_enddate" style="position: absolute; top: -7px;">
+        <h3>
+            <img width="25" height="25" title="Add new Casting" id="afcasting_tbl2addrow_btn" src="~/Images/red_plus.png" class="cpointer">&nbsp;&nbsp;<span title="Add new Casting" class="btn_label_span cpointer" id="afcasting_tbl2addrow_lnk"><b>Add new</b></span></h3>
+    </div>
+    <input type="text" id="search_afcasting_tbl2" placeholder="Type to search..." style="width: 200px; position: absolute; left: 1338px;" />
+    <table class="afcasting_tbl1" id="afcasting_tbl2">
+        <thead>
+            <tr>
+                <th colspan="8">Mould casting after the end of casting</th>
+            </tr>
+            <tr>
+                <th rowspan="2" class="thlong" id="starttime_th">Start Time</th>
+                <th rowspan="2" class="thlong" id="endtime_th">End Time</th>
+                <th rowspan="2" class="thshort">Activity Code</th>
+                <th rowspan="2" class="thlong">Activity</th>
+                <th rowspan="2" class="thshort">Duration(hrs)</th>
+                <th rowspan="2" class="thlong">Remarks</th>
+                <th colspan="3" class="tshort">Actions</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <tr id="" style="display: none;"></tr>
+        </tbody>
+
+    </table>
+
+</div>*@
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('.scust').val($('#MC_1593').val());
+
+        $('#anodecust_add').live('click', function () {
+
+            searchin_af_act('#search_af_act_cw1', '#aftable_cast1 tbody tr');
+
+        });
+
+
+
+
+        load_ladle_measure();
+        load_condemned_mould();
+        load_cast_Act_cw1();
+        load_cast_Act_cw2();
+        load_molten_temp();
+        load_launder();
+        load_anodecast_percust();
+        load_mouldr();
+        afcasting_tblnew_load();
+        afcasting_tbl2new_load();
+        //count_cust_mouldrep1();
+        //count_cust_mouldrep2();       
+        //load_mouldcustomer();
+
+        $('.thid').hide();
+        $('#comouldr_div_aflogsheet').hide();
+        //$(".sw").hide();
+        $('.codeid').hide();
+        $('.div_changemould').hide();
+        $('.cw1,.cw2').hide();
+        $('.check_class').hide();
+        $('.anodecusttbl_div').hide();
+
+
+        $('#search_afcasting_tbl1').live('keyup', function () {
+
+            searchin_af_act('#search_afcasting_tbl1', '#afcasting_tbl1 tbody tr');
+
+        });
+
+        $('#search_afcasting_tbl2').live('keyup', function () {
+
+            searchin_af_act('#search_afcasting_tbl2', '#afcasting_tbl2 tbody tr');
+
+        });
+
+        $('#search_af_act_cw1').live('keyup', function () {
+
+            searchin_af_act('#search_af_act_cw1', '#aftable_cast1 tbody tr');
+
+        });
+
+        $('#search_af_act_cw2').live('keyup', function () {
+
+            searchin_af_act('#search_af_act_cw2', '#aftable_cast2 tbody tr');
+
+        });
+
+        $("#launderdiv").hide();
+
+        $("#launder_btn,#launder_lnk").live("click", function () {
+            $("#launderdiv").show();
+            //$('#launder_div_aflogsheet').css('height', '440px');
+            // $('#launderdiv_in').css('top', '220px');
+        });
+
+        $("#launderclose_lnk").live("click", function () {
+            $("#launderdiv").hide();
+            $('#launder_div_aflogsheet').css('height', '270px');
+            $('#launderdiv_in').css('top', '30px');
+        });
+
+        //$("#cw1_div_aflogsheet").draggable();
+        //$("#cw2_div_aflogsheet").draggable();
+        //$('#comouldr_div_aflogsheet').draggable();
+        //$('#molten_div_aflogsheet').draggable();
+        //$('#launder_div_aflogsheet').draggable();
+        //$('#mcast_div_aflogsheet').draggable();
+        //$('#anodecast_div_aflogsheet').draggable();
+        $('#launderdiv').draggable();
+
+
+
+
+        //Disable <select> option when selected in another <select>
+
+        //$('select[id*="cmw_"].dropdown1,select[id*="cmw_"].dropdownb1').focus();
+        //$('#cmw_1_1_1').focus();
+
+        $('select[id*="cmw_"].dropdown1,select[id*="cmw_"].dropdownb1,td[id*="cmw_"].codeid').mouseover(function (e) {
+            // start by setting everything to enabled
+            //$('select[id*="cmw_"] option').attr('disabled', false);
+
+            // loop each select and set the selected value to disabled in all other selects
+            $('select[id*="cmw_"].dropdown1,select[id*="cmw_"].dropdownb1,td[id*="cmw_"].codeid').each(function () {
+                var $this = $(this);
+
+
+                $('select[id*="cmw_"].dropdown1,select[id*="cmw_"].dropdownb1').not($this).find('option').each(function () {
+                    if ($(this).attr('value') == $this.val() || $(this).attr('value') == $this.text())
+                        $(this).attr('disabled', true);
+
+
+                });
+            });
+
+        });
+
+        //end     
+
+
+
+        $('#checkAllcw1').change(function () {
+            $('input:checkbox.cw1').prop('checked', this.checked).addClass('changed');
+
+        });
+
+        $('#checkAllcw2').change(function () {
+            $('input:checkbox.cw2').prop('checked', this.checked).addClass('changed');
+
+        });
+
+
+    });
+
+
+
+    $('#w_1_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_1_1_S,#w_1_1').addClass('click_mould');
+            $('#div_changemould_1_1').show();
+            e.stopPropagation();
+        }
+    });
+
+
+    $('#w_1_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_1_2_S,#w_1_2').addClass('click_mould');
+            $('#div_changemould_1_2').show();
+            e.stopPropagation();
+        }
+    });
+    $('#w_2_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_2_1_S,#w_2_1').addClass('click_mould');
+            $('#div_changemould_2_1').show();
+            e.stopPropagation();
+        }
+    });
+    $('#w_2_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_2_2_S,#w_2_2').addClass('click_mould');
+            $('#div_changemould_2_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_3_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_3_1_S,#w_3_1').addClass('click_mould');
+            $('#div_changemould_3_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_3_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_3_2_S,#w_3_2').addClass('click_mould');
+            $('#div_changemould_3_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_4_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_4_1_S,#w_4_1').addClass('click_mould');
+            $('#div_changemould_4_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_4_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_4_2_S,#w_4_2').addClass('click_mould');
+            $('#div_changemould_4_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_5_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_5_1_S,#w_5_1').addClass('click_mould');
+            $('#div_changemould_5_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_5_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_5_2_S,#w_5_2').addClass('click_mould');
+            $('#div_changemould_5_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_6_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_6_1_S,#w_6_1').addClass('click_mould');
+            $('#div_changemould_6_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_6_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_6_2_S,#w_6_2').addClass('click_mould');
+            $('#div_changemould_6_2').show();
+            e.stopPropagation();
+        }
+    });
+    $('#w_7_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_7_1_S,#w_7_1').addClass('click_mould');
+            $('#div_changemould_7_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_7_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_7_2_S,#w_7_2').addClass('click_mould');
+            $('#div_changemould_7_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_8_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_8_1_S,#w_8_1').addClass('click_mould');
+            $('#div_changemould_8_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_8_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_8_2_S,#w_8_2').addClass('click_mould');
+            $('#div_changemould_8_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_9_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_9_1_S,#w_9_1').addClass('click_mould');
+            $('#div_changemould_9_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_9_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_9_2_S,#w_9_2').addClass('click_mould');
+            $('#div_changemould_9_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_10_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_10_1_S,#w_10_1').addClass('click_mould');
+            $('#div_changemould_10_1').show();
+            e.stopPropagation();
+        }
+    });
+    $('#w_10_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_10_2_S,#w_10_2').addClass('click_mould');
+            $('#div_changemould_10_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_11_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_11_1_S,#w_11_1').addClass('click_mould');
+            $('#div_changemould_11_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_11_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_11_2_S,#w_11_2').addClass('click_mould');
+            $('#div_changemould_11_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_12_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_12_1_S,#w_12_1').addClass('click_mould');
+            $('#div_changemould_12_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_12_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_12_2_S,#w_12_2').addClass('click_mould');
+            $('#div_changemould_12_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_13_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_13_1_S,#w_13_1').addClass('click_mould');
+            $('#div_changemould_13_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_13_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_13_2_S,#w_13_2').addClass('click_mould');
+            $('#div_changemould_13_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_14_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_14_1_S,#w_14_1').addClass('click_mould');
+            $('#div_changemould_14_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_14_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_14_2_S,#w_14_2').addClass('click_mould');
+            $('#div_changemould_14_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_15_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_15_1_S,#w_15_1').addClass('click_mould');
+            $('#div_changemould_15_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_15_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_15_2_S,#w_15_2').addClass('click_mould');
+            $('#div_changemould_15_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_16_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_16_1_S,#w_16_1').addClass('click_mould');
+            $('#div_changemould_16_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_16_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_16_2_S,#w_16_2').addClass('click_mould');
+            $('#div_changemould_16_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_17_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_17_1_S,#w_17_1').addClass('click_mould');
+            $('#div_changemould_17_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_17_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_17_2_S,#w_17_2').addClass('click_mould');
+            $('#div_changemould_17_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_18_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_18_1_S,#w_18_1').addClass('click_mould');
+            $('#div_changemould_18_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_18_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_18_2_S,#w_18_2').addClass('click_mould');
+            $('#div_changemould_18_2').show();
+            e.stopPropagation();
+        }
+    });
+
+
+
+    $('#cmw_1_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_2_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_3_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_4_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_5_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_6_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_7_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_8_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_9_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_10_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_11_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_12_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_13_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_14_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_15_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_16_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_17_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_18_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+
+
+
+    $('#cmw_1_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_2_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_3_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_4_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_5_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_6_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_7_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_8_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_9_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_10_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_11_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_12_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_13_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_14_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_15_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_16_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_17_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+    $('#cmw_18_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 3); }
+    });
+
+
+
+
+
+
+    $('#mouldsave_lnk1_1').click(function () {
+        if (count_cust_mouldrep1()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk1_2').click(function () {
+        if (count_cust_mouldrep2()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk2_1').click(function () {
+        if (count_cust_mouldrep1()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk2_2').click(function () {
+        if (count_cust_mouldrep2()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk3_1').click(function () {
+        if (count_cust_mouldrep1()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk3_2').click(function () {
+        if (count_cust_mouldrep2()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk4_1').click(function () {
+        if (count_cust_mouldrep1()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk4_2').click(function () {
+        if (count_cust_mouldrep2()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk5_1').click(function () {
+        if (count_cust_mouldrep1()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk5_2').click(function () {
+        if (count_cust_mouldrep2()) {
+            //save_condemned_mould_change();
+        }
+    });
+    $('#mouldsave_lnk6_1').click(function () {
+        if (count_cust_mouldrep1()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk6_2').click(function () {
+        if (count_cust_mouldrep2()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk7_1').click(function () {
+        if (count_cust_mouldrep1()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk7_2').click(function () {
+        if (count_cust_mouldrep2()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk8_1').click(function () {
+        if (count_cust_mouldrep1()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk8_2').click(function () {
+        if (count_cust_mouldrep2()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk9_1').click(function () {
+        if (count_cust_mouldrep1()) {
+            //save_condemned_mould_change();
+        }
+    });
+    $('#mouldsave_lnk9_2').click(function () {
+        if (count_cust_mouldrep2()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk10_1').click(function () {
+        if (count_cust_mouldrep1()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk10_2').click(function () {
+        if (count_cust_mouldrep2()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk11_1').click(function () {
+        if (count_cust_mouldrep1()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk11_2').click(function () {
+        if (count_cust_mouldrep2()) {
+            //save_condemned_mould_change();
+        }
+    });
+    $('#mouldsave_lnk12_1').click(function () {
+        if (count_cust_mouldrep1()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk12_2').click(function () {
+        if (count_cust_mouldrep2()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk13_1').click(function () {
+        if (count_cust_mouldrep1()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk13_2').click(function () {
+        if (count_cust_mouldrep2()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk14_1').click(function () {
+        if (count_cust_mouldrep1()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk14_2').click(function () {
+        if (count_cust_mouldrep2()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk15_1').click(function () {
+        if (count_cust_mouldrep1()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk15_2').click(function () {
+        if (count_cust_mouldrep2()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk16_1').click(function () {
+        if (count_cust_mouldrep1()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk16_2').click(function () {
+        if (count_cust_mouldrep2()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk17_1').click(function () {
+        if (count_cust_mouldrep1()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk17_2').click(function () {
+        if (count_cust_mouldrep2()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk18_1').click(function () {
+        if (count_cust_mouldrep1()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk18_2').click(function () {
+        if (count_cust_mouldrep2()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+
+
+
+
+    $('#cmw_1_1_1_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_1_1_1');
+
+    });
+
+    $('#cmw_1_2_2_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_1_2_2');
+
+    });
+
+    $('#cmw_2_1_1_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_2_1_1');
+
+    });
+
+    $('#cmw_2_2_2_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_2_2_2');
+
+    });
+
+    $('#cmw_3_1_1_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_3_1_1');
+    });
+
+    $('#cmw_3_2_2_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_3_2_2');
+    });
+
+    $('#cmw_4_1_1_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_4_1_1');
+    });
+
+    $('#cmw_4_2_2_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_4_2_2');
+    });
+
+    $('#cmw_5_1_1_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_5_1_1');
+    });
+
+    $('#cmw_5_2_2_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_5_2_2');
+    });
+
+    $('#cmw_6_1_1_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_6_1_1');
+    });
+
+    $('#cmw_6_2_2_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_6_2_2');
+    });
+
+    $('#cmw_7_1_1_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_7_1_1');
+    });
+
+    $('#cmw_7_2_2_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_7_2_2');
+    });
+
+    $('#cmw_8_1_1_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_8_1_1');
+    });
+
+    $('#cmw_8_2_2_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_8_2_2');
+    });
+
+    $('#cmw_9_1_1_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_9_1_1');
+    });
+
+    $('#cmw_9_2_2_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_9_2_2');
+    });
+
+    $('#cmw_10_1_1_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_10_1_1');
+    });
+
+    $('#cmw_10_2_2_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_10_2_2');
+    });
+
+    $('#cmw_11_1_1_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_11_1_1');
+    });
+
+    $('#cmw_11_2_2_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_11_2_2');
+    });
+
+
+    $('#cmw_12_1_1_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_12_1_1');
+    });
+
+    $('#cmw_12_2_2_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_12_2_2');
+    });
+
+    $('#cmw_13_1_1_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_13_1_1');
+    });
+
+    $('#cmw_13_2_2_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_13_2_2');
+    });
+
+    $('#cmw_14_1_1_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_14_1_1');
+    });
+
+    $('#cmw_14_2_2_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_14_2_2');
+    });
+
+    $('#cmw_15_1_1_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_15_1_1');
+    });
+
+    $('#cmw_15_2_2_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_15_2_2');
+    });
+
+    $('#cmw_16_1_1_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_16_1_1');
+    });
+
+    $('#cmw_16_2_2_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_16_2_2');
+    });
+
+    $('#cmw_17_1_1_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_17_1_1');
+    });
+
+    $('#cmw_17_2_2_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_17_2_2');
+    });
+
+    $('#cmw_18_1_1_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_18_1_1');
+    });
+
+    $('#cmw_18_2_2_').bind('keyup mouseover blur change', function (e) {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_18_2_2');
+    });
+
+
+
+
+
+
+
+
+    $('.close_lnk_1').click(function () {
+        $('.div_changemould').hide();
+        $('.div_changemould').find('input,select').removeClass('changed');
+
+        $('#aflogsheet_condem_mould').find('td.click_mould,a.click_mould,td.td_mould_div.changed,td.changed').each(function () {
+
+            $(this).removeClass('click_mould');
+            $(this).removeClass('changed');
+            $(this).removeAttr("style");
+        });
+
+        $('#aflogsheet_condem_mould').find('select.scust').each(function () {
+            //var sval = '';
+            //var _val = $(this).val(sval);
+
+        });
+
+
+        $('#aflogsheet_condem_mould').find('select.dropdown1,select.dropdownb1').each(function () {
+            //var sval = '';
+            // var _val = $(this).empty();
+            $(this).append("<option value = '0'>--Select--</option>");
+        });
+
+
+    });
+
+
+    //$(document).click(function () {
+    //    $(".div_changemould").hide();
+    //    $('.div_changemould').find('input,select').removeClass('changed');
+    //});
+
+    $('.div_changemould').click(function (e) {
+        e.stopPropagation();
+    });
+
+    function check_visible() {
+        var i;
+        var elemnt = ($('.div_changemould:visible').length);
+        if (elemnt >= 1) {
+            $('.div_changemould').find('input,select').removeClass('changed');
+            i = false
+
+        } else {
+
+            i = true;
+        }
+        return i;
+    }
+
+
+    $(function () {
+        $('#Dialog_mouldmain').dialog({
+            autoOpen: false,
+            width: 350,
+            height: 500,
+            resizable: false,
+            draggable: true,
+            title: 'Mould Maintenance...',
+            closeText: 'Close[x]',
+            modal: true,
+            position: [800, 300]
+        });
+
+    });
+
+    $(function () {
+        $('#Dialog_addafcasting_tblnew').dialog({
+            autoOpen: false,
+            width: 820,
+            height: 2000,
+            resizable: false,
+            draggable: true,
+            title: 'Add Activity...',
+            closeText: 'Close[x]',
+            modal: true,
+            position: 'center'
+
+        });
+
+
+    });
+
+    $(function () {
+        $('#Dialog_editafcasting_tblnew').dialog({
+            autoOpen: false,
+            width: 820,
+            height: 2000,
+            resizable: false,
+            draggable: true,
+            title: 'Edit Activity...',
+            closeText: 'Close[x]',
+            modal: true,
+            position: 'center'
+        });
+
+    });
+
+
+    $(function () {
+        $('#Dialog_addafcasting_tbl2new').dialog({
+            autoOpen: false,
+            width: 820,
+            height: 2000,
+            resizable: false,
+            draggable: true,
+            title: 'Add Activity...',
+            closeText: 'Close[x]',
+            modal: true,
+            position: 'center'
+
+        });
+
+
+    });
+
+    $(function () {
+        $('#Dialog_editafcasting_tbl2new').dialog({
+            autoOpen: false,
+            width: 820,
+            height: 2000,
+            resizable: false,
+            draggable: true,
+            title: 'Edit Activity...',
+            closeText: 'Close[x]',
+            modal: true,
+            position: 'center'
+        });
+
+    });
+
+    $('#afcasting_tbl1addrow_btn,#afcasting_tbl1addrow_lnk').click(function () {
+        afcasting_tblnew_partial();
+    });
+
+    $('#afcasting_tbl2addrow_btn,#afcasting_tbl2addrow_lnk').click(function () {
+        afcasting_tbl2new_partial();
+    });
+
+    //checkbox/ this code is for activity validation----->
+    $(function () {
+        $("#ckb_all").click(function () {
+            $("input[name*='datarowcheck_']").attr("checked", this.checked);
+        });
+
+        $("#click_to_copy").click(function () {
+            var count = $("input[name*='datarowcheck_']:checked").length;
+            $("#ckb_all").removeAttr("checked");
+            if (count == 0) {
+               alert("No row(s) selected!");
+               return false
+            } 
+            //else {
+            //    $("#ckb_all").removeAttr("checked");
+            //    return confirm(count + " row(s) selected!");
+
+            //}
+        });
+    });
+</script>

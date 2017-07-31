@@ -1,0 +1,453 @@
+﻿@{
+    ViewBag.Title = "_SFPMonitor";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/jquery")
+<div id="DialogSFP_Add1" style="overflow: hidden;"></div>
+<div id="DialogSFP_Edit" style="overflow: hidden;"></div>
+<div id="page_id">0</div>
+<div id="container">
+    <div id="sfp_div_summary_cf" style="margin-left: 50px; margin-bottom: 50px;">
+        <h6 style="margin-left: 50px; width: 700px; float: left">FSF SLAG POT TRACKING SUMMARY</h6>
+        <h6 style="width: 400px; float: left">CF SLAG POT TRACKING SUMMARY</h6>
+
+
+        @*<table class="af_tbl" id="fsf_realtime">
+            <tr>
+                <th colspan="2">Real Time</th>
+            </tr>
+            <tr>
+                <th style="background-color: orange;" id="fsf_rtdate" colspan="2"></th>
+            </tr>
+            <tr>
+                <th>Pots Empty</th>
+                <td id="empty_2"></td>
+            </tr>
+            <tr>
+                <th>FSF Pots Cooling</th>
+                <td id="cooling_2"></td>
+            </tr>
+            <tr>
+                <th>FSF Pots Overdue</th>
+                <td id="overdue_2"></td>
+            </tr>
+        </table>*@
+        <table class="af_tbl" id="fsf_summary">
+            <tr>
+                <th>Date</th>
+                <th colspan="2">
+                    <input type="text" id="fsf_date" />
+                </th>
+                <th>
+                    @*<input type="button" id="load_summary_fsf_btn" value="Load" />*@
+                </th>
+                <th colspan="2">Overdue Count:</th>
+                <td id="fsf_hr_25"></td>
+            </tr>
+            <tr>
+                <th rowspan="8" style="width: 15px;">Daily Dumping Schedule</th>
+                <th>0600H</th>
+                <td id="fsf_hr_6"></td>
+                <th>1400H</th>
+                <td id="fsf_hr_14"></td>
+                <th>2200H</th>
+                <td id="fsf_hr_22"></td>
+            </tr>
+            <tr>
+                <th>0700H</th>
+                <td id="fsf_hr_7"></td>
+                <th>1500H</th>
+                <td id="fsf_hr_15"></td>
+                <th>2300H</th>
+                <td id="fsf_hr_23"></td>
+            </tr>
+            <tr>
+                <th>0800H</th>
+                <td id="fsf_hr_8"></td>
+                <th>1600H</th>
+                <td id="fsf_hr_16"></td>
+                <th>0000H</th>
+                <td id="fsf_hr_0"></td>
+            </tr>
+            <tr>
+                <th>0900H</th>
+                <td id="fsf_hr_9"></td>
+                <th>1700H</th>
+                <td id="fsf_hr_17"></td>
+                <th>0100H</th>
+                <td id="fsf_hr_1"></td>
+            </tr>
+            <tr>
+                <th>1000H</th>
+                <td id="fsf_hr_10"></td>
+                <th>1800H</th>
+                <td id="fsf_hr_18"></td>
+                <th>0200H</th>
+                <td id="fsf_hr_2"></td>
+            </tr>
+            <tr>
+                <th>1100H</th>
+                <td id="fsf_hr_11"></td>
+                <th>1900H</th>
+                <td id="fsf_hr_19"></td>
+                <th>0300H</th>
+                <td id="fsf_hr_3"></td>
+            </tr>
+            <tr>
+                <th>1200H</th>
+                <td id="fsf_hr_12"></td>
+                <th>2000H</th>
+                <td id="fsf_hr_20"></td>
+                <th>0400H</th>
+                <td id="fsf_hr_4"></td>
+            </tr>
+            <tr>
+                <th>1300H</th>
+                <td id="fsf_hr_13"></td>
+                <th>2100H</th>
+                <td id="fsf_hr_21"></td>
+                <th>0500H</th>
+                <td id="fsf_hr_5"></td>
+            </tr>
+        </table>
+        <table class="af_tbl" id="cf_realtime">
+            <tr>
+                <th colspan="4">Real Time</th>
+            </tr>
+            <tr>
+                <th style="background-color: orange;" id="cf_rtdate" colspan="4"></th>
+            </tr>
+            <tr>
+                <th>Pots Empty</th>
+                <td colspan="2" id="empty_1"></td>
+                <th>Pots Empty</th>
+            </tr>
+            <tr>
+                <th>FSF Pots Cooling</th>
+                <td id="cooling_2"></td>
+                <td id="cooling_1"></td>
+                <th>CF Pots Cooling</th>
+            </tr>
+            <tr>
+                <th>FSF Pots Overdue</th>
+                <td id="overdue_2"></td>
+                <td id="overdue_1"></td>
+                <th>CF Pots Overdue</th>
+            </tr>
+            <tr>
+                <th>FSF Pots For Breaking</th>
+                <td id="forbreaking_2"></td>
+                <td id="forbreaking_1"></td>
+                <th>CF Pots For Breaking</th>
+            </tr>
+            <tr></tr>
+            <tr>
+                <td colspan="4">
+                    <div>
+                        <table class="legend_tbl af_tbl">
+                            @*<tr>
+                                <th colspan="4" style="text-align: center !important; border-bottom: solid;">Legend</th>
+                            </tr>*@
+                            <tr>
+                                <th>Available:</th>
+                                <td><span style="float: left !important" class="status_0"></span></td>
+                                <th>Cooling:</th>
+                                <td><span style="float: left" class="status_1 active"></span></td>
+                            </tr>
+                            <tr>
+                                <th>For Breaking:</th>
+                                <td><span style="float: left" class="status_2 for_breaking"></span></td>
+                                <th>Overdue:</th>
+                                <td><span style="float: left" class="overdue"></span></td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <table class="af_tbl" id="cf_summary">
+            <tr>
+                <th>Date</th>
+                <th colspan="2">
+                    <input type="text" id="cf_date" />
+                </th>
+                <th>
+                    @*<input type="button" id="load_summary_cf_btn" value="Load" />*@
+                </th>
+                <th colspan="2">Overdue Count:</th>
+                <td id="cf_hr_25"></td>
+            </tr>
+            <tr>
+                <th rowspan="8" style="width: 15px;">Daily Dumping Schedule</th>
+                <th>0600H</th>
+                <td id="cf_hr_6"></td>
+                <th>1400H</th>
+                <td id="cf_hr_14"></td>
+                <th>2200H</th>
+                <td id="cf_hr_22"></td>
+            </tr>
+            <tr>
+                <th>0700H</th>
+                <td id="cf_hr_7"></td>
+                <th>1500H</th>
+                <td id="cf_hr_15"></td>
+                <th>2300H</th>
+                <td id="cf_hr_23"></td>
+            </tr>
+            <tr>
+                <th>0800H</th>
+                <td id="cf_hr_8"></td>
+                <th>1600H</th>
+                <td id="cf_hr_16"></td>
+                <th>0000H</th>
+                <td id="cf_hr_0"></td>
+            </tr>
+            <tr>
+                <th>0900H</th>
+                <td id="cf_hr_9"></td>
+                <th>1700H</th>
+                <td id="cf_hr_17"></td>
+                <th>0100H</th>
+                <td id="cf_hr_1"></td>
+            </tr>
+            <tr>
+                <th>1000H</th>
+                <td id="cf_hr_10"></td>
+                <th>1800H</th>
+                <td id="cf_hr_18"></td>
+                <th>0200H</th>
+                <td id="cf_hr_2"></td>
+            </tr>
+            <tr>
+                <th>1100H</th>
+                <td id="cf_hr_11"></td>
+                <th>1900H</th>
+                <td id="cf_hr_19"></td>
+                <th>0300H</th>
+                <td id="cf_hr_3"></td>
+            </tr>
+            <tr>
+                <th>1200H</th>
+                <td id="cf_hr_12"></td>
+                <th>2000H</th>
+                <td id="cf_hr_20"></td>
+                <th>0400H</th>
+                <td id="cf_hr_4"></td>
+            </tr>
+            <tr>
+                <th>1300H</th>
+                <td id="cf_hr_13"></td>
+                <th>2100H</th>
+                <td id="cf_hr_21"></td>
+                <th>0500H</th>
+                <td id="cf_hr_5"></td>
+            </tr>
+        </table>
+        <br />
+
+    </div>
+    <div id="sfp_div_m">
+        <hr />
+        <h5 style="margin-left: 500px; margin-right: 500px;">SFP Location and Pots Monitor</h5>
+        <hr />
+        <div class="container1">
+            <div class="container2">
+                <table class="af_tbl sfp_monitor" id="sfpgroup_1">
+                    <tr>
+                        <th>A</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container1">
+            <div class="container2">
+                <table class="af_tbl sfp_monitor" id="sfpgroup_2">
+                    <tr>
+                        <th>B</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container1">
+            <div class="container2">
+                <table class="af_tbl sfp_monitor" id="sfpgroup_3">
+                    <tr>
+                        <th>C</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container1">
+            <div class="container2">
+                <table class="af_tbl sfp_monitor" id="sfpgroup_4">
+                    <tr>
+                        <th>D</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container1">
+            <div class="container2">
+                <table class="af_tbl sfp_monitor" id="sfpgroup_5">
+                    <tr>
+                        <th>E</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <div class="container1">
+            <div class="container2">
+                <table class="af_tbl sfp_monitor" id="sfpgroup_6">
+                    <tr>
+                        <th>F</th>
+                    </tr>
+                </table>
+            </div>
+            <img src="../Images/arrow_up_2.png" class="sfp_arrow" id="F_up"/>
+            <img src="../Images/arrow_down_2.png" class="sfp_arrow" id="F_down"/>
+        </div>
+        <div class="container1">
+            <div class="container2">
+                <table class="af_tbl sfp_monitor" id="sfpgroup_7">
+                    <tr>
+                        <th>G</th>
+                    </tr>
+                </table>
+            </div>
+            <img src="../Images/arrow_up_2.png" class="sfp_arrow" id="G_up"/>
+            <img src="../Images/arrow_down_2.png" class="sfp_arrow" id="G_down"/>
+        </div>
+        <div class="container1">
+            <div class="container2">
+                <table class="af_tbl sfp_monitor" id="sfpgroup_8">
+                    <tr>
+                        <th>H</th>
+                    </tr>
+                </table>
+            </div>
+            <img src="../Images/arrow_up_2.png" class="sfp_arrow" id="H_up"/>
+            <img src="../Images/arrow_down_2.png" class="sfp_arrow" id="H_down"/>
+        </div>
+        <div class="container1">
+            <div class="container2">
+                <table class="af_tbl sfp_monitor" id="sfpgroup_9">
+                    <tr>
+                        <th>I</th>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        <table class="af_tbl sfp_monitor" id="sfpgroup_10" style="margin-left: 20px;">
+            <tr>
+                <th>Pot No.</th>
+            </tr>
+        </table>
+        <table class="af_tbl sfp_monitor" id="sfpgroup_11">
+            <tr>
+                <th>Pot No.</th>
+            </tr>
+        </table>
+        <table class="af_tbl sfp_monitor" id="sfpgroup_12">
+            <tr>
+                <th>Pot No.</th>
+            </tr>
+        </table>
+        <table class="af_tbl sfp_monitor" id="sfpgroup_13">
+            <tr>
+                <th>Pot No.</th>
+            </tr>
+        </table>
+        <table class="af_tbl sfp_monitor" id="sfpgroup_14">
+            <tr>
+                <th>Pot No.</th>
+            </tr>
+        </table>
+        <table class="af_tbl sfp_monitor" id="sfpgroup_15">
+            <tr>
+                <th>Pot No.</th>
+            </tr>
+        </table>
+        <table class="af_tbl sfp_monitor" id="sfpgroup_16">
+            <tr>
+                <th>Pot No.</th>
+            </tr>
+        </table>
+        <table class="af_tbl sfp_monitor" id="sfpgroup_17">
+            <tr>
+                <th>Pot No.</th>
+            </tr>
+        </table>
+    </div>
+    <div id="sfp_div_legend">
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $('#ui-datepicker-div').remove();
+        load_monitor();
+        $(function () {
+            $('#DialogSFP_Add1').dialog({
+                autoOpen: false,
+                width: 400,
+                height: 650,
+                resizable: false,
+                draggable: true,
+                title: 'Pots Entry',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [500, 0]
+            });
+        });
+        $(function () {
+            $('#DialogSFP_Edit').dialog({
+                autoOpen: false,
+                width: 400,
+                height: 650,
+                resizable: false,
+                draggable: true,
+                title: 'Pots Edit',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [500, 0]
+            });
+        });
+        function GetMonthName(monthNumber) {
+            var months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+            return months[monthNumber];
+        }
+        function checklength(i) {
+            if (i < 10) {
+                i = "0" + i;
+            }
+            return i;
+        }
+
+        function AddClock(element) {
+            $(document).ready(function () {
+                refreshIntervalId = setInterval(function () {
+                    var now = new Date();
+                    var outStr = GetMonthName(now.getMonth()) + " " + now.getDate() + " " + checklength(now.getHours()) + ':' + checklength(now.getMinutes()) + ':' + checklength(now.getSeconds());
+                    $(element).html(outStr);
+                }, 1000);
+            });
+        }
+        AddClock('#fsf_rtdate');
+        AddClock('#cf_rtdate');
+        $("#cf_date").datepicker();
+
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+
+        });
+        $("#fsf_date").datepicker();
+
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+
+        });
+    });
+
+</script>

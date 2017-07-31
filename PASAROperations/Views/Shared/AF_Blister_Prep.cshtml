@@ -1,0 +1,300 @@
+﻿@{
+    ViewBag.Title = "AF_Blister_Prep";
+}
+
+<div id="aftable_div">
+   <table class="aftable" id="blisterprep_tbl" >
+       <thead>
+        <tr>
+         <th rowspan="2" class="thlong" id="starttime_th">Start Time</th>
+         <th rowspan="2" class="thlong" id="endtime_th">End Time</th> 
+           <th rowspan="2" class="thshort">Code</th>
+          <th rowspan="2" class="thlong">Activity</th>
+          <th rowspan="2" class="thshort">Duration</th>
+          @*<th colspan="3">Charging</th>*@
+          <th class="thshort">Converter No.</th>
+          <th class="thshort">ppm Sulfur</th>
+          <th class="thshort">Cycle No.</th>
+          <th class="thshort">Weight</th>
+        
+          <th class="thshort">Temp</th>
+          <th rowspan="2" class="thlong">Remarks</th>
+           <th colspan="2" class="thshort">Actions</th>
+             <!-- <th rowspan="2" class="thshort">Deletes</th>-->
+           
+        </tr>
+           
+           </thead>
+      
+
+       @* <input type="button" class="mat_des" value="Add another row" id="addrow_btn">*@
+       <!-- append row after clicking add button -->
+       <tbody id="tbody">
+          <tr style="display: none;"></tr>
+       </tbody>
+
+      </table>
+        
+
+       @* <h5>AF_Blister_Prep</h5>*@
+
+   @*2nd table*@
+   <div id="tuyere_div_aflogsheet">
+        <h6><font color="black">Tuyere Measurements</font><img width="30" height="30" title="Save tuyere measurements now" id="save_tm" src="~/Images/diskette.png" class="pos_right"></h6>
+         <table id="aflogsheet_tuymeas">
+            <tr>
+               <th class="sizing">&nbsp;</th>
+               <th>West</th>
+               <th>East</th>
+            </tr>
+             <tr>
+               <td class="sizing">TOP</td>
+               <td><input type="text" class="extratbl_input" placeholder="0" id="textb_westtop" /></td>
+               <td><input type="text" class="extratbl_input" placeholder="0"  id="textb_easttop" /></td>
+            </tr>
+             <tr>
+               <td class="sizing">BOTTOM</td>
+               <td><input type="text" class="extratbl_input" placeholder="0" id="textb_westbottom"/></td>
+               <td><input type="text" class="extratbl_input" placeholder="0" id="textb_eastbottom" /></td>
+            </tr>
+        </table>
+    </div>
+
+         @*3rd table*@
+   <div id="consume_div_aflogsheet">
+       <h6>Consumables <img width="30" height="30" title="Save consumables now" id="save_consume" src="~/Images/diskette.png" class="pos_right"></h6>
+         <table id="aflogsheet_consume">
+            <tr>
+               
+               <th class="half_size">Descriptions</th>
+               <th class="half_size">Quantity</th>
+            </tr>
+             <tr>
+               <td class="sizing">Lead Bars (Pcs)</td> 
+                  
+                  <td class="sizing"><input type="text" class="extratbl_input" placeholder="0" id="textb_leadbars"/></td>
+             </tr>
+             <tr>
+                <td class="sizing">Scrap Anode (MT)</td> 
+              
+                <td ><input type="text" class="extratbl_input" placeholder="0" id="textb_scrapanode"/></td>
+             </tr>
+             <tr>
+                <td class="sizing">Short Tuyere (Pcs)</td> 
+               
+                <td><input type="text" class="extratbl_input" placeholder="0" id="textb_shorttuyere"/></td>
+             </tr>
+               <tr>
+                <td class="sizing">Lead Anodes</td> 
+               
+                <td><input type="text" class="extratbl_input" placeholder="0" id="textb_leadanodes"/></td>
+             </tr>
+        </table>
+      
+    </div>
+
+
+
+    
+    <div id="skim_div_aflogsheet">
+       <h6>Skimming Values</h6>
+          <table id="aflogsheet_skimval">
+            <tr>
+               <th>Endpoint</th>
+               <th>Target</th>
+               <th>Actual</th>
+            </tr>
+             <tr>
+               <td>% Oxygen</td>
+                <td id="skO2_target" class="yellow_bg">-</td>
+                 <td id="skO2_val" class="yellow_bg">-</td>
+            </tr>
+             <tr>
+               <td>ppm Sulfur</td>
+                <td id="paramid_140" class="yellow_bg">-</td>
+                <td id="skS_val" class="yellow_bg">-</td>
+            </tr>
+              <tr>
+               <td>ppm Lead (Pb)</td>
+              <td id="skPb_target" class="yellow_bg">-</td>
+              <td id="skPb_val" class="yellow_bg">-</td>
+            </tr>
+              <tr>
+                <td>ppm Arsenic (As)</th>
+                <td id="skAs_target" class="yellow_bg">-</td>
+                <td id="skAs_val" class="yellow_bg">-</td>
+            </tr>
+              <tr>
+             <td>Draft Pressure (mmH2O)</th>
+             <td id="ptarget_93" class="yellow_bg">-</td>
+             <td id="sk_dpressure" class="yellow_bg">-</td>
+            </tr>
+              <tr>
+               <td>Combustion air (Nm3/h)</td>
+               <td id="ptarget_94" class="yellow_bg">-</td>
+               <td id="sk_combair" class="yellow_bg">-</td>
+            </tr>
+              <tr>
+                <td>HFO Firing rate (l/h)</th>
+                <td id="ptarget_95" class="yellow_bg">-</td>
+                <td id="sk_hforate" class="yellow_bg">-</td>
+            </tr>
+              <tr>
+             <td>Temperature (degC)</th>
+             <td id="ptarget_8" class="yellow_bg">-</td>
+             <td id="skimtemp" class="yellow_bg">-</td>
+            </tr>
+        </table>
+      
+    </div>
+
+
+
+
+    <div id="b_div_aflogsheet">
+       <h6>Blowing Values</h6>
+         <table id="aflogsheet_blow">
+            <tr>
+               <th>Endpoint</th>
+               <th>Target</th>
+               <th>Actual</th>
+            </tr>
+             <tr>
+               <td>% Oxygen</td>
+               <td id="oxO2_target" class="yellow_bg">-</td>
+               <td id="oxO2_val" class="yellow_bg">-</td>
+            </tr>
+             <tr>
+               <td>ppm Sulfur</td>
+               <td id="paramid_142" class="yellow_bg">-</td>
+               <td id="oxS_val" class="yellow_bg">-</td>
+            </tr>
+              <tr>
+               <td>Tuyere Pressure</td>
+               <td id="ptarget_99" class="yellow_bg">-</td>
+               <td id="#" class="yellow_bg">-</td>
+            </tr>
+            @*  <tr>
+               <td>Steam Pressure</td>
+               <td id="" >-</td>
+               <td id="#" >-</td>
+            </tr>*@
+              <tr>
+               <td>Draft Pressure (mmH2O)</td>
+               <td id="ptarget_98" class="yellow_bg">-</td>
+               <td id="ox_dpressure" class="yellow_bg">-</td>
+            </tr>
+              <tr>
+               <td>Combustion air (Nm3/h)</td>
+               <td id="ptarget_100" class="yellow_bg">-</td>
+               <td id="ox_combair" class="yellow_bg">-</td>
+            </tr>
+             <tr>
+               <td>HFO Firing rate (l/h)</th>
+               <td id="ptarget_101" class="yellow_bg">-</td>
+               <td id="ox_hforate" class="yellow_bg">-</td>
+            </tr>
+             <tr>
+                 <td>Temperature (degC)</td>
+                 <td id="paramid_143" class="yellow_bg">-</td>
+                 <td id="oxtemp" class="yellow_bg">-</td>
+             </tr>
+            
+        </table>
+      
+    </div>
+
+    <div id="p_div_aflogsheet">
+       <h6>Poling Values</h6>
+         <table id="aflogsheet_pol">
+             <tr>
+               <th>Endpoint</th>
+               <th>Target</th>
+               <th>Actual</th>
+            </tr>
+             <tr>
+               <td>% Oxygen</td>
+               <td id="paramid_145" class="yellow_bg">-</td>
+               <td id="reO2_val" class="yellow_bg">-</td>
+            </tr>
+             <tr>
+               <td>ppm Sulfur</td>
+               <td id="paramid_146" class="yellow_bg">-</td>
+               <td id="reS_val" class="yellow_bg">-</td>
+            </tr>
+              <tr>
+               <td>Tuyere Pressure</td>
+               <td id="ptarget_106" class="yellow_bg">-</td>
+               <td id="#" class="yellow_bg">-</td>
+            </tr>
+              <tr>
+               <td>Steam Pressure</td>
+               <td id="ptarget_108" class="yellow_bg">-</td>
+               <td id="#" class="yellow_bg">-</td>
+            </tr>
+              <tr>
+               <td>Draft Pressure (mmH2O)</td>
+               <td id="ptarget_104" class="yellow_bg">-</td>
+               <td id="red_dpressure" class="yellow_bg">-</td>
+            </tr>
+              <tr>
+               <td>Combustion air (Nm3/h)</td>
+               <td id="ptarget_107" class="yellow_bg">-</td>
+               <td id="red_combair" class="yellow_bg">-</td>
+            </tr>
+             <tr>
+               <td>LPG Firing rate (l/h)</td>
+               <td id="ptarget_105" class="yellow_bg">-</td>
+               <td id="red_lpgrate" class="yellow_bg">-</td>
+            </tr>
+             <tr>
+                 <td>Temperature (degC)</td>
+                 <td id="paramid_147" class="yellow_bg">-</td>
+                 <td id="polltemp" class="yellow_bg">-</td>
+             </tr>
+        </table>
+      
+    </div>
+
+</div>
+@*<span id="lotid" style="visibility:hidden;"></span>*@
+@*@Scripts.Render("~/bundles/jquery") *@
+<!-- prevent reload the page -->
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //$('.aftimelogid_ ').chang('changed', function () {
+        //    $(this).css({ 'background-color': '#FFFFCC' });
+        //});
+
+
+        load_AF_Act();
+        load_extra();
+        load_af_remarks_query();
+        load_fuel_reading();
+        load_lpg_reading();
+        //load_tuyere_meas();
+
+        //load_cosumables();
+        //load_skim();
+        //load_blowing();
+        //load_poling();
+        load_afrefining_data_phase2();
+        load_aflims_data_phase2();
+
+        load_aflimstarget_data_phase2();
+        load_pitarget_data_phase2();
+        load_afpi_data_phase2();
+
+        //alert('done loading extra table');
+
+
+    });
+
+    //window.onbeforeunload = function () {
+    //    return "";
+    //}
+
+
+
+</script>

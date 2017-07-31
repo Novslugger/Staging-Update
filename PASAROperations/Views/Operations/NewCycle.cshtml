@@ -1,0 +1,131 @@
+﻿@model IEnumerable<PASAROperations.Models.VWCycleRecent>  
+@{
+    ViewBag.Title = "NewCycle";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Pathname = Request.ApplicationPath;
+
+    if (ViewBag.Pathname == "/"){
+        ViewBag.Pathname = "";
+    }
+    
+}
+<div id="cf_wrapperdiv">
+<div id="cf_sidediv">&nbsp;</div>
+<div id="cf_maindiv">
+
+   
+   
+        <h6 id="selectcampaign">I. Create New CYCLE </h6>
+        <table id="assigncycle_tbl" border="0">
+            <tr>
+                <th>Converter</th>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>Cycle #</th>
+                <th>Campaign</th>
+                <th>Status</th>
+                <th>Select</th>
+            </tr>
+
+            @foreach (var item in Model) { 
+            <tr id= "tredit_@Html.DisplayFor(modelItem => item.ConverterId)">
+
+       <td class="cycle_converter_td">@Html.ValueFor(modelItem => item.ConverterName)</td>
+       <td class="cycle_timerange_td">@Html.ValueFor(modelItem => item.Cycle_Start_Time, "{0:MMM-dd-yy hh:mm tt}")</td>
+       <td class="cycle_timerange_td">@Html.ValueFor(modelItem => item.Cycle_End_Time, "{0:MMM-dd-yy hh:mm tt}")</td>
+       <td>@Html.ValueFor(modelItem => item.CycleNumber)</td>
+       <td class="campaign_td">@Html.ValueFor(modelItem => item.CampaignNumber)</td>
+       <td class="cycstatus_td">@Html.ValueFor(modelItem => item.CycleStatusName)</td>
+       <td>
+                @{ if (@Html.ValueFor(modelItem => item.CycleStatusName).ToString() == "On Going") {}
+               else{<a class="addcycle_btn" href="@ViewBag.Pathname/Operations/NewCycle_Partial/?ConvIdparam=@Html.ValueFor(modelItem => item.ConverterId)">ADD</a>}
+                }
+       </td></tr>   
+       }
+ </table>
+ <div id="campaigntable">
+ <div id="mydiv"></div>
+ </div>
+ </div>
+ </div>
+<div id="DialogCycle_Select" style="overflow: hidden;"></div>
+
+    @Scripts.Render("~/bundles/jquery") 
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        var cyclestat;
+
+        $("td.cycstatus_td").each(function (index) {
+          
+            cyclestat = $(this).text();
+
+            if (cyclestat == 'On Going') {
+
+                $(this).css({ "background-color": "#E6FFE6" });
+
+            } else if (cyclestat == 'Finished') {
+            
+                $(this).css({ "background-color": "#FFDBD2" });
+            
+            } else if (cyclestat == 'Checked') {
+
+                $(this).css({ "background-color": "#CAE4FF" });
+
+            } else if (cyclestat == 'Loaded to BI') {
+
+                $(this).css({ "background-color": "#E0E0E0" });
+
+            }
+
+
+
+            $(function () {
+
+                $('#DialogCycle_Select').dialog({
+                    autoOpen: false,
+                    Height: 500,
+                    minWidth: 400,
+                    resizable: false,
+                    draggable: true,
+                    closeText: 'Close[x]',
+                    title: 'Add New Cycle',
+                    modal: true,
+                    position: [500, 300],
+                    close: close_addcycle
+
+                });
+
+                $('.addcycle_btn').live('click', function () {
+
+                    var tr_id = $(this).closest('tr').attr('id');
+                  
+                    $('#' + tr_id).addClass('cycle_selected');
+
+
+                    $('#DialogCycle_Select').load(this.href, function () {
+                        $(this).dialog('open');
+                    });
+                    return false;
+                });
+
+
+               
+            });
+
+
+        });
+
+
+
+      //  if (cyclestat == 'On Going') {
+       //     alert('onging');
+        
+      //  }
+       
+     
+    });
+
+</script>

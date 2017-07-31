@@ -1,0 +1,20 @@
+﻿<div id="edit_mtapper_div">
+<b>Edit Matter Tapper</b>
+<br />
+<br />
+
+<div id="mtapper_id">@ViewBag.MtapperId</div>
+<div>Matte Tapper #: <input id="edit_mtappernum_txtb" type ="text" value="@ViewBag.MtapperNum" ></div>
+<br />
+  <br />  
+
+
+<div>Matte Tapper: @Html.DropDownList("edit_mtapper_ddl", (SelectList)ViewBag.fsfe_emplist)
+    <br />
+     <br />
+       <br />
+     <br />
+    <input id="edit_mtapper_ok_btn" type="button" value="Edit" />&nbsp;<input id="edit_mtapper_close_btn" type="button" value="Close" />
+
+</div>
+</div>

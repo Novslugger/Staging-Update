@@ -1,0 +1,13 @@
+﻿<div id="change_employee_assign_partial">
+    <h6>Assign Employee</h6>
+    <br />
+   
+    <p>Supervisor: @Html.DropDownList("suplist", (SelectList)ViewBag.sup_list)</p>
+    <br /><br />
+    <p>CRE: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; @Html.DropDownList("optlist", (SelectList)ViewBag.opt_list)</p>
+    <br /><br />
+    <p>Skimmer: &nbsp;&nbsp;@Html.DropDownList("skimlist", (SelectList)ViewBag.skim_list)</p>
+    <br /><br /><br /><br />
+    <input id="change_employee_assign_btn" type="button" value="Change" />
+
+</div>

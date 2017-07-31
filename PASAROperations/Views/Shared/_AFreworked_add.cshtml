@@ -1,0 +1,72 @@
+﻿@{
+    ViewBag.Title = "_AFreworked_add";
+}
+
+<div id="add_lotnum_div">
+<br />
+<br />
+
+<div class="hidden_element" id="reworkedlotid"></div>
+
+<strong>Date: </strong> 
+    <input id="select_reworked_date" style=" width: 180px; height: 25px; display: inline;" type="text" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<br>
+<br>
+<strong>Lot no.</strong>
+<div style="display: inline; width: 170px; height: 25px;">@Html.DropDownList("afreworked_lotid", (SelectList)ViewBag.lotlist,"--Select--")</div>
+<br>   
+<br>   
+<br>   
+<strong>Reworked Pcs:</strong>
+<input onkeypress="return NumericOnly(event)" type="number" id="reworked_pcs" style=" width: 95px; height: 25px; display: inline;" type="text" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<br>
+<br>
+<br>
+<br>
+    <input id="add_reworked_ok_btn" type="button" value="Add" />&nbsp;
+
+</div>
+      
+
+
+<script type="text/javascript">
+
+      
+    
+
+    $(document).ready(function () {
+
+              
+
+        $("#select_reworked_date").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: '../../Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: true,
+            onSelect: function (date) {
+
+                
+            }
+        });
+        $('#ui-datepicker-div').css('display', 'none');
+        $('#select_reworked_date').datepicker('setDate', 'today');
+        $(".ui-datepicker-trigger").mouseover(function () {
+        $(this).css('cursor', 'pointer');
+        });
+
+     
+
+    });
+
+
+
+
+
+
+
+
+</script>
+

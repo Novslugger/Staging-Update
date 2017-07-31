@@ -1,0 +1,60 @@
+﻿@*@{
+    ViewBag.Title = "_NewAFLotNumEdit";
+}
+
+<h2>_NewAFLotNumEdit</h2>*@
+<div id="add_lotnum_div">
+    <span style="position: absolute; top: 28px; left: 6px;" onclick="showdynalist()" accesskey="d" id="showdylist">.</span>
+   
+    <br />
+    <p class="hidden_element" id="aflotid">@ViewBag.aflotid</p>
+
+    <div id="aftype_list">AF Number: @Html.DropDownList("afnum_edit_ddl", (SelectList)ViewBag.afnum_list)</div>
+
+    <div style="position: absolute; left: 5px;">
+        <d>Current End Time: </d>
+        <span class="max_cast_lottime" id="max_cast_lottime">@ViewBag.currDate</span>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <div style="position: absolute; top: 105px; left: 39px;">Lot Number: <span id="createlot_span">@ViewBag.aflotnum</span></div>
+    <br />
+    <br />
+    <br />
+   @* <div style="position: absolute; left: 70px; top: 139px;" id="statst">
+        Status:
+        <select id="afstatus_ddl" class="cust_reclass fixedstat max_cast_lottime">
+            <option value="7">End of Lot</option>
+        </select>
+    </div>*@
+    <div style="position: absolute; top: 140px; left: 74px;" id="statdy">Status:@Html.DropDownList("afstatus_ddl", (SelectList)ViewBag.Status_list, new { @class = "dynastat" })</div>
+
+    <br />
+    <br />
+    <span style="position: absolute; left: 280px;">
+        <input id="newedit_clotnum_ok_btn"@*onclick="save_endlot()" accesskey="s"*@ type="button" value="Save" /></span>
+    <br />
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+    $('#aftype_list').hide();
+        //$('#statdy').hide();
+        //$('#statst').hide();
+    var stadyna;
+    var statst;
+    function showdynalist() {
+        $('#showdylist').click(function () {
+            $('#statdy').show();
+            statst = $('#statst').remove();
+            $('#add_lotnum_div').append(stadyna);
+        });
+    }
+        showdynalist();
+        aflot_status_change();
+    });
+</script>

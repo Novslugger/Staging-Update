@@ -1,0 +1,61 @@
+﻿<div id="add_consumable_entry" style="height: 80%;">
+    <b>SFP Consumable Form</b>
+    <table class="af_time_table">
+        <tr>
+            <td rowspan="2" class="label_datetype">Time Delivered : &nbsp;</td>
+            <td class="label_date">Date</td>
+        </tr>
+
+        <tr>
+            <td class="af_date_td">
+                <input id="start_date_input2" type="text" style="float: left;" value="@ViewBag.DateNow.ToString("MM/dd/yyyy")" />
+            </td>
+
+        </tr>
+    </table>
+    <div>
+        <span id="page_id">@ViewBag.Group</span>
+        <label style="margin-right: 5px;">Shift:</label>
+        &nbsp;&nbsp;
+        <label id="shift_">@ViewBag.Shift</label>
+        <br />
+        <br />
+        <label style="margin-right: 5px;">Parameter:</label>
+        &nbsp;&nbsp;
+        <label id="con_">@ViewBag.Param</label>
+        <span id="con_paramid" style="display: none;">@ViewBag.ParamId</span>
+        <br />
+        <br />
+        <br />
+        <label>Value:</label>
+        &nbsp;&nbsp;&nbsp;<input type="text" id="numval_input2" value="@ViewBag.NumVal"/>
+
+    </div>
+    <br />
+    <br />
+    <div>
+        <input type="button" style="float: right;" value="Edit" id="edit_sfpconsumable_btn" />
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#start_date_input2").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: serverpath + '/Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: true
+        });
+
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+
+        });
+
+    });
+
+
+</script>

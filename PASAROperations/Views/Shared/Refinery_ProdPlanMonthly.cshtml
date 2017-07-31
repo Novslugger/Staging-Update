@@ -1,0 +1,183 @@
+﻿@*<h6>PLAN VS ACTUAL</h6>*@
+<div>
+    &nbsp;<br>
+</div>
+<div style="position: absolute; left: 342px; top: 55px;">
+    @*  <img id="rpp_savedata_btn" width="25" height="25" src="../Images/diskette.png" /><span id="rpp_savedata_link" class="btn_label_span">Save</span>*@
+</div>
+<input type="text" id="ref_rppm_date" class="mbf_date" style="border: solid 1px black;" title="Filter by Month and Year" />
+<div id="pageNavPosition" style="float: right;"></div>
+<br>
+<br>
+<div id="refinery_plan_right_div">
+    <ul class="tabs-menu">
+        <li class="current"><a href="#tab-1"><b>First Crop Data</b></a></li>
+        <li><a href="#tab-2"><b>Second Crop Data</b></a></li>
+        <li><a href="#tab-3"><b>Third Crop Data</b></a></li>
+       @* <li><a href="#tab-4"><b>Fourth Crop Data</b></a></li>*@
+    </ul>
+    <!--------------------------------------------------------------------------- Tab 1 ----------------------------------------------------------->
+    <div id="tab-1" class="tab-content-pass">
+        <table class="rpp_refine_table" id="rppmothly_crop1_data_tbl">
+            <tr class="expand">
+                <th colspan="10">First Crop Data<span class="sign" style="float: right"></span></th>
+            </tr>
+            <tr class="rppmtr">
+                <th style="width: 1%;">Block</th>
+                <th style="width: 1%;">Crop</th>
+                <th style="width: 5%;">Net KAH RDNGS</th>
+                <th style="width: 5%;">Anode Charge MT</th>
+                <th style="width: 5%;">Anode wt/pc kg</th>
+                <th style="width: 5%;">Elapse Net KAH</th>
+                <th style="width: 5%;">Current EFF %</th>
+                <th style="width: 5%;">Required KAH</th>
+                <th style="width: 5%;">Date Time(hh:mm)</th>
+                <th style="width: 5%;">Scrap Ratio %</th>
+            </tr>
+        </table>
+    </div>
+    <!------------------------------------------------------------------------Tab 2 ------------------------------------------------------------------>
+    <div id="tab-2" class="tab-content-pass">
+        <table class="rpp_refine_table" id="rppmothly_crop2_data_tbl">
+            <tr class="expand">
+                <th colspan="10">Second Crop Data<span class="sign" style="float: right"></span></th>
+            </tr>
+            <tr class="rppmtr">
+                <th style="width: 1%;">Block</th>
+                <th style="width: 1%;">Crop</th>
+                <th style="width: 5%;">Net KAH RDNGS</th>
+                <th style="width: 5%;">Anode Charge MT</th>
+                <th style="width: 5%;">Anode wt/pc kg</th>
+                <th style="width: 5%;">Elapse Net KAH</th>
+                <th style="width: 5%;">Current EFF %</th>
+                <th style="width: 5%;">Required KAH</th>
+                <th style="width: 5%;">Date Time(hh:mm)</th>
+                <th style="width: 5%;">Scrap Ratio %</th>
+            </tr>
+        </table>
+    </div>
+    <!------------------------------------------------------------------------Tab 3 ------------------------------------------------------------------>
+    <div id="tab-3" class="tab-content-pass">
+        <table class="rpp_refine_table" id="rppmothly_crop3_data_tbl">
+            <tr class="expand">
+                <th colspan="10">Third Crop Data<span class="sign" style="float: right"></span></th>
+            </tr>
+            <tr class="rppmtr">
+                <th style="width: 1%;">Block</th>
+                <th style="width: 1%;">Crop</th>
+                <th style="width: 5%;">Net KAH RDNGS</th>
+                <th style="width: 5%;">Anode Charge MT</th>
+                <th style="width: 5%;">Anode wt/pc kg</th>
+                <th style="width: 5%;">Elapse Net KAH</th>
+                <th style="width: 5%;">Current EFF %</th>
+                <th style="width: 5%;">Required KAH</th>
+                <th style="width: 5%;">Date Time(hh:mm)</th>
+                <th style="width: 5%;">Scrap Ratio %</th>
+            </tr>
+        </table>
+    </div>
+    <!------------------------------------------------------------------------Tab 4 ------------------------------------------------------------------>
+   @* <div id="tab-4" class="tab-content-pass">
+        <table class="rpp_refine_table" id="rppmothly_crop4_data_tbl">
+            <tr class="expand">
+                <th colspan="10">Fourth Crop Data<span class="sign" style="float: right"></span></th>
+            </tr>
+            <tr class="rppmtr">
+                <th style="width: 1%;">Block</th>
+                <th style="width: 1%;">Crop</th>
+                <th style="width: 5%;">Net KAH RDNGS</th>
+                <th style="width: 5%;">Anode Charge MT</th>
+                <th style="width: 5%;">Anode wt/pc kg</th>
+                <th style="width: 5%;">Elapse Net KAH</th>
+                <th style="width: 5%;">Current EFF %</th>
+                <th style="width: 5%;">Required KAH</th>
+                <th style="width: 5%;">Date Time(hh:mm)</th>
+                <th style="width: 5%;">Scrap Ratio %</th>
+            </tr>
+        </table>
+    </div>*@
+    <div id="Dialog_Refinery_ProdPlanMonth_EditDate" style="overflow: hidden;"></div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#ref_rppm_date").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'MM yy',
+            showButtonPanel: true,
+            onClose: function () {
+                var iMonth = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                var iYear = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+                $(this).datepicker('refresh');
+                $(".ui-datepicker-calendar").hide();
+                $('thead #tr_param').remove();
+                $('#tbody tr').filter(function () {
+                    return $(this).has('input');
+                }).remove();
+                load_block_prod_plan_month();
+            },
+
+            beforeShow: function () {
+                if ((selDate = $(this).val()).length > 0) {
+                    iYear = selDate.substring(selDate.length - 4, selDate.length);
+                    iMonth = jQuery.inArray(selDate.substring(0, selDate.length - 5), $(this).datepicker('option', 'monthNames'));
+                    $(this).datepicker('option', 'defaultDate', new Date(iYear, iMonth, 1));
+                    $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+                }
+            }
+        });
+
+        $("#ref_rppm_date").focus(function () {
+            $(".ui-datepicker-calendar").hide();
+            $("#ui-datepicker-div").position({
+                my: "center top",
+                at: "center bottom",
+                of: $(this)
+            });
+        });
+
+        $("#ref_rppm_date").blur(function () {
+            $(".ui-datepicker-calendar").hide();
+        });
+
+        $('#ref_rppm_date').datepicker('setDate', 'today');
+
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+        });
+        $('#ref_rppm_date').focus();
+
+        $(".tabs-menu a").click(function (event) {
+            event.preventDefault();
+            $(this).parent().addClass("current");
+
+            $(this).parent().siblings().removeClass("current");
+
+            var tab = $(this).attr("href");
+            $(".tab-content-pass").not(tab).css("display", "none");
+            $(tab).fadeIn();
+        });
+        $('#Dialog_Refinery_ProdPlanMonth_EditDate').dialog({
+            modal:true,
+            autoOpen:false,            
+            resizable:false,
+            draggable:true,
+            show: "slideUp",
+            width: 450,
+            height: 450,
+            title: 'Modify Date/Time',
+            closeText: 'Close [X]',          
+            //position: { my: "center", at: "center", of: window },
+            open: function (event, ui) {
+                $(event.target).parent().css('position', 'fixed');
+                $(event.target).parent().css('top', '200px');
+            },
+        });
+
+    });
+
+
+</script>

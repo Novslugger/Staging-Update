@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "AFView";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/bundles/jquery") 
+@*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h2>AFView</h2>*@
+@Html.Partial("~/Views/Shared/_AFLotNo.cshtml")
+<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="button" onclick="goBack()" class="small_btn" value="Back">
+<div id="af_log_wrapper">
+    <div id="af_log_wrapper_left">
+        <div class="thetabs">
+             <div class="verticaltabs">
+                <dl class="tabs vertical">
+                    <dd class="active"><a href="#" id="hide" onclick="ddactive_af2('_NewAFBlister');return false;">Blister Receive</a></dd>
+                    <dd><a href="#"  id="tab2" onclick="ddactive_af2('newaf_refining');return false;">Refining</a></dd>
+                    <dd><a href="#" id="tab3" onclick="ddactive_af2('newaf_casting');return false;">Casting</a></dd>
+                </dl>  
+               </div>
+        </div>
+    </div>
+    <div id="af_log_wrapper_right">
+        <div class="horizontaltabs"> 
+            <div class="tabs-content">
+                <div class="content active" id="htab-panel3">
+                       @Html.Partial("~/Views/Shared/_NewAFBlister.cshtml")
+                </div>
+             </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    //Back previous page -1
+    function goBack() {
+        window.history.back();
+    }
+    //change into blue tab
+    $(function () {
+        $("#fsfe_shiftdate_select").on
+              ("change", function () {                            //blue-like
+                  $('#fsfe_log_header').css({ "background-color": "#0099FF" });
+              });
+        //
+        //$("#fsfe_shiftdate_select").on
+        //    ("change", function () {
+        //    $('select').attr('value','');
+        //    });
+        //change when click to other inside DOM
+        $("dd").on
+              ("click", function () {                              //blue-like
+                  $('#fsfe_log_header').css({ "background-color": "#0099FF" });
+                  $('#fsfe_shiftdate_select').attr('value', '');
+                  $('#fsfe_shift_btn').prop('disabled', true);
+                  $('#fsfe_shiftdate_select').css({ "background-color": "" });
+                  //$('select').attr('value', '');
+                  //$('#fsfe_shiftdate_select').css({ "background-color": "#0099FF" });
+              });
+    });
+   
+
+</script>

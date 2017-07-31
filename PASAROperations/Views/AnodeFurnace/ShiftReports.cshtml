@@ -1,0 +1,134 @@
+﻿@{
+    ViewBag.Title = "ShiftReports";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ @Scripts.Render("~/bundles/jquery") 
+@*<h4>&nbsp;&nbsp;&nbsp;&nbsp;AFCA Shift Reports</h4>*@
+<!-- -->
+<div id="af_log_header"><br />
+    <strong>Date: </strong> <input id="newaf_shiftdate" type="text" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+    <strong>Shift: </strong><select id="newaf_shiftdate_select">
+            <option></option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+           </select>
+
+    <!-- Select Button -->
+    <input id="newaf_shift_btn" type="button" value="Select" disabled="disabled"/>
+    <!-- End -->
+  @*  <div id="aflotid"></div>*@
+     <div id="af_prod_id" style="display: none"></div>
+    @*<span id="page_id" style="display: none"></span>*@
+</div>
+
+
+
+<!-- -->
+
+<div id="af_log_wrapper">
+    <div id="af_log_wrapper_left">
+        <div class="thetabs">
+             <div class="verticaltabs">
+                <dl class="tabs vertical">
+                    <dd class="active"><a href="#" id="hide" onclick="ddactive_af('af_manpower');return false;">MANPOWER</a></dd>
+                    <dd><a href="#"  id="" onclick="ddactive_af('af_op_stat');return false;">OPERATIONAL STATUS</a></dd>
+                    <dd><a href="#" id="" onclick="ddactive_af('af_ref_op');return false;">REFINING OPERATION</a></dd>
+                    <dd><a href="#" id="" onclick="ddactive_af('');return false;" >Casting</a></dd>
+                    <dd><a href="#" id="" onclick="ddactive_af('');return false;" >Porous Plugs</a></dd>
+                    <dd><a href="#" id="" onclick="ddactive_af('');return false;" >Other Equipment</a></dd>
+                    <dd><a href="#" id="" onclick="ddactive_af('');return false;" >Other Activities</a></dd>
+                    <dd><a href="#" id="" onclick="ddactive_af('');return false;" >Mainenance Activities</a></dd>
+                    <dd><a href="#" id="" onclick="ddactive_af('');return false;" >Turnover</a></dd>
+                    <dd><a href="#" id="" onclick="ddactive_af('');return false;" >Consumables/Spares availability</a></dd>
+                    <dd><a href="#" id="" onclick="ddactive_af('');return false;" >Equipment Concerns</a></dd>
+                    <dd><a href="#" id="" onclick="ddactive_af('');return false;" >Ladle Measurements</a></dd>
+                    <dd><a href="#" id="" onclick="ddactive_af('');return false;" >Mould Replacement</a></dd>
+                    <dd><a href="#" id="" onclick="ddactive_af('');return false;" >Refining Operation</a></dd>
+                </dl>  
+               </div>
+        </div>
+    </div>
+    <div id="af_log_wrapper_right">
+        <div class="horizontaltabs"> 
+            <div class="tabs-content">
+                <div class="content active" id="htab-panel2">
+                       @Html.Partial("~/Views/Shared/af_manpower.cshtml")
+                </div>
+             </div>
+        </div>
+    </div>
+    <br><br><br>
+</div>
+<script type="text/javascript">
+    
+   
+    //change into blue tab
+    $(function () {
+        $("#newaf_shiftdate_select").on
+              ("change", function () {                            //blue-like
+                  $('#af_log_header').css({ "background-color": "#0099FF" });
+              });
+        //
+        //$("#fsfe_shiftdate_select").on
+        //    ("change", function () {
+        //    $('select').attr('value','');
+        //    });
+        //change when click to other inside DOM
+        $("dd").on
+              ("click", function () {                              //blue-like
+                  $('#af_log_header').css({ "background-color": "#0099FF" });
+                  $('#newaf_shiftdate_select').attr('value', '');
+                  $('#newaf_shift_btn').prop('disabled', true);
+                  $('#newaf_shiftdate_select').css({ "background-color": "" });
+                  //$('select').attr('value', '');
+                  //$('#fsfe_shiftdate_select').css({ "background-color": "#0099FF" });
+              });
+    });
+    $(document).ready(function () {
+    
+        $("#newaf_shiftdate").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: '../Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: true,
+            onSelect: function (date) {
+                assign_fsfe_prodid();
+            }
+        });
+        $('#ui-datepicker-div').css('display', 'none');
+        $('#newaf_shiftdate').datepicker('setDate', 'today');
+        
+
+        $(".ui-datepicker-trigger").mouseover(function () {
+
+
+            $(this).css('cursor', 'pointer');
+
+        });
+
+        //Disable <select> option when selected in another <select>
+
+        $('select[id*="NewAFList_roletypeid_"]').blur(function () {
+
+
+            // start by setting everything to enabled
+            $('select[id*="NewAFList_roletypeid_"] option').attr('disabled', false);
+
+            // loop each select and set the selected value to disabled in all other selects
+            $('select[id*="NewAFList_roletypeid_"]').each(function () {
+                var $this = $(this);
+                $('select[id*="NewAFList_roletypeid_"]').not($this).find('option').each(function () {
+                    if ($(this).attr('value') == $this.val())
+                        $(this).attr('disabled', true);
+                });
+            });
+
+        });
+        ////end
+    });
+
+</script>

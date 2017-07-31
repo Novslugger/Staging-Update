@@ -1,0 +1,290 @@
+﻿@{
+    ViewBag.Title = "AFTargets";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/jquery")
+
+@*@Html.Partial("~/Views/Shared/_AFLotNoSelect.cshtml")*@
+
+<div class="container">
+    <div id="aflot_div"><br /><b>Lot No: </b> @Html.DropDownList("aflot_ddl", (SelectList)ViewBag.af_lot_list, "--Select Lot--") 
+    &nbsp;&nbsp;&nbsp;  
+    <input id="savetolot_target_btn" type="button" value="Save to Lot" disabled="disabled"/>
+        </div>
+    <div>
+        <div class="target_div">
+           &nbsp;&nbsp;&nbsp; Target Name &nbsp;&nbsp;&nbsp; 
+            @Html.DropDownList("aftarget_ddl", (SelectList)ViewBag.af_target_list) &nbsp;&nbsp;&nbsp; <input id="edit_target_btn" type="button" value="Edit" ; />
+            &nbsp;&nbsp;&nbsp; <input id="save_target_btn" type="button" value="Save Target"/>
+            @*&nbsp;&nbsp;&nbsp; <input id="savetolot_target_btn" type="button" value="Save to Lot"; />*@
+            &nbsp;&nbsp;&nbsp; <input id="saveasnew_target_btn" type="button" value="New Default"/>
+        </div>
+        <div id="targets_Table1" class="left_top_div">
+            <div>
+                <table class="af_tbl">
+                    <tr>
+                        <th colspan="3">Anode Furnace</th>
+                    </tr>
+                    <tr>
+                        <th>TARGETS</th>
+                        <th>Min</th>
+                        <th class="lastth">Max</th>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Ppm Nickel</td>
+                        <td id="ptargetmin_123" class="select"></td>
+                        <td id="ptargetmax_123" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Ppm Bismuth</td>
+                        <td id="ptargetmin_124" class="select"></td>
+                        <td id="ptargetmax_124" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Ppm Antimony</td>
+                        <td id="ptargetmin_125" class="select"></td>
+                        <td id="ptargetmax_125" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Ppm Selenium</td>
+                        <td id="ptargetmin_126" class="select"></td>
+                        <td id="ptargetmax_126" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Ppm Tellurium</td>
+                        <td id="ptargetmin_127" class="select"></td>
+                        <td id="ptargetmax_127" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Ppm Arsenic</td>
+                        <td id="ptargetmin_128" class="select"></td>
+                        <td id="ptargetmax_128" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Ppm Lead</td>
+                        <td id="ptargetmin_129" class="select"></td>
+                        <td id="ptargetmax_129" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Ppm Sulfur</td>
+                        <td id="ptargetmin_130" class="select"></td>
+                        <td id="ptargetmax_130" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">% Oxygen</td>
+                        <td id="ptargetmin_131" class="select"></td>
+                        <td id="ptargetmax_131" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Ppm Iron</td>
+                        <td id="ptargetmin_132" class="select"></td>
+                        <td id="ptargetmax_132" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Ppm Silicon Dioxide</td>
+                        <td id="ptargetmin_133" class="select"></td>
+                        <td id="ptargetmax_133" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">As/Pb</td>
+                        <td id="ptargetmin_134" class="select"></td>
+                        <td id="ptargetmax_134" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">As/(Sb+Bi)</td>
+                        <td id="ptargetmin_135" class="select"></td>
+                        <td id="ptargetmax_135" class="select"></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <table id="targets_Table2" class="af_tbl">
+                    <tr>
+                        <th>BLISTER RECEIVE</th>
+                        <th>Min</th>
+                        <th class="lastth">Max</th>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Blister Receive MT</td>
+                        <td id="ptargetmin_137" class="select"></td>
+                        <td id="ptargetmax_137" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Refining Cycle Time</td>
+                        <td id="ptargetmin_138" class="select"></td>
+                        <td id="ptargetmax_138" class="select"></td>
+                    </tr>
+                    <tr>
+                        <th>SKIMMING</th>
+                        <th>Min</th>
+                        <th>Max</th>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Process Time</td>
+                        <td id="ptargetmin_139" class="select"></td>
+                        <td id="ptargetmax_139" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Ppm Sulfur</td>
+                        <td id="ptargetmin_140" class="select"></td>
+                        <td id="ptargetmax_140" class="select"></td>
+                    </tr>
+                    <tr>
+                        <th>BLOWING</th>
+                        <th>Min</th>
+                        <th>Max</th>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Process Time</td>
+                        <td id="ptargetmin_141" class="select"></td>
+                        <td id="ptargetmax_141" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Ppm Sulfur</td>
+                        <td id="ptargetmin_142" class="select"></td>
+                        <td id="ptargetmax_142" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Temperature</td>
+                        <td id="ptargetmin_143" class="select"></td>
+                        <td id="ptargetmax_143" class="select"></td>
+                    </tr>
+                    <tr>
+                        <th>POLING</th>
+                        <th>Min</th>
+                        <th>Max</th>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Process Time</td>
+                        <td id="ptargetmin_144" class="select"></td>
+                        <td id="ptargetmax_144" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">% Oxygen</td>
+                        <td id="ptargetmin_145" class="select"></td>
+                        <td id="ptargetmax_145" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Ppm Sulfur</td>
+                       <td id="ptargetmin_146" class="select"></td>
+                        <td id="ptargetmax_146" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Temperature</td>
+                        <td id="ptargetmin_147" class="select"></td>
+                        <td id="ptargetmax_147" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">LPG - kg/hr</td>
+                        <td id="ptargetmin_148" class="select"></td>
+                        <td id="ptargetmax_148" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">LPG - Efficiency</td>
+                        <td id="ptargetmin_149" class="select"></td>
+                        <td id="ptargetmax_149" class="select"></td>
+                    </tr>
+                </table>
+            </div>
+            <div>
+                <table id="targets_Table3" class="af_tbl">
+                    <tr>
+                        <th>CASTING</th>
+                        <th>Min</th>
+                        <th>Max</th>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Casting Rate</td>
+                        <td id="ptargetmin_151" class="select"></td>
+                        <td id="ptargetmax_151" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Total Anode Cast</td>
+                        <td id="ptargetmin_152" class="select"></td>
+                        <td id="ptargetmax_152" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Yield with Slag</td>
+                        <td id="ptargetmin_154" class="select"></td>
+                        <td id="ptargetmax_154" class="select"></td>
+                    </tr>
+                    <tr>
+                        <th>CONSUMABLES</th>
+                        <th>Min</th>
+                        <th>Max</th>
+                    </tr>
+                    <tr>
+                        <td class="td_left">LPG</td>
+                        <td id="ptargetmin_155" class="select"></td>
+                        <td id="ptargetmax_155" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">HFO</td>
+                        <td id="ptargetmin_156" class="select"></td>
+                        <td id="ptargetmax_156" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">LFO</td>
+                        <td id="ptargetmin_157" class="select"></td>
+                        <td id="ptargetmax_157" class="select"></td>
+                    </tr>
+                    <tr>
+                        <td class="td_left">Lead Bars</td>
+                        <td id="ptargetmin_158" class="select"></td>
+                        <td id="ptargetmax_158" class="select"></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+        @*<div class="left_bottom_div">
+            <img id="save_reftargets_btn" width="25" height="25" class="save_reftargets_imgbtn" src="../Images/save_disk.png" title="Save Targets" />
+            <span class="btn_label_span" id="save_reftargets_link">Save Targets.. </span>
+        </div>*@
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        load_aftarget_tbl();
+    });
+</script>
+
+@*<div class="right_bottom_div">
+            <img id="save_addtargets_btn" width="25" height="25" class="save_addtargets_imgbtn" src="../Images/save_disk.png" title="Save Targets" />
+            <span class="btn_label_span" id="save_addtargets_link">Save Targets.. </span>
+        </div>*@
+
+
+
+
+
+
+
+
+@*<div id="fsfe_log_wrapper">
+    <div id="fsfe_log_wrapper_left">
+        <div class="thetabs">
+
+            <div class="verticaltabs">
+
+                <dl class="tabs vertical">
+                    <dd class="active"><a href="#" onclick="ddactive_aftar('_AFTargets1');return false;">Refinery Limits</a></dd>
+                    <dd><a href="#" onclick="ddactive_aftar('_AFTargets2');return false;">Additional Targets</a></dd>
+                </dl>
+
+            </div>
+        </div>
+    </div>
+    <div id="fsfe_log_wrapper_right">
+        <div class="horizontaltabs">
+            <div class="tabs-content">
+
+                <div class="content active" id="htab-panel1">
+                    @Html.Partial("~/Views/Shared/_AFTargets1.cshtml")
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@

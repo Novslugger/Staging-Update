@@ -1,0 +1,44 @@
+﻿@model IEnumerable<PASAROperations.Models.VWAF_AFNum>  
+@{
+    ViewBag.Title = "Assign Year";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="cf_wrapperdiv">
+<div id="cf_sidediv">&nbsp;</div>
+<div id="cf_maindiv">
+
+        <h6 id="selectcampaign">I. Assign Year</h6>
+        <table id="assigncampaign_tbl" border="0">
+            <tr>
+                <th>AF</th>
+                <th>Prod Year</th>
+                <th>Select</th>
+            </tr>
+
+                @foreach (var item in Model) { 
+            <tr id= "tredit_@Html.DisplayFor(modelItem => item.AF_NumId)">
+            <td>@Html.DisplayFor(modelItem => item.AFNum)</td>
+            <td>
+                
+                @if (item.AF_NumId == 1) { 
+
+                @Html.DropDownList("ProdYearlist1", ViewData["ProdYear_list1"] as SelectList)
+                } else if (item.AF_NumId == 2) { 
+
+                @Html.DropDownList("ProdYearlist2", ViewData["ProdYear_list2"] as SelectList)
+                }
+
+
+            </td>
+            <td><a href="#" onclick="SelectProdYear(@Html.DisplayFor(modelItem => item.AF_NumId));return false;">Save</a></td>
+            </tr>   
+                }
+
+        </table>
+   
+   
+
+
+</div>
+</div>

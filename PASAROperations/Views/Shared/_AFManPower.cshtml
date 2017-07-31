@@ -1,0 +1,41 @@
+﻿<div id="add_afmanpower_div">
+<b>Anode Furnace Man Power Form</b>
+<br />
+<br />
+
+<br />
+
+<div>Stage: &nbsp;&nbsp;&nbsp; <select id="af_stage_ddl">
+                                <option>Select</option>
+                                <option value="1">Refining</option>
+                                <option value="2">Casting</option>
+                               </select>
+
+</div>
+       <br /><br />
+<div>Start Time: &nbsp;&nbsp;<span id="st_stagetime"></span></div>
+    <br /><br />
+<div>End Time: &nbsp;&nbsp;&nbsp;<span id="et_stagetime"></span></div>
+    <br /><br />
+
+    <div>Position: &nbsp;&nbsp;&nbsp; <select disabled="disabled" id="af_mposition_ddl">
+                                <option>Select</option>
+                                <option value="1">Operator 1</option>
+                                <option value="2">Operator 2</option>
+                                <option value="3">Supervisor 1</option>
+                                <option value="4">Supervisor 2</option>
+                               </select> </div>
+<br /><br />
+<br /><br />
+
+
+<div>Start Employee:  &nbsp;&nbsp;&nbsp; @Html.DropDownList("startemp_ddl", (SelectList)ViewBag.MP_List, "--Select--", new { @disabled = "disabled" })</div>
+    <br />
+<div>End Employee:  &nbsp;&nbsp;&nbsp; @Html.DropDownList("endemp_ddl", (SelectList)ViewBag.MP_List, "--Select--", new { @disabled = "disabled" })</div>
+
+    <br />
+     <br />
+    <input id="add_afmanpower_ok_btn" type="button" value="OK" />
+     <br />
+
+</div>

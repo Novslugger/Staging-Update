@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PASAROperations", "PASAROperations\PASAROperations.csproj", "{22AE05C8-5DA5-4364-9735-48F464427BC7}"
+EndProject
+Global
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 2
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = http://levtf01:8080/tfs/pasarinhousecollection
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = PASAROperations\\PASAROperations.csproj
+		SccProjectName1 = PASAROperations
+		SccLocalPath1 = PASAROperations
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{22AE05C8-5DA5-4364-9735-48F464427BC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22AE05C8-5DA5-4364-9735-48F464427BC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22AE05C8-5DA5-4364-9735-48F464427BC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22AE05C8-5DA5-4364-9735-48F464427BC7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

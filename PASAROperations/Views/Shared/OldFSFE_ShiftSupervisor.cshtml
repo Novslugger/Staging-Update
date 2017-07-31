@@ -1,0 +1,178 @@
+﻿<h6 id="h6_fsfe">Man Power Assignment</h6>
+
+<div id="interfaceid">1</div>
+<div id ="fsfe_shift_div">
+      <div id="fsfe_shift_left_div">
+<div id="fsfe_manpower_div"><h6 class="h6_fsfe_lbl">I. Man Power</h6>
+
+  <div id="fsfe_manpower_table_left">
+   <br />
+    <table id="fsfe_manpower_table">
+           <tr><td >Sr Control Rm Engr : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_1", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist"})</td></tr>
+           <tr><td>Asst Control Rm Engr : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_2", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist"})</td></tr>
+           <tr><td>Shift Manager : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_3", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist"})</td></tr>
+           <tr><td >Steam Dryer Operator : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_4", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist"})</td></tr>
+           <tr><td>Furnaceman 1 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_5", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist"})</td></tr>
+           <tr><td>Furnaceman 2 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_6", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist"})</td></tr>
+           <tr><td>Dust Line Tender : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_8", (SelectList)ViewBag.FSFEEmpList,  "-- Select --",new {@class="fsfe_emplist"})</td></tr>
+           <tr><td>Slag Tender 1 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_9", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new {@class="fsfe_emplist"})</td></tr>
+           <tr><td>Slag Tender 2 : &nbsp;</td><td>&nbsp;@Html.DropDownList("FSFEEmplist_roleid_10", (SelectList)ViewBag.FSFEEmpList,  "-- Select --",new {@class="fsfe_emplist"})</td></tr>
+
+    </table>
+      </div>
+    <div id="fsfe_manpower_table_right">   <img id="fsfe_manpower_btn" width="25" height="25"  src="../Images/save_disk.png" />
+      <span id="savemanpower_link" class="btn_label_span">Save Man Power.. </span>
+    </div>
+
+</div>
+          <br />
+          <div id="fsfe_remarks_div"><h6 class="h6_fsfe_lbl">IV. Remarks/Actions Done for KPI
+              <img id="fsfe_shift_kpi_btn" width="25" height="25"  src="../Images/save_disk.png" />
+              <span id="savekpi_link" class="btn_label_span">Save Remarks.. </span></h6>
+           
+              <br />
+              <table id="fsfe_shift_kpi_table">
+                  <thead>
+                      <tr>
+                          <th style="width: 40%">KPI</th>
+                          <th style="width: 60%">Remarks / Comments</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      
+                      <tr>
+                          <td>A. % Cu in Melt Slag</td>
+                          <td><textarea id="txtarea_kpi2" class="txtarea_remarks" rows="2"></textarea></td>
+                      </tr>
+                      <tr>
+                          <td>B. Matte Grade</td>
+                          <td><textarea id="txtarea_kpi3" class="txtarea_remarks" rows="2"></textarea></td>
+                      </tr>
+                                            <tr>
+                          <td>C. Fe / SiO2</td>
+                          <td><textarea id="txtarea_kpi4" class="txtarea_remarks" rows="2"></textarea></td>
+                      </tr>
+                                            <tr>
+                          <td>D. Matte + Scum Level, cm</td>
+                          <td><textarea id="txtarea_kpi5" class="txtarea_remarks"  rows="2"></textarea></td>
+                      </tr>
+
+                  </tbody>
+
+
+              </table>
+
+
+
+
+          </div>
+          </div>
+   <div id="fsfe_shift_right_div">
+<div id="fsfe_regcrew_div">
+    <h6 class="h6_fsfe_lbl">II. Regular Crew  <img id="fsfe_shift_regcrew_btn" width="20" height="20"  src="../Images/red_plus.png" />
+              <span id="save_regcrew_link" class="btn_label_span">Add Crew </span></h6>
+    
+    <br />
+      <br />
+      <table id="fsfe_regularcrew_table">
+        <tr><th style="width: 35%">Regular Crew</th>
+            <th style="width: 65%">Special Activity</th>
+        </tr>
+       
+    </table>
+
+
+</div>
+          <br />
+    
+<div id="fsfe_mattetapper_div">
+    
+    <h6 class="h6_fsfe_lbl">III. Matte Tapper    <img id="fsfe_shift_mtapper_btn" width="20" height="20"  src="../Images/red_plus.png" />
+              <span id="save_mtapper_link" class="btn_label_span">Add Matte Tapper </span></h6>
+
+  
+   <br />  <br />
+      <table id="fsfe_mattetapper_table">
+        <tr><th style="width: 30%">Tapper Number</th>
+            <th style="width: 70%">Matte Tapper Name</th>
+        </tr>
+       
+    </table>
+
+
+
+
+
+
+</div>
+        </div>
+
+
+</div>
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $(function () {
+            $('#DialogRegularCrew_Select').dialog({                   
+                autoOpen: false,
+                width: 350,
+                height: 250,                   
+                resizable: false,
+                draggable: true,
+                title: 'Add Regular Crew',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [900, 260]
+            });
+
+
+
+           $('#DialogRegularCrewEdit_Select').dialog({                   
+                autoOpen: false,
+                width: 350,
+                height: 250,                   
+                resizable: false,
+                draggable: true,
+                title: 'Edit Regular Crew',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [900, 260]
+           });
+
+
+           $('#DialogMatteTapper_Select').dialog({
+               autoOpen: false,
+               width: 350,
+               height: 250,
+               resizable: false,
+               draggable: true,
+               title: 'Add Matte Tapper',
+               closeText: 'Close[x]',
+               modal: true,
+               position: [900, 260]
+           });
+
+           $('#DialogMatteTapperEdit_Select').dialog({
+               autoOpen: false,
+               width: 350,
+               height: 250,
+               resizable: false,
+               draggable: true,
+               title: 'Add Matte Tapper',
+               closeText: 'Close[x]',
+               modal: true,
+               position: [900, 260]
+           });
+            
+      
+        });
+
+        load_shift_supervisor();
+
+
+    })
+
+</script>

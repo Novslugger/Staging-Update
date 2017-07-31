@@ -1,0 +1,65 @@
+﻿ <div id="CFcycleselectorForm">
+  @using (Html.BeginForm(null, null, FormMethod.Post, new { id = "cycle_select_form" }))
+  { 
+        <h6>CF Cycle Collector</h6>
+
+        <div class="inline_field">&nbsp;<p>Start Date &nbsp;&nbsp;</p><p>@Html.TextBox("startdate", (string)ViewBag.cycleselectsdate + " 7:00")</p></div>
+        <div class="inline_field">&nbsp;<p>End Date &nbsp;&nbsp;&nbsp;</p><p>@Html.TextBox("enddate", (string)ViewBag.cycleselectedate + " 7:00", new { @class = "date_pick"})</p></div>
+        <div class="inline_field">&nbsp;<p>Converter</p><p>@Html.DropDownList("converter", ViewData["CVList"] as SelectList)</p></div>
+      
+  <br />  <br />  <br />
+          <button id="cycle_selector_btn" type="submit">Search</button>
+      <br />  <br />
+      <div id="cyclelist">
+          <table id="cycletable">
+              <tr>
+                  <th id="th_Cyclenum">CV #</th>
+                  <th>Cycle Start Date</th>
+                  <th>Cycle #</th>
+                  <th>Status</th>
+              </tr>
+          </table>
+
+      </div>
+      
+  }
+</div>
+    @Scripts.Render("~/bundles/jquery") 
+  <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#startdate").datepicker({
+                showOn: 'button',
+                buttonText: 'Show Date',
+                buttonImageOnly: true,
+                buttonImage: serverpath + '/Images/calendar.png',
+                dateFormat: 'mm-dd-yy',
+                constrainInput: true,
+                onSelect: function (date) {
+                    $("#startdate").val(date +  ' 7:00');
+                }
+            });
+
+
+            $("#enddate").datepicker({
+                showOn: 'button',
+                buttonText: 'Show Date',
+                buttonImageOnly: true,
+                buttonImage: serverpath + '/Images/calendar.png',
+                dateFormat: 'mm-dd-yy',
+                constrainInput: true,
+                onSelect: function (date) {
+                    $("#enddate").val(date + ' 7:00');
+                }
+            });
+
+			
+            //$(".ui-datepicker-trigger").mouseover(function() {
+            //    $(this).css('cursor', 'pointer');
+                
+            //});
+            
+        });
+            
+
+    </script>

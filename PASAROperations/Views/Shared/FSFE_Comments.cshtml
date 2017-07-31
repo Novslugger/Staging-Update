@@ -1,0 +1,176 @@
+﻿@{
+    ViewBag.Title = "FSFE Daily Comments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+  @Scripts.Render("~/bundles/jquery") 
+
+<div id="sfp_comments_div">
+    <div id="top_div" style="left: 100px; width: 95%;">
+        <h6>FSF Process Review</h6>
+        <span id="page_id"></span>
+        <label style="float: left; font-size: 12px;">Date: </label>
+        <input type="text" id="comments_date" style="float: left; margin-left: 10px; margin-right: 10px; border: solid 1px black; width: 150px !important;" title="Select Date" />
+        @*<input type="button" id="select_date_comments" value="Select" style="font-size: 10px;"/>*@
+        &nbsp;&nbsp;<img id="comments_save_btn" class="save_btn" src="../Images/diskette.png" width="20" title="Save Changes" />
+        <div id="pageNavPosition" style="float: right;"></div>
+        <br />
+        <br />
+        <h6>HIGHLIGHTS:</h6>
+        <hr />
+        <textarea rows="3" id="paramid_439" class="todolist"></textarea>
+        <h6>FOCUS FOR THE DAY:</h6>
+        <hr />
+        <textarea rows="3" id="paramid_440" class="todolist"></textarea>
+        <hr />
+        <table class="af_tbl" id="comments_tbl" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th colspan="16">Daily KPI</th>
+                </tr>
+                <tr class="comment_tbl_header">
+                    <th>Cu Loss Parameter</th>
+                    <th>Remarks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th>Feed Charged(Total)</th>
+                    <td id="paramid_441"><input type="text"></td>
+                </tr>
+                <tr>
+                    <th>Matte Temperature</th>
+                    <td id="paramid_442"><input type="text"></td>
+                </tr>
+                <tr>
+                    <th>Slag Temperature</th>
+                    <td id="paramid_443"><input type="text"></td>
+                </tr>
+                <tr>
+                    <th>Matte Grade</th>
+                    <td id="paramid_444"><input type="text"></td>
+                </tr>
+                <tr>
+                    <th>Fe/SiO2 in Slag</th>
+                    <td id="paramid_445"><input type="text"></td>
+                </tr>
+                <tr>
+                    <th>Matte Level</th>
+                    <td id="paramid_446"><input type="text"></td>
+                </tr>
+                <tr>
+                    <th>Slag Level</th>
+                    <td id="paramid_447"><input type="text"></td>
+                </tr>
+                <tr>
+                    <th>Feed Moisture</th>
+                    <td id="paramid_452"><input type="text"></td>
+                </tr>
+                <tr>
+                    <th>Cu Loss in Slag</th>
+                    <td id="paramid_448"><input type="text"></td>
+                </tr>
+                <tr class="comment_tbl_header header_two">
+                    <th colspan="2">Consumption</th>
+                </tr>
+                <tr>
+                    <th>Oil</th>
+                    <td id="paramid_449"><input type="text"></td>
+                </tr>
+                <tr class="comment_tbl_header header_two">
+                    <th colspan="2">Production</th>
+                </tr>
+                <tr>
+                    <th>Matte</th>
+                    <td id="paramid_450"><input type="text"></td>
+                </tr>
+                <tr>
+                    <th>Slag</th>
+                    <td id="paramid_451"><input type="text"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#comments_date").datepicker({
+            showOn: 'both',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: serverpath + '/Images/calendar.png',
+            dateFormat: 'MM dd yy',
+            constrainInput: true,
+            onClose: function () {
+                load_fsfe_comments();
+            }
+            //changeMonth: true,
+            //changeYear: true,
+            //dateFormat: 'MM dd yy',
+            //showButtonPanel: true,
+            //onClose: function () {
+            //    var iMonth = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+            //    var iYear = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+            //    $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+            //    $(this).datepicker('refresh');
+            //    $('#tbody tr').filter(function () {
+            //        return $(this).has('input');
+            //    }).remove();
+
+            //    var select = $(this).datepicker().val();
+            //    load_sfp_comments();
+            //},
+
+            //beforeShow: function () {
+            //    if ((selDate = $(this).val()).length > 0) {
+            //        iYear = selDate.substring(selDate.length - 4, selDate.length);
+            //        iMonth = jQuery.inArray(selDate.substring(0, selDate.length - 5), $(this).datepicker('option', 'monthNames'));
+            //        $(this).datepicker('option', 'defaultDate', new Date(iYear, iMonth, 1));
+            //        $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+            //    }
+            //}
+        });
+
+        //$("#comments_date").focus(function () {
+        //    $(".ui-datepicker-calendar").hide();
+        //    $("#ui-datepicker-div").position({
+        //        my: "center top",
+        //        at: "center bottom",
+        //        of: $(this)
+        //    });
+        //});
+
+        //$("#comments_date").blur(function () {
+        //    $(".ui-datepicker-calendar").hide();
+        //});
+
+        $('#comments_date').datepicker('setDate', 'today');
+        var date = $('#comments_date').val();
+        load_fsfe_comments();
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+        });
+        $('input').live('change', function () {
+            $(this).css({ 'background-color': '#DFD8D1' });
+            $(this).addClass('changed');
+        });
+        //$('#forecast_date').focus();
+
+        $("#paramid_256").focus(function () {
+            if (document.getElementById('paramid_256').value === '') {
+                document.getElementById('paramid_256').value += '• ';
+            }
+        });
+        $("#paramid_256").keyup(function (event) {
+            var keycode = (event.keyCode ? event.keyCode : event.which);
+            if (keycode == '13') {
+                document.getElementById('paramid_256').value += '• ';
+            }
+            var txtval = document.getElementById('paramid_256').value;
+            if (txtval.substr(txtval.length - 1) == '\n') {
+                document.getElementById('paramid_256').value = txtval.substring(0, txtval.length - 1);
+            }
+        });
+
+    });
+</script>

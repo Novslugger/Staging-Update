@@ -1,0 +1,614 @@
+﻿@{
+    ViewBag.Title = "CFLogsheet";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Pathname = Request.ApplicationPath;
+
+    if (ViewBag.Pathname == "/")
+    {
+        ViewBag.Pathname = "";
+    }
+}
+<div id="Dialog_AddCF_mg" style="overflow: hidden;"></div>
+<div id="loading_div" class="hidden_div">
+    &nbsp;&nbsp;Loading..
+    <br />
+    <br />
+    <img id="barload_gif" src="~/Images/bar_loader.gif" />
+</div>
+<div id="CFlogsheet">
+
+    <div id="CFcycleselector">
+        @Html.Partial("~/Views/Shared/_CycleSelector.cshtml")
+    </div>
+
+    <div id="DialogTuyere_Select" style="overflow: hidden;"></div>
+    <div id="DialogAdd_Activity" style="overflow: hidden;"></div>
+    <div id="DialogAdd_Stage" style="overflow: hidden;"></div>
+    <div id="DialogEdit_Activity" style="overflow: hidden;"></div>
+    <div id="DialogInsertMid_Activity" style="overflow: hidden;"></div>
+    <div id="DialogChange_StartDate" style="overflow: hidden;"></div>
+    <div id="DialogChange_EmployeeAssign" style="overflow: hidden;"></div>
+
+
+    <div id="hideme" class="showform">HIDE</div>
+
+
+
+    <div id="second_div">
+
+        <div id="CF_CycleDetail_div">
+            <div id="cycledetail_div1">
+                <span class="cyc_detail_span">Cycle  Number:
+                    <h6 id="cfcyclenum_cycledetail">@ViewBag.CFlogsheet_CycNum</h6>
+                </span>
+                <br />
+
+                <span class="cyc_detail_span">CF Number:&nbsp;&nbsp;&nbsp;&nbsp;
+                    <h6 id="cfnum_cycledetail">@ViewBag.CFlogsheet_CFNum</h6>
+                </span>
+                <br />
+                <br />
+
+
+                <span class="cyc_detail_span">Tuyeres Blocked:&nbsp;&nbsp;&nbsp;<h6 id="cftuyere_blockcount">0</h6>
+                </span>
+                <br />
+
+                <span class="cyc_detail_span">Tuyeres Clogged:&nbsp;&nbsp;&nbsp;<h6 id="cftuyere_clogcount">0</h6>
+                </span>
+                <br />
+
+            </div>
+
+            <div id="cycledetail_div2">
+                <span class="cyc_detail_span">Start Time :
+                    <h6 id="cfstarttitme_cycledetail">@ViewBag.CFlogsheet_StartTime</h6>
+                    <a id="cycle_changestartdate" onclick="Change_StartDate();return false;">Change Start Date?</a></span>
+                <br />
+                <br />
+                <span class="cyc_detail_span">End Time :&nbsp;&nbsp;<h6 id="cfendtitme_cycledetail">@ViewBag.CFlogsheet_EndTime</h6>
+                </span>
+                <br />
+                <br />
+                <span class="cyc_detail_span">Status : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h6 id="cfstatus_cycledetail">@ViewBag.CFlogsheet_CycStatus</h6>
+                </span>
+
+            </div>
+            <div id="cycledetail_div3">
+                <div id="cyc_statval" class="hidden_div">@ViewBag.CFlogsheet_CycStatId</div>
+
+                <div id="cyc_cycid" class="hidden_div">@ViewBag.CFlogsheet_CycId</div>
+                <table id="cyc_stat_table">
+                    <tr>
+                        <th>Select</th>
+                        <th>Status</th>
+                        <th>Remarks</th>
+
+                    </tr>
+
+                    <tr>
+                        <td><a href="#" id="aref_stat1" class="aref_stat"></a></td>
+                        <td>Finished</td>
+                        <td class="cyc_stat_option" id="aref_remarks1"></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" id="aref_stat2" class="aref_stat"></a></td>
+                        <td>Checked</td>
+                        <td class="cyc_stat_option" id="aref_remarks2"></td>
+
+                    </tr>
+                    <tr>
+                        <td><a href="#" id="aref_stat3" class="aref_stat"></a></td>
+                        <td>Loaded to BI</td>
+                        <td class="cyc_stat_option" id="aref_remarks3"></td>
+
+                    </tr>
+
+                </table>
+
+
+            </div>
+        </div>
+
+        <div id="CF_CycleTuyere_div">
+            <div id="CF_CycleTuyere_div1">
+                <input id="add_new_stage_btn" type="button" value="Add New Stage" />
+                <div id="CF_CycleSulfur_div"><span class="cyc_detail_span">Sulfur, ppm:&nbsp;&nbsp;<h6 id="cf_cyclesulfur">@ViewBag.CFlogsheet_CycleSulfur</h6>
+                </span></div>
+                <div id="CF_CycleRemoveSulfur_div"><a href="#" onclick="Remove_Sulfur(@ViewBag.CFlogsheet_CycId);return false;">Remove S, ppm?</a></div>
+
+            </div>
+            <div id="CF_CycleTuyere_div2">
+
+
+                <table id="cftuyere_tbl">
+                    <tr id="cftuyere_tbl_label1">
+                        <td>1</td>
+                        <td>2</td>
+                        <td>3</td>
+                        <td>4</td>
+                        <td>5</td>
+                        <td>6</td>
+                        <td>7</td>
+                        <td>8</td>
+                        <td>9</td>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                        <td>15</td>
+                        <td>16</td>
+                        <td>17</td>
+                        <td>18</td>
+                        <td>19</td>
+                        <td>20</td>
+                        <td>21</td>
+                        <td>22</td>
+                        <td>23</td>
+                        <td>24</td>
+                        <td>25</td>
+                        <td>26</td>
+                        <td>27</td>
+                        <td>28</td>
+                        <td>29</td>
+
+                    </tr>
+                    <tr class="cftuyere_tbl_input">
+                        <td id="tuyere_td_1">&nbsp;</td>
+                        <td id="tuyere_td_2">&nbsp;</td>
+                        <td id="tuyere_td_3">&nbsp;</td>
+                        <td id="tuyere_td_4">&nbsp;</td>
+                        <td id="tuyere_td_5">&nbsp;</td>
+                        <td id="tuyere_td_6">&nbsp;</td>
+                        <td id="tuyere_td_7">&nbsp;</td>
+                        <td id="tuyere_td_8">&nbsp;</td>
+                        <td id="tuyere_td_9">&nbsp;</td>
+                        <td id="tuyere_td_10">&nbsp;</td>
+                        <td id="tuyere_td_11">&nbsp;</td>
+                        <td id="tuyere_td_12">&nbsp;</td>
+                        <td id="tuyere_td_13">&nbsp;</td>
+                        <td id="tuyere_td_14">&nbsp;</td>
+                        <td id="tuyere_td_15">&nbsp;</td>
+                        <td id="tuyere_td_16">&nbsp;</td>
+                        <td id="tuyere_td_17">&nbsp;</td>
+                        <td id="tuyere_td_18">&nbsp;</td>
+                        <td id="tuyere_td_19">&nbsp;</td>
+                        <td id="tuyere_td_20">&nbsp;</td>
+                        <td id="tuyere_td_21">&nbsp;</td>
+                        <td id="tuyere_td_22">&nbsp;</td>
+                        <td id="tuyere_td_23">&nbsp;</td>
+                        <td id="tuyere_td_24">&nbsp;</td>
+                        <td id="tuyere_td_25">&nbsp;</td>
+                        <td id="tuyere_td_26">&nbsp;</td>
+                        <td id="tuyere_td_27">&nbsp;</td>
+                        <td id="tuyere_td_28">&nbsp;</td>
+                        <td id="tuyere_td_29">&nbsp;</td>
+                    </tr>
+                    <tr class="cftuyere_tbl_input_measurement">
+                        <td id="tuyere_td_measurement_1">&nbsp;</td>
+                        <td id="tuyere_td_measurement_2">&nbsp;</td>
+                        <td id="tuyere_td_measurement_3">&nbsp;</td>
+                        <td id="tuyere_td_measurement_4">&nbsp;</td>
+                        <td id="tuyere_td_measurement_5">&nbsp;</td>
+                        <td id="tuyere_td_measurement_6">&nbsp;</td>
+                        <td id="tuyere_td_measurement_7">&nbsp;</td>
+                        <td id="tuyere_td_measurement_8">&nbsp;</td>
+                        <td id="tuyere_td_measurement_9">&nbsp;</td>
+                        <td id="tuyere_td_measurement_10">&nbsp;</td>
+                        <td id="tuyere_td_measurement_11">&nbsp;</td>
+                        <td id="tuyere_td_measurement_12">&nbsp;</td>
+                        <td id="tuyere_td_measurement_13">&nbsp;</td>
+                        <td id="tuyere_td_measurement_14">&nbsp;</td>
+                        <td id="tuyere_td_measurement_15">&nbsp;</td>
+                        <td id="tuyere_td_measurement_16">&nbsp;</td>
+                        <td id="tuyere_td_measurement_17">&nbsp;</td>
+                        <td id="tuyere_td_measurement_18">&nbsp;</td>
+                        <td id="tuyere_td_measurement_19">&nbsp;</td>
+                        <td id="tuyere_td_measurement_20">&nbsp;</td>
+                        <td id="tuyere_td_measurement_21">&nbsp;</td>
+                        <td id="tuyere_td_measurement_22">&nbsp;</td>
+                        <td id="tuyere_td_measurement_23">&nbsp;</td>
+                        <td id="tuyere_td_measurement_24">&nbsp;</td>
+                        <td id="tuyere_td_measurement_25">&nbsp;</td>
+                        <td id="tuyere_td_measurement_26">&nbsp;</td>
+                        <td id="tuyere_td_measurement_27">&nbsp;</td>
+                        <td id="tuyere_td_measurement_28">&nbsp;</td>
+                        <td id="tuyere_td_measurement_29">&nbsp;</td>
+
+                    </tr>
+
+
+                    <tr id="cftuyere_tbl_label2">
+                        <td>30</td>
+                        <td>31</td>
+                        <td>32</td>
+                        <td>33</td>
+                        <td>34</td>
+                        <td>35</td>
+                        <td>36</td>
+                        <td>37</td>
+                        <td>38</td>
+                        <td>39</td>
+                        <td>40</td>
+                        <td>41</td>
+                        <td>42</td>
+                        <td>43</td>
+                        <td>44</td>
+                        <td>45</td>
+                        <td>46</td>
+                        <td>47</td>
+                        <td>48</td>
+                        <td>49</td>
+                        <td>50</td>
+                        <td>51</td>
+                        <td>52</td>
+                        <td>53</td>
+                        <td>54</td>
+                        <td>55</td>
+                        <td>56</td>
+                        <td>57</td>
+                        <td>58</td>
+
+                    </tr>
+                    <tr class="cftuyere_tbl_input">
+                        <td id="tuyere_td_30">&nbsp;</td>
+                        <td id="tuyere_td_31">&nbsp;</td>
+                        <td id="tuyere_td_32">&nbsp;</td>
+                        <td id="tuyere_td_33">&nbsp;</td>
+                        <td id="tuyere_td_34">&nbsp;</td>
+                        <td id="tuyere_td_35">&nbsp;</td>
+                        <td id="tuyere_td_36">&nbsp;</td>
+                        <td id="tuyere_td_37">&nbsp;</td>
+                        <td id="tuyere_td_38">&nbsp;</td>
+                        <td id="tuyere_td_39">&nbsp;</td>
+                        <td id="tuyere_td_40">&nbsp;</td>
+                        <td id="tuyere_td_41">&nbsp;</td>
+                        <td id="tuyere_td_42">&nbsp;</td>
+                        <td id="tuyere_td_43">&nbsp;</td>
+                        <td id="tuyere_td_44">&nbsp;</td>
+                        <td id="tuyere_td_45">&nbsp;</td>
+                        <td id="tuyere_td_46">&nbsp;</td>
+                        <td id="tuyere_td_47">&nbsp;</td>
+                        <td id="tuyere_td_48">&nbsp;</td>
+                        <td id="tuyere_td_49">&nbsp;</td>
+                        <td id="tuyere_td_50">&nbsp;</td>
+                        <td id="tuyere_td_51">&nbsp;</td>
+                        <td id="tuyere_td_52">&nbsp;</td>
+                        <td id="tuyere_td_53">&nbsp;</td>
+                        <td id="tuyere_td_54">&nbsp;</td>
+                        <td id="tuyere_td_55">&nbsp;</td>
+                        <td id="tuyere_td_56">&nbsp;</td>
+                        <td id="tuyere_td_57">&nbsp;</td>
+                        <td id="tuyere_td_58">&nbsp;</td>
+                    </tr>
+                    <tr class="cftuyere_tbl_input_measurement">
+                        <td id="tuyere_td_measurement_30">&nbsp;</td>
+                        <td id="tuyere_td_measurement_31">&nbsp;</td>
+                        <td id="tuyere_td_measurement_32">&nbsp;</td>
+                        <td id="tuyere_td_measurement_33">&nbsp;</td>
+                        <td id="tuyere_td_measurement_34">&nbsp;</td>
+                        <td id="tuyere_td_measurement_35">&nbsp;</td>
+                        <td id="tuyere_td_measurement_36">&nbsp;</td>
+                        <td id="tuyere_td_measurement_37">&nbsp;</td>
+                        <td id="tuyere_td_measurement_38">&nbsp;</td>
+                        <td id="tuyere_td_measurement_39">&nbsp;</td>
+                        <td id="tuyere_td_measurement_40">&nbsp;</td>
+                        <td id="tuyere_td_measurement_41">&nbsp;</td>
+                        <td id="tuyere_td_measurement_42">&nbsp;</td>
+                        <td id="tuyere_td_measurement_43">&nbsp;</td>
+                        <td id="tuyere_td_measurement_44">&nbsp;</td>
+                        <td id="tuyere_td_measurement_45">&nbsp;</td>
+                        <td id="tuyere_td_measurement_46">&nbsp;</td>
+                        <td id="tuyere_td_measurement_47">&nbsp;</td>
+                        <td id="tuyere_td_measurement_48">&nbsp;</td>
+                        <td id="tuyere_td_measurement_49">&nbsp;</td>
+                        <td id="tuyere_td_measurement_50">&nbsp;</td>
+                        <td id="tuyere_td_measurement_51">&nbsp;</td>
+                        <td id="tuyere_td_measurement_52">&nbsp;</td>
+                        <td id="tuyere_td_measurement_53">&nbsp;</td>
+                        <td id="tuyere_td_measurement_54">&nbsp;</td>
+                        <td id="tuyere_td_measurement_55">&nbsp;</td>
+                        <td id="tuyere_td_measurement_56">&nbsp;</td>
+                        <td id="tuyere_td_measurement_57">&nbsp;</td>
+                        <td id="tuyere_td_measurement_58">&nbsp;</td>
+                    </tr>
+
+
+
+                </table>
+
+            </div>
+
+            <div id="CF_CycleTuyere_div3">
+                @*<a id="change_tuyere_link" href="http://levas02/CFlogsheet/Operations/NewTuyere_Partial/?cycid=@ViewBag.CFlogsheet_CycId">Change Tuyeres</a>*@
+
+                <a id="change_tuyere_link" href="#" onclick="load_partial_tuyere(@ViewBag.CFlogsheet_CycId);return false;">Change Tuyeres</a>
+                <br />
+                <br />
+                <div>&nbsp;&nbsp; <b>B</b> - Blocked</div>
+                <div>&nbsp;&nbsp; <b>C</b> - Clogged</div>
+            </div>
+            <div id="CF_CycleIronSilicaRatio_div"><span class="cyc_fesilica_ddown">Fe Silica Ratio:&nbsp;&nbsp;@Html.DropDownList("fesilica_CF_list", ViewData["fesilica_CFlist"] as SelectList)&nbsp; <a href="#" onclick="Change_CF_SilicaRatio();return false;">Change?</a></span></div>
+        </div>
+
+
+        <div id="CFActivityCode">
+            <div class="topbarcode">&nbsp;</div>
+
+
+            <div class="thetabs">
+
+                <div class="verticaltabs">
+
+                    <dl class="tabs vertical">
+
+                        @*   <dd class='active'><a href="#htab-panel1">1st Slag Blow</a></dd>
+            <dd><a href="#htab-panel1">2nd Slag Blow</a></dd>
+                  <dd><a href="#htab-panel1">3rd Slag Blow</a></dd>
+                <dd><a href="#htab-panel1">4th Slag Blow</a></dd>
+                <dd><a href="#htab-panel1">5th Slag Blow</a></dd>
+                <dd><a href="#htab-panel1">Clean-Off Blow</a></dd>
+                <dd><a href="#htab-panel1">Cu Blow</a></dd>
+
+                <dd>*@
+                    </dl>
+
+                </div>
+
+
+
+            </div>
+
+            <div class="horizontaltabs">
+
+                @*   <dl class="tabs">
+                <dd class='active'><a href="#htab-panel1">1st Slag Blow</a></dd>
+                <dd><a href="#htab-panel2">2nd Slag Blow</a></dd>
+                <dd><a href="#htab-panel3">Cu Blow</a></dd>
+                  <dd><a href="#htab-panel4">Dore Reverts</a></dd>
+                  <dd><a href="#htab-panel5">Prodn</a></dd>
+                  <dd><a href="#htab-panel6">Others</a></dd>
+                  <dd><a href="#htab-panel7">Reports</a></dd>
+                <dd>
+              </dl>  *@
+                <div class="tabs-content">
+
+                    <div class="content active" id="htab-panel1">
+
+                        <div id="cftable_div">
+                            <div id="activity_div_left">
+                                <div id="Employee_assign_stage_data">
+                                    <p>Supervisor:&nbsp;<span id="assign_sup"></span></p>
+
+                                    <p>Cntrl Rm Engr:&nbsp;<span id="assign_opt"></span></p>
+
+                                    <p>Skimmer:&nbsp;<span id="assign_skim"></span></p>
+
+                                </div>
+
+                                <div id="stageid_value" class="hidden_div"></div>
+                                <div id="stagename_value" class="hidden_div"></div>
+
+                            </div>
+                            <div id="ChangeAssignEmployee_link"><a href="#" onclick="Change_EmployeeStage_Assign();return false;">Assign?</a></div>
+                            <div id="activity_div_time">
+                                <div>Start Time : <span id="starttime_perstage_tab"></span></div>
+                                <br />
+                                <div>End Time  :&nbsp;  <span id="endtime_perstage_tab"></span></div>
+
+                            </div>
+
+                            <div id="activity_btn_div">&nbsp;<input id="add_activity_btn" type="button" value="Add Activity" /></div>
+
+                            <table class="cftable">
+                                <tr id="cfheadertable">
+                                    <th rowspan="2" class="thlong">Activity</th>
+                                    <th rowspan="2" class="thshort">Code</th>
+                                    <th rowspan="2" class="thshort" id="starttime_th">Start Time</th>
+                                    <th rowspan="2" class="thshort" id="endtime_th">End Time</th>
+                                    <th rowspan="2" class="thshort">Duration</th>
+                                    <th colspan="3">Charging</th>
+                                    <th rowspan="2" class="thshort">Computation</th>
+                                    <th rowspan="2" class="thlong">Comments</th>
+                                </tr>
+                                <tr id="thbottom_shrink">
+                                    <th class="thshort">FSFE</th>
+                                    <th class="thshort">CF</th>
+                                    <th class="thshort">AF</th>
+                                </tr>
+
+
+                            </table>
+                        </div>
+                    </div>
+
+
+                    @* <div class="content" id="htab-panel2">
+                  <p>2</p>
+                </div>
+
+                <div class="content" id="htab-panel3">
+                  <p>3</p>
+                </div>
+
+                 <div class="content" id="htab-panel4">
+                  <p>4</p>
+                </div>
+
+                <div class="content" id="htab-panel5">
+                  <p>5</p>
+                </div>
+
+                <div class="content" id="htab-panel6">
+                  <p>6</p>
+                </div>
+
+                <div class="content" id="htab-panel7">
+                  <p>7</p>
+                </div>*@
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="Silica_Req_div_cflogsheet">
+        <h6>Silica Additions</h6>
+        <span>
+            <img id="refresh_silica_computation" src="~/Images/refresh.png" height="25" width="25" />
+            <img id="save_mattegrade" src="~/Images/save_disk.png" height="20" width="20" />
+        </span>
+        <br />
+        <br />
+        <table id="cflogsheet_silicareqd">
+            <thead>
+                <tr>
+                    <th>Material</th>
+                    <th>Matte Wt</th>
+                    <th>Matte Grade</th>
+                    <th>Silica Reqd</th>
+                    <th>Slag Reqd</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/jquery")
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        //var serverpath = '/PASAROperation';
+
+
+
+        $('#stageid_value').val(1);
+
+        $(function () {
+            $('#DialogTuyere_Select').dialog({
+                autoOpen: false,
+                width: 220,
+                height: 200,
+                resizable: false,
+                draggable: true,
+                title: 'Tuyeres',
+                closeText: 'Close[x]',
+                modal: true,
+                position: 'center'
+            });
+
+
+            $('#DialogAdd_Activity').dialog({
+                autoOpen: false,
+                width: 880,
+                height: 700,
+                resizable: false,
+                draggable: true,
+                title: 'Activity..',
+                closeText: 'Close[x]',
+                modal: true,
+                position: 'center'
+            });
+
+
+            $('#DialogAdd_Stage').dialog({
+                autoOpen: false,
+                width: 270,
+                height: 550,
+                resizable: false,
+                draggable: true,
+                title: 'CF Stages',
+                closeText: 'Close[x]',
+                modal: true,
+                position: 'center'
+            });
+
+            $('#DialogChange_StartDate').dialog({
+                autoOpen: false,
+                width: 600,
+                height: 650,
+                resizable: false,
+                draggable: true,
+                title: 'Change Start Date',
+                closeText: 'Close[x]',
+                modal: true,
+                position: 'center'
+            });
+
+            $('#DialogChange_EmployeeAssign').dialog({
+                autoOpen: false,
+                width: 300,
+                height: 650,
+                resizable: false,
+                draggable: true,
+                title: 'Stage Employee',
+                closeText: 'Close[x]',
+                modal: true,
+                position: 'center'
+            });
+
+
+            $('#DialogEdit_Activity').dialog({
+                autoOpen: false,
+                width: 880,
+                height: 700,
+                resizable: false,
+                draggable: true,
+                title: 'Edit Activity..',
+                closeText: 'Close[x]',
+                modal: true,
+                position: 'center'
+            });
+
+            $('#DialogInsertMid_Activity').dialog({
+                autoOpen: false,
+                width: 880,
+                height: 700,
+                resizable: false,
+                draggable: true,
+                title: 'Insert Middle Activity..',
+                closeText: 'Close[x]',
+                modal: true,
+                position: 'center'
+            });
+
+            $('#Dialog_AddCF_mg').dialog({
+                autoOpen: false,
+                width: 320,
+                height: 250,
+                resizable: false,
+                draggable: false,
+                title: 'Matte Grade',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [1550, 170]
+            });
+
+
+
+
+
+        });
+
+
+
+        populate_tuyere_tbl(@ViewBag.CFlogsheet_CycId);
+            cyc_stat_select(@ViewBag.CFlogsheet_CycStatId);
+            cyc_ongoing(@ViewBag.CFlogsheet_CycId); // - disable Add Activity btn
+            
+           
+           @*     cyc_active_stage(@ViewBag.CFlogsheet_CycId, 1); // - populate Stage Side
+                cyc_stage_employee_assign(@ViewBag.CFlogsheet_CycId, 1);  // - populate Employee per Stage
+                cyc_activity_perstage(@ViewBag.CFlogsheet_CycId, 1); //  - populate Activity table
+                cyc_activity_perstage_daterange(@ViewBag.CFlogsheet_CycId, 1); //  - populate Stage DateRange
+            fesilica_populate_cflogsheet_tbl(1); // populate fesilica table*@
+
+            load_cycle_selector();
+            check_cycle_with_stage(1);
+        });
+
+</script>

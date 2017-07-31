@@ -1,0 +1,168 @@
+﻿<div id="add_spotap_div">
+<b>SPO Tapper</b>
+<br />
+<br />
+
+
+<div class="spotap_matteslag_main_div">
+<div class="spotap_matteslag_main_leftdiv">
+<div class="validation_flag">0</div>
+<div>
+    <table id="start_time_table">
+            <tr><td rowspan="2" class="label_datetype">Time Checked : &nbsp;</td>
+                <td class="label_date">Date</td><td class="label_date">Time (hh:mm)</td>
+            </tr>
+              
+            <tr>
+                <td id="start_date_addact_mtap"><input id="start_date_input" type="text"  value="@ViewBag.MatteTappingDate_Today.ToString("MM/dd/yyyy")"/></td>
+                <td id="start_time_addact_mtap">
+                    <select id="start_time_hr_input">
+                        @{
+                            int hr = Int32.Parse(ViewBag.MatteTappingDate_Now.ToString("HH"));
+                
+                            for (int x = 0; x <= 23; x++ )
+                            { 
+                            if (@x <= 9){
+
+                                if (@x == @hr)
+                                     { <option value="@x" selected="selected">@("0" + @x)</option> }
+                                else { <option value="@x">@("0" + @x)</option> }          
+                                }
+                                else{
+                                if (@x == @hr)
+                                      {  <option value="@x" selected="selected">@x</option> }
+                                else  {  <option value="@x">@x</option> }                        
+                                  }}}                               
+                    </select>&nbsp;:
+                    <select id="start_time_min_input">
+                          @{
+                              int min = Int32.Parse(ViewBag.MatteTappingDate_Now.ToString("mm"));
+                
+                
+                            for (int x = 0; x <= 59; x++ )
+                            { 
+                            if (@x <= 9){
+
+                                if (@x == @min)
+                                {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                else { <option value="@x">@("0" + @x)</option> }          
+                            }
+                                else {
+                                if (@x == @min)
+                                {  <option value="@x" selected="selected">@x</option> }
+                                else  { <option value="@x">@x</option> }  
+                                  
+                            }}}                                               
+            </select>
+</td></tr></table>
+
+</div>
+ <div class="spotap_matteslag">
+    <div class="spotap_matteslag_leftdiv">
+        <b>Matte</b>
+        <div>H1:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="spotap_h1_input" class="spotap_input" type ="text" value="0" ></div>
+        <div>H2:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="spotap_h2_input" class="spotap_input" type ="text" value="0" ></div>
+        <br />
+        <div>Scum Level:&nbsp;&nbsp;&nbsp;&nbsp;<input id="scumlvl_input" class="spotap_input" type ="text" value="0"></div>
+        <br />
+        <div>Matte Level: <span id="spotap_mattelvl_input" class="spotap_commute">0</span></div>
+    </div>
+
+     <div class="spotap_matteslag_rightdiv">
+     <b>Slag</b>
+         <br />
+         <br />
+         <div>Slag Level: <span id="spotap_slaglvl_input" class="spotap_commute">0</span></div>
+         <br />
+         <div>Slag Temp:&nbsp;&nbsp;&nbsp;<input id="slagtemp_input" class="spotap_input" type ="text" value="0"></div>
+
+         <br />
+         <div class="validation_msg_div">
+             <span class="validation_msg_spotap">
+
+             </span></div>
+     </div>
+
+</div>
+</div>
+
+   <div class="spotap_matteslag_main_rightdiv">
+          <br />   <br />   
+       
+       <u>Parameter Limits</u>
+
+       <br />
+              <br />
+       <table class="spotap_table_limits">
+           <thead>
+               <tr><th>Parameter</th>
+                   <th>Min</th>
+                   <th>Max</th>
+               </tr>
+           </thead>
+           <tbody>
+                <tr>
+                   <td class="td_param">Slag Level</td>
+                   <td>20</td>
+                   <td>80</td>
+               </tr><tr>
+                   <td class="td_param">Matte Level</td>
+                   <td>50</td>
+                   <td>100</td>
+               </tr><tr>
+                   <td class="td_param">Scum Level</td>
+                   <td>2</td>
+                   <td>30</td>
+               </tr><tr>
+                   <td class="td_param">Slag Temp</td>
+                   <td>1100</td>
+                   <td>1400</td>
+               </tr>
+           </tbody>
+
+       </table>
+
+
+   </div>
+</div>
+   
+    <div class="spotap_btn">
+         <br />
+         <br />
+         <br />
+        Comments:
+        <textarea id="txtarea_spotap" rows="4"></textarea>
+    </div>
+
+     
+<div class="spotap_btn">
+  <br />
+  <br /> 
+    <input id="add_spotap_ok_btn" type="button" value="Add" />&nbsp;<input id="add_spotap_close_btn" type="button" value="Close" />
+
+</div>
+    
+</div>
+ <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#start_date_input").datepicker({
+                showOn: 'button',
+                buttonText: 'Show Date',
+                buttonImageOnly: true,
+                buttonImage: serverpath + '/Images/calendar.png',
+                dateFormat: 'mm/dd/yy',
+                constrainInput: true
+            });
+
+
+			
+            $(".ui-datepicker-trigger").mouseover(function() {
+                $(this).css('cursor', 'pointer');
+                
+            });
+            
+        });
+            
+
+    </script>

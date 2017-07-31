@@ -1,0 +1,16 @@
+﻿<div id="tuyere_partial">
+  <br />
+    
+    <div id="tuyere_num_partial">Tuyere Number: @Html.DropDownList("tuyerenum", (SelectList)ViewBag.tuyerenumlist)</div>
+     <br />
+    <div id="tuyere_state_partial">Tuyere State: @Html.DropDownList("tuyerestat", (SelectList)ViewBag.tuyerestatlist)</div>
+    <br />
+        <div id="tuyere_measurement_partial">Tuyere Measure: <input type="text" id="input_tuyere_measure" /></div>
+   
+    <div class="hidden_div" id="tuyere_cycid">@ViewBag.tuyerecycid</div>
+    <br />
+     
+     <div id="tuyere_msg">&nbsp;</div>
+   <br />
+   <div id="tuyere_btn_partial"><input id="tuyere_btn_ok" type="button" value="Ok" />&nbsp;&nbsp;<input id="tuyere_btn_cancel"  type="button" value="Cancel" /></div> 
+</div>

@@ -1,0 +1,34 @@
+DB
+1. insert new column for ppm S, 'CycleSulfur'
+2. Create stored proc for ppm S - no need, update can do it
+3. Check Cycle Insert to include ppm S
+4. Add column CycleSulfur in view VWCycleDetail
+
+Test CF2 Cycle 108 to add - ok
+
+-View ppm S in cycleselect
+-Apply ppm S input in:
+ 	1. Add Activity, Act Table Click -ok, Act Type -ok 
+	2. Edit, Act Table Click -ok, Act Type -ok
+	3. Insert Middle, Act Table Click -ok, Act Type -ok
+	4. Edit ppm when N activity does not reside on the list of activities, -ok
+
+- Fix number of decimal places, ok
+
+-Validation for DK, ok
+-Validation for CA, ok
+
+
+4. Create Dummy table for Airflow data
+5. Create new table for reviewed airflow data, need to assign who reviewed the airflow
+
+	Apply validation
+
+	id	actid	timestamp	ADname
+
+
+
+
+Code
+1. Javascript alert window with input for ppm S
+2. 

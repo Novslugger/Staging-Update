@@ -1,0 +1,159 @@
+﻿@{   
+    ViewBag.Title = "Prodplan Activity";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/bundles/jquery")
+
+
+<div id="tabs-container_ref_shorts">
+
+    <br>
+    <br>
+    <div class="ref_short_save">
+        <h6>Production Plan Activity</h6>
+    </div>
+    <br>
+    <div>
+        <input type="text" id="rpp_input_date" class="mbf_date" style="margin-left: 10px; border: solid 1px black;" title="Filter Month and Year" />
+        <br>
+        <img onclick="add_prodact_data();" class="btn_label_span" width="25" height="25" src="../Images/red_plus.png" title="Add" />
+        <span title="Add" class="btn_label_span" onclick="add_prodact_data();">Add new</span>
+        <div id="pageNavPosition" style="float: right;"></div>
+        <br>
+        <br>
+        <table>
+            <tr>
+                <td><span class="ref_text_label">Filter by block base on selected month and year:</span></td>
+                <td>
+                    @Html.DropDownList("load_production_by_block", (SelectList)ViewBag.blocklist, "--Select--", new { onchange = "load_data_prod_act_byblock(this.id)", @class = "filter_block" })
+                </td>
+                <td>&nbsp;&nbsp;</td>
+                <td><span class="ref_text_label">Filter by start date base on selected block:</span></td>
+                <td>
+                    <input type="text" id="rpp_daily_date" class="ref_date" onchange="load_data_prod_act_bydate(this.id)" /></td>
+            </tr>
+        </table>
+    </div>
+    <br>
+    <table id="ref_prod_act_table" class="ref_prodact_table">
+        <thead>
+            <tr>
+                <th style="width: 13%;">Block</th>
+                <th style="width: 13%;">Activity Code</th>
+                <th style="width: 35%;">Activity Description</th>
+                <th style="width: 12%;">Start Date [hh:mm]</th>
+                <th style="width: 12%;">End Date [hh:mm]</th>
+                <th style="width: 30%;">Remarks</th>
+                <th colspan="2" style="width: 8%;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="display: none;"></tr>
+        </tbody>
+    </table>
+    <div id="Dialog_prod_add_activity"></div>
+    <div id="Dialog_prod_edit_activity"></div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        load_data_prod_act();
+        $(function () {
+            $('#Dialog_prod_add_activity').dialog({
+                modal: true,
+                autoOpen: false,
+                resizable: false,
+                draggable: true,
+                width: 713,
+                height: 2000,
+                title: 'New Entry',
+                closeText: 'Close [X]',
+                position: { my: "center", at: "center", of: window },
+
+            });
+            $('#Dialog_prod_edit_activity').dialog({
+                modal: true,
+                autoOpen: false,
+                resizable: false,
+                draggable: true,
+                width: 713,
+                height: 2000,
+                title: 'Modify Entry',
+                closeText: 'Close [X]',
+                position: { my: "center", at: "center", of: window },
+
+            });
+        });
+        $("#rpp_daily_date").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: serverpath + '/Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: false,
+            maxDate: null,
+
+        });
+        $('#ui-datepicker-div').css('display', 'none');
+        $('#rpp_daily_date').datepicker('setDate', 'today');
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+        });
+
+        $("#rpp_input_date").datepicker({
+            maxDate: null,
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'MM yy',
+            showButtonPanel: true,
+            onClose: function () {
+                var iMonth = $(".ui-datepicker-month :selected").val();
+                var iYear = $(".ui-datepicker-year :selected").val();
+
+                $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+                $(this).datepicker('refresh');
+
+                $('thead #tr_param').remove();
+                $('#tbody tr').filter(function () {
+                    return $(this).has('input');
+                }).remove();
+
+                var select = $(this).val();
+                load_data_prod_act_bymonthyear(select);
+
+            },
+
+            beforeShow: function () {
+                if ((selDate = $(this).val()).length > 0) {
+                    iYear = selDate.substring(selDate.length - 4, selDate.length);
+                    iMonth = jQuery.inArray(selDate.substring(0, selDate.length - 5), $(this).datepicker('option', 'monthNames'));
+                    $(this).datepicker('option', 'defaultDate', new Date(iYear, iMonth, 1));
+                    $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+                }
+            }
+        });
+
+        $("#rpp_input_date").focus(function () {
+            $(".ui-datepicker-calendar").hide();
+            $("#ui-datepicker-div").position({
+                my: "center top",
+                at: "center bottom",
+                of: $(this)
+            });
+        });
+
+        $("#rpp_input_date").load(function () {
+            $(".ui-datepicker-calendar").hide();
+        });
+
+        $('#rpp_input_date').datepicker('setDate', 'today');
+
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+        });
+
+
+    });
+    function search_ref_act() {
+        searchin_ref_prodact("#ref_prodact_search", "#ref_prod_act_table tbody tr");
+    }
+</script>

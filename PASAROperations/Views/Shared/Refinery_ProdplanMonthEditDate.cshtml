@@ -1,0 +1,112 @@
+﻿<div class="crop_ref_act_div">
+
+    <table class="refinery_partial_tbl">
+        <tr>
+            <td rowspan="2" class="label_datetype">Start Time:</td>
+            <td class="label_date">Date</td>
+            <td class="label_date">Time (hh:mm)</td>
+        </tr>
+        <tr>
+            <td class="af_date_td ">
+                <input @*disabled="disabled"*@id="start_date_ref_add_act" class="ref_date" type="text" value="@ViewBag.RefStartTime.ToString("MM/dd/yyyy")" onchange="validation_ref_shorts_crop_add()"/></td>
+            <td class="af_time_td">
+                <select id="start_time_hr_ref_add_act" class="ref_hr" @*disabled="disabled"*@ onchange="validation_ref_shorts_crop_add()">
+                    @{
+                        int hr;
+                        int min_ = Int32.Parse(ViewBag.RefStartTime.ToString("mm"));
+                        if (min_ == 60)
+                        {
+
+                            hr = Int32.Parse(ViewBag.RefStartTime.ToString("HH"));
+
+                        }
+                        else
+                        {
+                            hr = Int32.Parse(ViewBag.RefStartTime.ToString("HH"));
+                        }
+
+
+                        for (int x = 0; x <= 23; x++)
+                        {
+                            if (@x <= 9)
+                            {
+
+                                if (@x == @hr)
+                                {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                else
+                                { <option value="@x">@("0" + @x)</option> }
+                            }
+
+
+                            else
+                            {
+
+                                if (@x == @hr)
+                                {  <option value="@x" selected="selected">@x</option> }
+                                else
+                                { <option value="@x">@x</option> }
+
+
+                            }
+                        }
+                    }
+
+                </select>&nbsp;:
+            <select id="start_time_min_ref_add_act" class="ref_min" @*disabled="disabled"*@ onchange="validation_ref_shorts_crop_add()">
+                @{
+                    int min = Int32.Parse(ViewBag.RefStartTime.ToString("mm"));
+
+
+                    for (int x = 0; x <= 59; x++)
+                    {
+                        if (@x <= 9)
+                        {
+
+                            if (@x == @min)
+                            {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                            else
+                            { <option value="@x">@("0" + @x)</option> }
+                        }
+
+
+                        else
+                        {
+
+                            if (@x == @min)
+                            {  <option value="@x" selected="selected">@x</option> }
+                            else
+                            { <option value="@x">@x</option> }
+
+
+                        }
+                    }
+                }
+            </select>
+
+            </td>
+        </tr>  
+    </table>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#Dialog_Refinery_ProdPlanMonth_EditDate #start_date_ref_add_act").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: serverpath + '/Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: false
+        });        
+
+
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+
+        });
+
+    });
+
+
+</script>

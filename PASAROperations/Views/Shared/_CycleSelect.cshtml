@@ -1,0 +1,26 @@
+﻿<div id="cycle_select_wrap">
+    <div id="cycle_select_question">You are about to Add a new Cycle with:</div>
+    <div id="cycle_select_left">
+        <div id="converternum_div">@ViewBag.Converter</div>
+        <div>Campaign: @ViewBag.CampaignNum</div>
+    </div>
+    <div id="cycle_select_right">
+        
+        <div id="cyclenum_label">Cycle Number:</div>
+        <div id="cyclenum_div">@ViewBag.CycleNum</div>
+        
+    </div>
+    <div id="cycle_select_footer">START DATE:<span id="cycle_startdate">@ViewBag.CycleEndDate</span>  </div>
+
+    <div id="cycle_converterid">@ViewBag.ConverterId</div>
+    <div id="cycle_campid">@ViewBag.CampaignId</div>
+
+     <div>@ViewBag.CycleStatId</div>
+
+    <div id="cycle_select_btns">
+<input id="cycle_ok_btn" type="button" value="OK"/>
+        &nbsp;&nbsp;&nbsp;&nbsp;
+        <input id="cycle_cancel_btn" type="button" value="Cancel" />
+    </div>
+</div>
+@*  @Scripts.Render("~/bundles/jquery") *@

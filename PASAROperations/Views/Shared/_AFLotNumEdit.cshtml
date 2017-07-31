@@ -1,0 +1,18 @@
+﻿<div id="add_lotnum_div">
+<b>Edit Lot No</b>
+<br />
+<br />
+
+<p class="hidden_element" id="aflotid">@ViewBag.aflotid</p>
+
+<div>AF Number: @Html.DropDownList("afnum_edit_ddl", (SelectList)ViewBag.afnum_list)</div>
+<br /><br />
+
+<div>Lot Number: <span id="createlot_span">@ViewBag.aflotnum</span>
+<br /><br /><br /><br />
+
+<div>Status:     @Html.DropDownList("afstatus_ddl", (SelectList)ViewBag.Status_list)</div>
+    <br /><br />
+    <input id="edit_clotnum_ok_btn" type="button" value="Edit" />
+</div>
+</div>

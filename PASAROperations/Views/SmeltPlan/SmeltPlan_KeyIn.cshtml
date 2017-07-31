@@ -1,0 +1,162 @@
+﻿<div class="spp_container">
+    @*&nbsp;&nbsp;&nbsp;&nbsp;<h6>KEY IN </h6>*@
+    <span id="page_id">1</span>
+    <div id="params_div" style="display: none;">
+        <table class="spp_tbl" id="spp_param_group_1" style="float: left;">
+            <tr>
+                <th class="parameter_title">FSF Parameters</th>
+                <th>UNIT</th>
+                <th>Target</th>
+            </tr>
+            <tr>
+                <td class="">Operating Time</td>
+                <td class="">hrs</td>
+                <td id="paramid_34_target" class="fsf_td"></td>
+            </tr>
+            <tr>
+                <td class="">Cu in FSSL</td>
+                <td class="">%Cu</td>
+                <td id="paramid_35_target" class="fsf_td"></td>
+            </tr>
+            <tr>
+                <td class="">Conc. Feed</td>
+                <td class=""></td>
+                <td id="paramid_33_target" class="fsf_td"></td>
+            </tr>
+        </table>
+        <table class="spp_tbl" id="spp_param_group_2">
+            <tr>
+                <th class="parameter_title">CF Parameters</th>
+                <th>UNIT</th>
+                <th>Target</th>
+            </tr>
+            <tr>
+                <td class="">Cycles per Day</td>
+                <td class="">no.</td>
+                <td id="paramid_36_target" class="cf_td"></td>
+            </tr>
+            <tr>
+                <td class="">Blister Production</td>
+                <td class="">Dmt</td>
+                <td id="paramid_37_target" class="cf_td"></td>
+            </tr>
+            <tr>
+                <td class="">Total Secondaries Charge</td>
+                <td class="">Dmt</td>
+                <td id="paramid_38_target" class="cf_td"></td>
+            </tr>
+            <tr>
+                <td class="">% Blowing Time</td>
+                <td class="">%</td>
+                <td id="paramid_39_target" class="cf_td"></td>
+            </tr>
+        </table>
+        <table class="spp_tbl" id="spp_param_group_3" style="float: right;">
+            <tr>
+                <th class="parameter_title">AF Parameters</th>
+                <th>UNIT</th>
+                <th>Target</th>
+            </tr>
+            <tr>
+                <td class="">Blister Treated</td>
+                <td class="">Dmt</td>
+                <td id="paramid_40_target" class="af_td"></td>
+            </tr>
+            <tr>
+                <td class="">No. of Lots Casted</td>
+                <td class="">no.</td>
+                <td id="paramid_41_target" class="af_td"></td>
+            </tr>
+            <tr>
+                <td class="">Gross Anode Production</td>
+                <td class="">Dmt</td>
+                <td id="paramid_42_target" class="af_td"></td>
+            </tr>
+        </table>
+    </div>
+    <div>
+        <table style="border-spacing: 0px;">
+            <tr>
+                <td style="line-height: 10px;" valign="top">
+                    <div id="smeltplan_left_div">@Html.Partial("~/Views/Shared/_SmeltPlan_Control.cshtml")</div>
+                </td>
+                <td valign="top">
+                    <div id="smeltplan_right_div">@Html.Partial("~/Views/Shared/_SmeltPlan_Cells.cshtml")</div>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div>
+    <table class="spp_tbl" id="parameters_tbl" style="float: right;">
+        <tr>
+            <th>Anode Production:</th>
+            <td id="paramid_43"></td>
+            <th>Blister Production:</th>
+            <td id="paramid_44"></td>
+        </tr>
+        <tr>
+            <td></td><td></td>
+            <th>Blister Treated:</th>
+            <td id="paramid_45"></td>
+        </tr>
+    </table>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(function () {
+            var header_height = 0;
+            $('tr.time_span th span').each(function () {
+                if ($(this).outerWidth() > header_height) header_height = $(this).outerWidth() - 6;
+            });
+
+            $('tr.time_span th').height(header_height);
+        });
+        load_defaults();
+        addinput();
+
+        if ($('#fsfe_prod_id').text() != "") {
+            load_plan();
+        }
+
+        $('#spp_data_tbl td[id*="paramid_1_"]:not(:last-child) input').each(function () {
+            $(this).live('keyup', function () {
+                var val = $(this).val();
+                var td = $(this).parent();
+                //calculate_Matte_lvl(val, td);
+                calculate_threshold($(this).val(), $(this));
+
+                $('#spp_data_tbl td[id*="paramid_1_"]:even input').each(function () {
+                    calculate_Matte_lvl($(this).val(), $(this).parent());
+                });
+            });
+        });
+
+        $('td[id*="paramid_9_"] input').live('keyup', function () {
+            setTimeout(check_input_cf($(this).val(), $(this)), 2000);
+        });
+        $('td[id*="paramid_10_"] input').live('keyup', function () {
+            setTimeout(check_input_cf($(this).val(), $(this)), 2000);
+        });
+        $('td[id*="paramid_11_"] input').live('keyup', function () {
+            setTimeout(check_input_cf($(this).val(), $(this)), 2000);
+        });
+        $('td[id*="paramid_12_"] input').live('keyup', function () {
+            setTimeout(check_input_cf($(this).val(), $(this)), 2000);
+        });
+        $('td[id*="paramid_14_"] input').live('keyup', function () {
+            setTimeout(check_input_af($(this).val(), $(this)), 2000);
+        });
+        $('td[id*="paramid_15_"] input').live('keyup', function () {
+            setTimeout(check_input_af($(this).val(), $(this)), 2000);
+        });
+        $('td[id*="paramid_23_"] input').live('keyup', function () {
+            setTimeout(check_input_crane($(this).val(), $(this)), 2000);
+        });
+        $('td[id*="paramid_24_"] input').live('keyup', function () {
+            setTimeout(check_input_crane($(this).val(), $(this)), 2000);
+        });
+
+
+    });
+</script>

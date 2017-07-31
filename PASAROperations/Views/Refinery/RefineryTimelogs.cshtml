@@ -1,0 +1,136 @@
+﻿@{
+    ViewBag.Title = "RefineryTimelogs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/bundles/jquery")
+
+<div id="fsfe_log_header" style="display: none;">
+    <br />
+    <strong>Date: </strong>
+    <input id="ref_proddate" type="text"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   
+    <strong>Shift: </strong>
+    <select id="ref_shift">
+        <option></option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+    </select>
+
+    <span class="row_shift_span"><strong>Row: </strong>
+       @* <select id="ref_row_shift">
+            <option value="0">--Select--</option>
+        </select>*@
+         @Html.DropDownList("ref_row_shift", (SelectList)ViewBag.emp_List, "--Select--")
+    </span>
+    <!-- Select Button -->
+    <input id="ref_shift_btn" type="button" value="Select" disabled="disabled" onclick="load_refinery_functions()" />
+    <!-- End -->
+</div>
+
+<div class="container">
+    <div id="fsfe_log_wrapper">
+        <div id="fsfe_log_wrapper_left">
+            <div class="thetabs">
+
+                <div class="verticaltabs">
+
+                    <dl class="tabs vertical">
+                        <dd id="dd1" class="active"><a href="#" onclick="ddactive_refinery('Refinery_activitylog');return false;">Activity Timelog</a></dd>
+                        @*<dd id="dd2"><a href="#" onclick="ddactive_refinery('Refinery_CSMlog');return false;">CSM Timelog</a></dd>*@
+                        @*<dd id="dd3"><a href="#" onclick="ddactive_refinery('RefineryCrewDefaults');return false;">Crew Defaults</a></dd>*@
+                        <dd id="dd4"><a href="#" onclick="ddactive_refinery('RefineryManpower');return false;">Man Power</a></dd>
+                        @*<dd id="dd5"><a href="#" onclick="ddactive_refinery('RefineryProd');return false;">Production Plan</a></dd>*@
+                        <dd id="dd6"><a href="#" onclick="ddactive_refinery_shorts('Refinery_shorts');return false;">Shorts</a></dd>
+                        <dd id="dd7"><a href="#" onclick="ddactive_refinery('Refinery_cropshorts');return false;">Crop Master list</a></dd>
+                    </dl>
+
+                </div>
+            </div>
+        </div>
+        <div id="refine_log_wrapper_right">
+            <div class="horizontaltabs_tref">
+                <div class="tb_ref_parent">
+                    <div class="tabs-content-ref">
+                        <div class="content active" id="htab-panel_refine">
+                            @Html.Partial("~/Views/Shared/Refinery_activitylog.cshtml")
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="Dialog_Refinery_add_activity" style="overflow: hidden;"></div>
+<div id="Dialog_Refinery_add_csmlog" style="overflow: hidden;"></div>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $('#Dialog_Refinery_add_activity').dialog({
+            autoOpen: false,
+            width: 820,
+            height: 2000,
+            resizable: false,
+            draggable: true,
+            title: 'New Activity',
+            closeText: 'Close [x]',
+            modal: true,
+            position: 'center'
+        });
+        $('#Dialog_Refinery_add_csmlog').dialog({
+            autoOpen: false,
+            width: 820,
+            height: 2000,
+            resizable: false,
+            draggable: true,
+            title: 'New CSM Activity',
+            closeText: 'Close [x]',
+            modal: true,
+            position: 'center'
+        });
+
+        //when click hide
+        $("#dd1,#dd2,#dd3,#dd5,#dd7").on
+                ("click", function () {
+                    $("#fsfe_log_header").hide(600).fadeOut();
+                });
+        //when click show
+        $("#dd6,#dd4").on("click", function () {
+            $("#fsfe_log_header").show(600).fadeIn();
+            $(".row_shift_span").show();            
+        });
+
+        $('#htab-panel_refine').css({ 'display': 'block' });
+
+        $("#ref_proddate").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: '../Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: true,
+            onSelect: function (date) {
+                //load_shorts_blocks();
+            }
+        });
+
+        $('#ui-datepicker-div').css('display', 'none');
+        $('#ref_proddate').datepicker('setDate', 'today');
+
+
+        $(".ui-datepicker-trigger").mouseover(function () {
+
+
+            $(this).css('cursor', 'pointer');
+
+        });
+
+
+
+
+    });
+
+
+</script>

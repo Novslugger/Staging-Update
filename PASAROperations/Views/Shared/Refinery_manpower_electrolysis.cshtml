@@ -1,0 +1,62 @@
+﻿@model IEnumerable<PASAROperations.Models.REFTH_RoleType>
+
+
+<span id="uiNo" style="display:none;">2</span>
+<span id="uiNo_manpower" style="display:none;">2</span>
+<div id="fsfe_shift_div">
+    <div id="fsfe_shift_left_div">
+        <div id="fsfe_manpower_div">
+
+            <h6 class="h6_fsfe">Electrolysis Man Power</h6>
+             <div id="fsfe_manpower_table_right">
+                <img  class="btn_label_span" id="ref_savvemanpower_el_btn" width="25" height="25" src="../Images/diskette.png" onclick="save_ref_manpower(); return false;" />
+                <span id="ref_savemanpower_el_lnk" class="btn_label_span" onclick="save_ref_manpower(); return false;">Save Man Power </span>
+                <br />
+
+            </div>
+            <div id="fsfe_manpower_table_left">
+               <table class="refinery_manpower_table">                    
+                    <tr>
+                        <td>Select Crew&nbsp;</td>
+                        <td><select id="rfm_select_crew" onchange="enable_rfm_select_manpower()"><option value="0">--Select--</option></select></td>
+                    </tr>
+                </table>
+                <table class="refinery_manpower_table" id="rfm_electrolysis">
+                    <tr>
+                        <th>Work Assignment</th>
+                        <th>Employee Name</th>
+                    </tr>
+                    @foreach(var item in Model){
+                    <tr>
+                        <td>@Html.ValueFor(modelItem => item.REFTH_RoleTypeName)&nbsp;</td>
+                        <td><select id="ref_manpower_@Html.ValueFor(modelItem => item.REFTH_RoleTypeId)_@Html.ValueFor(modelItem => item.REFTH_RoleGroupId)"><option value="0">--Select--</option></select>
+                            @*@Html.DropDownList("FSFEEmplist_roleid_1", (SelectList)ViewBag.FSFEEmpList, "-- Select --", new { @class = "fsfe_emplist", @disabled = "disabled" })*@</td>
+                    </tr>
+                    } 
+                    
+
+                </table>
+            </div>
+           
+
+        </div>
+        <br />
+
+    </div>
+
+</div>
+
+<!-- -->
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        // pass the department ID of ELECTROLYSIS
+        load_ref_employee(1213);
+
+        $('select').change(function () {
+            $(this).css({ 'background-color': '#DFD8D1' });
+            $(this).addClass('changed');
+        });
+        enable_select_crew_manpower();
+    });
+</script>

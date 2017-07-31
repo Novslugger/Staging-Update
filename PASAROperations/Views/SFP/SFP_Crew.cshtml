@@ -1,0 +1,86 @@
+﻿@{
+    ViewBag.Title = "SFP_Crew";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/jquery")
+
+<div id="fsfe_log_header">
+    Date:
+    <input id="sfp_shiftdate" type="text" /><br />
+    <br />
+    Shift:
+    <select id="sfp_shiftdate_select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">7am-7pm</option>
+        <option value="5">7pm-7am</option>
+    </select>
+    <input id="sfp_shift_btn" type="button" value="Select" />
+    <div id="sfp_prod_id" style="display: none"></div>
+    <span id="page_id"></span>
+</div>
+<div id="fsfe_log_wrapper">
+    <div id="fsfe_log_wrapper_left">
+        <div class="thetabs">
+
+            <div class="verticaltabs">
+
+                <dl class="tabs vertical">
+                    <dd class="active"><a href="#" onclick="ddactive_sfpcrew('SFP_ManPower');return false;">Man Power</a></dd>
+                    <dd><a href="#" onclick="ddactive_sfpcrew('SFP_CrewDefault');return false;">Crew Defaults</a></dd>
+                </dl>
+
+            </div>
+        </div>
+    </div>
+    <div id="fsfe_log_wrapper_right">
+        <div class="horizontaltabs">
+            <div class="tabs-content">
+
+                <div class="content active" id="htab-panel1">
+                    @Html.Partial("~/Views/Shared/SFP_ManPower.cshtml")
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    
+
+    $(document).ready(function () {
+        $('#sfp_shiftdate_select').live('change', function () {
+            $('#fsfe_log_header').css({ 'background-color': '#0099FF' });
+            $('#sfp_prod_id').text('');
+            $('#SFPcrewdefaultlist').prop('disabled', true);
+        });
+
+        $("#sfp_shiftdate").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: '../Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: true,
+            onSelect: function (date) {
+                $('#fsfe_log_header').css({ 'background-color': '#0099FF' });
+                $('#sfp_prod_id').text('');
+                $('#SFPcrewdefaultlist').prop('disabled', true);
+                assign_fsfe_prodid();
+            }
+        });
+        $('#ui-datepicker-div').css('display', 'none');
+        $('#sfp_shiftdate').datepicker('setDate', 'today');
+
+
+        $(".ui-datepicker-trigger").mouseover(function () {
+
+
+            $(this).css('cursor', 'pointer');
+
+        });
+    });
+
+</script>

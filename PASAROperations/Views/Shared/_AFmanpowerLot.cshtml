@@ -1,0 +1,266 @@
+﻿@{
+    ViewBag.Title = "af_manpowerlot";
+}
+<div id="interfaceid">1</div>
+<div id="af_shift_div">
+    <div id="fsfe_shift_left_div">
+
+        <div id="af_manpower_div">@*<h6 class="h6_fsfe_lbl">Man Power</h6>*@
+            <br />
+            <div style="">
+                <img id="newaf_manpowerlot_btn" width="25" height="25"  src="~/Images/diskette.png"@* disabled="disabled"*@/>
+                <span id="newsave_manpowerlot_link" class="btn_label_span"@* disabled="disabled"*@>Save Man Power </span> 
+                <input id="afmanpower_reset_btn" type="button" value="Reset" style="font-size: 10px; margin-left: 150px; width:100px"/>
+            </div>
+            <br />
+            @*<table class="tbl_header" style="width: 30% !important">
+                <tr colspan="80">
+                    <td colspan="20">Positions</td>
+                    <td colspan="20">Employees</td>
+                </tr>
+            font-size: 12px !important;
+    background: #ccccff !important;
+            </table>*@
+            <br />
+            <div id="af_manpower_table_left">
+                <table id="newaf_manpower_table">
+                    <thead>
+                        <tr style="font-size: 12px !important; color: white !important; background-color: rgb(0, 73, 147) !important;">
+                            <th style="color: white !important;">Positions</th>
+                            <th style="color: white !important;">Employees</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="background-color: white !important;">Furnacemen : &nbsp;</td>
+                            <td style="background-color: white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_2", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist" }) </td>
+                        </tr>
+
+                        <tr>
+                            <td style="background-color: white !important;">&nbsp;</td>
+                            <td style="background-color: white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_3", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist" }) </td>
+                        </tr>
+
+                        <tr>
+                            <td style="background-color: white !important;">&nbsp;</td>
+                            <td style="background-color: white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_4", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist" }) </td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: white !important;">&nbsp;</td>
+                            <td style="background-color: white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_5", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist" }) </td>
+                        </tr>
+
+                        <tr>
+                            <td style="background-color: white !important;">&nbsp;</td>
+                            <td style="background-color: white !important;">&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: white !important;">CRO : &nbsp;</td>
+                            <td style="background-color: white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_18", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist" })</td>
+                        </tr>
+
+                        <tr>
+                            <td style="background-color: white !important;">Barite : &nbsp;</td>
+                            <td style="background-color: white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_17", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist" })</td>
+                        </tr>
+
+                        <tr>
+                            <td style="background-color: white !important;">FL : &nbsp;</td>
+                            <td style="background-color: white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_19", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist" })</td>
+                        </tr>
+
+                        <tr>
+                            <td style="background-color: white !important;">Ladle : &nbsp;</td>
+                            <td style="background-color: white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_6", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist" })</td>
+                        </tr>
+
+                      @*  <tr>
+                            <td style="background-color: white !important;">SPO : &nbsp;</td>
+                            <td style="background-color: white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_7", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist" })</td>
+                        </tr>*@
+
+                        <tr>
+                            <td style="background-color: white !important;">Crane : &nbsp;</td>
+                            <td style="background-color: white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_13", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist" })</td>
+                        </tr>
+
+                        <tr>
+                            <td style="background-color: white !important;">QI : &nbsp;</td>
+                            <td style="background-color: white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_8", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist" })</td>
+                        </tr>
+
+                        <tr>
+                            <td style="background-color: white !important;">Helper 1 (pax) : &nbsp;</td>
+                            <td style="background-color: white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_9", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist" })</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: white !important;">Helper 2 (pax) : &nbsp;</td>
+                            <td style="background-color: white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_10", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist" })</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: white !important;">Helper 3 (pax) : &nbsp;</td>
+                            <td style="background-color: white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_11", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist" })</td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: white !important;">Helper 4 (pax) : &nbsp;</td>
+                            <td style="background-color: white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_12", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist" })</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            @*    <div id="af_manpower_table_right">
+         
+          <table class="newaf_manpower_table_1">
+         <br><br>
+           <tr>
+               <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_2a", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"}) </td>
+               <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_2b", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"}) </td>
+           </tr>
+
+          <tr>
+              <td style="background-color:white !important;">&nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_3a", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"}) </td>
+              <td style="background-color:white !important;">&nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_3b", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"}) </td>
+          </tr>
+
+         <tr>
+             <td style="background-color:white !important;">&nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_4a", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"}) </td>
+             <td style="background-color:white !important;">&nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_4b", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"}) </td>
+         </tr>
+
+         <tr>
+             <td style="background-color:white !important;">&nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_5a", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"}) </td>
+             <td style="background-color:white !important;">&nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_5b", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"}) </td>
+         </tr>
+
+        <tr>
+            <td style="background-color:white !important;">&nbsp;</td><td style="background-color:white !important;">&nbsp;</td>
+            <td style="background-color:white !important;">&nbsp;</td><td style="background-color:white !important;">&nbsp;</td>
+        </tr>
+
+           <tr>
+               <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_18a", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"})</td>
+               <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_18b", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"})</td>
+           </tr>
+
+           <tr>
+               <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_17a", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"})</td>
+                <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_17b", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"})</td>
+           </tr>
+
+           <tr>
+               <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_19a", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"})</td>
+                <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_19b", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"})</td>
+           </tr>
+
+           <tr>
+               <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_6a", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"})</td>
+                <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_6b", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"})</td>
+           </tr>
+
+           <tr>
+               <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_7a", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"})</td>
+                <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_7b", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"})</td>
+           </tr>
+
+           <tr>
+               <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_13a", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"})</td>
+               <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_13b", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"})</td>
+           </tr>
+
+           <tr>
+               <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_8a", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"})</td>
+                <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_8b", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"})</td>
+           </tr>
+
+           <tr>
+               <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_9a", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"})</td>
+               <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_9b", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"})</td>
+           </tr>
+
+            <tr>
+                <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_10a", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"})</td>
+                <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_10b", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist", @disabled = "disabled"})</td>
+            </tr>
+
+            <tr>
+                <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_11a", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist",@disabled = "disabled"})</td>
+                <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_11b", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist",@disabled = "disabled"})</td>
+            </tr>
+
+            <tr>
+                <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_12a", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist",@disabled = "disabled"})</td>
+                <td style="background-color:white !important;"> &nbsp;</td><td style="background-color:white !important;">&nbsp;@Html.DropDownList("NewAFList_roletypeid_12b", (SelectList)ViewBag.ManP_List, "--Select--", new { @class = "newaf_emplist",@disabled = "disabled"})</td>
+            </tr>
+
+    </table>
+    </div>*@
+
+
+
+            @*end fsfe_manpower_div*@
+        </div>
+        <br />
+
+    </div>
+</div>
+<script type="text/javascript">
+
+    //load_af_page();
+    $('#newaf_manpower_table select').each(function () {
+        $(this).live('change', function () {
+            var id = $(this).attr('id');
+            var val = $(this).val();
+            //alert('.');
+            if (val == "") {
+                //alert('a');
+                $('.newaf_manpower_table_1').find('select[id="' + id + 'a"]').prop('disabled', false);
+                $('.newaf_manpower_table_1').find('select[id="' + id + 'b"]').prop('disabled', false);
+            }
+            else {
+                //alert('b');
+                $('.newaf_manpower_table_1').find('select[id="' + id + 'a"]').prop('disabled', true);
+                $('.newaf_manpower_table_1').find('select[id="' + id + 'b"]').prop('disabled', true);
+            }
+        });
+    });
+
+    //$('#newaf_manpower_table select').each(function () {
+    //$('select').on('change', function () {
+    //    $('option').prop('disabled', false);
+
+    //    $('select').on('change', function () {
+    //        var val = this.value;
+    //        $('select').not(this).find('option').filter(function () {
+    //            return this.value === val;
+    //        }).prop('disabled', true);
+    //    });
+
+    //}).change();
+
+
+
+
+    $('#page_id').text('1');
+    var prodid = $('#shiftid').text();
+    if (prodid == 1) {
+        //$('#newaf_emplist').prop('disabled', false);
+        //load_af_page();
+    }
+    $('select[id*="param_"]').each(function () {
+        $(this).live('change', function () {
+            $(this).css({ "border-color": "transparent" });
+            if ($(this).val() != "") {
+                $(this).addClass('changed');
+                $(this).css({ "background-color": "lightgrey" });
+            } else {
+                $(this).css({ "background-color": "#FBFBFB" });
+                $(this).removeClass('changed');
+            }
+        });
+    });
+
+    $(document).ready(function () {
+        load_afmanpowerlot();
+    });
+</script>

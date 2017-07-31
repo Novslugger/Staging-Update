@@ -1,0 +1,112 @@
+﻿@{
+    ViewBag.Title = "SFP_OldSFP";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/jquery")
+<div id="DialogOldSFP_Add" style="overflow: hidden;"></div>
+<div id="DialogOldSFP_Edit" style="overflow: hidden;"></div>
+<div id="targets_container">
+    <div id="top_div" style="left: 100px; width: 600px;">
+        <h6>Old SFP</h6>
+        @*<img style="float: left" id="oldsfp_save_btn" class="save_btn" src="../Images/diskette.png" width="20" title="Save Changes" />*@
+        <label style="float: left; font-size: 10px;">Date Filter: </label>
+        <input type="text" id="oldsfp_date" style="float: left; margin-left: 10px; margin-right: 10px; border: solid 1px black; width: 200px;" title="Select Date" />
+        <img width="20" height="20" title="Add Now" id="add_oldsfp_btn" onclick="load_partial_oldsfp(); return false;" src="../Images/red_plus.png">&nbsp;&nbsp;<span title="Add Now" onclick="load_partial_oldsfp(); return false;" class="btn_label_span" id="add_oldsfp_lnk">Add Item </span> 
+        <div id="pageNavPosition" style="float: right;"></div>
+        <br />
+        <br />
+        <table class="af_tbl" id="sfptarget_34" style="width: 600px;">
+            <tr>
+                <th colspan="5">Old SFP Materials</th>
+            </tr>
+            <tr>
+                <th style="width: 150px;">Date</th>
+                <th>Weigher</th>
+                <th>Material</th>
+            </tr>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(function () {
+            $('#DialogOldSFP_Add').dialog({
+                autoOpen: false,
+                width: 400,
+                height: 350,
+                resizable: false,
+                draggable: true,
+                title: 'Old SFP Entry',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [850, 170]
+            });
+        });
+        $(function () {
+            $('#DialogOldSFP_Edit').dialog({
+                autoOpen: false,
+                width: 400,
+                height: 350,
+                resizable: false,
+                draggable: true,
+                title: 'Old SFP Edit',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [850, 170]
+            });
+        });
+        $("#oldsfp_date").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'MM yy',
+            showButtonPanel: true,
+            onClose: function () {
+                var iMonth = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                var iYear = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+                $(this).datepicker('refresh');
+                $('#tbody tr').filter(function () {
+                    return $(this).has('input');
+                }).remove();
+
+                var select = $(this).datepicker().val();
+                load_oldsfp_tbl(select);
+            },
+
+            beforeShow: function () {
+                if ((selDate = $(this).val()).length > 0) {
+                    iYear = selDate.substring(selDate.length - 4, selDate.length);
+                    iMonth = jQuery.inArray(selDate.substring(0, selDate.length - 5), $(this).datepicker('option', 'monthNames'));
+                    $(this).datepicker('option', 'defaultDate', new Date(iYear, iMonth, 1));
+                    $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+                }
+            }
+        });
+
+        $("#oldsfp_date").focus(function () {
+            $(".ui-datepicker-calendar").hide();
+            $("#ui-datepicker-div").position({
+                my: "center top",
+                at: "center bottom",
+                of: $(this)
+            });
+        });
+
+        $("#oldsfp_date").blur(function () {
+            $(".ui-datepicker-calendar").hide();
+        });
+
+        $('#oldsfp_date').datepicker('setDate', 'today');
+        var date = $('#oldsfp_date').val();
+        load_oldsfp_tbl(date);
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+        });
+        $('input').live('change', function () {
+            $(this).css({ 'background-color': '#DFD8D1' });
+            $(this).addClass('changed');
+        });
+        //$('#forecast_date').focus();
+    });
+</script>

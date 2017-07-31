@@ -1,0 +1,84 @@
+﻿@*@{
+    ViewBag.Title = "_FSFE_Dustline_Inspect_form";
+}*@
+<div id="add_dustline_inspections_div">
+@*<b>Dustline Inspection</b>*@
+<div>
+    Areas : 
+    @Html.DropDownList("fsfedustline_arealist_ddl", (SelectList)ViewBag.fsfe_dustline_arealist)
+    <br /><br />
+    Time : 
+        <td class="" id="fsfe_inspectime">
+            <select id="start_time_hr_input">
+            @{
+                 int hr;
+                 int min_ = Int32.Parse(ViewBag.DateTimeNow.ToString("mm"));
+                if (min_ == 60){
+
+                    hr = Int32.Parse(ViewBag.DateTimeNow.ToString("HH"));
+                    
+                }else{
+                    hr = Int32.Parse(ViewBag.DateTimeNow.ToString("HH"));
+                }
+                
+                
+                for (int x = 0; x <= 23; x++ )
+                { 
+                if (@x <= 9){
+
+                    if (@x == @hr)
+                    {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                    else { <option value="@x">@("0" + @x)</option> }          
+                }
+                      
+                      
+                      else{
+
+                     if (@x == @hr)
+                          {  <option value="@x" selected="selected">@x</option> }
+                    else { <option value="@x">@x</option> }          
+                
+
+                      }
+                }
+                }                                              Programm3
+                                                          
+            </select>&nbsp;:
+            <select id="start_time_min_input">
+              @{
+                  int min = Int32.Parse(ViewBag.DateTimeNow.ToString("mm"));
+                
+                
+                for (int x = 0; x <= 59; x++ )
+                { 
+                if (@x <= 9){
+
+                    if (@x == @min)
+                    {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                    else { <option value="@x">@("0" + @x)</option> }          
+                }
+                      
+                      
+                      else{
+
+                          if (@x == @min)
+                          {  <option value="@x" selected="selected">@x</option> }
+                    else { <option value="@x">@x</option> }          
+                
+
+                      }
+                }
+                }                                               
+            </select>
+
+</td>
+    <br /><br /><br />
+    Picture: <input id="fileUploadDustline_Inspections" type="file" />
+    <br />
+    Remarks:
+    <br /><br />
+    <textarea id="add_dustline_inspections_txtarea"></textarea>
+     <br /><br />
+<input id="add_dustline_inspections_upload_btn" type="button" value="Add" /></div>
+
+</div>

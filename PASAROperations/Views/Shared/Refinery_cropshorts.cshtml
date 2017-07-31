@@ -1,0 +1,145 @@
+﻿<span id="uiNo" style="display: none;">shorts</span>
+<div id="tabs-container_ref_shorts">
+
+
+    <div class="ref_short_save">
+        <h6>Crop Master List</h6>
+        <input type="text" id="ref_crop_date" class="mbf_date" style="border: solid 1px black;" title="Filter by Month and Year" />
+    </div>
+    <br>
+    <div class="ref_short_save">
+        <img id="" onclick="add_cropshorts_data()" class="btn_label_span" width="25" height="25" src="../Images/red_plus.png" title="Add" />
+        <span title="Add" class="btn_label_span" id="save_lnk_1pass" onclick="add_cropshorts_data()">Add new</span>
+        <div id="pageNavPosition" style="float: right;"></div>
+    </div>
+    <br>
+    <table>
+        <tr>
+            <td><span class="ref_text_label">Filter by block base on selected month and year:</span>@Html.DropDownList("search_shortscrop", (SelectList)ViewBag.blockpairlist, new { onchange = "load_search_crop()" })</td>
+            <td>&nbsp;&nbsp;</td>
+            <td><span class="ref_text_label">Filter by start date base on selected block:</span><input id="cropdate_filter" onchange="load_data_ref_crop_sdate()" class="ref_date" type="text" value="@ViewBag.timenow.ToString("MM/dd/yyyy")"/></td>
+        </tr>
+    </table>
+    <table id="ref_crop_table" class="ref_crop_table">
+        <thead>
+            <tr>
+                <th style="width: 13%;">Block</th>
+                <th style="width: 13%;">Crop</th>
+                <th style="width: 13%;">Elapsed Net KAH</th>
+                <th style="width: 25%;">Start Date [hh:mm]</th>
+                <th style="width: 25%;">End Date [hh:mm]</th>
+                <th style="width: 13%;">Shift</th>
+                <th colspan="2" style="width: 8%;">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr style="display: none;"></tr>
+        </tbody>
+    </table>
+
+</div>
+<div id="Dialog_crop_add_activity" style="overflow: hidden;"></div>
+<div id="Dialog_crop_edit_activity" style="overflow: hidden;"></div>
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $("#cropdate_filter").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: serverpath + '/Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: true,
+            onSelect: function (date) {
+                load_data_ref_crop_sdate();
+            }
+        });
+
+        $('#Dialog_crop_add_activity').dialog({
+            autoOpen: false,
+            width: 450,
+            height: 2000,
+            resizable: false,
+            draggable: true,
+            title: 'New Entry',
+            closeText: 'Close [x]',
+            modal: true,
+            position: 'center'
+        });
+        $('#Dialog_crop_edit_activity').dialog({
+            autoOpen: false,
+            width: 450,
+            height: 2000,
+            resizable: false,
+            draggable: true,
+            title: 'Modify Entry',
+            closeText: 'Close [x]',
+            modal: true,
+            position: 'center'
+        });
+
+
+        $("#ref_crop_date").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'MM yy',
+            showButtonPanel: true,
+            onClose: function () {
+                var iMonth = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                var iYear = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+                $(this).datepicker('refresh');
+
+                $('thead #tr_param').remove();
+                $('#tbody tr').filter(function () {
+                    return $(this).has('input');
+                }).remove();
+
+                var date = $('#ref_crop_date').val();
+                load_data_ref_crop(date);
+
+            },
+
+            beforeShow: function () {
+                if ((selDate = $(this).val()).length > 0) {
+                    iYear = selDate.substring(selDate.length - 4, selDate.length);
+                    iMonth = jQuery.inArray(selDate.substring(0, selDate.length - 5), $(this).datepicker('option', 'monthNames'));
+                    $(this).datepicker('option', 'defaultDate', new Date(iYear, iMonth, 1));
+                    $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+                }
+            }
+        });
+
+        $("#ref_crop_date").focus(function () {
+            $(".ui-datepicker-calendar").hide();
+            $("#ui-datepicker-div").position({
+                my: "center top",
+                at: "center bottom",
+                of: $(this)
+            });
+        });
+
+        $("#ref_crop_date").blur(function () {
+            $(".ui-datepicker-calendar").hide();
+        });
+
+        $('#ref_crop_date').datepicker('setDate', 'today');
+
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+        });
+        //load_data_ref_crop_nofilter();
+        var date = $('#ref_crop_date').val();
+        load_data_ref_crop(date);
+
+    });
+
+    function load_search_crop() {
+        //searchin_crop('#search_shortscrop', '#ref_crop_table tbody tr');
+        load_data_ref_crop_block('#search_shortscrop', '#ref_crop_table tbody tr');
+
+    }
+
+</script>

@@ -1,0 +1,63 @@
+﻿@{
+    ViewBag.Title = "_SFPActive";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/jquery")
+<div id="DialogSFP_Add" style="overflow: hidden;"></div>
+<div id="DialogSFP_Edit" style="overflow: hidden;"></div>
+<div id="container">
+    <div id="sfp_div">
+    <h5>SFP Active Pots</h5>
+        <img width="20" height="20" title="Add Now" id="add_sfp_entry_btn" src="../Images/red_plus.png">&nbsp;&nbsp;<span title="Add Now" class="btn_label_span" id="add_sfp_entry_lnk">Add Item </span>
+        <div id="pageNavPosition"></div>
+        <br>
+        <br>
+        <table class="af_tbl" id="sfp_tbl">
+            <tr>
+                <th>Location</th>
+                <th>Date Delivered</th>
+                <th>Pot No.</th>
+                <th>Cool Time(hrs)</th>
+                <th>Expected Dump Time</th>
+                <th>Actual Time</th>
+                <th>Dumping Temperature</th>
+                <th>Remarks</th>
+                <th colspan="2">Actions</th>
+            </tr>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#ui-datepicker-div').remove();
+        load_sfp_data();
+        $(function () {
+            $('#DialogSFP_Add').dialog({
+                autoOpen: false,
+                width: 400,
+                height: 600,
+                resizable: false,
+                draggable: true,
+                title: 'SFP Entry',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [1150, 170]
+            });
+        });
+        $(function () {
+            $('#DialogSFP_Edit').dialog({
+                autoOpen: false,
+                width: 400,
+                height: 600,
+                resizable: false,
+                draggable: true,
+                title: 'SFP Entry',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [1150, 170]
+            });
+        });
+    });
+</script>

@@ -1,0 +1,146 @@
+﻿@{
+    ViewBag.Title = "ReworkedAnodes";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+ @Scripts.Render("~/bundles/jquery")
+
+<div id="dialog_reworked_add" ></div>
+<div id="dialog_reworked_edit" style="overflow: hidden;"></div>
+
+  <div class="" id="reworked_data">
+   <div id="cf_wrapperdiv">
+    <div id="cf_maindiv">
+     <table>
+            <thead >
+                <tr>
+                    <td >Select month and year to display data:</td>
+                    <td><input id="reworked_monthyear" class="rworked_monthyear" type="text" style="width:200px; font-size: 15px;  border: 0.5px solid "/></td>   
+                </tr>
+            </thead>
+     </table>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+      
+      <img class="btn_label_span" style="padding: 2px 2px 10px 15px;" width="20" height="20" title="Add Now" id="reworked_add_btn"  src="../Images/red_plus.png">&nbsp;&nbsp;
+      <span title="Add Now" class="btn_label_span" id="reworked_add_lnk">Add Item </span>
+         <div id="pageNavPosition" style="float: right;"></div>
+          <br> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     
+       <table id="fsfe_controlrm_mattetapper_table">
+        <tbody>
+            <tr>
+                <th colspan="4" style="font-size:20px">Reworked Anodes (PEMC)</th>
+            </tr>
+            <tr>
+                <th style="width: 2%;">Date</th>
+                <th style="width: 2%;">Pcs. Reworked</th>
+                <th style="width: 2%;">Lot</th>
+                <th style="width: 2%;">Action</th>
+            </tr>
+        </tbody>
+       </table>
+      </div>
+     </div> 
+    </div>
+
+
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+        $(function () {
+            $('#dialog_reworked_add').dialog({
+                autoOpen: false,
+                width: 350,
+                height: 250,
+                resizable: false,
+                draggable: true,
+                title: 'Add Reworked',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [600, 220]
+            });
+
+
+
+            $('#dialog_reworked_edit').dialog({
+                autoOpen: false,
+                width: 350,
+                height: 250,
+                resizable: false,
+                draggable: true,
+                title: 'Edit Reworked',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [600, 220]
+            });
+        });
+
+
+        $("#reworked_monthyear").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'MM yy',
+            showButtonPanel: true,
+            onClose: function () {
+                var iMonth = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                var iYear = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+                $(this).datepicker('refresh');
+
+                $('thead #tr_param').remove();
+                $('#tbody tr').filter(function () {
+                    return $(this).has('input');
+                }).remove();
+
+                var date = $('.rworked_monthyear').val();
+                load_reworked_month(date);
+
+
+            },
+
+            beforeShow: function () {
+                if ((selDate = $(this).val()).length > 0) {
+                    iYear = selDate.substring(selDate.length - 4, selDate.length);
+                    iMonth = jQuery.inArray(selDate.substring(0, selDate.length - 5), $(this).datepicker('option', 'monthNames'));
+                    $(this).datepicker('option', 'defaultDate', new Date(iYear, iMonth, 1));
+                    $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+                }
+            }
+        });
+
+        $("#reworked_monthyear").focus(function () {
+            $(".ui-datepicker-calendar").hide();
+            $("#ui-datepicker-div").position({
+                my: "center top",
+                at: "center bottom",
+                of: $(this)
+            });
+        });
+
+        $("#reworked_monthyear").blur(function () {
+            $(".ui-datepicker-calendar").hide();
+        });
+
+        $('#reworked_monthyear').datepicker('setDate', 'today');
+
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+        });
+
+        $('#reworked_monthyear').focus();
+
+
+
+
+
+    });
+
+
+
+</script>

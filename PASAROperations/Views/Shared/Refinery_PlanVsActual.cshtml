@@ -1,0 +1,432 @@
+﻿<h6>View Plan Vs Actual</h6>
+<div style="position: absolute; left: 342px; top: 55px;">
+    @* <img id="rpp_savedata_btn" width="25" height="25" src="../Images/diskette.png" /><span id="rpp_savedata_link" class="btn_label_span">Save</span>*@
+</div>
+@*<img width="20" height="20" title="Add New Entry" id="add_rpp_entry_btn" src="../Images/red_plus.png">&nbsp;&nbsp;<span title="Add New Entry" class="btn_label_span" id="add_rpp_entry_lnk">Add Item </span>*@
+<br>
+<table>
+    <tr>
+        <td><span class="ref_text_label">Select Date:</span></td>
+        <td>
+            <input type="text" id="rpp_daily_date" class="ref_date" onchange="load_refineryproducitonplan_graph()" />
+        </td>
+        <td>&nbsp;&nbsp;</td>
+        <td><span class="ref_text_label">Filter by block:</span></td>
+        <td>@Html.DropDownList("load_production_by_block", (SelectList)ViewBag.blocklist, "--Select--", new { onchange = "load_production_by_block()" })</td>
+    </tr>
+</table>
+<br>
+<br>
+<div style="width: 1500px;">
+    <span class="ref_text_label">
+        <h4>Plan</h4>
+    </span>
+    <div id="timeLineGraph_plan">
+    </div>
+    <br>
+    <div id="act_prod">
+        <span class="ref_text_label">
+            <h4>Actual</h4>
+        </span>
+        <div id="timeLineGraph_actual">
+        </div>
+    </div>
+    @*    <table class="rpp_refine_table" id="rpp_tbl_daily">
+        <tr>
+            <th></th>
+            <th colspan="120" style="background-color: #6d6d6d !important;">2ND SHIFT</th>
+            <th colspan="32" style="background-color: #2196F3 !important;">3RD SHIFT</th>
+            <th colspan="32" style="background-color: #d9534f !important;">1ST SHIFT</th>
+            <th></th>
+        </tr>
+        <tr>
+            <th>Block</th>
+            <th style="width: 6%;" colspan="15">0700</th>
+            <th style="width: 6%;" colspan="4">0800</th>
+            <th style="width: 6%;" colspan="4">0900</th>
+            <th style="width: 6%;" colspan="4">1000</th>
+            <th style="width: 6%;" colspan="4">1100</th>
+            <th style="width: 6%;" colspan="4">1200</th>
+            <th style="width: 6%;" colspan="4">1300</th>
+            <th style="width: 6%;" colspan="4">1400</th>
+            <th style="width: 6%;" colspan="4">1500</th>
+            <th style="width: 6%;" colspan="4">1600</th>
+            <th style="width: 6%;" colspan="4">1700</th>
+            <th style="width: 6%;" colspan="4">1800</th>
+            <th style="width: 6%;" colspan="4">1900</th>
+            <th style="width: 6%;" colspan="4">2000</th>
+            <th style="width: 6%;" colspan="4">2100</th>
+            <th style="width: 6%;" colspan="4">2200</th>
+            <th style="width: 6%;" colspan="4">2300</th>
+            <th style="width: 6%;" colspan="4">2400</th>
+            <th style="width: 6%;" colspan="4">0100</th>
+            <th style="width: 6%;" colspan="4">0200</th>
+            <th style="width: 6%;" colspan="4">0300</th>
+            <th style="width: 6%;" colspan="4">0400</th>
+            <th style="width: 6%;" colspan="4">0500</th>
+            <th style="width: 6%;" colspan="4">0600</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;Remarks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>
+        </tr>
+        <tr>
+         
+
+            <th></th>
+            <th style="width: 5%;">7:00</th>
+            <th style="width: 5%;">7:15</th>
+            <th style="width: 5%;">7:30</th>
+            <th style="width: 5%;">7:45</th>
+
+            <th style="width: 5%;">8:00</th>
+            <th style="width: 5%;">8:15</th>
+            <th style="width: 5%;">8:30</th>
+            <th style="width: 5%;">8:45</th>
+
+            <th style="width: 5%;">9:00</th>
+            <th style="width: 5%;">9:15</th>
+            <th style="width: 5%;">9:30</th>
+            <th style="width: 5%;">9:45</th>
+
+            <th style="width: 5%;">10:00</th>
+            <th style="width: 5%;">10:15</th>
+            <th style="width: 5%;">10:30</th>
+            <th style="width: 5%;">10:45</th>
+
+            <th style="width: 5%;">11:00</th>
+            <th style="width: 5%;">11:15</th>
+            <th style="width: 5%;">11:30</th>
+            <th style="width: 5%;">11:45</th>
+
+            <th style="width: 5%;">12:00</th>
+            <th style="width: 5%;">12:15</th>
+            <th style="width: 5%;">12:30</th>
+            <th style="width: 5%;">12:45</th>
+
+            <th style="width: 5%;">13:00</th>
+            <th style="width: 5%;">13:15</th>
+            <th style="width: 5%;">13:30</th>
+            <th style="width: 5%;">13:45</th>
+
+            <th style="width: 5%;">14:00</th>
+            <th style="width: 5%;">14:15</th>
+            <th style="width: 5%;">14:30</th>
+            <th style="width: 5%;">14:45</th>
+
+            <th style="width: 5%;">15:00</th>
+            <th style="width: 5%;">15:15</th>
+            <th style="width: 5%;">15:30</th>
+            <th style="width: 5%;">15:45</th>
+
+            <th style="width: 5%;">16:00</th>
+            <th style="width: 5%;">16:15</th>
+            <th style="width: 5%;">16:30</th>
+            <th style="width: 5%;">16:45</th>
+
+            <th style="width: 5%;">17:00</th>
+            <th style="width: 5%;">17:15</th>
+            <th style="width: 5%;">17:30</th>
+            <th style="width: 5%;">17:45</th>
+
+            <th style="width: 5%;">18:00</th>
+            <th style="width: 5%;">18:15</th>
+            <th style="width: 5%;">18:30</th>
+            <th style="width: 5%;">18:45</th>
+
+            <th style="width: 5%;">19:00</th>
+            <th style="width: 5%;">19:15</th>
+            <th style="width: 5%;">19:30</th>
+            <th style="width: 5%;">19:45</th>
+
+            <th style="width: 5%;">20:00</th>
+            <th style="width: 5%;">20:15</th>
+            <th style="width: 5%;">20:30</th>
+            <th style="width: 5%;">20:45</th>
+
+            <th style="width: 5%;">21:00</th>
+            <th style="width: 5%;">21:15</th>
+            <th style="width: 5%;">21:30</th>
+            <th style="width: 5%;">21:45</th>
+
+            <th style="width: 5%;">22:00</th>
+            <th style="width: 5%;">22:15</th>
+            <th style="width: 5%;">22:30</th>
+            <th style="width: 5%;">22:45</th>
+
+            <th style="width: 5%;">23:00</th>
+            <th style="width: 5%;">23:15</th>
+            <th style="width: 5%;">23:30</th>
+            <th style="width: 5%;">23:45</th>
+
+            <th style="width: 5%;">00:00</th>
+            <th style="width: 5%;">00:15</th>
+            <th style="width: 5%;">00:30</th>
+            <th style="width: 5%;">00:45</th>
+
+            <th style="width: 5%;">01:00</th>
+            <th style="width: 5%;">01:15</th>
+            <th style="width: 5%;">01:30</th>
+            <th style="width: 5%;">01:45</th>
+
+            <th style="width: 5%;">02:00</th>
+            <th style="width: 5%;">02:15</th>
+            <th style="width: 5%;">02:30</th>
+            <th style="width: 5%;">02:45</th>
+
+            <th style="width: 5%;">03:00</th>
+            <th style="width: 5%;">03:15</th>
+            <th style="width: 5%;">03:30</th>
+            <th style="width: 5%;">03:45</th>
+
+            <th style="width: 5%;">04:00</th>
+            <th style="width: 5%;">04:15</th>
+            <th style="width: 5%;">04:30</th>
+            <th style="width: 5%;">04:45</th>
+
+            <th style="width: 5%;">05:00</th>
+            <th style="width: 5%;">05:15</th>
+            <th style="width: 5%;">05:30</th>
+            <th style="width: 5%;">05:45</th>
+
+            <th style="width: 5%;">06:00</th>
+            <th style="width: 5%;">06:15</th>
+            <th style="width: 5%;">06:30</th>
+            <th style="width: 5%;">06:45</th>
+            <th style="width: 5%;"></th>
+
+        </tr>
+
+    </table>*@
+
+    @* <table class="rppd_refine_table" id="rpp_tbl_daily">
+        <tr>@for(var i = 0; i <= 192; i++){            
+            <th></th>
+                i++;
+            }</tr>
+        <tr style="display: none;">
+        </tr>
+    </table>*@
+    @*<br>
+    <span class="ref_text_label">
+        <h4>Static Data</h4>
+    </span>
+    <div id="timeLineGraph_sample">
+    </div>*@
+</div>
+    <br>
+    <br>
+    <div>
+        <table style="float: left;">
+            <tr>
+                <td style="background-color: #00b300; width: 35px; padding: 2px; color: white;">ST</td>
+                <td>- Shorting time and preparation before cathode pull-out</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td style="background-color: #861286; width: 35px; padding: 2px; color: white;">MD</td>
+                <td>- Machine Downtime</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td style="background-color: #ffea00; width: 35px; padding: 2px; color: black;">CP</td>
+                <td>- Cathode pull-out and stripping/plate charging</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td style="background-color: #ffa500; width: 35px; padding: 2px; color: white;">KR</td>
+                <td>- kAH Reading</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td style="background-color: #cc0000; width: 35px; padding: 2px; color: white;">EF</td>
+                <td>- Electrolyte filling-up and preparation before current resumption</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td style="background-color: black; width: 35px; padding: 2px; color: white;">OFF</td>
+                <td>- Off line</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td style="background-color: #0080ff; width: 35px; padding: 2px; color: white;">LT</td>
+                <td>- Lull time</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+                @*  <td style="background-color: gray; width: 35px; padding: 2px; color: white;">OL</td>
+            <td>- Online</td>*@
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td style="background-color: #a5682a; width: 35px; padding: 2px; color: white;">AC</td>
+                <td>- Anode charging</td>
+            </tr>
+        </table>
+    </div>
+    <div id="Dialog_proddirect_edit_activity"></div>
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            $("#rpp_daily_date").datepicker({
+                showOn: 'button',
+                buttonText: 'Show Date',
+                buttonImageOnly: true,
+                buttonImage: serverpath + '/Images/calendar.png',
+                dateFormat: 'mm/dd/yy',
+                constrainInput: false,
+                maxDate: null,
+
+            });
+            $('#ui-datepicker-div').css('display', 'none');
+            $('#rpp_daily_date').datepicker('setDate', 'today');
+            $(".ui-datepicker-trigger").mouseover(function () {
+                $(this).css('cursor', 'pointer');
+            });
+            load_refineryproducitonplan_graph();
+
+            $('#Dialog_proddirect_edit_activity').dialog({
+                modal: true,
+                autoOpen: false,
+                resizable: false,
+                draggable: true,
+                width: 713,
+                height: 2000,
+                title: 'Modify Entry',
+                closeText: 'Close [X]',
+                position: { my: "center", at: "center", of: window },
+
+            });
+            //load_sample();
+            $("#timeLineGraph_actual").draggable();
+        });
+
+
+
+        //drawChart();
+        //    $(function () {
+        //        var header_height = 0;
+        //        $('tr.time_span th span').each(function () {
+        //            if ($(this).outerWidth() > header_height) header_height = $(this).outerWidth() - 6;
+        //        });
+
+        //        $('tr.time_span th').height(header_height);
+        //    });
+
+        //    $('#spp_data_tbl td[id*="paramid_1_"]:not(:last-child) input').each(function () {
+        //        $(this).live('keyup', function () {
+        //            var val = $(this).val();
+        //            var td = $(this).parent();
+        //            //calculate_Matte_lvl(val, td);
+        //            calculate_threshold($(this).val(), $(this));
+
+        //            $('#spp_data_tbl td[id*="paramid_1_"]:even input').each(function () {
+        //                calculate_Matte_lvl($(this).val(), $(this).parent());
+        //            });
+        //        });
+        //    });
+        //});
+
+
+        //function drawChart() {
+        //    var container = document.getElementById('timeLineGraph');
+        //    var chart = new google.visualization.Timeline(container);
+        //    var dataTable = new google.visualization.DataTable();
+
+        //    dataTable.addColumn({ type: 'string', id: 'Role' });
+        //    dataTable.addColumn({ type: 'string', id: 'Name' });
+        //    dataTable.addColumn({ type: 'string', role: 'style' });
+        //    dataTable.addColumn({ type: 'date', id: 'Start' });
+        //    dataTable.addColumn({ type: 'date', id: 'End' });
+
+        //    dataTable.addRows([
+
+        //        ['Block #1', 'ST', '#00b300', new Date(2017, 0, 1, 8, 03), new Date(2017, 0, 1, 8, 05)],
+        //        ['Block #1', 'KR', '#ffa500', new Date(2017, 0, 1, 8, 45), new Date(2017, 0, 1, 9)],
+        //        ['Block #1', 'AC', '#a5682a', new Date(2017, 0, 1, 7), new Date(2017, 0, 1, 13)],
+
+        //        ['Block #1', 'ST', '#00b300', new Date(2017, 0, 1, 8, 03), new Date(2017, 0, 1, 8, 05)],
+        //        ['Block #1', 'KR', '#ffa500', new Date(2017, 0, 1, 8, 45), new Date(2017, 0, 1, 9)],
+        //        ['Block #1', 'AC', '#a5682a', new Date(2017, 0, 1, 7), new Date(2017, 0, 1, 13)],
+
+        //        ['Block #2', 'ST', '#00b300', new Date(2017, 0, 1, 8, 03), new Date(2017, 0, 1, 8, 05)],
+        //        ['Block #2', 'KR', '#ffa500', new Date(2017, 0, 1, 8, 45), new Date(2017, 0, 1, 9)],
+        //        ['Block #2', 'OFF', '#000000', new Date(2017, 0, 1, 7, 12), new Date(2017, 0, 1, 8, 11)],
+        //['Block #1', 'CP', '4', new Date(2017, 0, 11), new Date(2017, 0, 12)],
+        //['Block #1', 'ST', '5', new Date(2017, 0, 1), new Date(2017, 0, 15)],
+        //['Block #2', 'EF', '6', new Date(2017, 2, 8), new Date(2017, 2, 15)],
+        //['Block #2', 'EF', '7', new Date(2017, 5, 1), new Date(2017, 5, 15)],
+        //['Block #4', 'MD', '8', new Date(2017, 1, 15), new Date(2017, 1, 25)]
+        //]);
+
+        //var colors = [];
+        //var colorMap = {
+        //    // should contain a map of category -> color for every category
+        //    'ST': '#00b300',//GREEN
+        //    'CP': '#ffea00',//YELLOW
+        //    'EF': '#cc0000',//RED
+        //    'LT': '#0080ff',//BLUE
+        //    'AC': '#a5682a',//BROWN
+        //    'MD': '#861286',//VIOLET
+        //    'KR': '#ffa500',//ORANGE
+        //   'OFF': '#000000'//BLACK
+        //}
+
+        ////for (var i = 0; i < dataTable.getNumberOfRows() ; i++) {
+        //    colors.push(colorMap[dataTable.getValue(i, 1)]);
+        //}
+
+        //var rowHeight = 41;
+        //var chartHeight = (dataTable.getNumberOfRows() + 1) * rowHeight;
+
+        //var options = {
+        //timeline: {
+        //    groupByRowLabel: true,
+        //    rowLabelStyle: {
+        //        fontName: 'Roboto Condensed',
+        //        fontSize: 14,
+        //        color: '#333333'
+        //    },
+        //    barLabelStyle: {
+        //        fontName: 'Roboto Condensed',
+        //        fontSize: 14
+        //    }
+        //},
+        //avoidOverlappingGridLines: true,
+        //height: chartHeight,
+        //width: '100%',
+        //colors: colors
+        //};
+
+        // use a DataView to hide the category column from the Timeline,  hide the 1 and 2 column
+        //var view = new google.visualization.DataView(dataTable);
+        //view.setColumns([0, 2, 3, 4]);
+
+        //    chart.draw(dataTable, options);
+        //}
+        //google.load('visualization', '1', { packages: ['timeline'], callback: drawChart });
+
+
+
+    </script>

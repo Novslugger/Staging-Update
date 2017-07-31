@@ -1,0 +1,84 @@
+﻿@model IEnumerable<PASAROperations.Models.VWAF_Lot_ProdYearDetail> 
+@{
+    ViewBag.Title = "Create Lot No";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+  @Scripts.Render("~/bundles/jquery") 
+
+<div id="Dialog_CreateLotNum" style="overflow: hidden;"></div>
+<div id="Dialog_EditLotNum" style="overflow: hidden;"></div>
+<div id="Dialog_NewEditLotNum" style="overflow: hidden;"></div>
+
+<div id="cf_wrapperdiv">
+<div id="cf_sidediv">&nbsp;</div>
+<div id="cf_maindiv">
+
+        <h6 id="createlot_lbl">Create Lot Number  <img id="af_createlotnum_btn" width="20" height="20"  src="../Images/red_plus.png" /> 
+            <span id="createlot_link" class="btn_label_span">Add Lot No </span></h6>
+   <br />
+        <table id="createlot_tbl" border="0">
+            <tr>
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th>AF</th>
+                <th>Lot No</th>
+                <th>Status</th>
+                <th>Edit</th>
+            </tr>
+
+                @foreach (var item in Model) { 
+            <tr id= "tredit_@Html.DisplayFor(modelItem => item.AF_LotId)">
+            <td>@Html.DisplayFor(modelItem => item.LotStartTime)</td>
+            <td>@Html.DisplayFor(modelItem => item.LotEndTime)</td>
+            <td>@Html.DisplayFor(modelItem => item.AF_NumId)</td>
+            <td>@Html.DisplayFor(modelItem => item.AFLotNo)</td>
+            <td>@Html.DisplayFor(modelItem => item.AF_StatusName)</td>
+            <td><a href="#" onclick="view_aflot_edit_partial(@item.AF_LotId);return false;">Edit</a></td>
+            </tr>   
+                }
+
+        </table>
+   
+   
+
+
+</div>
+</div>
+
+<script type="text/javascript">
+
+  //  alert('test');
+
+    $(document).ready(function () {
+
+        $(function () {
+            $('#Dialog_CreateLotNum').dialog({
+                autoOpen: false,
+                width: 350,
+                height: 250,
+                resizable: false,
+                draggable: true,
+                title: 'Add Lot Number',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [850, 100]
+            });
+
+            $('#Dialog_EditLotNum').dialog({
+                autoOpen: false,
+                width: 350,
+                height: 250,
+                resizable: false,
+                draggable: true,
+                title: 'Edit Lot Number',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [850, 100]
+            });
+
+        });
+
+    })
+
+</script>

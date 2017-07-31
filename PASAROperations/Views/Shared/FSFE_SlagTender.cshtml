@@ -1,0 +1,49 @@
+﻿<h6 id="h6_fsfe">Slag Tender</h6>
+<div id="interfaceid">8</div>
+<div id ="fsfe_shift_div">
+   <div id="fsfe_shift_left_div">
+
+  
+       <b>Check-up of Slag Line</b> 
+       <br />
+       <div class="fsfe_cbox_group_div">
+           <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_132"  disabled="disabled"/>&nbsp;&nbsp; &nbsp;BC-C61A</label>
+           <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_133"  disabled="disabled"/>&nbsp;&nbsp; &nbsp;BC-C61B</label>
+           <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_134"  disabled="disabled"/>&nbsp;&nbsp; &nbsp;BC-C61C</label>     
+       </div>
+   
+        <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_127"  disabled="disabled"/>&nbsp;&nbsp; &nbsp;Check-up of Slag launder Cooling water</label>
+        <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_128"  disabled="disabled"/>&nbsp;&nbsp; &nbsp;Check-up of Slag taphole Condition</label>
+        <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_129"  disabled="disabled"/>&nbsp;&nbsp; &nbsp;Check-up of SL Condition</label>
+        <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_130"  disabled="disabled"/>&nbsp;&nbsp; &nbsp;Check-up of regulator condition</label>
+        <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_131"  disabled="disabled"/>&nbsp;&nbsp; &nbsp;Check thermocouple status (online or not)</label>
+   
+   </div>
+
+  <div id="fsfe_last_div">
+        <input id="fsfe_slagtender_add_btn" type="button" value="Save" disabled="disabled"/>
+    </div>
+
+
+   </div>
+
+
+<script type="text/javascript">
+    // for validations (Save Button)
+    var checkboxes = $("input[type='checkbox']"),
+    submitButt = $("#fsfe_slagtender_add_btn");
+
+    checkboxes.click(function () {
+        submitButt.attr("disabled", !checkboxes.is(":checked"));
+    });
+
+    //End
+
+
+    $(document).ready(function () {
+
+        load_fsfe_checklist(6);
+
+    });
+
+</script>

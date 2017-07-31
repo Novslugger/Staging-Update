@@ -1,0 +1,2067 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{22AE05C8-5DA5-4364-9735-48F464427BC7}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>PASAROperations</RootNamespace>
+    <AssemblyName>PASAROperations</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20710.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.2.0.20710.0\lib\net40\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.WebPages.OAuth, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.OAuth.2.0.20710.0\lib\net40\Microsoft.Web.WebPages.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.2.0.20710.0\lib\net40\WebMatrix.WebData.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.AspNet, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.AspNet.4.0.3.12153\lib\net40-full\DotNetOpenAuth.AspNet.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.Core, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth.Consumer, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Consumer.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OAuth.Consumer.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OAuth, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OAuth.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.Core.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OpenId.dll</HintPath>
+    </Reference>
+    <Reference Include="DotNetOpenAuth.OpenId.RelyingParty, Version=4.0.0.0, Culture=neutral, PublicKeyToken=2780ccd10d57b246, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\DotNetOpenAuth.OpenId.RelyingParty.4.0.3.12153\lib\net40-full\DotNetOpenAuth.OpenId.RelyingParty.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.1.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\AuthConfig.cs" />
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AnodeFurnaceController.cs" />
+    <Compile Include="Controllers\EnergyController.cs" />
+    <Compile Include="Controllers\FileUploadController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MBFController.cs" />
+    <Compile Include="Controllers\OperationsController.cs" />
+    <Compile Include="Controllers\PASAROperationEntities.cs" />
+    <Compile Include="Controllers\PowerPlantController.cs" />
+    <Compile Include="Controllers\RefineryController.cs" />
+    <Compile Include="Controllers\SFPController.cs" />
+    <Compile Include="Controllers\SmeltPlanController.cs" />
+    <Compile Include="Filters\InitializeSimpleMembershipAttribute.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\Activity.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ActivityCode.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ActivityCodeType.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ActivityType.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Activity_Timekeeping.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AFCastManPower.cs" />
+    <Compile Include="Models\AFQIG_DATA_SP_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AFRefPhase.cs" />
+    <Compile Include="Models\AFStage.cs" />
+    <Compile Include="Models\AF_Activity.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_ActivityCode.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_ActivityCodeType.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Activity_Timekeeping.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_AnodeCastingType.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_AnodeCharged.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_AnodeInventory.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_AnodePerCustomer.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_AnodeReclass.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_AnodeTransfer.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_AnodeWeightDistribution.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_AnodeWeightError.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_BariteBrand.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_BlisterReceive.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_CastingMoulds.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_CastingWheel.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_CastingWheelMoulds.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_CondemnedMould.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_CondemnedMould_Reason.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Customer.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Customer_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Delay_Reason.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Delay_Reason_Group.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_LaunderTemp.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_LIMS_AFLAB_DATA_TABLE_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Location.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_LocationRows.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Logs_NumVal.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Lot.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_LotMoulds.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Lot_Target.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Manpower.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_ManpowerLot.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_MouldInventory.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_MouldReplacement.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_MouldReplacement_Reason.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Moulds.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Num.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Page.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Param.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_ParamGroup1.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_ParamGroup2.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Param_DTime_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Param_Emp_Inv_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Param_Emp_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Param_NumMould_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Param_Num_Default_TargetVal.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Param_Num_Inv_CurrVal.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Param_Num_Inv_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Param_Num_TargetVal.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Param_Num_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Param_Str_Inv_CurrVal.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Param_Str_Inv_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Param_Str_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Param_TimeLog.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Param_Type.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Prod.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_QIGHour.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_QIGType.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_QIG_Emp_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_QIG_PC_VAL.cs" />
+    <Compile Include="Models\AF_QIG_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_QIG_Weights.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_REFINING_PIDATA_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_ReworkedAnodes.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_RoleType.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Shift_Assign.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Status.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_Target_Default.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AF_TimeLog.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Campaign.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CFCycle.cs" />
+    <Compile Include="Models\CFDB_Model.cs" />
+    <Compile Include="Models\AFStageEmp.cs" />
+    <Compile Include="Models\ChangelogSilicaFormula.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChangeType.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ChargeType.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Converter.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Cycle.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CycleLog.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CycleStage.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CycleStat.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CYCLE_ACTIVITY_PERSTAGE_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CYCLE_ALL_ACTIVITY_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CYCLE_CHANGESTARTDATE_DATA_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CYCLE_CVFORM_DUR_DATA_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CYCLE_CVFORM_SILICAREQUIRED_2ND3RD_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CYCLE_CVFORM_SILICA_SLAG_REQUIRED_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CYCLE_PERACTIVITY_DATERANGE_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CYCLE_PERSTAGE_DATERANGE_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CYCLE_SELECTOR_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CYCLE_SILICAREQUIRED_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CYCLE_STAGE_ASSIGN_DATA_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CYCLE_STAGE_CHANGE_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DefaultSilicaFormula.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeeAssignStage.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeeRole.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EmployeeRoleStage.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EMPLOYEE_3SHIFT_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\EMPLOYEE_7TO7_SHIFT_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Energy_MG_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Energy_Param.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Energy_ParamGroup1.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Energy_Param_Num_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FN_AVG_TimeWeighted_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FN_FSFE_Charge_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FN_FSFE_KPI_PI_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FN_FSFE_KPI_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FN_FSFE_PERTAG_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FN_MONITOR_LOCATIONS_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FN_MONITOR_POTS_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FN_MONITOR_SUMMARY_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FN_SFP_MONITOR_LOCATIONS_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FN_SFP_MONITOR_POTS_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FN_SFP_MONITOR_SUMMARY_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_ActivityCode.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_ActivityCodeType.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_AssignCrew.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_Bed.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_Buildup_Daily_Param_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_Buildup_Shift_Param_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_Checklist_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_Comments_Data.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_Crew.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_DustlineInspection_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_Employee.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_FII_Guideline.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_FPatternFII_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_KPITarget_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_KPI_DATA_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_KPI_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_Manpower.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_MatteGrade.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_MatteTapperCrew.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_Matte_Tapping.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_OnboardCrew.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_Param.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_ParamGroup.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_Param_Emp_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_Param_StrVal.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_Param_Type.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_Param_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_Prod.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_RegularCrew.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_Role_Type.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_SELECT_FII_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_SlagTap.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_SPOTap_MatteSlag.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_Target_Values.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_Target_ValueType.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSFE_TimeLog.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSF_AssignCrew.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSF_Crew.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSF_Crew_List.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSF_Default_Crew.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSF_Default_Crew_List.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FSF_FeedRate_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MBF_Division.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MBF_Param.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MBF_ParamGroup.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MBF_ParamGroup2.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MBF_ParamGroup3.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MBF_Param_Num_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MBF_ValType.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OperationsModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OperationsModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OperationsModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OperationsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\OperationsModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OperationsModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Operation_Department.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PASAROperation.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PASAROperation.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PASAROperation.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PASAROperation.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>PASAROperation.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PI_InstrumentData_PERCF_DEFINED_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PowerPlant_Param.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PowerPlant_ParamGroup.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PowerPlant_Param_Num_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PowerPlant_ReportType.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PP_Param.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PP_ParamGroup1.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\PP_Param_Num_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProdMonth.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProdYear.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_ActiveBlocks.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_ActivityCode.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_ActivityCodeType.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_BlockPairs.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_Blocks.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_Crew.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_Crops.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_Default_Crew.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_EmployeeRow.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_HarvestSummary.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_MachineDowntime.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_MachineDowntimeResponsible.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_MachineDowntime_SP_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_Machines.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_Manpower.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_MDReasonCodes.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_MDResponsible.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_OfflineTime_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_Page.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_Param.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_ParamGroup1.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_ParamGroup2.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_Param_DTime_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_Param_Num_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_Param_Type.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_PERBLOCK_DATERANGE_PLAN_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_PERBLOCK_DATERANGE_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_PPDaily_Temp_Table.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_PPDaily_Temp_Table_plan.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_PP_Actcode.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_PP_Actual_Daily.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_PP_Daily.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_PP_Daily_Duration.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_PP_Daily_Duration_plan.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_PRODACTIVITY_LOADDATA_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_PRODACTIVITY_LOAD_PERBLOCK_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_ProdPlanMonth.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_ProdPlan_GetPrevMonth_SP_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_RoleGroup.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_RoleType.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_Shorts.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REFTH_Shorts_Crop.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\REF_Report_SP_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RTDUET_Discipline_Total_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RTDUET_EVENTS_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RTDUET_EVENTS_TOP10_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RTDUET_TARGET.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RTDuet_TUC.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RTDUET_TUC_Total_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RT_FeedRate_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_Buckets_Data.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_Comments_Data.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_Consumable_Values.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_Crew.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_Default_Crew.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_EmployeeRoleType.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_Forecast_Values.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_Location_Status_Reference.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_Manpower.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_OldSFP_Values.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_Param.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_ParamGroup1.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_Param_Locations.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_Param_Pots.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_Param_Type.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_Pots_Data.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_RoleType.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_Shift.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_Shift_AssignCrew.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_Shift_DPMComment_Values.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_Target_Values.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_Target_ValueType.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SFP_Val_Group.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ShiftSched.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SilicaFormula.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SilicaFormulaVariable.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SmelPlan_Batch.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SmelPlan_Comment.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SmelPlan_Default.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SmelPlan_NonNumeric.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SmelPlan_Numeric.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SmelPlan_Param.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SmelPlan_ParamType.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SmelPlan_Prod.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SmelPlan_TimeSeries.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SmelPlan_TimeSeries_NumVal.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SmelPlan_TimeSeries_StrVal.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_IDENTITY_VAL_TBL_Result.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SP_PI_CFCYLE_Result.cs">
+      <DependentUpon>OperationsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Stage.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TeamShift.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TeamTypeShift.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\test.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TestTable.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TimeUsage.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Tuyere.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TuyereNumber.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TuyereState.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TypeShift.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWActivitySequence.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAFAnode_Inventory.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAFAnode_Inventory_Employee.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAFAnode_PreviousInventory.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAFCasting_Data.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAFCasting_Employee.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAFCasting_Employee_List.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAFCasting_Mould.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAFCasting_Numeric.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAFQIG_DATA.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAFRefining_Data.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAFRefining_DtTime.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAFRefining_Employee.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAFRefining_Employee_List.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAFRefining_MinMaxDate.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAFRefining_Numeric.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAFRefining_Str.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_ActivityCode.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_AFBariteBrand.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_AFNum.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_AnodeCharged.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_AnodeCustomer.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_AnodeInventory.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_AnodePerCustomer.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_AnodeReclass.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_AnodeTransfer.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_AnodeWeightDistribution.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_BlisterReceive.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_BlisterReceive_Wt.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_BlisterReceiving_Delays.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_CastingWheelMoulds.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_CondemnedMould.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_CondemnedMouldWithID.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_CondemnedMould_Reason.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_Customer.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_Customer_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_DelayReasons.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_Employee.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_EmployeeDetail.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_InspectionCategory.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_LaunderTemp.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_LIMSTarget.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_Logs_NumVal.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_LotDetail.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_Lot_ProdYear.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_Lot_ProdYearDetail.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_Lot_Targets.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_Manpower.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_ManpowerLot.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_MaxCastingTime.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_MinxCastingTime.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_MouldInventory.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_MouldReplacement.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_Moulds.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_ParamDetail.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_Positions.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_QIGAnodeTotals.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_QIGCustomer.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_QIGHrTotals.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_QIGOthers.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_QIG_RDCTotals.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_QIG_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_Refining_Delays.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_ReworkedAnodes.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_RoleTypes.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_Targets.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_TimeLogs.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_TimeLogs_AF.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_TimeLogs_Casting.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWAF_TimeLogs_PreCasting.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCFData.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCFData_ActDelay_Duration.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCFData_All.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCFData_AllStage.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCFData_Cublow.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCFData_SlagBlow.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCFEmployee.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCF_CuRecovery.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCF_CuRecovery_X1.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCF_CuRecovery_X2.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCF_CuR_AverageMG_TheoreticalS.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCF_CVForm_CntrlRmEngr.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCF_CVForm_CuBlow.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCF_CVForm_CycleDetail.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCF_CVForm_Sequence_Data.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCF_CVForm_Sequnce_ActCode.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCF_CVForm_SlagBlow.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCF_CVForm_Supervisor.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCF_CVForm_Time.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCF_MatteGrade.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCF_PERSTAGE_SKIMMER.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCF_PI_FOR_BI.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCF_TheoSilica.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWChangeLog.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWChangelogSetDefault.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWConverterCamp.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCycleActiveStage.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCycleDetail.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCycleRecent.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCycleStage.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWCycleTotalDuration.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWEmployeeAssignStageDetail.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWEmployeeperStageAssign.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWEmployeeShiftSched.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWEnergy_Numeric_MG_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWEnergy_Numeric_Val.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWFSFE_ASSIGNSHIFT.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWFSFE_Buildup_Daily.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWFSFE_Buildup_Shift.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWFSFE_Comments_Data.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWFSFE_DustlineInspection_Data.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWFSFE_Employee.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWFSFE_EquipmentIssues.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWFSFE_FII.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWFSFE_FII_Personnel.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWFSFE_FPATTERN_FII.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWFSFE_KPITarget.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWFSFE_MatteTapper.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWFSFE_MatteTapping.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWFSFE_OnboardCrew.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWFSFE_RegularCrew.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWFSFE_ShiftDate.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWFSFE_SlagTapping.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWFSFE_SPOTap_MatteSlag.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWFSFE_Targets_Data.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWFSF_DefaultCrew.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWMatteGrade_New.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWMatteGrade_NOFILTER.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWMatteGrade_Sequence.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWMatteGrade_TheView.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWMBF_NumVal.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWMBF_Params.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWOperator.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWProcess.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWREFTH_CROPS.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWREFTH_DefaultCrew.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWREFTH_Employee.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWREFTH_EmployeeRow.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWREFTH_HarvestSummary.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWREFTH_MachineDowntime.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWREFTH_MachineDowntimeResponsible.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWREFTH_Manpower.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWREFTH_Max_MCode.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWREFTH_ProdPlanMonth.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWREFTH_ProdPlanMonthData.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWREFTH_ProductionData.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWREFTH_ProductionData_Duration.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWREFTH_ProductionData_Duration_plan.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWREFTH_Production_Actual_Data.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWREFTH_ReasonCode_Resposible.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWREFTH_RoleGroup.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWREFTH_Shorts.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWREFTH_Shorts_Crop.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWREFTH_Shorts_CropBI.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWREF_ActiveBlocks.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSFP_Buckets.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSFP_Buckets_Data.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSFP_Comments_Data.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSFP_Consumables_Data.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSFP_DPMComments.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSFP_Employee.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSFP_EmployeePerRole.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSFP_Forecast_Data.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSFP_Manpower.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSFP_Monitor_Locations.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSFP_Monitor_Pots.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSFP_OldSFP_Data.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSFP_OldSFP_Materials.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSFP_OldSFP_Weighers.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSFP_Pots_Data.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSFP_Targets_Data.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSkimmer.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSPP_AdditionalKPI.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSPP_AdditionalKPI_Targets.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSPP_DefaultValues.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSPP_GraphSource.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSPP_NumericValues.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSPP_StringValues.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSPP_TimeSeries_NumVal.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSPP_TimeSeries_StrVal.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWSupervisor.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWTeamTypeShift.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VWTuyere.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\VW_FSFE_KPITarget_ShiftDate.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WVCF_SequenceGroupBy.cs">
+      <DependentUpon>PASAROperation.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\AFStyles.css" />
+    <Content Include="Content\AF_ActivityTable.css" />
+    <Content Include="Content\app.css" />
+    <Content Include="Content\arrow_down.gif" />
+    <Content Include="Content\del.png" />
+    <Content Include="Content\delete-icon.png" />
+    <Content Include="Content\delete.png" />
+    <Content Include="Content\Disable.gif" />
+    <Content Include="Content\edit_btn.gif" />
+    <Content Include="Content\gear.gif" />
+    <Content Include="Content\normalize.css" />
+    <Content Include="Content\pace.css" />
+    <Content Include="Content\RefineryStyles.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.multiselect.css" />
+    <Content Include="Content\themes\base\jquery.multiselect.filter.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Content\Styles.css" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <EntityDeploy Include="Models\OperationsModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>OperationsModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Images\bar_loader.gif" />
+    <Content Include="Images\calendar.png" />
+    <Content Include="Images\delete_new.png" />
+    <Content Include="Images\Disable.gif" />
+    <Content Include="Images\diskette.png" />
+    <Content Include="Images\ProgressImage.gif" />
+    <Content Include="Images\red_plus.png" />
+    <Content Include="Images\refresh.png" />
+    <Content Include="Images\save_disk.png" />
+    <Content Include="Models\OperationsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OperationsModel.edmx</DependentUpon>
+      <LastGenOutput>OperationsModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\OperationsModel.edmx.diagram">
+      <DependentUpon>OperationsModel.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\OperationsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>OperationsModel.edmx</DependentUpon>
+      <LastGenOutput>OperationsModel.cs</LastGenOutput>
+    </Content>
+    <EntityDeploy Include="Models\PASAROperation.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>PASAROperation.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\PASAROperation.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PASAROperation.edmx</DependentUpon>
+      <LastGenOutput>PASAROperation.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\PASAROperation.edmx.diagram">
+      <DependentUpon>PASAROperation.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\PASAROperation.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>PASAROperation.edmx</DependentUpon>
+      <LastGenOutput>PASAROperation.cs</LastGenOutput>
+    </Content>
+    <Content Include="ClassDiagram1.cd" />
+    <None Include="Properties\PublishProfiles\CFLogSheetPublish.pubxml" />
+    <None Include="Properties\PublishProfiles\LEVAPPSTEST01.pubxml" />
+    <None Include="Scripts\jquery-1.7.1.intellisense.js" />
+    <Content Include="Scripts\AFLogsheet.js" />
+    <Content Include="Scripts\canvasjs.js" />
+    <Content Include="Scripts\canvasjs.min.js" />
+    <Content Include="Scripts\date.js" />
+    <Content Include="Scripts\format.js" />
+    <Content Include="Scripts\gstaticchart.js" />
+    <Content Include="Scripts\improvemysite.js" />
+    <Content Include="Scripts\jquery-1.10.2.js" />
+    <Content Include="Scripts\jquery-1.7.1.js" />
+    <Content Include="Scripts\jquery-1.7.1.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.min.js" />
+    <Content Include="Scripts\jquery.multiselect.filter.js" />
+    <Content Include="Scripts\jquery.multiselect.filter.min.js" />
+    <Content Include="Scripts\jquery.multiselect.js" />
+    <Content Include="Scripts\jquery.multiselect.min.js" />
+    <Content Include="Scripts\jquery.sortElements.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.1.0.debug.js" />
+    <Content Include="Scripts\knockout-2.1.0.js" />
+    <Content Include="Scripts\MBFscript.js" />
+    <Content Include="Scripts\modernizr-2.5.3.js" />
+    <Content Include="Scripts\modernizr.js" />
+    <Content Include="Scripts\pace.js" />
+    <Content Include="Scripts\Refinery.js" />
+    <Content Include="Scripts\SFPLogsheet.js" />
+    <Content Include="Scripts\soat.js" />
+    <Content Include="Scripts\SPPLogsheet.js" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Images\accent.png" />
+    <Content Include="Images\bullet.png" />
+    <Content Include="Images\heroAccent.png" />
+    <Content Include="Images\orderedList0.png" />
+    <Content Include="Images\orderedList1.png" />
+    <Content Include="Images\orderedList2.png" />
+    <Content Include="Images\orderedList3.png" />
+    <Content Include="Images\orderedList4.png" />
+    <Content Include="Images\orderedList5.png" />
+    <Content Include="Images\orderedList6.png" />
+    <Content Include="Images\orderedList7.png" />
+    <Content Include="Images\orderedList8.png" />
+    <Content Include="Images\orderedList9.png" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Account\_ChangePasswordPartial.cshtml" />
+    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
+    <Content Include="Views\Account\_RemoveExternalLoginsPartial.cshtml" />
+    <Content Include="Views\Account\_SetPasswordPartial.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Manage.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
+    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Views\Operations\Index.cshtml" />
+    <Content Include="Views\Operations\CFLogsheet.cshtml" />
+    <Content Include="Views\Shared\_CycleSelector.cshtml" />
+    <Content Include="Views\Operations\NewCycle.cshtml" />
+    <Content Include="Views\Operations\NewCampaign.cshtml" />
+    <Content Include="Views\Operations\EmployeeShift.cshtml" />
+    <Content Include="Views\Shared\_CycleSelect.cshtml" />
+    <Content Include="Views\Shared\_ChangeTuyere.cshtml" />
+    <Content Include="Views\Shared\_AddStage.cshtml" />
+    <Content Include="Views\Shared\_AddActivity.cshtml" />
+    <Content Include="Views\Shared\_EditActivity.cshtml" />
+    <Content Include="Views\Shared\_InsertMidActivity.cshtml" />
+    <Content Include="Views\Operations\CFCycles.cshtml" />
+    <Content Include="Views\Operations\SilicaRequired.cshtml" />
+    <Content Include="Views\Shared\_EditStartDate.cshtml" />
+    <Content Include="Views\Shared\_ChangeEmployeeStage.cshtml" />
+    <Content Include="Views\Operations\FSFELogsheet.cshtml" />
+    <Content Include="Views\Shared\FSFE_ShiftSupervisor.cshtml" />
+    <Content Include="Views\Shared\FSFE_SPOTapper.cshtml" />
+    <Content Include="Views\Shared\FSFE_ControlRmOperator.cshtml" />
+    <Content Include="Views\Shared\FSFE_CWandSBTender.cshtml" />
+    <Content Include="Views\Shared\FSFE_FDOperator.cshtml" />
+    <Content Include="Views\Shared\FSFE_DustlineTender.cshtml" />
+    <Content Include="Views\Shared\FSFE_Highlights.cshtml" />
+    <Content Include="Views\Shared\FSFE_SlagTender.cshtml" />
+    <Content Include="Views\Shared\FSFE_FII.cshtml" />
+    <Content Include="Views\Shared\FSFE_InspChecklist.cshtml" />
+    <Content Include="Views\Shared\_RegularCrew.cshtml" />
+    <Content Include="Views\Shared\_EditRegularCrew.cshtml" />
+    <Content Include="Views\Shared\_MatteTapper.cshtml" />
+    <Content Include="Views\Shared\_EditMatteTapper.cshtml" />
+    <Content Include="Views\Shared\_MatteTapping.cshtml" />
+    <Content Include="Views\Shared\_EditMatteTapping.cshtml" />
+    <Content Include="Views\Shared\_SPOTapper.cshtml" />
+    <Content Include="Views\Shared\_EditSPOTapper.cshtml" />
+    <Content Include="Views\Shared\_FPattern.cshtml" />
+    <Content Include="Views\Shared\_EditFPattern.cshtml" />
+    <Content Include="Views\Shared\_FSFE_FII.cshtml" />
+    <Content Include="Views\Shared\_SlagTapping.cshtml" />
+    <Content Include="Views\Shared\_EditSlagTapping.cshtml" />
+    <Content Include="Views\SmeltPlan\SmelterPlan.cshtml" />
+    <Content Include="Views\AnodeFurnace\CreateLotNo.cshtml" />
+    <Content Include="Views\AnodeFurnace\AFLots.cshtml" />
+    <Content Include="Views\AnodeFurnace\AssignYear.cshtml" />
+    <Content Include="Views\Shared\_AFLotNumCreate.cshtml" />
+    <Content Include="Views\Shared\_AFLotNumEdit.cshtml" />
+    <Content Include="Views\AnodeFurnace\AFBlisterReceive.cshtml" />
+    <Content Include="Views\Shared\_AFBlisterReceive.cshtml" />
+    <Content Include="Views\Shared\_AFBlisterReceiveEdit.cshtml" />
+    <Content Include="Views\AnodeFurnace\AFRefining.cshtml" />
+    <Content Include="Views\Shared\_AFLotNoSelect.cshtml" />
+    <Content Include="Views\Shared\_AFManPower.cshtml" />
+    <Content Include="Views\Shared\_AFStage.cshtml" />
+    <Content Include="Views\AnodeFurnace\AFCasting.cshtml" />
+    <Content Include="Views\Shared\_CFCampSelect.cshtml" />
+    <Content Include="Views\Shared\_AFMouldReplace.cshtml" />
+    <Content Include="Views\Shared\_AFCastingTime.cshtml" />
+    <Content Include="Views\Shared\_AFCastingManPower.cshtml" />
+    <Content Include="Views\AnodeFurnace\AFQIG.cshtml" />
+    <Content Include="Views\Shared\_AFQIG_Inspect.cshtml" />
+    <Content Include="Views\Shared\FSFE_Crew.cshtml" />
+    <Content Include="Views\Shared\OldFSFE_ShiftSupervisor.cshtml" />
+    <Content Include="Views\Shared\_AF2ndCastingTime.cshtml" />
+    <Content Include="Views\Shared\SFP_CF_active.cshtml" />
+    <Content Include="Views\Shared\SFP_CF_complete.cshtml" />
+    <Content Include="Views\Shared\SFP_Consumables_GrindingBalls.cshtml" />
+    <Content Include="Views\Shared\SFP_Consumables_InKG.cshtml" />
+    <Content Include="Views\Shared\SFP_Consumables_Others.cshtml" />
+    <Content Include="Views\Shared\SFP_FSF_active.cshtml" />
+    <Content Include="Views\Shared\SFP_FSF_complete.cshtml" />
+    <Content Include="Views\Shared\SFP_Targets_Forecast.cshtml" />
+    <Content Include="Views\Shared\SFP_Targets_Limits.cshtml" />
+    <Content Include="Views\Shared\SmelBatchPlan.cshtml" />
+    <Content Include="Views\Shared\SmeltBatchPlan.cshtml" />
+    <Content Include="Views\Shared\_SFPActive.cshtml" />
+    <Content Include="Views\Shared\_Tables.cshtml" />
+    <Content Include="Views\Shared\_AddOldSFPEntry.cshtml" />
+    <Content Include="Views\Shared\_AddSFPBucketsEntry.cshtml" />
+    <Content Include="Views\Shared\_AddSFPConsumable.cshtml" />
+    <Content Include="Views\Shared\_AddSFPEntryCF.cshtml" />
+    <Content Include="Views\Shared\_AddSFPEntryFSF.cshtml" />
+    <Content Include="Views\Shared\_AFMouldCastingTime.cshtml" />
+    <Content Include="Views\Shared\_EditSFPConsumable.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Shared\_EditSFPEntry.cshtml" />
+    <Content Include="Views\Shared\_EditSFPEntry_c.cshtml" />
+    <Content Include="Views\SFP\SFPActive.cshtml" />
+    <Content Include="Views\SFP\SFPComplete.cshtml" />
+    <Content Include="Views\SFP\SFP_Buckets.cshtml" />
+    <Content Include="Views\SFP\SFP_Consumables.cshtml" />
+    <Content Include="Views\SFP\SFP_OldSFP.cshtml" />
+    <Content Include="Views\SFP\SFP_Targets.cshtml" />
+    <Content Include="Views\SFP\_SFPMonitor.cshtml" />
+    <Content Include="Views\Energy\Energy.cshtml" />
+    <Content Include="Views\AnodeFurnace\AFTargets.cshtml" />
+    <Content Include="Views\AnodeFurnace\Inventory.cshtml" />
+    <Content Include="Views\SFP\SFP_Crew.cshtml" />
+    <Content Include="Views\Shared\SFP_CrewDefault.cshtml" />
+    <Content Include="Views\Shared\SFP_Manpower.cshtml" />
+    <Content Include="Views\Shared\_SmeltPlan_Cells.cshtml" />
+    <Content Include="Views\Shared\_SmeltPlan_Control.cshtml" />
+    <Content Include="Views\Shared\_SmeltPlan_ParamTables.cshtml" />
+    <Content Include="Views\Shared\_SmeltPlan_ParamTables_Plan.cshtml" />
+    <Content Include="Views\Shared\_SmeltPlan_Plan.cshtml" />
+    <Content Include="Views\Shared\_SmeltPlan_PlanVsActual.cshtml" />
+    <Content Include="Views\SmeltPlan\SmeltPlan_KeyIn.cshtml" />
+    <Content Include="Views\SmeltPlan\SmeltPlan_Plan.cshtml" />
+    <Content Include="Views\SmeltPlan\SmeltPlan_PlanVsActual.cshtml" />
+    <Content Include="Views\SmeltPlan\_AF_Cells.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\SmeltPlan\_CF_Cells.cshtml" />
+    <Content Include="Views\SmeltPlan\_Crane_Cells.cshtml" />
+    <Content Include="Views\Shared\FSFE_Dustline_Inspection.cshtml" />
+    <Content Include="Views\Shared\_EditDustlineInspection.cshtml" />
+    <Content Include="Views\Shared\_FSFE_Dustline_Inspect_form.cshtml" />
+    <Content Include="Views\Energy\_DailyMQ.cshtml" />
+    <Content Include="Views\Shared\_SmeltPlan_Legend.cshtml" />
+    <Content Include="Views\Shared\FSFE_Equip_Issues.cshtml" />
+    <Content Include="Views\Shared\FSFE_Targets.cshtml" />
+    <Content Include="Views\Shared\FSFE_Comments.cshtml" />
+    <Content Include="Views\SFP\SFP_Comments.cshtml" />
+    <Content Include="Views\Shared\FSFE_Buildup_Management.cshtml" />
+    <Content Include="Views\Shared\SFP_DPM_Comments.cshtml" />
+    <Content Include="Views\Shared\SFP_KPI_Comments.cshtml" />
+    <Content Include="Views\AnodeFurnace\AFLogsheetData.cshtml" />
+    <Content Include="Views\Shared\_AFeditaf.cshtml" />
+    <Content Include="Views\Shared\_AFaddaf.cshtml" />
+    <Content Include="Views\Shared\AF_Blister_Prep.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Shared\AF_CastingOperations.cshtml" />
+    <Content Include="Views\Shared\af_manpower.cshtml" />
+    <Content Include="Views\Shared\AF_PreCasting.cshtml" />
+    <Content Include="Views\Shared\_AddSFPEntry.cshtml" />
+    <Content Include="Views\Shared\_AFaddcasting.cshtml" />
+    <Content Include="Views\Shared\_AFaddprecast.cshtml" />
+    <Content Include="Views\Shared\_AFanodecharged_add.cshtml" />
+    <Content Include="Views\Shared\_AFanodecharged_edit.cshtml" />
+    <Content Include="Views\Shared\_AFeditcasting.cshtml" />
+    <Content Include="Views\Shared\_AFeditprecast.cshtml" />
+    <Content Include="Views\Shared\_AFLotNo.cshtml" />
+    <Content Include="Views\Shared\_AFreworked_add.cshtml" />
+    <Content Include="Views\Shared\_CFaddmg.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Shared\_NewAFLotNumCreate.cshtml" />
+    <Content Include="Views\Shared\_NewAFLotNumEdit.cshtml" />
+    <Content Include="Views\AnodeFurnace\AFLogsheet.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\AnodeFurnace\AFLotLists.cshtml" />
+    <Content Include="Views\AnodeFurnace\AFTimes.cshtml" />
+    <Content Include="Views\AnodeFurnace\AFView.cshtml" />
+    <Content Include="Views\AnodeFurnace\AnodeCharged.cshtml" />
+    <Content Include="Views\AnodeFurnace\ReworkedAnodes.cshtml" />
+    <Content Include="Views\AnodeFurnace\ShiftReports.cshtml" />
+    <Content Include="Views\AnodeFurnace\WeightDistribution.cshtml" />
+    <Content Include="Views\Shared\_AFaddcasting2.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Shared\_AFmouldmaintenance.cshtml" />
+    <Content Include="Views\AnodeFurnace\AnodeTransfer.cshtml" />
+    <Content Include="Views\PowerPlant\BoilerWaterAnalysis.cshtml" />
+    <Content Include="Views\AnodeFurnace\AnodeReClass.cshtml" />
+    <Content Include="Views\Shared\_addafcasting_tbl2new.cshtml" />
+    <Content Include="Views\Shared\_addafcasting_tblnew.cshtml" />
+    <Content Include="Views\Shared\_editafcasting_tbl2new.cshtml" />
+    <Content Include="Views\Shared\_editafcasting_tblnew.cshtml" />
+    <Content Include="Views\Shared\_AFmanpowerLot.cshtml" />
+    <Content Include="Views\Shared\MBF_Actual.cshtml" />
+    <Content Include="Views\Shared\MBF_Forecast.cshtml" />
+    <Content Include="Views\MBF\MBFlogsheet.cshtml" />
+    <Content Include="Views\PowerPlant\CoolingWaterAnalysis.cshtml" />
+    <Content Include="Views\Refinery\RefineryManpower.cshtml" />
+    <Content Include="Views\Refinery\RefineryProd.cshtml" />
+    <Content Include="Views\Refinery\RefineryTimelogs.cshtml" />
+    <Content Include="Views\Shared\Refinery_activitylog.cshtml" />
+    <Content Include="Views\Shared\Refinery_crew_electrolysis.cshtml" />
+    <Content Include="Views\Shared\Refinery_CSMlog.cshtml" />
+    <Content Include="Views\Shared\Refinery_KeyPlan.cshtml" />
+    <Content Include="Views\Shared\Refinery_manpower_commercial.cshtml" />
+    <Content Include="Views\Shared\Refinery_manpower_electrolysis.cshtml" />
+    <Content Include="Views\Shared\Refinery_PlanVsActual.cshtml" />
+    <Content Include="Views\Shared\Refinery_crew_commercial.cshtml" />
+    <Content Include="Views\Shared\Refinery_shorts.cshtml" />
+    <Content Include="Views\Refinery\RefineryCrewDefaults.cshtml" />
+    <Content Include="Views\Shared\Refinery_cropshorts.cshtml" />
+    <Content Include="Views\Shared\Refinery_cropshorts_add.cshtml" />
+    <Content Include="Views\Shared\Refinery_cropshorts_edit.cshtml" />
+    <Content Include="Views\AnodeFurnace\ActivityCode.cshtml" />
+    <Content Include="Views\AnodeFurnace\_AddAFActivityCode.cshtml" />
+    <Content Include="Views\AnodeFurnace\_EditAFActivityCode.cshtml" />
+    <Content Include="Views\Refinery\Refinery_MachineDowntime_Monitoring.cshtml" />
+    <Content Include="Views\Shared\Refinery_AddDowntime.cshtml" />
+    <Content Include="Views\Shared\Refinery_DowntimeReasons.cshtml" />
+    <Content Include="Views\Shared\Refinery_Downtime_Edit.cshtml" />
+    <Content Include="Views\Shared\Refinery_AddNewResponsible.cshtml" />
+    <Content Include="Views\Shared\Refinery_AddNewTrouble.cshtml" />
+    <Content Include="Views\Shared\Refinery_Edit_Reason.cshtml" />
+    <Content Include="Views\Shared\Refinery_prodact_add.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Views\Shared\Refinery_prodact_edit.cshtml" />
+    <Content Include="Views\Shared\Refinery_ProdplanMonthEditDate.cshtml" />
+    <Content Include="Views\Shared\Refinery_ProdPlanMonthly.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="OperationPicture\FII\" />
+    <Folder Include="OperationPicture\FPattern\" />
+    <Folder Include="UploadedFiles\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>64719</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

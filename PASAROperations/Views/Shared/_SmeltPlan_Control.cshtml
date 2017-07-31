@@ -1,0 +1,86 @@
+﻿<table class="spp_tbl" id="control_tbl" style="height: 100%; padding-top: 15px;">
+    <tr>
+        <td colspan="5" style="border:none">
+            <div id="spp_date_div" style="height: 21px;">
+                @*<label>Date: </label>
+                <input type="text" id="spp_date" />
+                <input type="button" value="Go To" style="font: bold 10px arial; width: 50px;" />*@
+            </div>
+        </td>
+    </tr>
+    <tr>
+        <th colspan="4" style="text-align: right; border: none">DAY:</th>
+        <th style="height:46px; font-size: 20px;" id="day_panel"></th>
+    </tr>
+    <tr class="feed_cells">
+        <td>
+            <input type="button" id="feedrate_btn" value="Feed" style="width: 100%; height: 100%" /></td>
+        <th>Matte level at 6 am</th>
+        <td id="paramid_4" class="input_box fsf_h">
+            <input onkeypress="return NumericOnly(event)" type="text" class="input_box" style="width: 100%;" title="Matte Level at 6am" /></td>
+        <td id="paramid_5" class="input_box fsf_h">
+            <input onkeypress="return NumericOnly(event)" type="text" class="input_box" style="width: 90%; float:left;" title="%Cu in Feed" />%</td>
+        <td>Feed rate(tph)</td>
+    </tr>
+    <tr class="matte_cells">
+        <td class="feedrate_auto" id="paramid_1">
+            <input type="text" class="feedrate_auto" /></td>
+        <td id="paramid_7" class="input_box fsf_h">
+            <input onkeypress="return NumericOnly(event)" type="text" class="input_box" style="width: 100%;" title="Matte Level Fall" /></td>
+        <td id="paramid_22" class="input_box fsf_h">
+            <input onkeypress="return NumericOnly(event)" type="text" class="input_box" style="width: 100%;" title="Matte Level Rise" /></td>
+        <td id="paramid_6" class="input_box fsf_h">
+            <input onkeypress="return NumericOnly(event)" type="text" class="input_box" style="width: 90%; float:left;" title=" Target Matte Grade for the day" />%</td>
+        <td><input id="matte_lvl_btn" type="button" value="Matte level(cm)" style="background: transparent;" title="Click to refresh Matte Levels" /></td>
+    </tr>
+    <tr>
+        <th rowspan="2" class="fsfcfafca"><input type="button" title="Save Defaults" id="default_btn" value="Save Default"/></th>
+        <th colspan="2" rowspan="2" class="fsfcfafca" style="height:20px; border-bottom-width: 0px;">FSF&nbsp;&nbsp;<input type="button" value="Send FSF" id="fsf_btn" disabled="disabled" /></th>
+        <th>TAPPING SCHED</th>
+        <th>NO. of LADDLES</th>
+    </tr>
+    <tr style="height:20px;">
+        @*<th style="border-top-width: 0px;" class="fsfcfafca"><label style="font-size: 8px">Conc. Feed:</label></th>
+        <td style="border-top-width: 0px;" class="fsfcfafca" id="paramid_33">
+            <input onkeypress="return NumericOnly(event)" type="text" class="input_box" style="width: 100%;" title="Concentration Feed" />
+        </td>*@
+        <th colspan="2" class="fsf_h">Remarks:</th>
+    </tr>
+    <tr style="height:20px;">
+        <th rowspan="8"></th>
+        <th colspan="2" rowspan="4" style="border-bottom: none;" class="fsfcfafca">CF&nbsp;&nbsp;<input type="button" value="Send CF" id="cf_btn" disabled="disabled" /></th>
+        <th colspan="2">CRANE 1</th>
+    </tr>
+    <tr style="height:20px;">
+        <th colspan="2">CRANE 2</th>
+    </tr>
+    <tr style="height:20px;">
+        <td class="cf_td">CF 1</td>
+        <td>Operating</td>
+    </tr>
+    <tr style="height:20px;">
+        <td class="cf_td">CF 2</td>
+        <td>Operating</td>
+    </tr>
+    <tr style="height:20px;">
+        <th rowspan="2" style="border-top: none; border-right: none;" class="fsfcfafca">Blister per Cycle</th>
+        <td class="blist_input cf_td" id="paramid_13" >
+            <input type="text" class="blist_input" style="width: 100%;" title="Blister per cycle" /></td>
+        <td class="cf_td">CF 3</td>
+        <td>Operating</td>
+    </tr>
+    <tr style="height:20px;">
+        <td class="fsfcfafca"></td>
+        <td class="cf_td">CF 4</td>
+        <td>Operating</td>
+    </tr>
+    <tr style="height:20px;">
+        <th rowspan="2" colspan="2" class="fsfcfafca">AFCA&nbsp;&nbsp;<input type="button" value="Send AFCA" id="afca_btn" disabled="disabled" /></th>
+        <td class="af_td"></td>
+        <td>AF 1</td>
+    </tr>
+    <tr style="height:20px;">
+        <td class="af_td"></td>
+        <td>AF 2</td>
+    </tr>
+</table>

@@ -1,0 +1,630 @@
+﻿@{
+    ViewBag.Title = "AFLogsheet";
+    ViewBag.Pathname = Request.ApplicationPath;
+
+    if (ViewBag.Pathname == "/")
+    {
+        ViewBag.Pathname = "";
+    }
+}
+
+@Scripts.Render("~/bundles/jquery")
+<div id="Dialog_addnewactivity" style="overflow: hidden;"></div>
+<div id="Dialog_StartDateTimeBP" style="overflow: hidden;"></div>
+<div id="Dialog_EndDateTimeBP" style="overflow: hidden;"></div>
+<div id="Dialog_startend_bp" style="overflow: hidden;"></div>
+<div id="Dialog_AddAF" style="overflow: hidden;"></div>
+<div id="Dialog_EditAF" style="overflow: hidden;"></div>
+<div id="Dialog_AddPreCast" style="overflow: hidden;"></div>
+<div id="Dialog_editPreCast" style="overflow: hidden;"></div>
+<div id="Dialog_insert_midprecast" style="overflow: hidden;"></div>
+<div id="Dialog_addcasting2" style="overflow: hidden;"></div>
+<div id="Dialog_addcasting" style="overflow: hidden;"></div>
+<div id="Dialog_editcasting" style="overflow: hidden;"></div>
+<div id="Dialog_insert_midcast" style="overflow: hidden;"></div>
+<div id="Dialog_addlaunder" style="overflow: hidden;"></div>
+
+
+
+<br />
+<div id="AFlogsheet">
+    <div id="AFsecond_div">
+        <h5>&nbsp;&nbsp;AF Logsheet Data</h5>
+
+        <div id="AF_CycleDetail_div">
+            <div id="AF_cycledetail_div1">
+                <span class=" afcyc_detail_span"><b>Lot Number :</b>
+                    <h6 id="afcyclenum_cycledetail">@ViewBag.AFlogsheet_AFLotNo</h6>
+
+                </span>
+
+                <br />
+                <br />
+
+                <span class=" afcyc_detail_span"><b>AF Number :</b>&nbsp;
+                    <h6 id="cftuyere_blockcount">@ViewBag.AFlogsheet_AFNum</h6>
+                </span>
+                <br />
+                <br />
+                <br />
+                <span class="afcyc_detail_span">
+                    @*<img width="40" height="40" id="" title="Back to Lot list" src="~/Images/back-icon.png" onclick="goBack()" class="back_button">*@
+                    <input type="button" value="Lot List" onclick="goBack()" accesskey="r" />
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img id="save_blister_prep" width="40" height="40" id="" title="Save remarks now" src="~/Images/diskette.png" />
+                    @*<button class="mat_des" onclick="goBack()">Back to lot list</button>*@
+                </span>
+                @* <div id="csaved" style="top:250px; left: 150px; position: absolute; color:#3ec73e; visibility:hidden; font-size:15px;">Saved</div>*@
+
+            </div>
+
+            <div id="AFcycledetail_div2">
+                <span class=" afcyc_detail_span">Start Time :
+                    <h6 id="cfstarttitme_cycledetail">@ViewBag.AFlogsheet_StartTime</h6>
+                    @*<a id="cycle_changestartdate" onclick="Change_StartDate();return false;">Change Start Date?</a>*@</span>
+                <br />
+                <br />
+                <span class=" afcyc_detail_span">End Time :&nbsp;&nbsp;<h6 id="cfendtitme_cycledetail">@ViewBag.AFlogsheet_EndTime</h6>
+                </span>
+                <br />
+                <br />
+
+                <span class=" afcyc_detail_span"><b>Status :</b> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<h6 id="cfstatus_cycledetail">@ViewBag.AFlogsheet_CycStatus</h6>
+                </span>
+
+                @*  <input type="button" value="Save" />*@
+            </div>
+
+            <div id="afcustomer" style="float: left; visibility: hidden; font-size: 16px;">
+                <br />
+                <b>Customer :</b>
+                @Html.DropDownList("cw1_cust_ddl", (SelectList)ViewBag.Cust_List)
+            </div>
+
+            <div id="afcycledetail_div3" style="float: left;">
+                <b>Remarks :</b>&nbsp;&nbsp;<br />
+                <br />
+                <textarea id="af_remarks_box" placeholder="-"></textarea>
+            </div>
+
+            <div id="fuelred_div_aflogsheet">
+                <h6><font color="black">Fuel Reading</font></h6>
+                <table id="aflogsheet_fuelred">
+                    <tr>
+                        <th class="sizing">&nbsp;</th>
+                        <th>HFO</th>
+                        <th>LFO</th>
+                    </tr>
+                    <tr>
+                        <td class="sizing">Start of tdis lot (Li)</td>
+                        <td id="hfo_start">&nbsp;</td>
+                        <td id="lfo_start">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="sizing">End of tdis lot (Li)</td>
+                        <td id="hfo_end">&nbsp;</td>
+                        <td id="lfo_end">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="sizing"><b>Consumption (Li)</b></td>
+                        <td id="hfo_consumed">&nbsp;</td>
+                        <td id="lfo_consumed">&nbsp;</td>
+                    </tr>
+                </table>
+
+            </div>
+
+            <div id="lpg_div_aflogsheet" style="float: left;">
+                <h6><font color="black">LPG Readings</font></h6>
+                <table id="aflogsheet_lpgred">
+                    <tr>
+
+                        <th>Poling</th>
+                        <th>Totalizer</th>
+                    </tr>
+                    <tr>
+                        <td class="sizing">Start</td>
+
+                        <td id="lpg_start">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="sizing">End</td>
+
+                        <td id="lpg_end">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td class="sizing"><b>Consumed</b></td>
+
+                        <td id="lpg_consumed">&nbsp;</td>
+                    </tr>
+                </table>
+
+            </div>
+
+            @*  <div id="afcycledetail_div3" style="float: left;">
+              
+                
+            </div>*@
+
+        </div>
+
+        <div id="AFActivityCode">
+
+            <!-- top table title -->
+
+            <div class="topbarcode">&nbsp;</div>
+
+            <!-- END -->
+            <div class="thetabs">
+
+                <div class="afverticaltabs">
+
+                    <dl class="tabs vertical">
+
+                        <dd><a href="#" id="tab4" onclick="ddactive_af_casting('_AFmanpowerLot');return false;">Manpower</a></dd>
+                        <dd class='active'><a href="#" id="tab1" onclick="ddactive_af('AF_Blister_Prep');return false;">AF</a></dd>
+                        @* <dd><a href="#" onclick="ddactive_af('AF_Blowing_Poling');return false;">Blowing/Poling</a></dd>*@
+                        <dd><a href="#" id="tab3" onclick="ddactive_af_casting('AF_PreCasting');return false;">Pre-Casting</a>
+                        <dd><a href="#" id="tab2" onclick="ddactive_af_casting('AF_CastingOperations');return false;">Casting</a></dd>
+                        @*<dd><a href="#htab-panel1">3rd Slag Blow</a></dd>
+                <dd><a href="#htab-panel1">4th Slag Blow</a></dd>
+                <dd><a href="#htab-panel1">5th Slag Blow</a></dd>
+                <dd><a href="#htab-panel1">Clean-Off Blow</a></dd>
+                <dd><a href="#htab-panel1">Cu Blow</a></dd>
+
+                <dd>*@
+                    </dl>
+
+                </div>
+
+
+
+            </div>
+
+            <div class="horizontaltabs_AF">
+
+                @*   <dl class="tabs">
+                <dd class='active'><a href="#htab-panel1">1st Slag Blow</a></dd>
+                <dd><a href="#htab-panel2">2nd Slag Blow</a></dd>
+                <dd><a href="#htab-panel3">Cu Blow</a></dd>
+                  <dd><a href="#htab-panel4">Dore Reverts</a></dd>
+                  <dd><a href="#htab-panel5">Prodn</a></dd>
+                  <dd><a href="#htab-panel6">Others</a></dd>
+                  <dd><a href="#htab-panel7">Reports</a></dd>
+                <dd>
+              </dl>  *@
+                <div class="af_wrapping_content">
+                    @* <div id="afadd"><h3><img width="25" height="25" title="Add new blister prep row" id="addrow_btn" src="~/Images/red_plus.png">&nbsp;&nbsp;<span title="Add new blister prep row" class="btn_label_span" id="addrow_lnk"><b>Add new</b></span></h3></div>*@
+
+                    <div style="position: absolute; top: 245px; left: 267px; text-decoration: underline;"><span id="aflot_edit_stat_btn" class="btn_label_span cpointer">Modify Lot Status</span></div>
+
+                    <div id="precast_add" style="overflow: hidden;">
+                        <div class="val_enddate">
+                            <h3>
+                                <img width="25" height="25" title="Add new blister prep row" id="pcaddrow_btn" src="~/Images/red_plus.png" class="cpointer">&nbsp;&nbsp;<span title="Add new blister prep row" class="btn_label_span_pc cpointer" id="pcaddrow_lnk"><b>Add new</b></span></h3>
+                        </div>
+                        <input type="text" id="search_pc" placeholder="Type to search..." style="width: 200px;" />
+                    </div>
+
+                    <div id="afadd">
+                        <div class="val_enddate">
+                            <h3>
+                                <img width="25" height="25" title="Add new blister prep row" id="addrow_btn" src="~/Images/red_plus.png">&nbsp;&nbsp;<span title="Add new AF Activity" class="btn_label_span" id="addrow_lnk"><b>Add new AF Activity</b></span></h3>
+                        </div>
+
+                        <input type="text" id="search" placeholder="Search Activity here..." autofocus />
+                    </div>
+
+                    <div id="cast1_add" style="overflow: hidden; position:absolute; top: 640px;">
+                        <div class="val_enddate">
+                            <h3>
+                                <img width="25" height="25" title="Add new Casting" id="cast1addrow_btn" src="~/Images/red_plus.png" class="cpointer">&nbsp;&nbsp;<span title="Add new Casting" class="btn_label_span cpointer" id="cast1addrow_lnk"><b>Add new Casting Wheel 1 Activity</b></span></h3>
+                        </div>
+                    </div>
+
+                    <div id="cast2_add" style="position:absolute; top: 640px; left: 925px;">
+                        <div class="val_enddate">
+                            <h3>
+                                <img width="25" height="25" title="Add new Casting" id="cast2addrow_btn" src="~/Images/red_plus.png" class="cpointer">&nbsp;&nbsp;<span title="Add new Casting" class="btn_label_span cpointer" id="cast2addrow_lnk"><b>Add new Casting Wheel 2 Activity</b></span></h3>
+                        </div>
+                    </div>
+
+                    @*                <div id="cast2_add" style="overflow:hidden;"><h3><img width="25" height="25" title="Add new Casting" id="cast2addrow_btn" src="~/Images/red_plus.png">&nbsp;&nbsp;<span title="Add new Casting" class="btn_label_span" id="cast2addrow_lnk"><b>Add new</b></span></h3></div>*@
+                    <div id="precast_add" style="overflow: hidden;">
+                        <div class="val_enddate">
+                            <h3>
+                                <img width="25" height="25" title="Add new blister prep row" id="pcaddrow_btn" src="~/Images/red_plus.png">&nbsp;&nbsp;<span title="Add new blister prep row" class="btn_label_span" id="pcaddrow_lnk"><b>Add new Pre-Casting Activity</b></span></h3>
+                        </div>
+
+                        <input type="text" id="search_pc" placeholder="Search Activity here..." autofocus />
+                    </div>
+
+                    <div class="AF_tabs-content">
+
+                        <div class="content active" id="htab-panel2">
+
+                            @Html.Partial("~/Views/Shared/AF_Blister_Prep.cshtml")
+                            @*<div id="af_activity_btn_div">&nbsp;<input id="af_add_activity_btn" type="button" value="Add Activity" /></div>*@
+
+                            <div id="aftable_div" style="padding-left: 10px !important;">
+                                @*<div id="activity_div_left">
+                                <div id="Employee_assign_stage_data">
+                                    <p>Supervisor:&nbsp;<span id="assign_sup"></span></p>
+
+                                    <p>Cntrl Rm Engr:&nbsp;<span id="assign_opt"></span></p>
+
+                                    <p>Skimmer:&nbsp;<span id="assign_skim"></span></p>
+
+                                </div>
+
+                                <div id="stageid_value" class="hidden_div"></div>
+                                <div id="stagename_value" class="hidden_div"></div>
+
+                            </div>
+                            <div id="ChangeAssignEmployee_link"><a href="#" onclick="Change_EmployeeStage_Assign();return false;">Assign?</a></div>
+                            <div id="activity_div_time">
+                                <div>Start Time : <span id="starttime_perstage_tab"></span></div>
+                                <br />
+                                <div>End Time  :&nbsp;  <span id="endtime_perstage_tab"></span></div>
+
+                            </div>*@
+
+
+                            </div>
+                        </div>
+
+                        @*                </div>*@
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div id="lotid" style="overflow: hidden; display: none;">@ViewBag.AFlogsheet_aflotId</div>
+<div class="add_af_actcode_id hidden_div" style="overflow: hidden;"></div>
+<div style="overflow: hidden;">
+    <h6 style="visibility: hidden;" id="cfcyclenum_cycledetail">@ViewBag.AFlogsheet_AFLotNo</h6>
+    <span style="visibility: hidden;" id ="prevmax_stime">@ViewBag.LotStartTime</span>   
+</div>
+<div id="Dialog_NewEditLotNum" style="overflow: hidden;"></div>
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        //auto hide
+        $('#afcustomer').hide();
+        $("#precast_add,#cast1_add,#cast2_add,#aflot_edit_stat_btn").hide();
+    });
+
+    $(function () {
+        //show
+        $("#tab1").live
+          ("click", function () {
+              $("#fuelred_div_aflogsheet,#lpg_div_aflogsheet,#afadd").show();
+              $("#precast_add,#cast1_add,#cast2_add,#aflot_edit_stat_btn").hide();
+              //$("#afcustomer").css('visibility', 'hidden');
+              $(this).attr('disabled', true);
+              $('#tab2').attr('disabled', false);
+              $('#tab3').attr('disabled', false);
+              $('#tab4').attr('disabled', false);
+              $('.AF_tabs-content').css('height', '350px');
+              $('.AF_tabs-content').css('box-shadow', '0px 0px 1px 1px rgba(0,0,0,0.26)');
+           
+          });
+        //click to hide
+        $("#tab2").live("click", function () {
+
+            $("#fuelred_div_aflogsheet,#lpg_div_aflogsheet,#afadd,#precast_add,#afadd").hide();
+            //$("#afcustomer").css('visibility', 'visible');
+            $("#cast1_add,#cast2_add,#aflot_edit_stat_btn").show();
+            $(this).attr('disabled', true);
+            $('#tab3').attr('disabled', false);
+            $('#tab1').attr('disabled', false);
+            $('#tab4').attr('disabled', false);
+            $('.AF_tabs-content').css('height', '350px');
+            $('.AF_tabs-content').css('box-shadow', '0px 0px 0px 0px rgba(0,0,0,0)');
+        });
+
+        $("#tab3").live
+          ("click", function () {
+
+              $("#fuelred_div_aflogsheet,#lpg_div_aflogsheet,#afadd,#cast1_add,#cast2_add,#afadd,#aflot_edit_stat_btn").hide();
+              //$("#precast_add").css('visibility', 'visible');
+              $("#precast_add").show();
+              $("#afcustomer").css('visibility', 'visible');
+              $(this).attr('disabled', true);
+              $('#tab2').attr('disabled', false);
+              $('#tab1').attr('disabled', false);
+              $('#tab4').attr('disabled', false);
+              $('.AF_tabs-content').css('height', '350px');
+              $('.AF_tabs-content').css('box-shadow', '0px 0px 1px 1px rgba(0,0,0,0.26)');
+          });
+
+        $("#tab4").live
+          ("click", function () {
+
+              $("#fuelred_div_aflogsheet,#lpg_div_aflogsheet,#afadd,#cast1_add,#cast2_add,#afadd,#aflot_edit_stat_btn").hide();
+              $("#precast_add,#cast1_add,#cast2_add,#aflot_edit_stat_btn").hide();
+              $("#fuelred_div_aflogsheet,#lpg_div_aflogsheet,#afadd,#precast_add,#afadd").hide();
+              //$("#precast_add").css('visibility', 'visible');
+              //$("#precast_add").show();
+              //$("#afcustomer").css('visibility', 'visible');
+              $(this).attr('disabled', true);
+              $('#tab2').attr('disabled', false);
+              $('#tab1').attr('disabled', false);
+              $('#tab3').attr('disabled', false);
+              $('.AF_tabs-content').css('height', '100%');
+              $('.AF_tabs-content').css('box-shadow', '0px 0px 1px 1px rgba(0,0,0,0.26)');
+              //load_afmanpowerlot();
+          });
+
+
+    });
+    //end
+
+    //history Back
+    function goBack() {
+        window.history.back();
+    }
+    //  alert('test');
+
+    //dialoge
+    //$(document).ready(function () {
+
+    //    $(function () {
+    //        $('#Dialog_addnewactivity').dialog({
+    //            autoOpen: false,
+    //            width: 750,
+    //            //height: 450,
+    //            resizable: false,
+    //            draggable: true,
+    //            title: 'New Activity',
+    //            closeText: 'Close[x]',
+    //            modal: true,
+    //            position: [300, 300]
+    //        });
+
+    $(function () {
+        $('#Dialog_StartDateTimeBP').dialog({
+            autoOpen: false,
+            width: 350,
+            height: 250,
+            resizable: false,
+            draggable: true,
+            title: 'Blister Prep Add Date and Time',
+            closeText: 'Close[x]',
+            modal: true,
+            position: [800, 300]
+        });
+
+        //    });
+
+        //})
+
+    })
+
+    $(document).ready(function () {
+
+        $('#af_remarks_box,#textb_westtop,#textb_easttop,#textb_westbottom,#textb_eastbottom,#textb_leadbars,#textb_scrapanode,#textb_shorttuyere ').live('keyup', function () {
+            $(this).css({ 'background-color': '#FFFFCC' });
+        });
+
+
+
+
+
+        $(function () {
+            $('#Dialog_EndDateTimeBP').dialog({
+                autoOpen: false,
+                width: 350,
+                height: 250,
+                resizable: false,
+                draggable: true,
+                title: 'Blister Prep End Date and Time',
+                closeText: 'Close [x]',
+                modal: true,
+                position: 'center'
+            });
+
+
+        });
+
+    });
+
+
+    $(document).ready(function () {
+
+
+        $(function () {
+            $('#Dialog_AddAF').dialog({
+                autoOpen: false,
+                width: 820,
+                height: 2000,
+                resizable: false,
+                draggable: true,
+                title: 'New AF Activity',
+                closeText: 'Close [x]',
+                modal: true,
+                position: 'center'
+            });
+
+
+        });
+
+        $(function () {
+            $('#Dialog_EditAF').dialog({
+                autoOpen: false,
+                width: 820,
+                height: 2000,
+                resizable: false,
+                draggable: true,
+                title: 'Edit AF Activity',
+                closeText: 'Close [x]',
+                modal: true,
+                position: 'center'
+            });
+
+
+        });
+
+
+        $(function () {
+            $('#Dialog_AddPreCast').dialog({
+                autoOpen: false,
+                width: 820,
+                height: 2000,
+                resizable: false,
+                draggable: true,
+                title: 'Add New Activity',
+                closeText: 'Close [x]',
+                modal: true,
+                position: 'center'
+            });
+
+
+        });
+
+
+        $(function () {
+            $('#Dialog_editPreCast').dialog({
+                autoOpen: false,
+                width: 820,
+                height: 2000,
+                resizable: false,
+                draggable: true,
+                title: 'Edit Activity...',
+                closeText: 'Close [x]',
+                modal: true,
+                position: 'center'
+            });
+
+            $(function () {
+                $('#Dialog_addcasting').dialog({
+                    autoOpen: false,
+                    width: 820,
+                    height: 2000,
+                    resizable: false,
+                    draggable: true,
+                    title: 'Add Activity...',
+                    closeText: 'Close[x]',
+                    modal: true,
+                    position: 'center'
+
+                });
+
+
+            });
+            $(function () {
+                $('#Dialog_addcasting2').dialog({
+                    autoOpen: false,
+                    width: 820,
+                    height: 2000,
+                    resizable: false,
+                    draggable: true,
+                    title: 'Add Activity...',
+                    closeText: 'Close[x]',
+                    modal: true,
+                    position: 'center'
+
+                });
+
+
+            });
+
+            $(function () {
+                $('#Dialog_editcasting').dialog({
+                    autoOpen: false,
+                    width: 820,
+                    height: 2000,
+                    resizable: false,
+                    draggable: true,
+                    title: 'Edit Activity...',
+                    closeText: 'Close[x]',
+                    modal: true,
+                    position: 'center'
+                });
+
+            });
+
+            $(function () {
+                $('#Dialog_insert_midprecast').dialog({
+                    autoOpen: false,
+                    width: 820,
+                    height: 2000,
+                    resizable: false,
+                    draggable: true,
+                    title: 'Insert Pre-Casting Middle Activity...',
+                    closeText: 'Close[x]',
+                    modal: true,
+                    position: 'center'
+                });
+
+            });
+
+            $(function () {
+                $('#Dialog_insert_midcast').dialog({
+                    autoOpen: false,
+                    width: 820,
+                    height: 2000,
+                    resizable: false,
+                    draggable: true,
+                    title: 'Insert Casting Middle Activity...',
+                    closeText: 'Close[x]',
+                    modal: true,
+                    position: 'center'
+                });
+
+            });
+
+            $(function () {
+                $('#Dialog_addlaunder').dialog({
+                    autoOpen: false,
+                    width: 350,
+                    height: 500,
+                    resizable: false,
+                    draggable: true,
+                    title: 'Add Launder Temp...',
+                    closeText: 'Close[x]',
+                    modal: true,
+                    position: [800, 300]
+                });
+
+            });
+
+        });
+
+        $(function () {
+            $('#Dialog_NewEditLotNum').dialog({
+                autoOpen: false,
+                width: 350,
+                height: 250,
+                resizable: false,
+                draggable: true,
+                title: 'Modify...',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [850, 100]
+            });
+        });
+
+        $("#aflot_edit_stat_btn").click(function () {
+
+            var aflotid = $('#lotid').text();
+            view_aflot_edit_partial(aflotid);
+
+
+        });
+
+
+
+
+
+
+
+    });
+
+</script>

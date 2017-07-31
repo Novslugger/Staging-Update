@@ -1,0 +1,61 @@
+﻿<h6 id="h6_fsfe">Man Power Assignment</h6>
+
+<div id="interfaceid">1</div>
+<div id ="fsfe_shift_div">
+      <div id="fsfe_shift_left_div">
+<div id="fsfe_manpower_div"><h6 class="h6_fsfe_lbl">I. Man Power</h6>
+
+  <div id="fsfe_manpower_table_left">
+   <br />
+    <table id="fsfe_manpower_table">
+        <tr style="height: 70px; vertical-align:text-top;"><td ><b>Select Crew : </b>&nbsp;</td><td>&nbsp;@Html.DropDownList("SFPcrewdefaultlist", (SelectList)ViewBag.crew_list, "-- Select --", new {@class="fsfe_emplist", @disabled="disabled"})</td></tr>
+       
+           <tr><td >Control Room Engineer : &nbsp;</td><td>&nbsp;@Html.DropDownList("SPPCrewlist_crewroleid_1", (SelectList)ViewBag.cre_list, "-- Select --", new {@class="fsfe_emplist fsfe_ddl", @disabled="disabled"})</td></tr>
+           <tr><td>New SFP Field Manager : &nbsp;</td><td>&nbsp;@Html.DropDownList("SPPCrewlist_crewroleid_2", (SelectList)ViewBag.cymgr_list, "-- Select --", new {@class="fsfe_emplist fsfe_ddl", @disabled="disabled"})</td></tr>
+           <tr><td>Old SFP Field Manager : &nbsp;</td><td>&nbsp;@Html.DropDownList("SPPCrewlist_crewroleid_16", (SelectList)ViewBag.oldsfp_list, "-- Select --", new {@class="fsfe_emplist fsfe_ddl", @disabled="disabled"})</td></tr>
+           <tr><td>Dewatering and Tailings Dump Field Manager : &nbsp;</td><td>&nbsp;@Html.DropDownList("SPPCrewlist_crewroleid_3", (SelectList)ViewBag.dewmgr_list, "-- Select --", new {@class="fsfe_emplist fsfe_ddl", @disabled="disabled"})</td></tr>
+           <tr><td >Cooling Yard Operator : &nbsp;</td><td>&nbsp;@Html.DropDownList("SPPCrewlist_crewroleid_4", (SelectList)ViewBag.cyopr_list, "-- Select --", new {@class="fsfe_emplist fsfe_ddl", @disabled="disabled"})</td></tr>
+           <tr><td>Tower Crane Operator : &nbsp;</td><td>&nbsp;@Html.DropDownList("SPPCrewlist_crewroleid_5", (SelectList)ViewBag.tcopr_list, "-- Select --", new {@class="fsfe_emplist fsfe_ddl", @disabled="disabled"})</td></tr>
+           <tr><td>Crushing Operator : &nbsp;</td><td>&nbsp;@Html.DropDownList("SPPCrewlist_crewroleid_6", (SelectList)ViewBag.crushopr_list, "-- Select --", new {@class="fsfe_emplist fsfe_ddl", @disabled="disabled"})</td></tr>
+           <tr><td>Milling Operator : &nbsp;</td><td>&nbsp;@Html.DropDownList("SPPCrewlist_crewroleid_7", (SelectList)ViewBag.millopr_list, "-- Select --", new {@class="fsfe_emplist fsfe_ddl", @disabled="disabled"})</td></tr>
+           <tr><td>Flotation Operator : &nbsp;</td><td>&nbsp;@Html.DropDownList("SPPCrewlist_crewroleid_8", (SelectList)ViewBag.fltopr_list, "-- Select --", new {@class="fsfe_emplist fsfe_ddl", @disabled="disabled"})</td></tr>
+           <tr><td>Dewatering Operator A : &nbsp;</td><td>&nbsp;@Html.DropDownList("SPPCrewlist_crewroleid_9", (SelectList)ViewBag.dewa_list, "-- Select --", new {@class="fsfe_emplist fsfe_ddl", @disabled="disabled"})</td></tr>
+           <tr><td>Dewatering Operator B : &nbsp;</td><td>&nbsp;@Html.DropDownList("SPPCrewlist_crewroleid_10", (SelectList)ViewBag.dewb_list, "-- Select --", new {@class="fsfe_emplist fsfe_ddl", @disabled="disabled"})</td></tr>
+           <tr><td>Dewatering Operator C : &nbsp;</td><td>&nbsp;@Html.DropDownList("SPPCrewlist_crewroleid_11", (SelectList)ViewBag.dewc_list, "-- Select --", new {@class="fsfe_emplist fsfe_ddl", @disabled="disabled"})</td></tr>
+           @*<tr><td>Grab Crane Operator : &nbsp;</td><td>&nbsp;@Html.DropDownList("SPPCrewlist_crewroleid_12", (SelectList)ViewBag.gcopr_list, "-- Select --", new {@class="fsfe_emplist fsfe_ddl", @disabled="disabled"})</td></tr>*@
+           <tr><td>Iron Tails Disposal Operator : &nbsp;</td><td>&nbsp;@Html.DropDownList("SPPCrewlist_crewroleid_13", (SelectList)ViewBag.itdopr_list,  "-- Select --",new {@class="fsfe_emplist fsfe_ddl", @disabled="disabled"})</td></tr>
+
+    </table>
+      </div>
+    <div id="fsfe_manpower_table_right">   <img id="sfp_manpower_btn" width="25" height="25"  src="../Images/save_disk.png" />
+      <span id="sfp_savemanpower_link" class="btn_label_span">Save Man Power.. </span>
+    </div>
+
+</div>
+          <br />
+   
+   </div>
+
+</div>
+
+
+<script type="text/javascript">
+    $('#page_id').text('1');
+    var prodid = $('#sfp_prod_id').text();
+    if (prodid == 1) {
+        $('#SFPcrewdefaultlist').prop('disabled', false);
+        load_sfp_manpower();
+    }
+    $('select[id*="SPPCrewlist_"]').each(function () {
+        $(this).live('change', function () {
+            $(this).css({ "border-color": "transparent" });
+            if ($(this).val() != "") {
+                $(this).addClass('changed');
+                $(this).css({ "background-color": "lightgrey" });
+            } else {
+                $(this).css({ "background-color": "#FBFBFB" });
+                $(this).removeClass('changed');
+            }
+        });
+    });
+</script>

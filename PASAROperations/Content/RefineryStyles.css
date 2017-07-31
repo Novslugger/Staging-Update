@@ -1,0 +1,726 @@
+﻿.refine_table {
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.26);
+    padding: 8px;
+    /*width: 1460px;*/
+}
+
+    .refine_table th {
+        font-size: 10px;
+        background-color: rgba(0, 73, 147, 1);
+        padding: 8px;
+        color: white;
+    }
+
+    .refine_table td {
+        font-size: 12px;
+        text-align: center;
+        border: 1px solid #e1e1e1 !important;
+    }
+
+/* make gray color of odd td
+    .refine_table > tbody > tr:nth-of-type(odd) {
+  background-color: #ededed;
+}*/
+
+
+
+ul#refine_submenu {
+    position: absolute;
+    margin: 0px;
+    padding: 0px;
+    margin-top: 0px;
+    padding-left: 5px !important;
+    background-color: #004993;
+    width: 130px;
+    margin-left: 12px;
+    z-index: 1;
+    margin-left: 896px;
+}
+
+    ul#refine_submenu li {
+        list-style: none;
+        padding: 0px;
+        margin: 0;
+        height: 20px;
+    }
+
+        ul#refine_submenu li a {
+            display: block;
+            text-decoration: none;
+            color: #E2E2E2;
+            padding: 0;
+            margin: 0;
+        }
+
+        ul#refine_submenu li:hover {
+            display: block;
+            font-weight: 700;
+            background-color: #004993;
+            color: #FFFFFF;
+        }
+
+
+#refine_div {
+    margin-left: 35px;
+    max-width: 90%;
+}
+
+#refine_log_wrapper_right {
+    padding-left: 42px;
+}
+
+
+
+.refinery_manpower_table {
+    font-family: sans-serif;
+    font-size: 12px;
+    background-color: #fafafa;
+    /*border: 0.5px solid #e1e1e1 !important;*/
+}
+
+    .refinery_manpower_table th {
+        text-align: center;
+        font-size: 11px;
+        background-color: rgba(0, 73, 147, 1);
+        padding: 8px;
+        color: white;
+    }
+
+    .refinery_manpower_table td {
+        text-align: right;
+        width: 210px;
+        padding-bottom: 10px;
+    }
+
+    .refinery_manpower_table select {
+        width: 100%;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        height: 25px;
+    }
+
+#refinery_plan_right_div {
+    width: 1460px;
+    /*height: 457px;*/
+    overflow-x: auto;
+}
+
+
+.refinery-tabs-content {
+    height: 100%;
+    padding: 0px;
+    padding-top: 10px;
+    /*width: 1857px;*/
+    /*background-color: rgba(250, 250, 250, 1);*/
+    padding-right: 0px;
+    margin-right: 0px;
+}
+
+input.rpp_input {
+    height: 18.2px;
+    width: 100%;
+    background-color: white;
+    font-size: 11px;
+}
+
+.rpp_refine_table {
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.26);
+    padding: 8px;
+    width: 1460px;
+}
+
+    .rpp_refine_table th {
+        font-size: 10px;
+        background-color: rgba(0, 73, 147, 1);
+        padding: 8px;
+        color: white;
+    }
+
+    .rpp_refine_table td {
+        font-size: 12px;
+        text-align: center;
+        border: 1px solid #c3c3c3 !important;
+        border-spacing: 0px;
+    }
+
+
+#rpp_log_header {
+    padding: 10px 30px 10px 40px;
+    font-family: arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+
+input.rpp_in_remarks {
+    height: 18.2px;
+    width: 100% !important;
+    background-color: white;
+    font-size: 11px;
+}
+
+.s_rpp_class {
+    background-color: green !important;
+}
+
+.c_rpp_class {
+    background-color: yellow !important;
+}
+
+.e_rpp_class {
+    background-color: red !important;
+}
+
+.l_rpp_class {
+    background-color: skyblue !important;
+}
+
+.add_ref_act_div {
+    background-color: rgba(250, 250, 250, 1);
+    width: 778px;
+    padding: 0px;
+    border: 1px solid rgba(0, 0, 0, 0.26);
+    padding: 20px;
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.26);
+}
+
+input.ref_date {
+    width: 110px;
+    font-weight: 900;
+    font-size: 13px;
+    height: 30px;
+    display: inline;
+}
+
+.ref_hr, .ref_min {
+    width: 50px;
+}
+
+.refinery_partial_tbl {
+    font-family: arial, Helvetica, sans-serif;
+    font-size: 13px;
+    text-align: right;
+    border-style: none;
+    background-color: #fafafa;
+}
+
+
+#tabs-container_ref_shorts {
+    padding-left: 53px;
+}
+
+.tab-content-pass {
+    display: none;
+}
+
+.ref_short_save {
+    /*padding-top: 55px;*/
+    padding-left: 10px;
+}
+
+.ref_short_div {
+    width: 1443px;
+    height: 595px;
+    /*box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
+    border: 0.5px solid #ccc;*/
+    overflow: auto;
+    margin-left: 1px;
+}
+
+
+.ref_short_fixed_cell {
+    font-size: 12px;
+    position: absolute;
+    top: 255px;
+    background-color: #fafafa;
+    left: 163px;
+    display: none;
+    z-index: 999999 !important;
+}
+
+    .ref_short_fixed_cell th {
+        text-align: center;
+        font-size: 11px;
+        background-color: rgba(0, 73, 147, 1);
+        padding: 8px;
+        color: white;
+        box-shadow: 1px 2px 2px 1px rgba(0,0,0,0.3);
+        width: 20px !important;
+    }
+
+    .ref_short_fixed_cell td {
+        text-align: center;
+        font-weight: 100;
+        border: 1px solid #c3c3c3 !important;
+        padding: 2.8px;
+        box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
+    }
+
+
+.refinery_class_table {
+    font-size: 12px;
+    padding: 8px;
+    background-color: #fafafa;
+    border-collapse: separate;
+    float: left;
+}
+
+    .refinery_class_table th {
+        text-align: center;
+        font-size: 11px;
+        background-color: #0056ad;
+        padding: 3px;
+        color: white;
+        box-shadow: 1px 2px 2px 1px rgba(0,0,0,0.3);
+        width: 10px;
+    }
+
+    .refinery_class_table td {
+        text-align: center;
+        border: 1px solid #c3c3c3 !important;
+        padding: 2px;
+        width: 20px;
+    }
+
+.rfc_tbltd {
+    box-shadow: 0px 1px 5px rgba(0,0,0,0.3);
+    width: 20px;
+}
+
+.refinery_class_table input {
+    text-align: center;
+    font-weight: bold;
+    font-size: 12.5px;
+}
+
+.refinery_class_table tr:hover td input {
+    /*background-color: white;*/
+}
+
+.tb_ref_parent {
+    margin-top: 4px;
+    width: /*1650px;*/ /*1505px*/ inherit;
+    /*height:*/ /*2130px;*/ /*840px;*/
+    overflow: hidden;
+}
+
+.tabs-content-ref {
+    padding-top: 25px;
+    margin-top: -1px;
+    width: /*1660px;*/ /*1520px*/ inherit;
+    /*height:*/ /*2070px;*/ /*800px;*/
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.15);
+    border: 0.5px solid #ccc;
+    overflow: auto;
+}
+
+#ref_proddate {
+    width: 100px;
+    height: 25px;
+    display: inline;
+}
+
+#ref_shift {
+    width: 90px;
+    height: 25px;
+    margin-right: 25px;
+}
+
+#ref_row_shift {
+    width: 90px; /*250px;*/
+    height: 25px;
+    margin-right: 60px;
+}
+
+#ref_shift_btn {
+    width: 100px;
+    height: 25px;
+}
+
+/*.head-fixed-top {
+    position: fixed;
+    right: 0px;
+    left: 0px;
+    z-index: 1030;
+}*/
+
+.crop_ref_act_div {
+    background-color: rgba(250, 250, 250, 1);
+    width: 408px;
+    padding: 0px;
+    border: 1px solid rgba(0, 0, 0, 0.26);
+    padding: 20px;
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.26);
+}
+
+
+.ref_crop_table {
+    font-size: 12px;
+    padding: 8px;
+    background-color: #fafafa;
+    border-collapse: separate;
+    float: left;
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.26);
+    width: 75%;
+}
+
+    .ref_crop_table th {
+        text-align: center;
+        font-size: 11px;
+        background-color: #0056ad;
+        padding: 8px;
+        color: white;
+        box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    }
+
+    .ref_crop_table td {
+        text-align: center;
+        border: 1px solid #c3c3c3 !important;
+        padding: 2px;
+        width: 20px;
+    }
+
+
+    .ref_crop_table tr:hover td.dfault_crop {
+        background-color: #FFFFCC;
+    }
+
+#search_shortscrop {
+    width: 105px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 25px;
+}
+
+.ref_text_label {
+    font-size: 14px;
+}
+
+#ref_crop_table tr:nth-child(2n+1) {
+    background-color: #f2f2f2;
+}
+
+.crop_del_btn {
+    background-color: #d9534f;
+}
+
+.crop_edit_btn {
+    background-color: #337ab7;
+}
+
+.crop_del_btn a {
+    color: #fff;
+}
+
+.crop_edit_btn a {
+    color: #fff;
+}
+
+#search_shortscrop {
+    width: 105px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 25px;
+}
+
+.ref_text_label {
+    font-size: 14px;
+}
+
+#ref_crop_table tr:nth-child(2n+1) {
+    background-color: #f2f2f2;
+}
+
+.crop_del_btn {
+    background-color: #d9534f;
+}
+
+.crop_edit_btn {
+    background-color: #337ab7;
+}
+
+.crop_del_btn a {
+    color: #fff;
+}
+
+.crop_edit_btn a {
+    color: #fff;
+}
+
+.ref_downtime_table {
+    font-size: 12px;
+    padding: 8px;
+    background-color: #fafafa;
+    border-collapse: separate;
+    float: left;
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.26);
+}
+
+    .ref_downtime_table th {
+        text-align: center;
+        font-size: 11px;
+        background-color: #0056ad;
+        padding: 2px;
+        color: white;
+        box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    }
+
+    .ref_downtime_table td {
+        text-align: center;
+        border: 1px solid #c3c3c3 !important;
+        padding: 2px;
+        width: 20px;
+    }
+
+
+    .ref_downtime_table tr:hover td {
+        background-color: #FFFFCC;
+    }
+
+.div_refdowntime_btn {
+    float: left;
+}
+
+.ref_add_machine_div {
+    border: 1px solid #C0C0C0;
+    padding: 10px;
+    background-color: rgba(250, 250, 250, 1);
+    box-shadow: 0px 2px 3px rgba(0,0,0,0.26);
+}
+
+.ref_add_machine_div {
+    height: 600px !important;
+}
+
+#add_new_reasondowntimeid_div {
+    border: 1px solid #C0C0C0;
+    padding: 10px;
+    background-color: rgba(250, 250, 250, 1);
+    box-shadow: 0px 2px 3px rgba(0,0,0,0.26);
+}
+
+#add_new_reasondowntimeid_div {
+    height: 630px !important;
+    width: 720px !important;
+}
+
+#edit_new_downtimeid_div {
+    border: 1px solid #C0C0C0;
+    padding: 10px;
+    background-color: rgba(250, 250, 250, 1);
+    box-shadow: 0px 2px 3px rgba(0,0,0,0.26);
+}
+
+#edit_new_downtimeid_div {
+    height: 640px !important;
+    width: 497px !important;
+}
+
+#trouble_div_reflogsheet {
+    position: absolute;
+    left: 134px;
+    top: 1085px;
+    padding: 10px;
+    box-shadow: 0px 2px 9px rgba(0,0,0,0.26);
+    width: 427px;
+    background-color: #fafafa;
+    border-radius: 2px;
+}
+
+.reflogsheet_pctrouble {
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.26);
+    padding: 8px;
+    width: 690px;
+}
+
+    .reflogsheet_pctrouble td {
+        /*border: 1px solid #C0C0C0;*/
+        text-align: justify;
+        vertical-align: middle;
+        font-size: 12px;
+    }
+
+    .reflogsheet_pctrouble th {
+        text-align: center;
+        font-size: 10px;
+        background-color: rgba(0, 73, 147, 1);
+        padding: 8px;
+        color: white;
+    }
+
+    .reflogsheet_pctrouble tr:hover td {
+        background-color: #FFFFCC;
+        font-style: italic;
+    }
+
+.reflogsheet_pcaddtime {
+    border: 1px solid #C0C0C0;
+}
+
+#edit_new_downtimeidres_div {
+    border: 1px solid #C0C0C0;
+    padding: 10px;
+    background-color: rgba(250, 250, 250, 1);
+    box-shadow: 0px 2px 3px rgba(0,0,0,0.26);
+}
+
+#edit_new_downtimeidres_div {
+    height: 160px !important;
+    width: 497px !important;
+}
+
+#edit_new_downtimeidtroub_div {
+    border: 1px solid #C0C0C0;
+    padding: 10px;
+    background-color: rgba(255, 255, 204, 1);
+    box-shadow: 0px 2px 3px rgba(0,0,0,0.26);
+}
+
+#edit_new_downtimeidtroub_div {
+    height: 228px !important;
+    width: 497px !important;
+}
+
+
+.horizontaltabs_tref {
+    padding-left: 87px;
+    height: 2500px;
+}
+.ajax-loader {
+  visibility: hidden;
+  background-color: rgba(255,255,255,0.7);
+  position: absolute;
+  z-index: +100 !important;
+  width: 100%;
+  height:100%;
+}
+
+.ajax-loader img {
+  position: absolute; 
+  left: 50%; 
+  top: 50%; 
+  margin: -63px 0 0 -182px;
+}
+/*#rppmothly_data_tbl tr.rppmtr{
+    display: none;
+    padding : 5px;
+}*/
+.rppmothly_header {
+    background-color: #d3d3d3;
+    padding: 2px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.rpp_refine_table td input {
+}
+
+.rppm_datetime {
+    background-color: transparent !important;
+    font-size: 12px;
+    background-image: url('/Images/calendar.png');
+    background-repeat: no-repeat;
+    background-position: 150px 5px;
+    background-size: 12px;
+    cursor: pointer;
+}
+
+input.ppd_input {
+    height: 18.2px;
+    width: 100%;
+    background-color: #ededed;
+    font-size: 11px;
+}
+
+.rpp_ref_act_div {
+    background-color: rgba(250, 250, 250, 1);
+    width: 670px;
+    padding: 0px;
+    border: 1px solid rgba(0, 0, 0, 0.26);
+    padding: 20px;
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.26);
+    height: 350px;
+}
+
+.bold_text_ref {
+    padding: 5px;
+    padding-left: 10px;
+    background-color: rgba(250, 250, 250, 1);
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.horizontaltabs_tref {
+    padding-left: 87px;
+    height: 2500px;
+}
+
+.ref_prodact_table tr:nth-child(2n+1) {
+    background-color: #f2f2f2;
+}
+
+.ref_prodact_table {
+    font-size: 12px;
+    padding: 8px;
+    background-color: #fafafa;
+    border-collapse: separate;
+    float: left;
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.26);
+    width: 75%;
+}
+    .ref_prodact_table th {
+        text-align: left;
+        font-size: 11px;
+        background-color: #004994;
+        padding: 8px;
+        color: white;
+        box-shadow: 1px 1px 1px rgba(0,0,0,0.3);
+    }
+
+    .ref_prodact_table td {
+        text-align: left;
+        border: 1px solid #c3c3c3 !important;
+        padding: 2px;
+        width: 20px;
+    }
+
+    .ref_prodact_table tr:hover td.dfault_crop {
+        background-color: #FFFFCC;
+    }
+
+#ref_prodact_rightdiv {
+    width: 280px;
+    float: right;
+    overflow: auto;
+}
+.filter_block {
+    width: 105px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    height: 22px;
+    font-size:12px;
+}
+.reflogsheet_pcresponsible {
+    box-shadow: 0px 1px 3px rgba(0,0,0,0.26);
+    padding: 8px;
+    width: 250px;
+}
+
+    .reflogsheet_pcresponsible td {
+       
+         /*border: 1px solid #C0C0C0;*/
+        text-align: justify;
+        vertical-align: middle;
+        font-size: 12px;
+    }
+
+    .reflogsheet_pcresponsible th {
+        text-align: center;
+        font-size: 10px;
+        background-color: rgba(0, 73, 147, 1);
+        padding: 8px;
+        color: white;
+    }
+    .reflogsheet_pcresponsible tr:hover td {
+        background-color: #FFFFCC;
+        font-style: italic;
+    }

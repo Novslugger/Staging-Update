@@ -1,0 +1,38 @@
+﻿<div id="edit_new_downtimeidres_div">
+    <p5><b>Edit Downtime Reason/Trouble</b></p5>
+    <br />
+    <br />
+    <table>
+        <tr>
+            <td style="font-size: 13px">Code:</td>
+            <td>
+                <input disabled="disabled" id="edit_res_code"style="font-weight:bold;font-size:13px" type="text" value="@ViewBag.ref_mdreasoncode"/>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 13px">Description:</td>
+            <td>
+                <textarea id="edit_res_desc" cols="8" rows="4" style="font-size: 13px; width: 416px">@ViewBag.ref_mdreasondesc</textarea>
+            </td>
+        </tr>
+        <tr>
+            <td style="font-size: 13px">Responsible:</td>
+            <td>@Html.DropDownList("edit_responslist", (SelectList)ViewBag.respons_list, "---Select---", new { @id = "ref_editresp", @class = "color:yellow" })</td>
+      
+             </tr>
+        <tr>
+            <td><label hidden="hidden" id="hidden_reasonid">@ViewBag.ref_mdreasonid</label><label hidden="hidden" id="hidden_machineid">@ViewBag.ref_mdmachineid</label></td>
+          
+            <td>
+                <input onclick="ref_edit_new_reason_()" value="Edit" type="button" id="btn_edit_res" style="color: Black; padding: 4px 20px;margin-left:355px" /></td>
+        </tr>
+    </table>
+    
+
+</div>
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+    });
+</script>

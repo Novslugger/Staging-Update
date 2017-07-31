@@ -1,0 +1,210 @@
+﻿<div id="edit_afblister_div">
+<b>Blister Receive Form</b>
+<br />
+<br />
+
+<div class="hidden_element" id="afblister_rcvId">@ViewBag.afblister_rcvId</div>
+    <table class="af_time_table">
+            <tr><td rowspan="2" class="label_datetype">Start Time : &nbsp;</td>
+                <td class="label_date">Date</td><td class="label_date">Time (hh:mm)</td>
+            </tr>
+              
+            <tr>
+                <td class="af_date_td"><input id="start_date_input_mtapedit" type="text"  value="@ViewBag.StartTime.ToString("MM/dd/yyyy")"/></td>
+                <td class="af_time_td">
+            <select id="start_time_hr_input">
+            @{
+                 int hr;
+                 int min_ = Int32.Parse(ViewBag.StartTime.ToString("mm"));
+                 int min_end_hr = Int32.Parse(ViewBag.EndTime.ToString("mm"));
+                 int min_end = Int32.Parse(ViewBag.EndTime.ToString("mm"));
+                 
+                if (min_ == 60){
+
+                    hr = Int32.Parse(ViewBag.StartTime.ToString("HH"));
+                    
+                }else{
+                    hr = Int32.Parse(ViewBag.StartTime.ToString("HH"));
+                }
+                
+                
+                for (int x = 0; x <= 23; x++ )
+                { 
+                if (@x <= 9){
+
+                    if (@x == @hr)
+                    {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                    else { <option value="@x">@("0" + @x)</option> }          
+                }
+                      
+                      
+                      else{
+
+                     if (@x == @hr)
+                          {  <option value="@x" selected="selected">@x</option> }
+                    else { <option value="@x">@x</option> }          
+                
+
+                      }
+                }
+                }
+                                                          
+            </select>&nbsp;:
+            <select id="start_time_min_input">
+              @{
+                  int min = Int32.Parse(ViewBag.StartTime.ToString("mm"));
+                
+                
+                for (int x = 0; x <= 59; x++ )
+                { 
+                if (@x <= 9){
+
+                    if (@x == @min)
+                    {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                    else { <option value="@x">@("0" + @x)</option> }          
+                }
+                      
+                      
+                      else{
+
+                          if (@x == @min)
+                          {  <option value="@x" selected="selected">@x</option> }
+                    else { <option value="@x">@x</option> }          
+                
+
+                      }
+                }
+                }                                               
+            </select>
+
+</td></tr>
+       </table>
+
+    <table id="end_time_table">
+            <tr><td rowspan="2" class="label_datetype">End Time : &nbsp;&nbsp;</td>
+               
+            </tr>
+              
+            <tr>
+                <td class="af_date_td"><input id="end_date_input_mtapedit" type="text"  value="@ViewBag.EndTime.ToString("MM/dd/yyyy")"/></td>
+
+
+                <td class="af_time_td">
+            <select id="end_time_hr_input">
+            @{
+                
+                if (min_end_hr == 60)
+                {
+
+                    hr = Int32.Parse(ViewBag.EndTime.ToString("HH")) + 1;
+                    
+                }else{
+                    hr = Int32.Parse(ViewBag.EndTime.ToString("HH"));
+                }
+                
+                
+                for (int x = 0; x <= 23; x++ )
+                { 
+                if (@x <= 9){
+
+                    if (@x == @hr)
+                    {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                    else { <option value="@x">@("0" + @x)</option> }          
+                }
+                      
+                      
+                      else{
+
+                     if (@x == @hr)
+                          {  <option value="@x" selected="selected">@x</option> }
+                    else { <option value="@x">@x</option> }          
+                
+
+                      }
+                }
+                }
+                                                          
+            </select>&nbsp;:
+            <select id="end_time_min_input">
+              @{
+                
+                
+                for (int x = 0; x <= 59; x++ )
+                { 
+                if (@x <= 9){
+
+                    if (@x == @min_end)
+                    {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                    else { <option value="@x">@("0" + @x)</option> }          
+                }
+                      
+                      
+                      else{
+
+                          if (@x == @min_end)
+                          {  <option value="@x" selected="selected">@x</option> }
+                    else { <option value="@x">@x</option> }          
+                
+
+                      }
+                }
+                }                                               
+            </select>
+
+</td></tr>
+       </table>
+
+<br />
+
+<div>Converter: @Html.DropDownList("cvnum_ddl", (SelectList)ViewBag.cv_list)</div>
+       <br /><br />
+<div>Cycle: &nbsp;&nbsp;&nbsp;@Html.DropDownList("cvcycle_ddl", (SelectList)ViewBag.cf_cycle_list) 
+    <br /><br />
+<div>ppm Sulfur: &nbsp;&nbsp;&nbsp; <span id="lbl_sulfur">@ViewBag.ppmSulfur</span></div>
+        <br />
+<div>Weight: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="add_blister_wt" type="text" value="@ViewBag.blisterWt" /></div>
+    <br />
+<div>Temperature: <input id="add_blister_temp"  type="text" value="@ViewBag.blisterTemp" /></div>
+    <br />
+     <br />
+    <input id="edit_afblister_ok_btn" type="button" value="Edit Blister Receive" />
+     <br />
+
+</div>
+</div>
+
+<script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#end_date_input_mtapedit").datepicker({
+                showOn: 'button',
+                buttonText: 'Show Date',
+                buttonImageOnly: true,
+                buttonImage: serverpath + '/Images/calendar.png',
+                dateFormat: 'mm/dd/yy',
+                constrainInput: true
+            });
+
+            $(".ui-datepicker-trigger").mouseover(function () {
+                $(this).css('cursor', 'pointer');
+
+            });
+
+            $("#start_date_input_mtapedit").datepicker({
+                showOn: 'button',
+                buttonText: 'Show Date',
+                buttonImageOnly: true,
+                buttonImage: serverpath + '/Images/calendar.png',
+                dateFormat: 'mm/dd/yy',
+                constrainInput: true
+            });
+
+            $(".ui-datepicker-trigger").mouseover(function () {
+                $(this).css('cursor', 'pointer');
+
+            });
+       
+        });
+            
+
+    </script>

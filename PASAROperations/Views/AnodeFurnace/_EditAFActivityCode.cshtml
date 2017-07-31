@@ -1,0 +1,58 @@
+﻿<div id="add_sfp_entry_cf" style="height: 80%;">
+
+    <table>
+        <tbody>
+            <tr>
+                <input id="actcId" value='@ViewBag.actId' hidden/></tr>
+            <tr>
+                <td><b>Activity Name:</b></td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;<input type="text" id="actName_Edit" style="width: 200px; height: 25px; display: inline;"  value='@ViewBag.actName' />
+                    &nbsp;&nbsp;<br />
+                    <br />
+                </td>
+            </tr>
+            <tr>
+            <tr>
+                <td><b>Activity Description:</b></td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;<input type="text" id="actDesc_Edit" style="width: 200px; height: 25px; display: inline; text-transform: none !important" value='@ViewBag.actDesc'/>
+                    &nbsp;&nbsp;<br />
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td><b>Activity Type:</b></td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;@Html.DropDownList("activitytype_input2", (SelectList)ViewBag.activitycode_list, new { @id = "activitytype_input2" })
+                </td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><br /></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td></td>
+                <td><input type="button" id="edit_afactivity_btn_new" value="Edit" /></td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#edit_afactivity_btn_new').on('click', function () {
+            edit_activity_btn();
+        });
+
+    });
+
+
+</script>

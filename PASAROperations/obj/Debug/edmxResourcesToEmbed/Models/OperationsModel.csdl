@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DEV_KPIModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="DEV_KPIEntities" p1:LazyLoadingEnabled="true">
+    <FunctionImport Name="SP_PI_CFCYLE" ReturnType="Collection(DEV_KPIModel.SP_PI_CFCYLE_Result)">
+      <Parameter Name="cyclenum" Mode="In" Type="String" />
+      <Parameter Name="udstartdate" Mode="In" Type="DateTime" />
+      <Parameter Name="udenddate" Mode="In" Type="DateTime" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="SP_PI_CFCYLE_Result">
+    <Property Type="String" Name="tag" Nullable="false" MaxLength="4000" />
+    <Property Type="DateTime" Name="time" Nullable="false" />
+    <Property Type="Int32" Name="C_index" Nullable="false" />
+    <Property Type="String" Name="value" Nullable="true" MaxLength="4000" />
+    <Property Type="Int32" Name="status" Nullable="false" />
+    <Property Type="Boolean" Name="questionable" Nullable="true" />
+    <Property Type="Boolean" Name="substituted" Nullable="true" />
+    <Property Type="Boolean" Name="annotated" Nullable="true" />
+    <Property Type="String" Name="annotations" Nullable="true" MaxLength="4000" />
+  </ComplexType>
+</Schema>

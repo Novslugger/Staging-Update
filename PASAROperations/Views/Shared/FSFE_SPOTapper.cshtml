@@ -1,0 +1,78 @@
+﻿<h6 id="h6_fsfe">SPO Tapper</h6>
+<div id="interfaceid">3</div>
+<div id ="fsfe_shift_div">
+ <div id="fsfe_spotapper_div">
+    <h6 class="h6_fsfe_lbl">I. SPO Tapper </h6>
+    
+    <br />
+      <br />
+     
+
+<div class="div_wrapper_table_btn">
+
+    <div class="div_fsfe_btn"><input id="fsfe_spotap_btn" type="button" value="Add" /></div>
+    <br />
+    <br />
+    <br />
+      <div class="div_fsfe_table">
+       <table id="fsfe_spotap_table">
+           <tr>
+            <th rowspan="2">Time</th>
+            <th colspan="2">MATTE</th>
+            <th rowspan="2">Scum Level</th>
+            <th rowspan="2">Matte Level</th>
+            <th colspan="2">SLAG</th>
+            <th rowspan="2">Comments</th>
+           </tr>
+        <tr>
+            <th>H1</th>
+            <th>H2</th>
+            <th>Slag Level</th>
+            <th>Temperature</th>
+        </tr>
+        
+      </table>
+     </div>
+    
+</div>
+
+</div>
+  </div>        
+
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $(function () {
+            $('#DialogSPOTap_Select').dialog({
+                autoOpen: false,
+                width: 590,
+                height: 900,
+                resizable: false,
+                draggable: true,
+                title: 'Add SPO Tapping',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [800, 260]
+            });
+
+            $('#DialogSPOTapEdit_Select').dialog({
+                autoOpen: false,
+                width: 590,
+                height: 900,
+                resizable: false,
+                draggable: true,
+                title: 'Edit SPO Tapping',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [800, 260]
+            });
+
+        });
+
+        load_fsfe_spo();
+
+    });
+    
+    
+</script>

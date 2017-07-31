@@ -1,0 +1,223 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - PASAR</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    @*<meta name="viewport" content="width=device-width" />*@
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv='cache-control' content='no-cache'>
+    <meta http-equiv='expires' content='0'>
+    <meta http-equiv="PRAGMA" content="NO-CACHE">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    @Styles.Render("~/Content/app.css")
+    @Styles.Render("~/Content/normalize.css")
+    @Styles.Render("~/Content/Styles.css")
+    @Styles.Render("~/Content/AFStyles.css")
+    @Styles.Render("~/Content/RefineryStyles.css")
+    @*@Styles.Render("~/Content/ToPDF.css")*@
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/select2.css")
+    @Styles.Render("~/Content/pace.css")
+    @* @Scripts.Render("~/Content/themes/base/css")*@
+
+
+
+</head>
+<body>
+    <header>
+        <nav id='cssmenu'>
+            <div id="titlebar">
+                <div id="logo">
+                    <div id="first_title">@Html.ActionLink("PASAR", "Index", "Operations")</div>
+                    @*<img id="" width="40" height="40"  src="~/Images/pasar_logoweb.png" />*@
+                    <div id="second_title">
+                        <p>OPERATION'S REPORTS</p>
+                    </div>
+                </div>
+            </div>
+            <div id="head-mobile"></div>
+            <div class="resbutton"></div>
+            <ul>
+                <li>@Html.ActionLink("CF Logsheet", "", "")
+                    <ul>
+                        <li>@Html.ActionLink("Logsheet", "CFCycles", "Operations")</li>
+                        <li>@Html.ActionLink("New Cycle", "NewCycle", "Operations")</li>
+                        <li>@Html.ActionLink("New Campaign", "NewCampaign", "Operations")</li>
+                        <li>@Html.ActionLink("Silica Required", "SilicaRequired", "Operations")</li>
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("FSF Logsheet", "FSFELogsheet", "Operations")
+                    <ul>
+                        <li>@Html.ActionLink("FSF Logsheet", "FSFELogsheet", "Operations")</li>
+                        <li>@Html.ActionLink("Targets", "FSFE_Targets", "Operations")</li>
+                        <li>@Html.ActionLink("Process Review Comments", "FSFE_Comments", "Operations")</li>
+
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("AF Logsheet", "", "")
+
+                    <ul>
+                        <li>@Html.ActionLink("Assign Year", "AssignYear", "AnodeFurnace")</li>
+                        <li>@Html.ActionLink("QIG", "AFQIG", "AnodeFurnace")</li>
+                        <li>@Html.ActionLink("Inventory", "Inventory", "AnodeFurnace")</li>
+                        <li>@Html.ActionLink("Targets", "AFTargets", "AnodeFurnace")</li>
+                        <li>@Html.ActionLink("Lot List", "AFLotLists", "AnodeFurnace")</li>
+                        <li>@Html.ActionLink("Reworked Anodes", "ReworkedAnodes", "AnodeFurnace")</li>
+                        <li>@Html.ActionLink("Anode Charged to REF", "AnodeCharged", "AnodeFurnace")</li>
+
+                        <li>@Html.ActionLink("Weight Distribution", "WeightDistribution", "AnodeFurnace")</li>
+                        <li>@Html.ActionLink("Anode Transfer", "AnodeTransfer", "AnodeFurnace")</li>
+                        <li>@Html.ActionLink("Anode ReClassification", "AnodeReClass", "AnodeFurnace")</li>
+                        <li>@Html.ActionLink("Activity Code Maintenance", "ActivityCode", "AnodeFurnace")</li>
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("Smelter Prodn Plan", "SmelterPlan", "SmeltPlan")</li>
+                <li>@Html.ActionLink("Energy", "Energy", "Energy")
+                    <ul>
+                        <li>@Html.ActionLink("Energy", "Energy", "Energy")
+                        <li>@Html.ActionLink("Daily MQ", "_DailyMQ", "Energy")
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("SFP Logsheet", "", "")
+                    <ul>
+                        <li>@Html.ActionLink("Crew Assignment", "SFP_Crew", "SFP")</li>
+                        <li>@Html.ActionLink("Pots Tracking", "_SFPMonitor", "SFP")
+                            <ul>
+                                <li>@Html.ActionLink("Active Logs", "SFPActive", "SFP")</li>
+                                <li>@Html.ActionLink("Completed Logs", "SFPComplete", "SFP")</li>
+                                <li>@Html.ActionLink("Pots and Location Monitor", "_SFPMonitor", "SFP")</li>
+                            </ul>
+                        </li>
+                        <li>@Html.ActionLink("Consumables", "SFP_Consumables", "SFP")</li>
+                        <li>@Html.ActionLink("Targets", "SFP_Targets", "SFP")</li>
+                        <li>@Html.ActionLink("Old SFP", "SFP_OldSFP", "SFP")</li>
+                        <li>@Html.ActionLink("Buckets", "SFP_Buckets", "SFP")</li>
+                        <li>@Html.ActionLink("Daily Comments", "SFP_Comments", "SFP")</li>
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("Power Plant Logsheet", "BoilerWaterAnalysis", "PowerPlant")
+                    <ul>
+                        <li>@Html.ActionLink("Cooling Water Analysis", "CoolingWaterAnalysis", "PowerPlant")</li>
+                        <li>@Html.ActionLink("Boiler Water Analysis", "BoilerWaterAnalysis", "PowerPlant")</li>
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("MBF Logsheet", "MBFlogsheet", "MBF")
+                    <ul>
+                        <li>@Html.ActionLink("MBF Logsheet", "MBFlogsheet", "MBF")</li>
+                    </ul>
+                </li>
+                <li>@Html.ActionLink("Refinery Logsheet", "RefineryTimelogs", "Refinery")
+                    <ul>
+                        <li>@Html.ActionLink("Tank House", "RefineryTimelogs", "Refinery")</li>
+                        <li>@Html.ActionLink("Crew Drefaults", "RefineryCrewDefaults", "Refinery")</li>
+                        <li>@Html.ActionLink("Downtime Monitoring", "Refinery_MachineDowntime_Monitoring", "Refinery")</li>
+                        <li>@Html.ActionLink("Production Plan", "RefineryProd", "Refinery")</li>
+                        <li>@Html.ActionLink("Production Plan Activity", "Refinery_Prod_Activity", "Refinery")</li>
+                    </ul>
+                </li>
+                @*<li><a>Welcome,&nbsp; @ViewBag.uname</a></li>*@
+
+            </ul>
+
+        </nav>
+    </header>
+
+    <div id="body">
+         <div class="ajax-loader">
+            <img src="~/Images/ProgressImage.gif" class="img-responsive" />
+        </div>
+        @*For Login Form*@
+        @RenderSection("featured", required: false)
+        <section class="content-wrapper main-content clear-fix">
+            @RenderBody()
+        </section>
+    </div>
+    <footer>
+        <div class="content-wrapper">
+            <div class="float-left">
+            </div>
+        </div>
+    </footer>
+    @Scripts.Render("~/Scripts/gstaticchart.js")
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+
+    @Scripts.Render("~/Scripts/select2.min.js")
+    @Scripts.Render("~/bundles/jquerylatest")
+    @Scripts.Render("~/bundles/jqueryui")
+    @Scripts.Render("~/bundles/kirtscript")    
+
+
+    <script>
+        (function ($) {
+            $.fn.menumaker = function (options) {
+                var cssmenu = $(this), settings = $.extend({
+                    format: "dropdown",
+                    sticky: false
+                }, options);
+                return this.each(function () {
+                    $(this).find(".resbutton").on('click', function () {
+                        $(this).toggleClass('menu-opened');
+                        var mainmenu = $(this).next('ul');
+                        if (mainmenu.hasClass('open')) {
+                            mainmenu.slideToggle().removeClass('open');
+                        }
+                        else {
+                            mainmenu.slideToggle().addClass('open');
+                            if (settings.format === "dropdown") {
+                                mainmenu.find('ul').show();
+                            }
+                        }
+                    });
+                    cssmenu.find('li ul').parent().addClass('has-sub');
+                    multiTg = function () {
+                        cssmenu.find(".has-sub").prepend('<span class="submenu-resbutton"></span>');
+                        cssmenu.find('.submenu-resbutton').on('click', function () {
+                            $(this).toggleClass('submenu-opened');
+                            if ($(this).siblings('ul').hasClass('open')) {
+                                $(this).siblings('ul').removeClass('open').slideToggle();
+                            }
+                            else {
+                                $(this).siblings('ul').addClass('open').slideToggle();
+                            }
+                        });
+                    };
+                    if (settings.format === 'multitoggle') multiTg();
+                    else cssmenu.addClass('dropdown');
+                    if (settings.sticky === true) cssmenu.css('position', 'fixed');
+                    resizeFix = function () {
+                        var mediasize = 1370;
+                        if ($(window).width() > mediasize) {
+                            cssmenu.find('ul').show();
+                        }
+                        if ($(window).width() <= mediasize) {
+                            cssmenu.find('ul').hide().removeClass('open');
+                        }
+                    };
+                    resizeFix();
+                    return $(window).on('resize', resizeFix);
+                });
+            };
+        })(jQuery);
+
+        (function ($) {
+            $(document).ready(function () {
+                $("#cssmenu").menumaker({
+                    title: "Menu",
+                    format: "multitoggle"
+                });
+            });
+        })(jQuery);
+        google.charts.load('current', { 'packages': ['timeline'] });
+        google.charts.setOnLoadCallback(drawChart_plan);
+        google.charts.setOnLoadCallback(drawChart_actual);
+        google.charts.setOnLoadCallback(drawChart_planbyblock);
+        google.charts.setOnLoadCallback(drawChart_actualbyblock);
+        google.charts.setOnLoadCallback(drawChart_dataweek);
+        google.charts.setOnLoadCallback(load_sample);
+    </script>
+</body>
+</html>

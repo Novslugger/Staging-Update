@@ -1,0 +1,384 @@
+﻿<div id="add_mtapping_div">
+    <b>Matte Tapping</b>
+    <br />
+    <br /><br />
+
+
+    <div>
+        <tr>
+           <td rowspan="2" class="">Called date and time : <input id="called_date" type="text" value="@ViewBag.MatteTappingDate_Today.ToString("MM/dd/yyyy")"/></td>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <td id="called_date_id">
+                <select id="start_time_calledhr_input">
+                        @{
+                            int calledhr = Int32.Parse(ViewBag.Start_MatteTapping.ToString("HH"));
+
+                            for (int x = 0; x <= 23; x++)
+                            {
+                                if (@x <= 9)
+                                {
+
+                                    if (@x == @calledhr)
+                                    { <option value="@x" selected="selected">@("0" + @x)</option> }
+                                    else
+                                    { <option value="@x">@("0" + @x)</option> }
+                                }
+                                else
+                                {
+                                    if (@x == @calledhr)
+                                    {  <option value="@x" selected="selected">@x</option> }
+                                    else
+                                    {  <option value="@x">@x</option> }
+                                }
+                            }}
+                    </select>&nbsp;:
+                    <select id="start_time_calledmin_input">
+                        @{
+                            int calledmin = Int32.Parse(ViewBag.Start_MatteTapping.ToString("mm"));
+
+
+                            for (int x = 0; x <= 59; x++)
+                            {
+                                if (@x <= 9)
+                                {
+
+                                    if (@x == @calledmin)
+                                    {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                    else
+                                    { <option value="@x">@("0" + @x)</option> }
+                                }
+                                else
+                                {
+                                    if (@x == @calledmin)
+                                    {  <option value="@x" selected="selected">@x</option> }
+                                    else
+                                    { <option value="@x">@x</option> }
+
+                                }
+                            }}
+                    </select>
+
+            </td>
+        </tr>
+       
+        <table id="start_time_table">
+            <br /><br />
+            <tr>
+                <td rowspan="2" class="label_datetype">Start Time : &nbsp;</td>
+                <td class="label_date">Date</td>
+                <td class="label_date">Time (hh:mm)</td>
+            </tr>
+
+            <tr>
+                <td id="start_date_addact_mtap">
+                    <input id="start_date_input" type="text" value="@ViewBag.MatteTappingDate_Today.ToString("MM/dd/yyyy")"/></td>
+                <td id="start_time_addact_mtap">
+                    <select id="start_time_hr_input">
+                        @{
+                            int hr = Int32.Parse(ViewBag.Start_MatteTapping.ToString("HH"));
+
+                            for (int x = 0; x <= 23; x++)
+                            {
+                                if (@x <= 9)
+                                {
+
+                                    if (@x == @hr)
+                                    { <option value="@x" selected="selected">@("0" + @x)</option> }
+                                    else
+                                    { <option value="@x">@("0" + @x)</option> }
+                                }
+                                else
+                                {
+                                    if (@x == @hr)
+                                    {  <option value="@x" selected="selected">@x</option> }
+                                    else
+                                    {  <option value="@x">@x</option> }
+                                }
+                            }}
+                    </select>&nbsp;:
+                    <select id="start_time_min_input">
+                        @{
+                            int min = Int32.Parse(ViewBag.Start_MatteTapping.ToString("mm"));
+
+
+                            for (int x = 0; x <= 59; x++)
+                            {
+                                if (@x <= 9)
+                                {
+
+                                    if (@x == @min)
+                                    {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                    else
+                                    { <option value="@x">@("0" + @x)</option> }
+                                }
+                                else
+                                {
+                                    if (@x == @min)
+                                    {  <option value="@x" selected="selected">@x</option> }
+                                    else
+                                    { <option value="@x">@x</option> }
+
+                                }
+                            }}
+                    </select>
+                </td>
+            </tr>
+        </table>
+
+        <table id="end_time_table">
+            <tr>
+                <td rowspan="2" class="label_datetype">End Time : &nbsp;</td>
+                <td class="label_date">Date</td>
+                <td class="label_date">Time (hh:mm)</td>
+            </tr>
+
+            <tr>
+                <td id="end_date_addact">
+                    <input id="end_date_input" type="text"  value="@ViewBag.MatteTappingDate_Today.ToString("MM/dd/yyyy")"/></td>
+                <td id="end_time_addact">
+                    <select id="end_time_hr_input">
+                        @{
+                            int hr_e = Int32.Parse(ViewBag.End_MatteTapping.ToString("HH"));
+
+                            for (int x = 0; x <= 23; x++)
+                            {
+                                if (@x <= 9)
+                                {
+
+                                    if (@x == @hr_e)
+                                    {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                    else
+                                    { <option value="@x">@("0" + @x)</option> }
+                                }
+                                else
+                                {
+
+                                    if (@x == @hr_e)
+                                    {  <option value="@x" selected="selected">@x</option> }
+                                    else
+                                    { <option value="@x">@x</option> }
+
+                                }
+                            }}
+                    </select>&nbsp;:
+                    <select id="end_time_min_input">
+                        @{
+                            int min_e = Int32.Parse(ViewBag.End_MatteTapping.ToString("mm"));
+
+
+                            for (int x = 0; x <= 59; x++)
+                            {
+                                if (@x <= 9)
+                                {
+
+                                    if (@x == @min_e)   
+                                    {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                    else
+                                    { <option value="@x">@("0" + @x)</option> }
+                                }
+                                else
+                                {
+                                    if (@x == @min_e)
+                                    {  <option value="@x" selected="selected">@x</option> }
+                                    else
+                                    { <option value="@x">@x</option> }
+
+                                }
+                            }}
+                    </select>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div>
+        Matte Temperature :<input id="add_mattetemp" type="text" />
+        <b>°C</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         Matte Volume : 
+        <input id="add_mattevolume" type="text" />
+    </div>
+    <br />
+    <div>
+       
+            
+        <br />
+
+<div>
+     Slag Blow  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:&nbsp;@*<input id="add_launder2" type ="text" >
+    </div>*@
+    <select style="width: 100px" id="add1_slagblow">
+        <option>Select</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+
+    </select>
+    
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        CF No.  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+    <select style="width: 100px" id="add1_cfno">
+        <option>Select</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+    </select>
+
+    <br /><br /> <br />
+     Launder No.  : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="add_launder1" type ="text" >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   Matte Tapper : &nbsp;&nbsp;&nbsp;<span id="mttaper1_emp">-</span><span style="display:none;" id="mttaper1_empid"></span><br /><br />
+
+    Launder No. :  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input id="add_launder2" type="text">
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    Matte Tapper : &nbsp;&nbsp;&nbsp;<span id="mttaper2_emp">-</span><span style="display:none;" id="mttaper2_empid"></span>
+@*<dl class="dropdown">   
+    <dt>
+    <a href="#">
+      <span class="hida">Select option</span>    
+      <p class="multiSel" id="add_launder1"></p>  
+    </a>
+    </dt>
+  
+    <dd>
+        <div class="mutliSelect">
+            <ul>
+                <li>
+                    <input type="checkbox" value="1" />&nbsp;&nbsp;1</li>
+                <li>
+                    <input type="checkbox" value="2" />&nbsp;&nbsp;2</li>
+                <li>
+                    <input type="checkbox" value="3" />&nbsp;&nbsp;3</li>
+                <li>
+                    <input type="checkbox" value="4" />&nbsp;&nbsp;4</li>
+                <li>
+                    <input type="checkbox" value="5" />&nbsp;&nbsp;5</li>
+                <li>
+                    <input type="checkbox" value="6" />&nbsp;&nbsp;6</li>
+            </ul>
+        </div>
+    </dd>
+</dl>*@
+</div>
+   @* <select id="" style="width: 100px">
+        <option></option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+    </select>*@
+        @*<input id="add_launder1" type ="text" >*@
+        @*<dl class="dropdown"> 
+      <dt>
+        <a href="#"><span class="hida">-- Select --</span>    
+            <p class="multiSel"></p>  
+        </a>
+       </dt>
+    <dd>
+        <div class="mutliSelect">
+            <ul>
+                <li>
+                    <input type="checkbox" value="1" />&nbsp;&nbsp;1</li>
+                <li>
+                    <input type="checkbox" value="2" />&nbsp;&nbsp;2</li>
+                <li>
+                    <input type="checkbox" value="3" />&nbsp;&nbsp;3</li>
+                <li>
+                    <input type="checkbox" value="4" />&nbsp;&nbsp;4</li>
+            </ul>
+        </div>
+    </dd>
+</dl>*@
+
+        @*   <dl class="dropdown"> 
+      <dt>
+        <a href="#"><span class="hidaa">-- Select --</span>    
+            <p class="multiSe2"></p>  
+        </a>
+       </dt>
+    <dd>
+        <div class="mutliSelect2">
+            <ul>
+                <li>
+                    <input type="checkbox" value="1" />&nbsp;&nbsp;1</li>
+                <li>
+                    <input type="checkbox" value="2" />&nbsp;&nbsp;2</li>
+                <li>
+                    <input type="checkbox" value="3" />&nbsp;&nbsp;3</li>
+                <li>
+                    <input type="checkbox" value="4" />&nbsp;&nbsp;4</li>
+            </ul>
+        </div>
+    </dd>
+</dl>*@
+
+    </div>
+
+   
+    @*  <select id="" style="width:100px">
+                        <option></option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                        <option value="6">6</option>
+                   </select>*@
+   <br><br>
+    <div>
+        <input id="add_mtapping_ok_btn" type="button" value="Add" />&nbsp;@*<input id="add_mtapping_close_btn" type="button" value="Cancel" />*@
+
+    </div>
+    <br><br><br>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#called_date").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: serverpath + '/Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: true
+        });
+
+
+        $("#end_date_input").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: serverpath + '/Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: true
+        });
+
+        $("#start_date_input").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: serverpath + '/Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: true
+        });
+
+
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+
+        });
+
+    });
+
+    
+
+
+
+
+</script>

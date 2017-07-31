@@ -1,0 +1,303 @@
+﻿@{
+    ViewBag.Title = "AFCasting";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/bundles/jquery") 
+
+<div id="Dialog_MouldReplace" style="overflow: hidden;"></div>
+<div id="Dialog_MouldCastingTime" style="overflow: hidden;"></div>
+<div id="Dialog_CastingTime" style="overflow: hidden;"></div>
+<div id="Dialog2nd_CastingTime" style="overflow: hidden;"></div>
+<div id="Dialog_CastingManPower" style="overflow: hidden;"></div>
+<input type="hidden" id="poll_et">
+
+ @Html.Partial("~/Views/Shared/_AFLotNoSelect.cshtml")
+
+<h6 class="lbl_title">Casting</h6>
+
+<div class="container_div">
+    <div class="div_left">
+        <table class="af_tbl">
+        <tr>
+            <th colspan="2">MOLTEN METAL TEMP (degC)<img id="mmtemp_imgbtn" class="save_btn_img_small" src="../Images/diskette.png" />
+            </th>
+            <th style="display: none;" id="poll_et"></th>
+        </tr>
+        <tr>
+            <th class="td_left">Start:</th>
+            <td><input id="mmtemp_start_textb" class="input_textboxc" type="text" /></td>
+        </tr>
+        <tr>
+            <th class="td_left">Middle</th>
+            <td><input id="mmtemp_mid_textb" class="input_textboxc" type="text" /></td>
+        </tr>
+        <tr>
+            <th class="td_left">End</th>
+            <td><input id="mmtemp_end_textb" class="input_textboxc" type="text" /></td>
+        </tr>
+        </table>
+    <br />
+    <br />
+        <table class="af_tbl">
+        <tr>
+            <th colspan="2">MOULD DRESSING <img id="mdressing_imgbtn" class="save_btn_img_small" src="../Images/diskette.png" /></th>
+        </tr>
+        <tr>
+            <tr>
+                <th></th>
+                <th>Density</th>
+            </tr>
+                <tr>
+
+            <th class="td_left">1st</th>
+            <td><input id="mdressing_1st_textb" class="input_textboxc" type="text" /></td>
+        </tr>
+        <tr>
+            <th class="td_left">2nd</th>
+            <td><input id="mdressing_2nd_textb" class="input_textboxc" type="text" /></td>
+        </tr>
+        <tr>
+            <th class="td_left">3rd</th>
+            <td><input id="mdressing_3rd_textb" class="input_textboxc" type="text" /></td>
+        </tr>
+        </table>
+
+          <br />
+    <br />
+        <table class="af_tbl">
+        <tr>
+            <th colspan="2">MOULD REPLACEMENT<img id="mreplacement_imgbtn" class="save_btn_img_small" src="../Images/red_plus.png" /></th>
+        </tr>
+        <tr>
+            <th class="td_left">Wheel 1</th>
+            <th id="wheel1_cmould">&nbsp;</th>
+        </tr>
+        <tr>
+            <th class="td_left">Wheel 2</th>
+            <th id="wheel2_cmould" >&nbsp;</th>
+        </tr>
+       
+        </table>
+
+
+    </div>
+
+  
+
+
+    <div class="div_mid">
+
+        <table class="af_tbl">
+            <tr>
+                <th colspan="2">Mould Casting Time <img class="casting_btn" id="mould_casting_time_btn" width="20" height="20"  src="../Images/red_plus.png" /> 
+                    <span id="mould_casting_time_link" class="btn_label_span">Change Time</span>
+                </th>
+            </tr>
+            <tr>
+                <th class="td_left">Start</th>
+                <td id="mould_cast_starttime_td">&nbsp;</td>
+            </tr>
+        </table>
+        <br />
+        <br />
+        <table class="af_tbl">
+        <tr>
+            <th colspan="2">1st Casting Time <img class="casting_btn" id="casting_time_btn" width="20" height="20" src="../Images/red_plus.png" /> 
+            <span id="casting_time_link" class="btn_label_span">Change Time</span></th>
+        </tr>
+        <tr>
+            <th class="td_left">Start</th>
+            <th id="cast_starttime_td">&nbsp;</th>
+        </tr>
+       
+        <tr>
+            <th class="td_left">End</th>
+            <th id="cast_endtime_td">&nbsp;</th>
+        </tr>
+        </table>
+    <br />
+    <br />
+        <table class="af_tbl">
+        <tr>
+            <th colspan="2">2nd Casting Time <img class="casting_btn" id="casting2nd_time_btn" width="20" height="20" src="../Images/red_plus.png" /> 
+            <span id="casting2nd_time_link" class="btn_label_span">Change Time</span></th>
+        </tr>
+        <tr>
+            <th class="td_left">Start</th>
+            <th id="cast2nd_starttime_td">&nbsp;</th>
+        </tr>
+       
+        <tr>
+            <th class="td_left">End</th>
+            <th id="cast2nd_endtime_td">&nbsp;</th>
+        </tr>
+        </table>
+        <br />
+    <br />
+
+        <table class="af_tbl">
+        <tr>
+            <th colspan="2">SPARE MOULDS INVENTORY<img id="sminventory_imgbtn" class="save_btn_img_small" src="../Images/diskette.png" /></th>
+        </tr>
+        <tr>
+            <th class="td_left">Spare Moulds Inventory:</th>
+            <td><input id="sminventory_textb" class="input_textboxc" type="text" /></td>
+        </tr>
+        <tr>
+            <th class="td_left">Spare Moulds Casted:</th>
+            <td><input id="smcasted_textb" class="input_textboxc" type="text" /></td>
+        </tr>
+        <tr>
+            <th class="td_left">CRL Moulds Inventory:</th>
+            <td><input id="crlminventory_textb" class="input_textboxc" type="text" /></td>
+        </tr>
+        <tr>
+            <th class="td_left">CRL Moulds Casted:</th>
+            <td><input id="crlmcasted_textb" class="input_textboxc" type="text" /></td>
+        </tr>
+        </table>
+
+          <br />
+    <br />
+        <table class="af_tbl">
+        <tr>
+            <th colspan="2">TURNOVER - Anodes Casted<img id="tanodes_imgbtn" class="save_btn_img_small" src="../Images/diskette.png" /></th>
+        </tr>
+        <tr>
+            <th class="td_left">MT:</th>
+            <td><input id="anodecast_mt_textb" class="input_textboxc" type="text" /></td>
+        </tr>
+        <tr>
+            <th class="td_left">pcs:</th>
+            <td><input id="anodecast_pcs_textb" class="input_textboxc" type="text" /></td>
+        </tr>
+       
+        </table>
+
+
+    </div>
+    <div class="div_right">
+         <table class="af_tbl">
+        <tr>
+            <th colspan="3">CASTING MAN POWER <img class="casting_btn" id="casting_manpower_btn" width="20" height="20"  src="../Images/red_plus.png" /> 
+            <span id="casting_manpower_link" class="btn_label_span">Man Power </span></th>
+            
+        </tr>
+        <tr> 
+            <th id="castingmpower_position_th">&nbsp;</th>
+            <th id="castingmpower_start_th">Start</th>
+            <th id="castingmpower_end_th">End</th>
+        </tr>
+        <tr>
+            <th class="td_left">Shift Supervisor</th>
+            <th class="td_left" id="st_csupervisor">&nbsp;</th>
+            <th class="td_left" id="et_csupervisor">&nbsp;</th>
+        <tr>
+        <tr>
+            <th class="td_left">Control Rm Operator</th>
+            <th class="td_left" id="st_coperator">&nbsp;</th>
+            <th class="td_left" id="et_coperator">&nbsp;</th>
+        <tr>
+        <tr>
+            <th class="td_left">Ladle Operator</th>
+            <th class="td_left" id="st_loperator">&nbsp;</th>
+            <th class="td_left" id="et_loperator">&nbsp;</th>
+        <tr>
+        <tr>
+            <th class="td_left">Barite Operator</th>
+            <th class="td_left" id="st_boperator">&nbsp;</th>
+            <th class="td_left" id="et_boperator">&nbsp;</th>
+        <tr>
+        <tr>
+            <th class="td_left">Crane Operator</th>
+            <th class="td_left" id="st_craneoperator">&nbsp;</th>
+            <th class="td_left" id="et_craneoperator">&nbsp;</th>
+        <tr>
+        <tr>
+            <th class="td_left">Forklift Operator</th>
+            <th class="td_left" id="st_foperator">&nbsp;</th>
+            <th class="td_left" id="et_foperator">&nbsp;</th>
+        <tr>
+        
+        </table>
+    <br />
+    <br />
+         <h8>Remarks <img id="cast_remarks_imgbtn" class="save_btn_img_small" src="../Images/diskette.png" /></h8>
+            <br /><br />
+            <textarea id="txtarea_cast_remarks" class="txt_area" cols="50" rows="6"></textarea>
+
+
+
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        $(function () {
+            $('#Dialog_MouldReplace').dialog({
+                autoOpen: false,
+                width: 400,
+                height: 700,
+                resizable: false,
+                draggable: true,
+                title: 'AF Mould Replace',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [380, 400]
+            });
+
+            $('#Dialog_MouldCastingTime').dialog({
+                autoOpen: false,
+                width: 450,
+                height: 600,
+                resizable: false,
+                draggable: true,
+                title: 'AF Mould Casting Time',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [850, 200]
+            });
+
+            $('#Dialog_CastingTime').dialog({
+                autoOpen: false,
+                width: 450,
+                height: 600,
+                resizable: false,
+                draggable: true,
+                title: 'AF Casting Time',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [850, 200]
+            });
+
+            $('#Dialog2nd_CastingTime').dialog({
+                autoOpen: false,
+                width: 450,
+                height: 600,
+                resizable: false,
+                draggable: true,
+                title: 'AF 2nd Casting Time',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [850, 200]
+            });
+
+            $('#Dialog_CastingManPower').dialog({
+                autoOpen: false,
+                width: 450,
+                height: 600,
+                resizable: false,
+                draggable: true,
+                title: 'AF Casting Man Power',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [850, 100]
+            });
+
+        });
+
+    })
+
+</script>

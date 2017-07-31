@@ -1,0 +1,55 @@
+﻿@model IEnumerable<PASAROperations.Models.VWConverterCamp>  
+
+@{
+    ViewBag.Title = "New Campaign";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="cf_wrapperdiv">
+<div id="cf_sidediv">&nbsp;</div>
+<div id="cf_maindiv"><h6>I. New CAMPAIGN</h6>
+
+    <div id="wrapcampaign">
+    <div id="div1">
+       <i>CAMPAIGN</i><br />&nbsp;&nbsp; <b>NUMBER:</b>
+    </div>
+ 
+    <div id="div2"><h1 id="campaignvalue">@ViewData["CampaignNumber"]</h1></div>
+
+    <div id="div3">
+        <input id="addcampbtn" type="button" value="Add New Campaign" />
+    </div>
+    </div>
+   
+        <h6 id="selectcampaign">II. Assign CAMPAIGN to Converter</h6>
+        <table id="assigncampaign_tbl" border="0">
+            <tr>
+                <th>EDIT</th>
+                <th>Converter</th>
+                <th>Campaign</th>
+                <th>Select</th>
+            </tr>
+
+                @foreach (var item in Model) { 
+            <tr id= "tredit_@Html.DisplayFor(modelItem => item.ConverterId)">
+            <td class="EditCampaign" id="@Html.DisplayFor(modelItem => item.ConverterId)"><a>Edit</a></td>
+            <td>@Html.DisplayFor(modelItem => item.ConverterName)</td>
+            <td id= "tdcampid_@Html.DisplayFor(modelItem => item.ConverterId)">@Html.DisplayFor(modelItem => item.CampaignNumber)</td>
+            <td id= "tdselect_@Html.DisplayFor(modelItem => item.ConverterId)">Selected</td>
+                    </tr>   
+                }
+
+           
+
+        </table>
+    
+   
+
+    <div id="campaigntable">
+       
+        <div id="mydiv"></div>
+
+    </div>
+
+</div>
+</div>

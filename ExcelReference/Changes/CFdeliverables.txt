@@ -1,0 +1,47 @@
+Dear All,
+
+ 
+
+Good morning!
+
+ 
+
+Below are the following changes agreed after discussion and review of the digital CF Logsheet yesterday 4 PM:
+
+ 
+1.Add 2 more skimmers for the Employee Shift. Total of 4 Skimmers per shift.
+ •Mae to send updated list of supervisor/operator/skimmer
+ 
+ 
+2.Add provision for ppm S input when Activity = N (Blister Discharging) - Add new Table
+ 
+ 
+3.Add validation when Activity = DK (Other Operating) >> Operator is required to place a comment. - Application
+ 
+ 
+4.For the per minute values of Air flow rate when Activity = CA (Blowing Operation), values should be in white font when <25. - Application
+ 
+ 
+5.When Activity = CA (Blowing Operation), there should be a pop-up or text box prompting the Operator to review the Air Flow values.
+
+- Application
+ 
+ 
+6.Add Silica and Slag Required computation with provision for input of Matte + Matte Skulls and Matte Grade for SLAG Blows only. Kindly refer to CV1ChargeForm as an example.
+
+-new table
+
+ •Process Engrs should be able to edit the computation. 
+•Changes will be effective for that cycle and onwards only. Previous cycles should not be affected by the change. 
+ 
+ 
+7.Provide Edit Logs for the changes made on the calculation.
+ 
+Reports that should be generated from this include:
+1.CF Data (ex. CF-Data_ver2) 
+2.Logsheet (ex. Cv2Ch113data)
+ 
+>> Data should be exportable and printable.
+
+
+Target date of Completion of all deliverables is on January 16, 2015. After which, parallel runs will be conducted before full deployment.

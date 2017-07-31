@@ -1,0 +1,1506 @@
+﻿@model IEnumerable<PASAROperations.Models.AF_Customer>
+
+@*@{
+    ViewBag.Title = "AF_PreCasting";
+}*@
+
+<div id="Dialog_mouldmain" style="overflow: hidden;"></div>
+<div id="aftable_div">
+
+    <table class="aftable" id="precasting_tbl">
+        <thead>
+            <tr>
+                <th rowspan="2" class="thlong" id="starttime_th">Start Time</th>
+                <th rowspan="2" class="thlong" id="endtime_th">End Time</th>
+                <th rowspan="2" class="thshort">Activity Code</th>
+                <th rowspan="2" class="thlong">Activity</th>
+                <th rowspan="2" class="thshort">Duration(hrs)</th>
+                <th rowspan="2" class="thlong">Remarks</th>
+                <th colspan="3" class="tshort">Actions</th>
+            </tr>
+        </thead>
+        <tbody id="tbody">
+            <tr id="" style="display: none;"></tr>
+        </tbody>
+
+    </table>
+
+</div>
+
+
+<div id="pc_comouldr_div_aflogsheet">
+    <h6><font color="black">Mould Replacement</font>&nbsp;&nbsp;@*<span title="Add" id="addmould_btn" style="cursor: pointer;">&#x2795;</span>*@</h6>
+    <span id="cust_vald" style="color: red; visibility: hidden; font-size: 10px;">Only Two(2) Customers per Casting Wheel</span>
+    <br>
+    @*<input type="checkbox" id="checkAllcw1" > Check All CW1
+    &nbsp;&nbsp;&nbsp;&nbsp;
+    <input type="checkbox" id="checkAllcw2" > Check All CW1*@
+
+
+    <table id="aflogsheet_mouldres" class="aflogsheet_condem_mould">
+        <tr>
+            <th colspan="3">CW1           
+            <div style="visibility: hidden;">
+                <select id="count1_cust" class="">
+                    <option value="0">--Select--</option>
+                </select>
+            </div>
+                <div style="width: 100px; font-size: 12px;">Customer:&nbsp;@Html.DropDownList("MC_1593", (SelectList)ViewBag.mcc_list)</div>
+            </th>
+            <th colspan="2">CW2
+            <div style="visibility: hidden;">
+                <select id="count2_cust" class="">
+                    <option value="0">--Select--</option>
+                </select>
+            </div>
+                <div style="width: 100px; font-size: 12px;">Customer:&nbsp;@Html.DropDownList("MC_1595", (SelectList)ViewBag.mcc_list)</div>
+            </th>
+
+        </tr>
+        <tr>
+            <th>No.</th>
+           @* <th class="thid">ID</th>*@
+            @* <th>CW1</th>*@
+            <th style="width:5%;"></th>
+            <th>Reason</th>
+            @* <th>Reason</th>*@
+         @*   <th class="thid">ID</th>*@
+            @* <th>CW2</th>*@
+            <th style="width:5%"></th>
+            <th>Reason</th>
+            @*<th>Reason</th>*@
+        </tr>
+        <tr>
+           <td id="tdcmould">1</td>
+             <td><input type="checkbox" id="mres_1_1"></td>
+             <td>@Html.DropDownList("mres_1_1_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>          
+             <td><input type="checkbox" id="mres_2_1"></td>
+             <td>@Html.DropDownList("mres_2_1_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+          
+          
+        </tr>
+        <tr>
+          <td id="tdcmould">2</td>
+             <td><input type="checkbox" id="mres_1_2"></td>
+             <td>@Html.DropDownList("mres_1_2_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>            
+             <td><input type="checkbox" id="mres_2_2"></td>
+             <td>@Html.DropDownList("mres_2_2_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+            
+           
+        </tr>
+        <tr>
+          <td id="tdcmould">3</td>
+             <td><input type="checkbox" id="mres_1_3"></td>
+             <td>@Html.DropDownList("mres_1_3_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>            
+             <td><input type="checkbox" id="mres_2_3"></td>
+             <td>@Html.DropDownList("mres_2_3_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+              
+           
+        <tr>
+       <td id="tdcmould">4</td>
+             <td><input type="checkbox" id="mres_1_4"></td>
+             <td>@Html.DropDownList("mres_1_4_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>            
+             <td><input type="checkbox" id="mres_2_4"></td>
+             <td>@Html.DropDownList("mres_2_4_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+                
+             
+        </tr>
+        <tr>
+           <td id="tdcmould">5</td>
+             <td><input type="checkbox" id="mres_1_5"></td>
+             <td>@Html.DropDownList("mres_1_5_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>           
+             <td><input type="checkbox" id="mres_2_5"></td>
+             <td>@Html.DropDownList("mres_2_5_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+           
+          
+        </tr>
+        <tr>
+            <td id="tdcmould">6</td>
+             <td><input type="checkbox" id="mres_1_6"></td>
+             <td>@Html.DropDownList("mres_1_6_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+              <td><input type="checkbox" id="mres_2_6"></td>
+             <td>@Html.DropDownList("mres_2_6_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+          
+          
+        </tr>
+        <tr>
+          <td id="tdcmould">7</td>
+             <td><input type="checkbox" id="mres_1_7"></td>
+             <td>@Html.DropDownList("mres_1_7_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+               <td><input type="checkbox" id="mres_2_7"></td>
+             <td>@Html.DropDownList("mres_2_7_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+          
+           
+
+        </tr>
+        <tr>
+          <td id="tdcmould">8</td>
+             <td><input type="checkbox" id="mres_1_8"></td>
+             <td>@Html.DropDownList("mres_1_8_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+             <td><input type="checkbox" id="mres_2_8"></td>
+             <td>@Html.DropDownList("mres_2_8_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+          
+        
+        <tr>
+         <td id="tdcmould">9</td>
+             <td><input type="checkbox" id="mres_1_9"></td>
+             <td>@Html.DropDownList("mres_1_9_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+             <td><input type="checkbox" id="mres_2_9"></td>
+             <td>@Html.DropDownList("mres_2_9_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+           
+        
+        </tr>
+        <tr>
+         <td id="tdcmould">10</td>
+             <td><input type="checkbox" id="mres_1_10"></td>
+             <td>@Html.DropDownList("mres_1_10_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+           <td><input type="checkbox" id="mres_2_10"></td>
+             <td>@Html.DropDownList("mres_2_10_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+
+        </tr>
+        <tr>
+           <td id="tdcmould">11</td>
+             <td><input type="checkbox" id="mres_1_11"></td>
+             <td>@Html.DropDownList("mres_1_11_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+            <td><input type="checkbox" id="mres_2_11"></td>
+             <td>@Html.DropDownList("mres_2_11_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+       
+        </tr>
+        <tr>
+         <td id="tdcmould">12</td>
+             <td><input type="checkbox" id="mres_1_12"></td>
+             <td>@Html.DropDownList("mres_1_12_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+            <td><input type="checkbox" id="mres_2_12"></td>
+             <td>@Html.DropDownList("mres_2_12_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+         
+        <tr>
+           <td id="tdcmould">13</td>
+             <td><input type="checkbox" id="mres_1_13"></td>
+             <td>@Html.DropDownList("mres_1_13_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+           <td><input type="checkbox" id="mres_2_13"></td>
+             <td>@Html.DropDownList("mres_2_13_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+           
+        </tr>
+        <tr>
+           <td id="tdcmould">14</td>
+             <td><input type="checkbox" id="mres_1_14"></td>
+             <td>@Html.DropDownList("mres_1_14_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+            <td><input type="checkbox" id="mres_2_14"></td>
+             <td>@Html.DropDownList("mres_2_14_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+           
+        </tr>
+        <tr>
+          <td id="tdcmould">15</td>
+             <td><input type="checkbox" id="mres_1_15"></td>
+             <td>@Html.DropDownList("mres_1_15_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+            <td><input type="checkbox" id="mres_2_15"></td>
+             <td>@Html.DropDownList("mres_2_15_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td> 
+            
+        </tr>
+        <tr>
+          <td id="tdcmould">16</td>
+             <td><input type="checkbox" id="mres_1_16"></td>
+             <td>@Html.DropDownList("mres_1_16_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+           <td><input type="checkbox" id="mres_2_16"></td>
+             <td>@Html.DropDownList("mres_2_16_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+           
+        </tr>
+        <tr>
+           <td id="tdcmould">17</td>
+             <td><input type="checkbox" id="mres_1_17"></td>
+             <td>@Html.DropDownList("mres_1_17_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+           <td><input type="checkbox" id="mres_2_17"></td>
+             <td>@Html.DropDownList("mres_2_17_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+           
+        </tr>
+        <tr>
+          <td id="tdcmould">18</td>
+             <td><input type="checkbox" id="mres_1_18"></td>
+             <td>@Html.DropDownList("mres_1_18_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+            <td><input type="checkbox" id="mres_2_18"></td>
+             <td>@Html.DropDownList("mres_2_18_S", (SelectList)ViewBag.rreason_list, "--Select--", new { @class = "" })</td>
+           
+        </tr>
+    </table>
+
+
+</div>
+
+
+
+<div id="ladle_measurement_div_aflogsheet">
+    <h6>Ladle Measurements</h6>
+    <table id="ladle_measurement_tbl" class="ladle_measurement_tbl">
+        <tr>
+            <th>Unit</th>
+            <th>CW1</th>
+            <th>CW2</th>
+        </tr>
+        <tr>
+            <td>CL #</td>
+            <td class="border_color">
+                <input id="LM_1560" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+            <td class="border_color">
+                <input id="LM_1561" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+        <tr>
+            <td>Spout</td>
+            <td class="border_color">
+                <input id="LM_1562" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+            <td class="border_color">
+                <input id="LM_1563" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+        <tr>
+            <td>Skimming Plate</td>
+            <td class="border_color">
+                <input id="LM_1564" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+            <td class="border_color">
+                <input id="LM_1565" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+        <tr>
+            <td>Intermediate Ladle #</td>
+            <td class="border_color" colspan="2">
+                <input id="LM_1566" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+            @*<td class="border_color">
+                <input id="LM_1567" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>*@
+        </tr>
+        <tr>
+            <td>Left spout (CW#1)</td>
+            <td class="border_color">
+                <input id="LM_1568" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+            <td>mm</td>
+        </tr>
+        <tr>
+            <td>Left skim plate distance</td>
+            <td class="border_color">
+                <input id="LM_1569" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+            <td>mm</td>
+        </tr>
+        <tr>
+            <td>Right spout (CW#2)</td>
+            <td class="border_color">
+                <input id="LM_1570" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+            <td>mm</td>
+        </tr>
+        <tr>
+            <td>Right skim plate distance</td>
+            <td class="border_color">
+                <input id="LM_1571" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+            <td>mm</td>
+        </tr>
+    </table>
+    @* <table id="ladle_measurement_tbl" class="ladle_measurement_tbl">
+        <tr>
+            <th>Unit</th>
+            <th>CW1</th>
+            <th>CW2</th>
+        </tr>
+        <tr>
+            <td>CL #</td>
+            <td class="border_color">
+                <input id="LM_1560" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+            <td class="border_color">
+                <input id="LM_1561" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+        <tr>
+            <td>Spout</td>
+            <td class="border_color">
+                <input id="LM_1562" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+            <td class="border_color">
+                <input id="LM_1563" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+        <tr>
+            <td>Skimming Plate</td>
+            <td class="border_color">
+                <input id="LM_1564" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+            <td class="border_color">
+                <input id="LM_1565" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+        <tr>
+            <td>Intermediate Ladle</td>
+            <td class="border_color">
+                <input id="LM_1566" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+            <td class="border_color">
+                <input id="LM_1567" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+        <tr>
+            <td>Spout</td>
+            <td class="border_color">
+                <input id="LM_1568" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+            <td class="border_color">
+                <input id="LM_1570" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+        <tr>
+            <td>Skim Plate Distance</td>
+            <td class="border_color">
+                <input id="LM_1569" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+            <td class="border_color">
+                <input id="LM_1571" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>*@
+
+    @*        ---Requested Changes---     
+              <tr>
+               <td>Right Spout (CW2)</td>
+               <td class="border_color"><input disabled="disabled" id="" type="text"  onkeypress="return NumericOnly(event)"  class="extratbl_input" placeholder="-"/></td>
+               <td class="border_color"><input id="LM_1570" type="text"  onkeypress="return NumericOnly(event)"  class="extratbl_input" placeholder="0"/></td>
+            </tr>*@
+    @*<tr>
+               <td>Right Skim Plate Distance</td>
+               <td class="border_color"><input disabled="disabled" id="" type="text"  onkeypress="return NumericOnly(event)"  class="extratbl_input" placeholder="-"/></td>
+               <td class="border_color"><input id="LM_1571" type="text"  onkeypress="return NumericOnly(event)"  class="extratbl_input" placeholder="0"/></td>
+            </tr>*@
+    @* </table>*@
+
+</div>
+
+<div id="trods_div_aflogsheet">
+    <h6>Thrust Rods</h6>
+    <table id="tbl_thrust_rods" class="tbl_thrust_rods">
+        <tr>
+            <th>Unit</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>96</td>
+            <td id="" class="border_color">
+                <input id="LM_1572" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+        <tr>
+            <td>98</td>
+            <td id="" class="border_color">
+                <input id="LM_1573" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+        <tr>
+            <td>99</td>
+            <td id="" class="border_color">
+                <input id="LM_1582" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+        <tr>
+            <td>100</td>
+            <td id="" class="border_color">
+                <input id="LM_1574" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+        <tr>
+            <td>S. Hook</td>
+            <td id="" class="border_color">
+                <input id="LM_1575" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+        <tr>
+            <td>Rake</td>
+            <td id="" class="border_color">
+                <input id="LM_1576" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+
+    </table>
+
+</div>
+
+<div id="ladmould_div_aflogsheet">
+    <h6>Ladle Inventory</h6>
+    <table id="tbl_LM_inventory" class="tbl_LM_inventory">
+        <tr>
+            <th>Name</th>
+            <th>Value</th>
+        </tr>
+        <tr>
+            <td>I/L Ladles</td>
+            <td id="" class="border_color">
+                <input id="LM_1577" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+        <tr>
+            <td>Casting Ladles</td>
+            <td id="" class="border_color">
+                <input id="LM_1578" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+        </tr>
+    </table>
+</div>
+
+<div id="pcmould_inv_div_aflogsheet">
+
+    <div id="idmould">
+        <span title="Close" class="btn_label_span" style="left: 328px; position: absolute;" id="mouldclose_lnk"><b>Close</b></span>
+        <br>
+        <table id="tbl_mould_inventory" class="tbl_mould_inventory">
+
+            <tr>
+                <th>Select Customer</th>
+                <th>Enter Value</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td>@Html.DropDownList("mi_cust_id", (SelectList)ViewBag.mcc_list)</td>
+                <td id="" class="border_color">
+                    <input id="Mould_count" type="text" onkeypress="return NumericOnly(event)" class="extratbl_input" placeholder="0" /></td>
+                <td id="save_mould_inv" style="text-align: center;">Save</td>
+            </tr>
+        </table>
+    </div>
+
+
+    @*  @foreach (var item in Model){         
+             <tr>               
+               <td>@Html.ValueFor(modelItem => item.AF_CustomerName)</td>
+               <td id ="cust_id" style="visibility:hidden;">@Html.ValueFor(modelItem => item.AF_CustomerId)</td>            
+               <td id=""class="border_color"><input id="Mould_count_" type="text"  onkeypress="return NumericOnly(event)"  class="extratbl_input" placeholder="0"/></td>              
+             </tr>
+               }              
+                *@
+
+    <img width="20" height="20" title="Add new Inventory" id="mould_btn" src="~/Images/red_plus.png">
+    <span title="Add new Inventory" class="btn_label_span" id="mould_lnk"><b>Add new</b></span><br>
+    <div id="div_load_mould_inv">
+
+        <h6>Mould Inventory</h6>
+        <table class="tbl_load_mould_inventory" id="tbl_load_mould_inventory">
+            <thead>
+                <tr>
+                    <th>Customer</th>
+                    <th>Value</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody id="tbody">
+                <tr id="" style="display: none;"></tr>
+            </tbody>
+
+
+
+        </table>
+
+    </div>
+</div>
+
+<span id="pc_lotid" style="visibility: hidden;"></span>
+
+
+<script type="text/javascript">
+
+    load_ladle_measure();
+    load_mould_inventory_af();
+    load_mouldr();
+    precast_customer_data();
+    load_PreCast_Act_for_tab();
+    load_condemned_mould();
+    load_mouldreplace();
+
+    $('.thid').hide();
+    //$(".sw").hide();
+    $('.codeid').hide();
+    $('.div_changemould').hide();
+    $('.cw1,.cw2').hide();
+    $('.check_class').hide();
+
+
+    //$('#mould_div_aflogsheet').hide();
+    $("#idmould,#mouldclose_lnk").hide();
+
+    $("#mould_btn,#mould_lnk").live("click", function () {
+        $("#idmould,#mouldclose_lnk").show();
+    });
+
+    $("#mould_btn,#mould_lnk").live("click", function () {
+        $("#mould_lnk,#mould_btn").hide();
+        //$('#div_load_mould_inv').css('top', '125px');
+        $('#pcmould_inv_div_aflogsheet').css('height', '325px');
+    });
+
+
+    $("#mouldclose_lnk").live("click", function () {
+        $("#idmould,#mouldclose_lnk").hide();
+        $("#mould_lnk,#mould_btn").show();
+        $('#div_load_mould_inv').css('top', '34px');
+        $('#pcmould_inv_div_aflogsheet').css('height', '250px');
+    });
+
+    $('#search_pc').live('keyup', function () {
+
+        searchin_af_act('#search_pc', '#precasting_tbl tbody tr');
+
+    });
+
+    $("#idmould").draggable();
+
+
+
+    //Disable <select> option when selected in another <select>
+
+    // $('select[id*="cmw_"].dropdown1,select[id*="cmw_"].dropdownb1').focus();
+    //$('#cmw_1_1_1').focus();
+
+    $('select[id*="cmw_"].dropdown1,select[id*="cmw_"].dropdownb1,td[id*="cmw_"].codeid').mouseover(function (e) {
+        // start by setting everything to enabled
+
+
+        //$('select[id*="cmw_"] option').attr('disabled', false);
+
+        // loop each select and set the selected value to disabled in all other selects
+        $('select[id*="cmw_"].dropdown1,select[id*="cmw_"].dropdownb1,td[id*="cmw_"].codeid').each(function () {
+            var $this = $(this);
+
+
+            $('select[id*="cmw_"].dropdown1,select[id*="cmw_"].dropdownb1').not($this).find('option').each(function () {
+                if ($(this).attr('value') == $this.val() || $(this).attr('value') == $this.text())
+                    $(this).attr('disabled', true);
+
+
+            });
+        });
+
+    });
+
+    //end
+
+
+    $('#w_1_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_1_1_S,#w_1_1').addClass('click_mould');
+            $('#div_changemould_1_1').show();
+            e.stopPropagation();
+        }
+    });
+
+
+    $('#w_1_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_1_2_S,#w_1_2').addClass('click_mould');
+            $('#div_changemould_1_2').show();
+            e.stopPropagation();
+        }
+    });
+    $('#w_2_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_2_1_S,#w_2_1').addClass('click_mould');
+            $('#div_changemould_2_1').show();
+            e.stopPropagation();
+        }
+    });
+    $('#w_2_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_2_2_S,#w_2_2').addClass('click_mould');
+            $('#div_changemould_2_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_3_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_3_1_S,#w_3_1').addClass('click_mould');
+            $('#div_changemould_3_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_3_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_3_2_S,#w_3_2').addClass('click_mould');
+            $('#div_changemould_3_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_4_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_4_1_S,#w_4_1').addClass('click_mould');
+            $('#div_changemould_4_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_4_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_4_2_S,#w_4_2').addClass('click_mould');
+            $('#div_changemould_4_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_5_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_5_1_S,#w_5_1').addClass('click_mould');
+            $('#div_changemould_5_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_5_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_5_2_S,#w_5_2').addClass('click_mould');
+            $('#div_changemould_5_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_6_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_6_1_S,#w_6_1').addClass('click_mould');
+            $('#div_changemould_6_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_6_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_6_2_S,#w_6_2').addClass('click_mould');
+            $('#div_changemould_6_2').show();
+            e.stopPropagation();
+        }
+    });
+    $('#w_7_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_7_1_S,#w_7_1').addClass('click_mould');
+            $('#div_changemould_7_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_7_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_7_2_S,#w_7_2').addClass('click_mould');
+            $('#div_changemould_7_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_8_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_8_1_S,#w_8_1').addClass('click_mould');
+            $('#div_changemould_8_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_8_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_8_2_S,#w_8_2').addClass('click_mould');
+            $('#div_changemould_8_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_9_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_9_1_S,#w_9_1').addClass('click_mould');
+            $('#div_changemould_9_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_9_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_9_2_S,#w_9_2').addClass('click_mould');
+            $('#div_changemould_9_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_10_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_10_1_S,#w_10_1').addClass('click_mould');
+            $('#div_changemould_10_1').show();
+            e.stopPropagation();
+        }
+    });
+    $('#w_10_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_10_2_S,#w_10_2').addClass('click_mould');
+            $('#div_changemould_10_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_11_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_11_1_S,#w_11_1').addClass('click_mould');
+            $('#div_changemould_11_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_11_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_11_2_S,#w_11_2').addClass('click_mould');
+            $('#div_changemould_11_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_12_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_12_1_S,#w_12_1').addClass('click_mould');
+            $('#div_changemould_12_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_12_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_12_2_S,#w_12_2').addClass('click_mould');
+            $('#div_changemould_12_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_13_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_13_1_S,#w_13_1').addClass('click_mould');
+            $('#div_changemould_13_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_13_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_13_2_S,#w_13_2').addClass('click_mould');
+            $('#div_changemould_13_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_14_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_14_1_S,#w_14_1').addClass('click_mould');
+            $('#div_changemould_14_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_14_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_14_2_S,#w_14_2').addClass('click_mould');
+            $('#div_changemould_14_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_15_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_15_1_S,#w_15_1').addClass('click_mould');
+            $('#div_changemould_15_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_15_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_15_2_S,#w_15_2').addClass('click_mould');
+            $('#div_changemould_15_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_16_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_16_1_S,#w_16_1').addClass('click_mould');
+            $('#div_changemould_16_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_16_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_16_2_S,#w_16_2').addClass('click_mould');
+            $('#div_changemould_16_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_17_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_17_1_S,#w_17_1').addClass('click_mould');
+            $('#div_changemould_17_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_17_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_17_2_S,#w_17_2').addClass('click_mould');
+            $('#div_changemould_17_2').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_18_1').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_18_1_S,#w_18_1').addClass('click_mould');
+            $('#div_changemould_18_1').show();
+            e.stopPropagation();
+        }
+    });
+
+    $('#w_18_2').click(function (e) {
+        if (check_visible()) {
+            $('#cmw_18_2_S,#w_18_2').addClass('click_mould');
+            $('#div_changemould_18_2').show();
+            e.stopPropagation();
+        }
+    });
+
+
+
+
+    $('#cmw_1_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_2_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_3_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_4_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_5_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_6_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_7_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_8_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_9_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_10_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_11_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_12_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_13_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_14_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_15_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_16_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_17_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_18_1_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+
+
+
+    $('#cmw_1_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_2_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_3_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_4_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_5_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_6_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_7_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_8_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_9_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_10_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_11_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_12_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_13_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_14_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_15_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_16_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_17_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+    $('#cmw_18_2_S').click(function () {
+        var $thisval = $(this).text();
+        if ($thisval != "---") { delete_mouldcodeid($thisval, 2); }
+    });
+
+
+
+
+
+
+    $('#mouldsave_lnk1_1').click(function () {
+        if (count_cust_mouldrep1_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk1_2').click(function () {
+        if (count_cust_mouldrep2_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk2_1').click(function () {
+        if (count_cust_mouldrep1_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk2_2').click(function () {
+        if (count_cust_mouldrep2_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk3_1').click(function () {
+        if (count_cust_mouldrep1_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk3_2').click(function () {
+        if (count_cust_mouldrep2_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk4_1').click(function () {
+        if (count_cust_mouldrep1_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk4_2').click(function () {
+        if (count_cust_mouldrep2_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk5_1').click(function () {
+        if (count_cust_mouldrep1_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk5_2').click(function () {
+        if (count_cust_mouldrep2_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+    $('#mouldsave_lnk6_1').click(function () {
+        if (count_cust_mouldrep1_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk6_2').click(function () {
+        if (count_cust_mouldrep2_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk7_1').click(function () {
+        if (count_cust_mouldrep1_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk7_2').click(function () {
+        if (count_cust_mouldrep2_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk8_1').click(function () {
+        if (count_cust_mouldrep1_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk8_2').click(function () {
+        if (count_cust_mouldrep2_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk9_1').click(function () {
+        if (count_cust_mouldrep1_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+    $('#mouldsave_lnk9_2').click(function () {
+        if (count_cust_mouldrep2_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk10_1').click(function () {
+        if (count_cust_mouldrep1_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk10_2').click(function () {
+        if (count_cust_mouldrep2_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk11_1').click(function () {
+        if (count_cust_mouldrep1_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk11_2').click(function () {
+        if (count_cust_mouldrep2_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+    $('#mouldsave_lnk12_1').click(function () {
+        if (count_cust_mouldrep1_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk12_2').click(function () {
+        if (count_cust_mouldrep2_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk13_1').click(function () {
+        if (count_cust_mouldrep1_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk13_2').click(function () {
+        if (count_cust_mouldrep2_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk14_1').click(function () {
+        if (count_cust_mouldrep1_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk14_2').click(function () {
+        if (count_cust_mouldrep2_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk15_1').click(function () {
+        if (count_cust_mouldrep1_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk15_2').click(function () {
+        if (count_cust_mouldrep2_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk16_1').click(function () {
+        if (count_cust_mouldrep1_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk16_2').click(function () {
+        if (count_cust_mouldrep2_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk17_1').click(function () {
+        if (count_cust_mouldrep1_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk17_2').click(function () {
+        if (count_cust_mouldrep2_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk18_1').click(function () {
+        if (count_cust_mouldrep1_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+    $('#mouldsave_lnk18_2').click(function () {
+        if (count_cust_mouldrep2_pc()) {
+            //save_condemned_mould_change();
+        }
+    });
+
+
+
+
+
+
+    $('#cmw_1_1_1_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_1_1_1');
+
+    });
+
+    $('#cmw_1_2_2_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_1_2_2');
+
+    });
+
+    $('#cmw_2_1_1_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_2_1_1');
+
+    });
+
+    $('#cmw_2_2_2_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_2_2_2');
+
+    });
+
+    $('#cmw_3_1_1_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_3_1_1');
+    });
+
+    $('#cmw_3_2_2_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_3_2_2');
+    });
+
+    $('#cmw_4_1_1_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_4_1_1');
+    });
+
+    $('#cmw_4_2_2_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_4_2_2');
+    });
+
+    $('#cmw_5_1_1_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_5_1_1');
+    });
+
+    $('#cmw_5_2_2_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_5_2_2');
+    });
+
+    $('#cmw_6_1_1_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_6_1_1');
+    });
+
+    $('#cmw_6_2_2_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_6_2_2');
+    });
+
+    $('#cmw_7_1_1_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_7_1_1');
+    });
+
+    $('#cmw_7_2_2_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_7_2_2');
+    });
+
+    $('#cmw_8_1_1_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_8_1_1');
+    });
+
+    $('#cmw_8_2_2_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_8_2_2');
+    });
+
+    $('#cmw_9_1_1_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_9_1_1');
+    });
+
+    $('#cmw_9_2_2_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_9_2_2');
+    });
+
+    $('#cmw_10_1_1_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_10_1_1');
+    });
+
+    $('#cmw_10_2_2_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_10_2_2');
+    });
+
+    $('#cmw_11_1_1_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_11_1_1');
+    });
+
+    $('#cmw_11_2_2_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_11_2_2');
+    });
+
+
+    $('#cmw_12_1_1_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_12_1_1');
+    });
+
+    $('#cmw_12_2_2_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_12_2_2');
+    });
+
+    $('#cmw_13_1_1_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_13_1_1');
+    });
+
+    $('#cmw_13_2_2_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_13_2_2');
+    });
+
+    $('#cmw_14_1_1_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_14_1_1');
+    });
+
+    $('#cmw_14_2_2_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_14_2_2');
+    });
+
+    $('#cmw_15_1_1_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_15_1_1');
+    });
+
+    $('#cmw_15_2_2_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_15_2_2');
+    });
+
+    $('#cmw_16_1_1_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_16_1_1');
+    });
+
+    $('#cmw_16_2_2_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_16_2_2');
+    });
+
+    $('#cmw_17_1_1_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_17_1_1');
+    });
+
+    $('#cmw_17_2_2_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_17_2_2');
+    });
+
+    $('#cmw_18_1_1_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_18_1_1');
+    });
+
+    $('#cmw_18_2_2_').bind('keyup mouseover blur change', function () {
+
+        var _val = $(this).val();
+        mould_customer_change(_val, 'cmw_18_2_2');
+    });
+
+
+
+
+
+    $('.close_lnk_1').click(function () {
+        $('.div_changemould').hide();
+        $('.div_changemould').find('input,select').removeClass('changed');
+
+        $('#aflogsheet_condem_mould').find('td.click_mould,a.click_mould,td.td_mould_div.changed').each(function () {
+
+            $(this).removeClass('click_mould');
+            $(this).removeClass('changed');
+            $(this).removeAttr("style");
+
+        });
+
+        $('#aflogsheet_condem_mould').find('select.scust').each(function () {
+            //var sval = '';
+            //var _val = $(this).val(sval);
+
+        });
+
+
+        $('#aflogsheet_condem_mould').find('select.dropdown1,select.dropdownb1').each(function () {
+            //var sval = '';
+            //var _val = $(this).empty();
+            $(this).append("<option value = '0'>--Select--</option>");
+        });
+
+
+    });
+
+    //$(document).click(function () {
+    //    $(".div_changemould").hide();
+    //    $('.div_changemould').find('input,select').removeClass('changed');
+    //});
+
+    $('.div_changemould').click(function (e) {
+        e.stopPropagation();
+    });
+
+    function check_visible() {
+        var i;
+        var elemnt = ($('.div_changemould:visible').length);
+        if (elemnt >= 1) {
+            $('.div_changemould').find('input,select').removeClass('changed');
+            i = false
+
+        } else {
+
+            i = true;
+        }
+        return i;
+    }
+
+    $(function () {
+        $('#Dialog_mouldmain').dialog({
+            autoOpen: false,
+            width: 350,
+            height: 500,
+            resizable: false,
+            draggable: true,
+            title: 'Mould Maintenance...',
+            closeText: 'Close[x]',
+            modal: true,
+            position: [800, 300]
+        });
+
+    });
+
+
+</script>

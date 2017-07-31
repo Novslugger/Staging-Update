@@ -1,0 +1,266 @@
+﻿<div class="crop_ref_act_div">
+
+    <table class="refinery_partial_tbl">
+
+        <tr>
+            <td rowspan="2" class="label_datetype">Start Time:</td>
+            <td class="label_date">Date</td>
+            <td class="label_date">Time (hh:mm)</td>
+        </tr>
+
+        <tr>
+            <td class="af_date_td ">
+                <input @*disabled="disabled"*@id="start_date_ref_edit_act" class="ref_date start_date_ref_edit_act" type="text" value="@ViewBag.starttime.ToString("MM/dd/yyyy")" onchange="validation_ref_shorts_crop_edit()"/></td>
+            <td class="af_time_td">
+                <select id="start_time_hr_ref_add_act" class="ref_hr" @*disabled="disabled"*@ onchange="validation_ref_shorts_crop_edit()">
+                    @{
+                        int hr;
+                        int min_ = Int32.Parse(ViewBag.starttime.ToString("mm"));
+                        if (min_ == 60)
+                        {
+
+                            hr = Int32.Parse(ViewBag.starttime.ToString("HH"));
+
+                        }
+                        else
+                        {
+                            hr = Int32.Parse(ViewBag.starttime.ToString("HH"));
+                        }
+
+
+                        for (int x = 0; x <= 23; x++)
+                        {
+                            if (@x <= 9)
+                            {
+
+                                if (@x == @hr)
+                                {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                else
+                                { <option value="@x">@("0" + @x)</option> }
+                            }
+
+
+                            else
+                            {
+
+                                if (@x == @hr)
+                                {  <option value="@x" selected="selected">@x</option> }
+                                else
+                                { <option value="@x">@x</option> }
+
+
+                            }
+                        }
+                    }
+
+                </select>&nbsp;:
+            <select id="start_time_min_ref_add_act" class="ref_min" @*disabled="disabled"*@ onchange="validation_ref_shorts_crop_edit()">
+                @{
+                    int min = Int32.Parse(ViewBag.starttime.ToString("mm"));
+
+
+                    for (int x = 0; x <= 59; x++)
+                    {
+                        if (@x <= 9)
+                        {
+
+                            if (@x == @min)
+                            {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                            else
+                            { <option value="@x">@("0" + @x)</option> }
+                        }
+
+
+                        else
+                        {
+
+                            if (@x == @min)
+                            {  <option value="@x" selected="selected">@x</option> }
+                            else
+                            { <option value="@x">@x</option> }
+
+
+                        }
+                    }
+                }
+            </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td rowspan="2" class="label_datetype">End Time:</td>
+
+        </tr>
+
+        <tr>
+            <td class="af_date_td ">
+                <input id="end_date_ref_edit_act" class="ref_date end_date_ref_edit_act" type="text"  value="@ViewBag.endtime.ToString("MM/dd/yyyy")" onchange="validation_ref_shorts_crop_edit()"/></td>
+
+
+            <td class="af_time_td">
+                <select id="end_time_hr_ref_add_act" class="ref_hr" onchange="validation_ref_shorts_crop_edit()">
+                    @{
+               
+  
+                        if (min_ == 60)
+                        {
+
+                            hr = Int32.Parse(ViewBag.endtime.ToString("HH"));
+
+                        }
+                        else
+                        {
+                            hr = Int32.Parse(ViewBag.endtime.ToString("HH"));
+                        }
+
+
+                        for (int x = 0; x <= 23; x++)
+                        {
+                            if (@x <= 9)
+                            {
+
+                                if (@x == @hr)
+                                {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                else
+                                { <option value="@x">@("0" + @x)</option> }
+                            }
+
+
+                            else
+                            {
+
+                                if (@x == @hr)
+                                {  <option value="@x" selected="selected">@x</option> }
+                                else
+                                { <option value="@x">@x</option> }
+
+
+                            }
+                        }
+                    }
+
+                </select>&nbsp;:
+            <select id="end_time_min_ref_add_act" class="ref_min" onchange="validation_ref_shorts_crop_edit()">
+                @{
+                    int mine_ = Int32.Parse(ViewBag.endtime.ToString("mm"));
+
+                    for (int x = 0; x <= 59; x++)
+                    {
+                        if (@x <= 9)
+                        {
+
+                            if (@x == @mine_)
+                            {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                            else
+                            { <option value="@x">@("0" + @x)</option> }
+                        }
+
+
+                        else
+                        {
+
+                            if (@x == @mine_)
+                            {  <option value="@x" selected="selected">@x</option> }
+                            else
+                            { <option value="@x">@x</option> }
+
+
+                        }
+                    }
+                }
+            </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="label_datetype">Block:</td>
+            <td class="border_color">
+                @Html.DropDownList("blockid", (SelectList)ViewBag.blockpairlist, "--Select--")
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td class="label_datetype">Crop:</td>
+            <td class="border_color">
+                <select id="cropid"  value="@ViewBag.REFTH_CropNo">
+                    <option value="0">--Select--</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+
+            </td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td id="cropid_edit" style="display:none;">@ViewBag.cropid</td>
+        </tr>
+          <tr>
+            <td class="label_datetype">ElapsedKAH:</td>          
+            <td><input  class="extratbl_input border_color" type="text" onkeypress="return NumericOnly(event)" id="elapsedKAH_crop_edit" value="@ViewBag.REFTH_ElapsedKAH" /></td>
+        </tr>  
+         <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>      
+        <tr>
+            <td colspan="6" style="text-align:left;"><span id="error_msg_time_ref"></span></td>            
+            <td class="border_color">
+                <input type="button" value="Save" onclick="edit_ref_crop()" id="addbtn_ref_crop" /></td>
+        </tr>
+
+
+
+
+    </table>
+
+
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $("#Dialog_crop_edit_activity #cropid").val("@ViewBag.REFTH_CropNo");
+
+        $("#start_date_ref_edit_act").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: serverpath + '/Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: false
+        });
+
+        $("#end_date_ref_edit_act").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: serverpath + '/Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: true
+        });
+
+
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+
+        });
+
+        
+    });
+
+
+</script>

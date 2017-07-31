@@ -1,0 +1,144 @@
+﻿@*<h6>CATHODE HARVEST SCHEDULE</h6>*@
+<div style="position: absolute; left: 342px; top: 55px;">
+    @*  <img id="rpp_savedata_btn" width="25" height="25" src="../Images/diskette.png" /><span id="rpp_savedata_link" class="btn_label_span">Save</span>*@
+</div>
+
+<input type="text" id="rpp_input_date" class="mbf_date" style="float: left; margin-left: 10px; border: solid 1px black;" title="Select Date" />
+&nbsp;&nbsp;&nbsp;
+@*<img width="20" height="20" title="Add New Entry" onclick="add_rpp_row()" src="../Images/red_plus.png">&nbsp;&nbsp;<span title="Add New Entry" class="btn_label_span" onclick="add_rpp_row()">Add Item </span>*@
+
+<div style="width: 1500px;">
+    <br><br>
+    <div id="timeLineGraph_week">
+    </div>
+    @*<table class="rpp_refine_table" id="rpp_data_tbl">
+        <tr id="th_monthdays"></tr>
+        <tr id="td_monthdays_input"></tr>
+         <tr>
+            <th></th>
+            <th>block</th>
+            <th></th>
+            <th colspan="4">0700</th>
+            <th colspan="4">0800</th>
+            <th colspan="4">0900</th>
+            <th colspan="4">1000</th>
+            <th colspan="4">1100</th>
+            <th colspan="4">1200</th>
+            <th colspan="4">1300</th>
+            <th colspan="4">1400</th>
+            <th colspan="4">1500</th>
+            <th colspan="4">1600</th>
+            <th colspan="4">1700</th>
+            <th colspan="4">1800</th>
+            <th colspan="4">1900</th>
+            <th colspan="4">2000</th>
+            <th colspan="4">2100</th>
+            <th colspan="4">2200</th>
+            <th colspan="4">2300</th>
+            <th colspan="4">2400</th>
+            <th colspan="4">0100</th>
+            <th colspan="4">0200</th>
+            <th colspan="4">0300</th>
+            <th colspan="4">0400</th>
+            <th colspan="4">0500</th>
+            <th colspan="4">0600</th>
+            <th colspan="4">0700</th>
+            <th>&nbsp;&nbsp;&nbsp;&nbsp;remarks&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</th>            
+        </tr>
+
+    </table>*@
+</div>
+@*<br>
+<div>
+    <table style="float: left;">
+          <tr>
+            <td style="background-color: green; width: 50px;">&nbsp;</td>
+            <td>- Shorting time and preparation before cathode pull-out</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="background-color: yellow">&nbsp;</td>
+            <td>- Cathode pull-out and stripping</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="background-color: red">&nbsp;</td>
+            <td>- Electrolyte filling-up and preparation before current resumption</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td style="background-color: skyblue">&nbsp;</td>
+            <td>- Lull time</td>
+        </tr>
+
+    </table>
+</div>*@
+<script type="text/javascript">
+
+    $(document).ready(function () {
+      
+        $("#rpp_input_date").datepicker({
+            maxDate: null,
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'MM yy',
+            showButtonPanel: true,
+            onClose: function () {
+                var iMonth = $(".ui-datepicker-month :selected").val();
+                var iYear = $(".ui-datepicker-year :selected").val();
+
+                $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+                $(this).datepicker('refresh');
+
+                $('thead #tr_param').remove();
+                $('#tbody tr').filter(function () {
+                    return $(this).has('input');
+                }).remove();
+
+                var select = $(this).val();
+                drawChart_dataweek(iMonth, iYear);
+
+            },
+
+            beforeShow: function () {
+                if ((selDate = $(this).val()).length > 0) {
+                    iYear = selDate.substring(selDate.length - 4, selDate.length);
+                    iMonth = jQuery.inArray(selDate.substring(0, selDate.length - 5), $(this).datepicker('option', 'monthNames'));
+                    $(this).datepicker('option', 'defaultDate', new Date(iYear, iMonth, 1));
+                    $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+                }
+            }
+        });
+
+        $("#rpp_input_date").focus(function () {
+            $(".ui-datepicker-calendar").hide();
+            $("#ui-datepicker-div").position({
+                my: "center top",
+                at: "center bottom",
+                of: $(this)
+            });
+        });
+
+        $("#rpp_input_date").load(function () {
+            $(".ui-datepicker-calendar").hide();
+        });
+
+        $('#rpp_input_date').datepicker('setDate', 'today');
+
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+        });
+      
+        drawChart_dataweek();
+    });
+
+</script>

@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DEV_KPIModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="DEV_KPIModelStoreContainer" />
+        <Function Name="SP_PI_CFCYLE" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="cyclenum" Type="nvarchar" Mode="In" />
+          <Parameter Name="udstartdate" Type="date" Mode="In" />
+          <Parameter Name="udenddate" Type="date" Mode="In" />
+        </Function>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DEV_KPIModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="DEV_KPIEntities" p1:LazyLoadingEnabled="true" >
+          <FunctionImport Name="SP_PI_CFCYLE" ReturnType="Collection(DEV_KPIModel.SP_PI_CFCYLE_Result)">
+            <Parameter Name="cyclenum" Mode="In" Type="String" />
+            <Parameter Name="udstartdate" Mode="In" Type="DateTime" />
+            <Parameter Name="udenddate" Mode="In" Type="DateTime" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="SP_PI_CFCYLE_Result">
+          <Property Type="String" Name="tag" Nullable="false" MaxLength="4000" />
+          <Property Type="DateTime" Name="time" Nullable="false" />
+          <Property Type="Int32" Name="C_index" Nullable="false" />
+          <Property Type="String" Name="value" Nullable="true" MaxLength="4000" />
+          <Property Type="Int32" Name="status" Nullable="false" />
+          <Property Type="Boolean" Name="questionable" Nullable="true" />
+          <Property Type="Boolean" Name="substituted" Nullable="true" />
+          <Property Type="Boolean" Name="annotated" Nullable="true" />
+          <Property Type="String" Name="annotations" Nullable="true" MaxLength="4000" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DEV_KPIModelStoreContainer" CdmEntityContainer="DEV_KPIEntities" >
+          <FunctionImportMapping FunctionImportName="SP_PI_CFCYLE" FunctionName="DEV_KPIModel.Store.SP_PI_CFCYLE">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="DEV_KPIModel.SP_PI_CFCYLE_Result">
+                <ScalarProperty Name="tag" ColumnName="tag" />
+                <ScalarProperty Name="time" ColumnName="time" />
+                <ScalarProperty Name="C_index" ColumnName="_index" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="status" ColumnName="status" />
+                <ScalarProperty Name="questionable" ColumnName="questionable" />
+                <ScalarProperty Name="substituted" ColumnName="substituted" />
+                <ScalarProperty Name="annotated" ColumnName="annotated" />
+                <ScalarProperty Name="annotations" ColumnName="annotations" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

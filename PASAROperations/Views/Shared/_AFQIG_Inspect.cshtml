@@ -1,0 +1,55 @@
+﻿<div id="add_qig_inspect_div">
+    <b>QIG Anode Inspect</b>
+    <br />
+     <br />
+     <br />
+
+     <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Anode Type: &nbsp;&nbsp;&nbsp;
+        @Html.DropDownList("QIG_anodetype_ddl", (SelectList)ViewBag.QIGType_List, "--Select--")
+    </div>
+     <br />
+    <br />
+
+
+
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        Hour:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        @Html.DropDownList("QIG_hour_ddl", (SelectList)ViewBag.QIGHr_List, "--Select--")
+
+    </div>
+    <br />
+     <br />
+   
+    <div>&nbsp;&nbsp;&nbsp;Casting Wheel: &nbsp;&nbsp;&nbsp;
+       <select id="QIG_wheel_ddl">
+                    <option value="">--Select--</option>
+                    <option value="1">Wheel 1</option>
+                    <option value="2">Wheel 2</option>
+                 </select>
+
+    </div>
+   
+   
+    <br />
+   <br />
+     <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         Inspect: &nbsp;&nbsp;&nbsp;
+        @Html.DropDownList("QIG_inspect_ddl", (SelectList)ViewBag.QIGInspect_List, "--Select--")
+    </div>
+
+  <br /><br /><br /><br />
+      <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        PCS:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <input id="qig_pcs" type="text"   />
+
+    </div>
+
+    <br /><br /><br /><br />
+   
+    <input id="qig_ok_btn" type="button" value="OK" />
+    <br />
+    <br />
+</div>

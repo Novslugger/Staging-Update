@@ -1,0 +1,58 @@
+﻿<div id="spp_wrapper">
+    <div id="spp_wrap_header">
+        <div class="horizontaltabsspp">
+            <dl class="tabs horizontal_ref">               
+                <dd id="rfm_dd1" class="active"><a href="#" onclick="ddactive_rpp('Refinery_manpower_commercial');return false;">Commercial Man Power</a></dd>
+                <dd id="rfm_dd2"><a href="#" onclick="ddactive_rpp('Refinery_manpower_electrolysis');return false;">Electrolysis Man Power</a></dd>            
+            </dl>
+        </div>
+        <div class="refinery-tabs-content horizontaltabs_ref">
+            <div class="content active" id="htab-panel1">
+                @Html.Partial("~/Views/Shared/Refinery_manpower_commercial.cshtml")
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+        $(".row_shift_span").hide();
+        //when click hide
+        $("#rfm_dd3,#rfm_dd4").on
+                ("click", function () {
+                    $("#fsfe_log_header").hide(600).fadeOut();                   
+                });
+        //when click show
+        $("#rfm_dd1,#rfm_dd2").on("click", function () {
+            $(".row_shift_span").hide();
+            $("#fsfe_log_header").show(600).fadeIn();
+
+        });
+
+        $('#htab-panel1').css({ 'display': 'block' });
+
+        $("#fsfe_shiftdate").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: '../Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: true,
+            onSelect: function (date) {
+
+            }
+        });
+        $('#ui-datepicker-div').css('display', 'none');
+        $('#fsfe_shiftdate').datepicker('setDate', 'today');
+
+
+        $(".ui-datepicker-trigger").mouseover(function () {
+
+
+            $(this).css('cursor', 'pointer');
+
+        });
+
+    });
+</script>

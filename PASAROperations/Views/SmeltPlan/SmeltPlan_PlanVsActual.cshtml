@@ -1,0 +1,40 @@
+﻿    @*@Styles.Render("~/Content/ToPDF.css")*@
+    @*@Scripts.Render("~/bundles/jsPDF")*@
+<div id="spp_header">
+    <span id="page_id">2</span>
+</div>
+<div id="keyprocess_div">
+    <div id="date_div">
+        <table>
+            <tr>
+                <th>DATE:</th>
+                <td><span id="date_span"></span></td>
+            </tr>
+        </table>
+    </div>
+                @*<input id="print" type="button" value="Print" onclick="save_to_pdf()" />*@
+    @Html.Partial("~/Views/Shared/_SmeltPlan_ParamTables.cshtml")
+</div>
+<div id="planvsactual_div">
+    @*<input type="button" id="savetopdf_btn" value="Save to PDF" />*@
+    @*<a href="javascript:window.print()">Print</a>*@
+    @*<img id="zoomout" class="zoomicon" src="../Images/zoomout.png" title="Zoom Out" />*@@*<img id="zoomin" class="zoomicon" src="../Images/zoomin.png" title="Zoom In" />*@
+    @Html.Partial("~/Views/Shared/_SmeltPlan_PlanVsActual.cshtml")
+</div>
+    @Html.Partial("~/Views/Shared/_SmeltPlan_Legend.cshtml")
+<script type="text/javascript">
+    //$('head').append('<script type="text/javascript" src="jspdf.js"><' + '/script>');
+
+    $(document).ready(function () {
+        if ($('#fsfe_prod_id').text() != "") {
+            var date = $('#fsfe_shiftdate').val();
+            load_plan_actual();
+            load_actual_graph(date);
+        }
+        var span_date = new Date($('#fsfe_shiftdate').val());
+        var span_date_ = span_date.toString("MMM dd, yyyy");
+        $('#date_span').text(span_date_);
+        //load_timeseriess('5-21-2016');
+    });
+
+</script>

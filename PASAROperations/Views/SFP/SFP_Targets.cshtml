@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "SFP_Targets";
+Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/jquery")
+<div class="container">
+    <div id="fsfe_log_wrapper">
+        <div id="fsfe_log_wrapper_left">
+            <div class="thetabs">
+
+                <div class="verticaltabs">
+
+                    <dl class="tabs vertical">
+                        <dd class="active"><a href="#" onclick="ddactive_sfp('SFP_Targets_Limits');return false;">Targets</a></dd>
+                        <dd><a href="#" onclick="ddactive_sfp('SFP_Targets_Forecast');return false;">Forecast</a></dd>
+
+                    </dl>
+
+                </div>
+            </div>
+        </div>
+        <div id="fsfe_log_wrapper_right">
+            <div class="horizontaltabs">
+                <div class="tabs-content">
+
+                    <div class="content active" id="htab-panel1">
+                        @Html.Partial("~/Views/Shared/SFP_Targets_Limits.cshtml")
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

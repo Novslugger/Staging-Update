@@ -1,0 +1,80 @@
+﻿<h6 id="h6_fsfe">Flash Dryer Operator</h6>
+<div id="interfaceid">5</div>
+<div id ="fsfe_shift_div">
+   <div id="fsfe_shift_left_div">
+       <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_9" disabled="disabled"/>&nbsp;&nbsp; &nbsp;Cleaning of combustion furnace burner</label>
+       <label class="fsfe_cbox_italic"><input type="checkbox"  id="cbox_10"  disabled="disabled"/>&nbsp;&nbsp; &nbsp;Cagemill Oversize Discharging</label>
+       <label class="fsfe_cbox_italic"><input type="checkbox"  id="cbox_11"  disabled="disabled"/>&nbsp;&nbsp; &nbsp;Cleaning of Charging line spillage (BC-A27A/B/C)</label>
+       <label class="fsfe_cbox_italic"><input type="checkbox"  id="cbox_12"  disabled="disabled"/>&nbsp;&nbsp; &nbsp;Cleaning of reaction shaft Burners</label>
+       <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_13"   disabled="disabled"/>&nbsp;&nbsp; &nbsp;Draining of moisture at atomizing air filter</label>
+       <label class="fsfe_cbox_italic"><input type="checkbox"  id="cbox_14"  disabled="disabled"/>&nbsp;&nbsp; &nbsp;Grizzly Cleaning</label>
+   <br />
+       <b>Check-up of DCB Vibrators</b> 
+       <br />
+       <div class="fsfe_cbox_group_div">
+           <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_15" disabled="disabled"/>&nbsp;&nbsp; &nbsp;VM-B16A</label>
+           <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_16" disabled="disabled"/>&nbsp;&nbsp; &nbsp;VM-B16B</label>
+           <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_17" disabled="disabled"/>&nbsp;&nbsp; &nbsp;VM-B16C</label>
+           <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_18" disabled="disabled"/>&nbsp;&nbsp; &nbsp;VM-B16D</label>
+           <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_19" disabled="disabled"/>&nbsp;&nbsp; &nbsp;VM-B16E</label>
+           <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_20" disabled="disabled"/>&nbsp;&nbsp; &nbsp;VM-B16F</label>
+           <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_21" disabled="disabled"/>&nbsp;&nbsp; &nbsp;VM-B16G</label>
+           <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_22" disabled="disabled"/>&nbsp;&nbsp; &nbsp;VM-B16H</label>
+           
+       </div>
+   
+        <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_23" disabled="disabled"/>&nbsp;&nbsp; &nbsp;Trimbin Grizzly Cleaning</label>
+        <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_24" disabled="disabled"/>&nbsp;&nbsp; &nbsp;Cyclone Flapper Inspection</label>
+   
+   </div>
+   <div id="fsfe_shift_right_div">
+         @*button for saving*@
+         <img width="20" height="20" id="fsfe_fdopt_add_btn" src="../Images/diskette.png">
+              <span class="btn_label_span" id="fsfe_fdopt_add_link">Save Flash Dryer Operator </span>
+         @*end of button*@
+       <div id="giv_me_height"></div>
+      
+        <div class="fsfe_cbox_group_div">
+           
+        </div>
+
+        <b>Screw Conveyor Inspection</b> 
+        <div class="fsfe_cbox_group_div">
+           <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_25" disabled="disabled"/>&nbsp;&nbsp; &nbsp;SC-B31A</label>
+           <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_26"  disabled="disabled"/>&nbsp;&nbsp; &nbsp;SC-B31B</label>
+           <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_27"  disabled="disabled"/>&nbsp;&nbsp; &nbsp;SC-B32A</label>
+           <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_28"  disabled="disabled"/>&nbsp;&nbsp; &nbsp;SC-B32B</label>
+        </div>
+
+   </div>
+  @*  <div id="fsfe_last_div">
+        <input id="fsfe_fdopt_add_btn" type="button" value="Save" disabled="disabled"/>
+    </div>*@
+   @* <div class="fsfe_last_div">
+             <img width="20" height="20" id="fsfe_equipment_issues_btn" src="../Images/diskette.png">
+              <span class="btn_label_span" id="save_equipment_issues_link">Save Equipment Issues </span>
+        </div>*@
+
+</div>
+          
+
+
+<script type="text/javascript">
+    // for validations (Save Button)
+    var checkboxes = $("input[type='checkbox']"),
+    submitButt = $("#fsfe_fdopt_add_btn");
+
+    checkboxes.click(function () {
+        submitButt.attr("disabled", !checkboxes.is(":checked"));
+    });
+
+    //End
+
+    $(document).ready(function () {
+
+        load_fsfe_checklist(3);
+    });
+      
+    //load_ddtabs_content();
+
+</script>

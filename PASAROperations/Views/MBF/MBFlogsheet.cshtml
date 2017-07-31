@@ -1,0 +1,35 @@
+﻿@{
+    ViewBag.Title = "MBFlogsheet";
+Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/jquery")
+<div class="container">
+    <div id="fsfe_log_wrapper">
+        <div id="fsfe_log_wrapper_left">
+            <div class="thetabs">
+
+                <div class="verticaltabs">
+
+                    <dl class="tabs vertical">
+                        <dd class="active"><a href="#" onclick="ddactive_mbf('MBF_Actual');return false;">Actual</a></dd>
+                        <dd><a href="#" onclick="ddactive_mbf('MBF_Forecast');return false;">Forecast</a></dd>
+
+                    </dl>
+
+                </div>
+            </div>
+        </div>
+        <div id="fsfe_log_wrapper_right">
+            <div class="horizontaltabs">
+                <div class="tabs-content">
+
+                    <div class="content active" id="htab-panel1">
+                        @Html.Partial("~/Views/Shared/MBF_Actual.cshtml")
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

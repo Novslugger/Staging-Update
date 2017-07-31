@@ -1,0 +1,170 @@
+﻿@{
+    ViewBag.Title = "Silica Required";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="silica_wrapper_div">
+    <div id="silica_testform_div">
+
+        <h6>I. Test Formula</h6>
+
+        <br />
+        <div id="silica_testform_wrapper">
+
+            <div>
+                <p>Matte: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="text" id="testinput_matte" value="39" /></p>
+                <br />
+                <p>
+                    Matte Grade:  &nbsp;&nbsp;&nbsp;
+       <!-- <input type="text" id="testinput_mattegrade" value="52.85" /> -->
+                    @Html.DropDownList("mattegradelist", (SelectList)ViewBag.mg_list, "-", new { @id = "testinput_mattegrade", @class = "contents_width" })
+
+                </p>
+                <br />
+                <p>Silica/Fe Ratio:
+                    <input type="text" id="testinput_silicaratio" value="0.6" /></p>
+            </div>
+            <div id="silica_testform_right">
+                <input type="button" id="compute_btn" value="Compute" /></div>
+        </div>
+        <br />
+        <br />
+        <p>A. Silica Required: 
+            <br />
+            <u>( Matte ) <b>x [</b>  (Matte Grade) (-0.6467) + 53.948) <b>]</b></u> <b>x</b> 1 <b>x</b> ((SiO2/Fe ratio) / 96%) <b>x</b> 100%</p>
+        <p><span id="buffer_formula">&nbsp;</span>100</p>
+        <br />
+        <br />
+        <p>&nbsp;&nbsp;<b>Answer:</b> <span id="silica_reqd_ans" class="answer_b">0.00</span> </p>
+
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+
+        <p>B. Slag Required =  Silica Required <b>x</b> ( 132 / 60 ) <b>x</b> 2</p>
+
+        <br />
+        <br />
+        <br />
+        <p>&nbsp;&nbsp;<b>Answer:</b><span id="slag_reqd_ans" class="answer_b"> 0.00</span> </p>
+        <br />
+        <br />
+        <br />
+        <br />
+    </div>
+    <div id="silica_setform_div">
+        <h6>I. Set Default</h6>
+
+        <table id="setform_default_tbl">
+            <tr>
+                <th>Silica/Fe Ratio</th>
+                <th>Reason</th>
+                <th>Change by</th>
+                <th>Timestamp</th>
+            </tr>
+        </table>
+
+        <br />
+        <p>
+            Silica/Fe Ratio:&nbsp;&nbsp;&nbsp; 
+
+          @Html.DropDownList("fesilica_list", ViewData["fesilicalist"] as SelectList)
+        </p>
+        <p>Reason:
+            <textarea cols="5" rows="3" id="textarea_setdefault_reason"></textarea></p>
+        <br />
+        <p>
+            Change by:&nbsp;&nbsp;&nbsp; 
+          @Html.DropDownList("select_setdefault_changeby", (SelectList)ViewBag.process_engr_list)
+
+            <span class="spanmove">&nbsp;</span><input type="button" id="setdefault_btn" value="Set Default" />
+        </p>
+        <br />
+        <br />
+
+        <p class="borderline">&nbsp;</p>
+
+        <h6>II. Add</h6>
+        <p>Silica/Fe Ratio:
+            <input type="text" id="input_addsilica_value" /></p>
+        <p>Reason:
+            <textarea cols="5" rows="3" id="textarea_addsilica_reason"></textarea></p>
+        <br />
+
+        <p>
+            Added by:&nbsp;&nbsp;&nbsp; 
+          @Html.DropDownList("select_addsilica_changeby", (SelectList)ViewBag.process_engr_list)
+            <span class="spanmove">&nbsp;</span><input id="addsilica_btn" type="button" value="Add Fe Ratio" />
+        </p>
+        <br />
+        <br />
+        <p class="borderline">&nbsp;</p>
+
+        <h6>III. Edit</h6>
+
+        <div id="editsilica_wrapper">
+            <div id="editsilica_leftdiv">
+                <table id="editsilica_tbl">
+                    <tr>
+                        <th>Silica/Fe Ratio</th>
+                        <th>Change</th>
+                    </tr>
+                </table>
+            </div>
+
+            <div id="editsilica_rightdiv">
+                <div id="editsilicaid_hide"></div>
+                <div id="editsilicaval_prev_hide"></div>
+                <p>Silica/Fe ratio:
+                    <input type="text" id="input_editsilica_value" /></p>
+                <br />
+                <p>Reason:
+                    <textarea cols="5" rows="3" id="textarea_editsilica_reason"></textarea></p>
+                <br />
+                <p>
+                    Edited by:&nbsp;&nbsp;&nbsp; 
+             @Html.DropDownList("select_editsilica_changeby", (SelectList)ViewBag.process_engr_list)
+
+                </p>
+                <br />
+                <br />
+                <span class="spanmove1"></span>
+                <input type="button" id="editsilica_btn" value="Edit Fe Ratio" />
+
+            </div>
+
+
+        </div>
+    </div>
+    <div id="silica_logform_div">
+        <h6>I. Logs</h6>
+        <br />
+        <p>
+            <input type="button" value="Refresh" id="changelog_refresh_btn" /></p>
+        <br />
+        <table id="changelog_tbl">
+            <tr>
+                <th>Id</th>
+                <th>Change Type</th>
+                <th>Date Change</th>
+                <th>Activity</th>
+                <th>Change By</th>
+            </tr>
+
+
+        </table>
+
+    </div>
+</div>
+@Scripts.Render("~/bundles/jquery")
+<script type="text/javascript">
+    $(document).ready(function () {
+        changelog_FeSilica();
+        Fesilica_Edit_populate_tbl();
+        SetDefault_populate_tbl();
+
+    });
+</script>

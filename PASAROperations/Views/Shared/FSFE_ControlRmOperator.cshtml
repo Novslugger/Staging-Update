@@ -1,0 +1,144 @@
+﻿<h6 id="h6_fsfe">Control Room Operator</h6>
+<div id="interfaceid">2</div>
+<div id ="fsfe_shift_div">
+  <div id="fsfe_controlrmOperator_div">
+   
+
+    <h6 class="h6_fsfe_lbl">I. Matte Tapping </h6> 
+     
+    <div class="div_wrapper_table_btn">
+
+    @*<div class="div_fsfe_btn"><input id="fsfe_controlrm_mtapper_btn" type="button" value="Add" disabled="disabled"/></div>*@
+    <div class="div_fsfe_btn"><img width="20" height="20" id="fsfe_controlrm_mtapper_btn" src="../Images/red_plus.png">
+              <span class="btn_label_span" id="fsfe_controlrm_mtapper_link">Add Matte Tapping </span>
+             
+    </div>
+    <br />
+     <br />
+     <br />
+
+      <div class="div_fsfe_table">
+       <table id="fsfe_controlrm_mattetapper_table">
+        <tr>
+            
+            <th style="width: 3%"> Event</th>
+            <th style="width: 4%"> Called</th>
+            <th style="width: 20%"> Start Time</th>
+            <th style="width: 20%"> End Time</th>
+            <th style="width: 4%"> Launder No.</th>
+            <th style="width: 20%"> Matte Tapper</th>
+            <th style="width: 4%"> Matte Temp</th>
+            <th style="width: 4%"> Matte Volume</th>
+            <th style="width: 4%"> CF No.</th>
+            <th style="width: 4%"> Slag Blow</th>
+            
+            <th style="width: 4%"> Delete</th>
+            <th style="width: 4%"> Edit</th>
+           
+        </tr>
+        
+      </table>
+     </div>
+  </div>  
+      <hr width="1290px"><br /><br />
+   <h6 class="h6_fsfe_lbl">II. Slag Tapping </h6>
+    
+
+          <div class="div_wrapper_table_btn">
+
+    @*<div class="div_fsfe_btn"><input id="fsfe_tapact_stapper_btn" type="button" value="Add" disabled="disabled"/></div>*@
+    <div class="div_fsfe_btn"><img width="20" height="20" id="fsfe_tapact_stapper_btn" src="../Images/red_plus.png">
+              <span class="btn_label_span" id="fsfe_tapact_stapper_link">Add Slag Tapping </span></div>
+    <br />
+     <br />
+     <br />
+
+      <div class="div_fsfe_table">
+       <table id="fsfe_tapact_slagtap_table">
+            <tr>
+            
+            <th style="width: 3%"> Event</th>
+            <th style="width: 4%"> Ready</th>
+            <th style="width: 20%"> Start Time</th>
+            <th style="width: 20%"> End Time</th>
+            <th style="width: 4%"> Launder No</th>
+            <th style="width: 20%"> Slag Tender</th>
+            <th style="width: 5%"> SlagPot No.</th>
+           @* <th style="width: 5%">Slag Temp</th>*@
+            <th style="width: 4%"> Delete</th>
+            <th style="width: 4%"> Edit</th>
+        </tr>
+        
+      </table>
+     </div>
+   
+  </div>  
+<hr width="1290px">
+    
+</div>
+
+</div>
+
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+        $(function () {
+            $('#DialogSlagTapping_Select').dialog({
+                autoOpen: false,
+                width: 550,
+                height: 500,
+                resizable: false,
+                draggable: true,
+                title: 'Add Slag Tapping',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [800, 260]
+            });
+
+            $('#DialogSlagTappingEdit_Select').dialog({
+                autoOpen: false,
+                width: 550,
+                height: 500,
+                resizable: false,
+                draggable: true,
+                title: 'Edit Slag Tapping',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [800, 260]
+            });
+
+
+            $('#DialogMatteTapping_Select').dialog({
+                autoOpen: false,
+                width: 650,
+                height: 600,
+                resizable: false,
+                draggable: true,
+                title: 'Add Matte Tapping',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [800, 260]
+            });
+
+            $('#DialogMatteTappingEdit_Select').dialog({
+                autoOpen: false,
+                width: 650,
+                height: 600,
+                resizable: false,
+                draggable: true,
+                title: 'Edit Matte Tapping',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [800, 260]
+            });
+
+        });
+
+        load_fsfe_matte_tapping();
+        load_fsfe_slag_tapping();
+
+    });
+
+</script>

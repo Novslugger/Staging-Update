@@ -1,0 +1,89 @@
+﻿<h6 id="h6_fsfe">Furnace Boiler Inside Inspection Checklist</h6>
+<div id="interfaceid">10</div>
+<div id ="fsfe_fii_div">
+   
+    <div id="fsfe_fii_label_div">
+        <table id="table_fii_label">
+            <tr>
+                <td><b class="label_b">Date:</b></td>
+                <td class="fii_label_td" id="fsfe_label_date"></td>
+            </tr>
+             <tr>
+                <td><b class="label_b">Shift:</b></td>
+                <td class="fii_label_td" id="fsfe_label_shift"></td>
+            </tr>
+             <tr>
+                <td><b class="label_b">Shift Duty Manager:</b></td>
+                <td class="fii_label_td"  id="fsfe_label_shiftmgr"></td>
+            </tr>
+             <tr>
+                <td><b class="label_b">SPO-Inspection:</b></td>
+                <td class="fii_label_td"  id="fsfe_label_spolead"></td>
+            </tr>
+             <tr>
+                <td><b class="label_b">Flash Dryer Operator:</b></td>
+                <td class="fii_label_td"  id="fsfe_label_fdopt"></td>
+            </tr>
+        </table>
+        
+    </div>
+    <div id="fsfe_fii_table_div">
+        <br />
+       <b>POINTS FOR INSPECTION</b>
+        <br />
+         <div class="btn_add_div_fsfe_fii">
+             <img id="fsfe_fii_btn" width="20" height="20"  src="../Images/red_plus.png" />
+              <span id="save_fii_link" class="btn_label_span">Add FII Inspection </span>
+             
+        </div>
+             <br />
+        <table id="table_fsfe_fii">
+            <thead>
+                <tr>
+                    <th style="width: 25%">PICTURES</th>
+                    <th style="width: 30%">REMARKS</th>
+                    <th style="width: 45%">GUIDELINES</th>
+                    @*<th style="width: 45%">Actions</th>*@
+                </tr>
+            </thead>
+        </table>
+
+    </div>
+</div>
+          
+<script type="text/javascript">
+    $(document).ready(function () {
+
+        $(function () {
+            $('#DialogFII_Select').dialog({
+                autoOpen: false,
+                width: 350,
+                height: 360,
+                resizable: false,
+                draggable: true,
+                title: 'Adding FII',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [900, 260]
+            });
+
+            $('#DialogFIIEdit_Select').dialog({
+                autoOpen: false,
+                width: 350,
+                height: 360,
+                resizable: false,
+                draggable: true,
+                title: 'Editing FII',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [900, 260]
+            });
+
+        });
+
+        load_fsfe_fii_label();
+        load_fsfe_fii();
+        
+
+    });
+</script>

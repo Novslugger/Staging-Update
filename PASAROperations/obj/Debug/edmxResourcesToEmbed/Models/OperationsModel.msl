@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DEV_KPIModelStoreContainer" CdmEntityContainer="DEV_KPIEntities">
+    <FunctionImportMapping FunctionImportName="SP_PI_CFCYLE" FunctionName="DEV_KPIModel.Store.SP_PI_CFCYLE">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DEV_KPIModel.SP_PI_CFCYLE_Result">
+          <ScalarProperty Name="tag" ColumnName="tag" />
+          <ScalarProperty Name="time" ColumnName="time" />
+          <ScalarProperty Name="C_index" ColumnName="_index" />
+          <ScalarProperty Name="value" ColumnName="value" />
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="questionable" ColumnName="questionable" />
+          <ScalarProperty Name="substituted" ColumnName="substituted" />
+          <ScalarProperty Name="annotated" ColumnName="annotated" />
+          <ScalarProperty Name="annotations" ColumnName="annotations" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

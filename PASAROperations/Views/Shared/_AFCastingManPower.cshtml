@@ -1,0 +1,24 @@
+﻿<div id="add_cmanpower_div">
+    <b>Casting Man Power</b>
+    <br />
+     <br />
+     <br />
+    <div>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Position:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.DropDownList("CastPosition_ddl", (SelectList)ViewBag.Position_List, "--Select--" , new { @id = "CastPosition_ddl" })
+
+    </div>
+    <br />
+     <br />
+   
+    <div>&nbsp;&nbsp;&nbsp;Start Employee: &nbsp;&nbsp;&nbsp;@Html.DropDownList("cast_startemp_ddl", (SelectList)ViewBag.MP_List, "--Select--"  )</div>
+    <br />
+    <br />
+    <div>&nbsp;&nbsp;&nbsp;End Employee: &nbsp;&nbsp;&nbsp;@Html.DropDownList("cast_endemp_ddl", (SelectList)ViewBag.MP_List, "--Select--"  )
+    </div>
+    <br />
+   <br />
+      <br />
+   
+    <input id="cmanpower_ok_btn" type="button" value="OK" />
+    <br />
+    <br />
+</div>

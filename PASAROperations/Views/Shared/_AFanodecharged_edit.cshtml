@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "_AFanodecharged_edit";
+}
+
+<div id="add_lotnum_div">
+    <br />
+       
+        <strong>Date: </strong> 
+        <input disabled="disabled" id="select_ancharged_date_edit"  value="@ViewBag.AF_DTime" style=" width: 180px; height: 25px; display: inline; font-size:15px;" type="text" />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <br>
+        <br>
+        <br>
+        <strong>Lot no.</strong>
+        <div disabled="disabled" style="display: inline; width: 170px; height: 25px; font-size: 15px;">@ViewBag.lotno</div>
+        <br>   
+        <br>   
+        <br>
+        <strong>Prov. Weight:</strong>
+        <input onkeypress="return NumericOnly(event)" value="@ViewBag.AF_Weight" type="number" id="prov_weight_edit" style=" width: 95px; height: 25px; display: inline;"/>
+        <br>
+        <br>
+        <br>              
+        <strong>No of Pieces:</strong>
+        <input onkeypress="return NumericOnly(event)" value="@ViewBag.AF_Pcs" type="number" id="ancharged_pcs_edit" style=" width: 95px; height: 25px; display: inline;"/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <br>
+        <br>
+        <br>
+        <br>
+        <input id="edit_ancharged_ok_btn" type="button" value="Edit" />&nbsp;
+</div>     
+
+         <div id="ancharged_id_edit" style="visibility:hidden">@ViewBag.ancharged_id</div>
+         <div id="ancharged_lotid_edit" style="visibility:hidden">@ViewBag.AF_LotId</div>
+       
+<script type="text/javascript">
+
+      
+    
+
+    $(document).ready(function () {
+
+        //$("#select_ancharged_date").datepicker({
+        //    showOn: 'button',
+        //    buttonText: 'Show Date',
+        //    buttonImageOnly: true,
+        //    buttonImage: '../../Images/calendar.png',
+        //    dateFormat: 'mm/dd/yy',
+        //    constrainInput: true,
+        //    onSelect: function (date) {
+
+                
+        //    }
+        //});
+
+
+        //$('#ui-datepicker-div').css('display', 'none');
+        //$('#select_ancharged_date').datepicker();
+        //$(".ui-datepicker-trigger").mouseover(function () {
+        //$(this).css('cursor', 'pointer');
+        //});
+
+     
+
+    });
+
+
+
+
+
+
+
+
+</script>
+

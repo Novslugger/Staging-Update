@@ -1,0 +1,362 @@
+﻿<div id="edit_sfp_entry" style="height: 80%;">
+    <b>SFP Logsheet Edit Form</b> &nbsp;&nbsp;&nbsp;&nbsp;
+    <label class="switch" style="float: right">
+        <input class="switch-input" type="checkbox" id="for_breaking_toggle_edit" @ViewBag.potstatus />
+        <span class="switch-label" data-on="On" data-off="Off"></span><span class="switch-handle"></span>
+    </label>
+    <label style="font-size: 10px !important; float: right;">For Breaking: </label>
+    <div style="display: none;">
+        <input  id="dataid"value="@ViewBag.dataid" />
+    </div>
+    <br />
+    <br />
+    <br />
+    <div>
+        <label>Location:</label>
+        &nbsp;&nbsp;<input type="text" id="location_input2" value="@ViewBag.location" disabled="disabled"/>
+        &nbsp;&nbsp;
+        <label>Pot No.:</label>
+        &nbsp;&nbsp;@Html.DropDownList("pot_input", (SelectList)ViewBag.pot_list, new { @value = ViewBag.pot, @id = "pot_input", @disabled = "disabled" })
+        <label>Group:</label>
+        @*&nbsp;@Html.DropDownList("group_ddl", (SelectList)ViewBag.group_list, new { @value = ViewBag.group, @id = "group_ddl" })*@
+        <input type="text" id="group_ddl" value="@ViewBag.group" disabled="disabled"/>
+    </div>
+    <br />
+    <br />
+    <table class="af_time_table">
+        <tr class="forbreaking_tr_edit" style="display: none;" id="tr_fb_1">
+            <td rowspan="2" class="label_datetype">For Breaking Timestamp : &nbsp;</td>
+            <td class="label_date">Date</td>
+            <td class="label_date">Time (hh:mm)</td>
+        </tr>
+        <tr class="forbreaking_tr_edit" style="display: none;" id="tr_fb_2">
+            <td class="af_date_td">
+                <input id="start_date_input_edit_fb" type="text" style="float: left;" value="@ViewBag.bktime.ToString("MM/dd/yyyy")" /></td>
+            <td class="af_time_td">
+                <select id="start_time_hr_input_fb">
+                    @{
+                        int hr1 = Int32.Parse(ViewBag.bktime.ToString("HH"));
+                        int min_1 = Int32.Parse(ViewBag.bktime.ToString("mm"));
+
+
+
+                        for (int x = 0; x <= 23; x++)
+                        {
+                            if (@x <= 9)
+                            {
+
+                                if (@x == @hr1)
+                                {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                else
+                                { <option value="@x">@("0" + @x)</option> }
+                            }
+                            else
+                            {
+
+                                if (@x == @hr1)
+                                {  <option value="@x" selected="selected">@x</option> }
+                                else
+                                { <option value="@x">@x</option> }
+
+
+                            }
+                        }
+                    }
+                </select>&nbsp;:
+            <select id="start_time_min_input_fb" onchange="calc_edtime_edit()">
+                @{
+                    int min1 = Int32.Parse(ViewBag.dtime.ToString("mm"));
+
+
+                    for (int x = 0; x <= 59; x++)
+                    {
+                        if (@x <= 9)
+                        {
+
+                            if (@x == @min1)
+                            {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                            else
+                            { <option value="@x">@("0" + @x)</option> }
+                        }
+
+
+                        else
+                        {
+
+                            if (@x == @min1)
+                            {  <option value="@x" selected="selected">@x</option> }
+                            else
+                            { <option value="@x">@x</option> }
+
+
+                        }
+                    }
+                }
+            </select></td>
+        </tr>
+
+        <tr>
+            <td rowspan="2" class="label_datetype">Time Delivered : &nbsp;</td>
+            <td class="label_date">Date</td>
+            <td class="label_date">Time (hh:mm)</td>
+        </tr>
+
+        <tr>
+            <td class="af_date_td">
+                <input id="start_date_input_edit" type="text" style="float: left;" value="@ViewBag.dtime.ToString("MM/dd/yyyy")" /></td>
+            <td class="af_time_td">
+                <select id="start_time_hr_input" onchange="calc_edtime_edit()">
+                    @{
+                        int hr = Int32.Parse(ViewBag.dtime.ToString("HH"));
+                        int min_ = Int32.Parse(ViewBag.dtime.ToString("mm"));
+
+
+
+                        for (int x = 0; x <= 23; x++)
+                        {
+                            if (@x <= 9)
+                            {
+
+                                if (@x == @hr)
+                                {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                else
+                                { <option value="@x">@("0" + @x)</option> }
+                            }
+                            else
+                            {
+
+                                if (@x == @hr)
+                                {  <option value="@x" selected="selected">@x</option> }
+                                else
+                                { <option value="@x">@x</option> }
+
+
+                            }
+                        }
+                    }
+                </select>&nbsp;:
+            <select id="start_time_min_input" onchange="calc_edtime_edit()">
+                @{
+                    int min = Int32.Parse(ViewBag.dtime.ToString("mm"));
+
+
+                    for (int x = 0; x <= 59; x++)
+                    {
+                        if (@x <= 9)
+                        {
+
+                            if (@x == @min)
+                            {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                            else
+                            { <option value="@x">@("0" + @x)</option> }
+                        }
+
+
+                        else
+                        {
+
+                            if (@x == @min)
+                            {  <option value="@x" selected="selected">@x</option> }
+                            else
+                            { <option value="@x">@x</option> }
+
+
+                        }
+                    }
+                }
+            </select></td>
+        </tr>
+    </table>
+    <div>
+        <label>Cooling Time:</label>
+        &nbsp;&nbsp;&nbsp;<input type="text" id="cooltime_input2" value="@ViewBag.ctime"/>@*<input type="button" id="calc_edtime_edit" value="Calculate Est. Dump Time" />*@
+    </div>
+    <br />
+    <br />
+    <div>
+        <label>Estimated Dump Time:</label>
+        &nbsp;&nbsp;&nbsp; <span id="est_dumptime2">@ViewBag.etime.ToString("ddd, dd MMM yyyy H:mm:ss ")</span>
+    </div>
+    <br />
+    <br />
+    <table class="af_time_table">
+        <tr>
+            <td rowspan="2" class="label_datetype">Actual Time : &nbsp;</td>
+            <td class="label_date">Date</td>
+            <td class="label_date">Time (hh:mm)</td>
+        </tr>
+
+        <tr>
+            <td class="af_date_td">
+                <input id="start_date_input2_edit" type="text" style="float: left;" @*value="@ViewBag.DateTimeNow.ToString("MM/dd/yyyy")"*@/></td>
+            <td class="af_time_td">
+                <select id="start_time_hr_input2">
+                    @{
+                        int dhr = Int32.Parse(ViewBag.DateTimeNow.ToString("HH"));
+                        int dmin_ = Int32.Parse(ViewBag.DateTimeNow.ToString("mm"));
+
+
+
+                        for (int x = 0; x <= 23; x++)
+                        {
+                            if (@x <= 9)
+                            {
+
+                                if (@x == @dhr)
+                                {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                else
+                                { <option value="@x">@("0" + @x)</option> }
+                            }
+                            else
+                            {
+
+                                if (@x == @dhr)
+                                {  <option value="@x" selected="selected">@x</option> }
+                                else
+                                { <option value="@x">@x</option> }
+
+
+                            }
+                        }
+                    }
+                </select>&nbsp;:
+            <select id="start_time_min_input2">
+                @{
+                    int dmin = Int32.Parse(ViewBag.DateTimeNow.ToString("mm"));
+
+
+                    for (int x = 0; x <= 59; x++)
+                    {
+                        if (@x <= 9)
+                        {
+
+                            if (@x == @dmin)
+                            {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                            else
+                            { <option value="@x">@("0" + @x)</option> }
+                        }
+
+
+                        else
+                        {
+
+                            if (@x == @dmin)
+                            {  <option value="@x" selected="selected">@x</option> }
+                            else
+                            { <option value="@x">@x</option> }
+
+
+                        }
+                    }
+                }
+            </select></td>
+        </tr>
+    </table>
+
+    <div>
+        <label>Dumping Temp:</label>&nbsp;<input type="number" id="temp_input2" value="@ViewBag.temp" />
+    </div>
+    <br />
+    <br />
+    <div>
+        <label>Remarks:  </label>
+        &nbsp;&nbsp;&nbsp;<textarea class="txt_area" id="remarks_input2">@ViewBag.remarks</textarea>
+    </div>
+    <br />
+    <br />
+    <br />
+    <br />
+    <br />
+    <div>
+        <input type="button" style="float: right;" value="Edit" id="edit_sfp_btn" />
+        <input type="image" src="../Images/trashbin.png" id="delete_sfp_btn" style="float: left;" title="Delete entry" onclick="load_sfp_delete(@ViewBag.dataid)"/>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        if ($('input[id="for_breaking_toggle_edit"]:checked').length > 0) {
+            $('.forbreaking_tr_edit').show();
+        }
+
+        $("#start_date_input_edit").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: serverpath + '/Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: true,
+            onClose: function () {
+                calc_edtime_edit();
+            }
+        });
+
+        $("#start_date_input_edit_fb").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: serverpath + '/Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: true,
+            onClose: function () {
+            }
+        });
+
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+
+        });
+
+        $("#start_date_input2_edit").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: serverpath + '/Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: true
+        });
+
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+
+        });
+        $(function () {
+            $('#location_input2').autocomplete({
+                source: function (request, response) {
+                    var src = new Array();
+                    $.ajax({
+                        async: false,
+                        cache: false,
+                        type: "POST",
+                        url: serverpath + '/SFP/Location_List/',
+                        data: { "term": request.term },
+                        success: function (data) {
+                            for (var i = 0; i < data.length; i++) {
+                                src[i] = { label: data[i].Text, Id: data[i].Value };
+                            }
+                        }
+                    });
+                    response(src);
+                }
+            });
+        });
+        var group = $('#page_id').text();
+        if (group == 1) {
+            $('#group_ddl').append('<option value="1" selected>CF</option><option value="2">FSF</option>');
+        } else {
+            $('#group_ddl').append('<option value="1">CF</option><option value="2" selected>FSF</option>');
+        }
+        calc_edtime_edit();
+    });
+
+    $('#for_breaking_toggle_edit').live('change', function () {
+        if ($('input[id="for_breaking_toggle_edit"]:checked').length > 0) {
+            $('.forbreaking_tr_edit').show();
+        }
+        else {
+            $('.forbreaking_tr_edit').hide();
+        }
+    });
+
+    
+</script>

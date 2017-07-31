@@ -1,0 +1,196 @@
+﻿@{
+    ViewBag.Title = "RefineryTimelogs";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/bundles/jquery")
+
+<div id="tabs-container_ref_shorts">
+    <br />
+    <br />
+    <div class="ref_machinedowntime_monitoring" style="margin-left:-1px;width:200px">
+
+        <img src="~/Content/gear.gif" style="width: 55px; height: 80px; opacity:0.3;">
+        &nbsp;&nbsp;
+    </div>
+    <br />
+    <br />
+    <div style="margin-top:-94px; margin-left:51px">
+        <font color="Black" face="Arial" style="font-size: 20px;">
+        <b2>MACHINE DOWNTIME MONITORING</b2>
+        </font>
+        <br />
+        <font size="2px" color="Black"><u>REFINERY</u></font>
+    </div>
+
+    <br />
+    <br />
+    <div class="div_wrapper_table_btn">
+
+        <table style="width: 350px">
+            <tr>
+                <td>
+                    @*<img width="20" height="20" src="../Images/red_plus.png">*@
+                    <span class="btn_label_span" id="reflink_downtimemonitoring_id" style="width: 200px; text-underline-position: below; font: bold; font-size: 13px"><u><font size="3px">&#x2699 </font>Add Downtime</u></span>
+                </td>
+                <td></td>
+                <td></td>
+                <td style="color: rgba(218, 177, 13, 1)">|</td>
+                <td>
+                    @*<img width="20" height="20" src="../Images/red_plus.png">*@
+                    <span class="btn_label_span" id="ref_addtreason_id_main" onclick="AddTreason_Select()" style="width: 200px; text-underline-position: below; font: bold; font-size: 13px"><u><font size="3px"> &#9820</font>Add Trouble</u></span>
+                </td>
+                <td></td>
+                <td></td>
+                <td style="color: rgba(218, 177, 13, 1)">|</td>
+                <td>
+                    <span class="btn_label_span" id="ref_addtresp_id_main" onclick="AddResponsible_Select()" style="width: 200px; text-underline-position: below; font: bold; font-size: 13px"><u><font size="3px">&#9937</font>Add Responsible</u></span>
+                </td>
+            </tr>
+            <tr></tr>
+
+        </table>
+    </div>
+    <div style="font: 14px; background-color: beige; width: 200px; height: 46px">
+        <font face="Verdana" size="2"></font>&nbsp;&nbsp;<input id="ref_downtimemonitoringid" onchange="load_allMachineDowntimeFilter()" type="text"  style="margin-left: 2px; margin-top: 10px;width: 114px; display:inline; height:25px;font-size:14px;border:1px solid #e1e1e1;" value="@ViewBag.RefDowntime.ToString("MM/dd/yyyy")" />
+        @*<b><input type="button" value="&#x21bb" title="Refresh"style="height:23px;width:28px;" onclick="load_allMachineDowntime()" /></b>*@
+        &nbsp;<b><u style="color: green"><span class="btn_label_span" title="refresh" style="color: green; font-size: 18px;" onclick="load_allMachineDowntime()">&#x21bb</span></u></b>
+        <br />
+        <input class="af_tbl" id="search_id" type="text" placeholder="&#x1f50d;  Search here..." style="height: 33px; width: 300px; margin-left: 1465px; margin-top: -26px; text-transform: inherit; outline: 0; border-width: 0 0 2px 0; border: 1px solid #e1e1e1;" />
+
+    </div>
+    @*<br />
+    &nbsp;&nbsp;<font face="Agency FB" style="font-size: 20px;"><b1>DOWNTIME RECORDS</b1></font>
+    <br />*@
+    <div class="downtime_horizontal" style="width: 97%; height: 1000px; overflow: scroll; table-layout: inherit; background: beige">
+        <table id="ref_downtime_maintable" class="ref_downtime_table">
+            <thead>
+                <tr>
+
+                    <th style="width: 7%;" rowspan="2" id="DT_id">Date/Time</th>
+                    <th style="width: 6%;" rowspan="2" id="machine_id">MACHINE</th>
+                    <th style="width: 5%;" rowspan="2" id="cnum_id">CODE NUMBER</th>
+                    <th style="width: 20%;" rowspan="2" id="trouble_id">TROUBLE</th>
+                    <th style="width: 20%;" rowspan="2" id="remarks_id">REMARKS</th>
+                    <th style="width: 20%;" colspan="2" id="time_id">TIME</th>
+                    <th style="width: 6%;" rowspan="2" id="dtmins_id">DOWNTIME [mins]</th>
+                    <th style="width: 8%;" rowspan="2" id="resp_id">RESPONSIBILITY</th>
+                    <th style="width: 10%;" colspan="2" id="action_id">ACTIONS</th>
+
+                </tr>
+                <tr>
+                    <th style="width: 10%;" id="stop_id">STOP</th>
+                    <th style="width: 10%;" id="start_id">START</th>
+                    <th id="edit_dtime_id">EDIT</th>
+                    <th id="del_dtime_id">DELETE</th>
+
+                </tr>
+            </thead>
+            <tbody id="tbody">
+                <tr></tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div id="DialogADDnewdowntime_Select" style="overflow: hidden;"></div>
+<div id="DialogEDITnewdowntime_Select" style="overflow: hidden;"></div>
+<div id="DialogADDnewdowntimereason_Select" style="overflow: hidden;"></div>
+<div id="Dialog_AddTreason_Select" style="overflow: hidden;"></div>
+<div id="Dialog_AddResponsible_Select" style="overflow: hidden;"></div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        load_allMachineDowntime();
+        //append_responsible();
+
+        $("#ref_downtimemonitoringid").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: serverpath + '/Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: true
+
+        });
+        $('#ui-datepicker-div').css('display', 'none');
+        $('#ref_downtimemonitoringid').datepicker('setDate', 'today');
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+        });
+
+        $('#DialogADDnewdowntime_Select').dialog({
+            autoOpen: false,
+            width: 1208,
+            height: 800,
+            resizable: false,
+            draggable: true,
+            title: '&#10010',
+            closeText: 'Close[x]',
+            modal: true,
+            position: [350, 100],
+            //open: function (event, ui) {
+            //$(event.target).parent().css('position', 'fixed');
+            //$(event.target).parent().css('top', '200px');
+        })
+
+
+        $('#DialogEDITnewdowntime_Select').dialog({
+            autoOpen: false,
+            width: 519,
+            height: 800,
+            resizable: false,
+            draggable: true,
+            title: '&#x270E',
+            closeText: 'Close[x]',
+            modal: true,
+            position: [800, 260],
+        })
+
+        $('#DialogADDnewdowntimereason_Select').dialog({
+            autoOpen: false,
+            width: 725,
+            height: 800,
+            resizable: false,
+            draggable: true,
+            title: 'Add/View Reasons',
+            closeText: 'Close[x]',
+            modal: true,
+            position: [800, 260]
+        })
+        $('#search_id').live('keyup', function () {
+
+            ref_searchany_dt('#search_id', '#ref_downtime_maintable tbody tr');
+
+        });
+        $('#Dialog_AddTreason_Select').dialog({
+            autoOpen: false,
+            width: 470,
+            height: 450,
+            resizable: false,
+            draggable: true,
+            title: '&#10010',
+            closeText: 'Close[x]',
+            modal: true,
+            position: [800, 260],
+        })
+        $('#Dialog_AddResponsible_Select').dialog({
+            autoOpen: false,
+            width: 470,
+            height: 450,
+            resizable: false,
+            draggable: true,
+            title: '&#10010',
+            closeText: 'Close[x]',
+            modal: true,
+            position: [800, 260],
+
+
+        });
+        $('.btn_label_span').on('click', function () {
+            append_responsible();
+        });
+       
+        //$('#resplistedit').on('click', function () {
+        //    edit_resp_dt();
+        //});
+       
+    })
+</script>

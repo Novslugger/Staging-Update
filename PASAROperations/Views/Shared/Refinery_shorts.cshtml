@@ -1,0 +1,96 @@
+﻿<span id="uiNo" style="display: none;">shorts</span>
+<div id="tabs-container_ref_shorts">   
+    <!-- <ul class="tabs-menu">
+        <li class="current"><a href="#tab-1"><b>1st Pass</b></a></li>
+        <li><a href="#tab-2"><b>2nd Pass</b></a></li>
+        <li><a href="#tab-3"><b>3rd Pass</b></a></li>
+    </ul> -->
+    @*<table><tr><td><a href="#div_1pass">Pass1 </a></td><td><a href="#div_2pass">Pass2 </a></td><td><a href="#div_3pass">Pass3 </a></td></tr></table>
+    <div class="">*@
+
+       @*  <table id="ref_short_fixed_cell" class="ref_short_fixed_cell">
+            <tr>
+                <th>No.</th>
+            </tr>
+            @for (var x = 1; x < 19; x++)
+            {   
+                <tr>
+                    <td>@x</td>
+                </tr>
+            }
+        </table> *@
+
+        <!-- 1 Tab-->
+        <!--<div id="tab-1" class="tab-content-pass"> -->
+            
+            <div class="ref_short_save" id="div_1pass">
+                 <h6>SHORTS</h6>
+              
+            </div> <br>
+            @*<br>*@
+            @*<div class="ref_short_div">*@
+                <table id="ref_short_p1" class="refinery_class_table">
+                    <tbody></tbody>
+                </table>
+         @*   </div>*@
+       <!-- </div> -->
+        <!-- 2 Tab-->
+      <!--  <div id="tab-2" class="tab-content-pass"> -->
+          @*  <div class="ref_short_save" id="div_2pass">*@
+                @*<img id="save_tbn_2pass" onclick="save_ref_shorts()" class="btn_label_span" width="25" height="25" src="../Images/diskette.png" title="Save" />*@
+            @*</div>
+            <br>*@
+            @*<div class="ref_short_div">*@
+                <table id="ref_short_p2" class="refinery_class_table">
+                    <tbody></tbody>
+                </table>
+         @*   </div>*@
+       <!-- </div> -->
+        <!-- 3 Tab-->
+      <!--  <div id="tab-3" class="tab-content-pass"> -->
+          @*  <div class="ref_short_save" id="div_3pass">*@
+                @*<img id="save_tbn_3pass" onclick="save_ref_shorts()" class="btn_label_span" width="25" height="25" src="../Images/diskette.png" title="Save" />*@
+          @*  </div>
+            <br>*@
+            @*<div class="ref_short_div">*@
+                <table id="ref_short_p3" class="refinery_class_table">
+                    <tbody></tbody>
+                </table>
+          @*  </div>*@
+      <!--  </div> -->
+   @* </div>*@
+
+    
+</div>
+<div class="ref_short_save" style="position:absolute; top:835px; left:191px;">                 
+                <img id="save_tbn_1pass" onclick="save_shorts_data()" class="btn_label_span" width="25" height="25" src="../Images/diskette.png" title="Save" />
+                <span title="Save Shorts" class="btn_label_span" id="save_lnk_1pass" onclick="save_shorts_data()">Save Shorts</span>
+            </div>
+
+@*<input type="button" onclick="populate_shorts()" value="TAE"/>*@
+<script type="text/javascript">
+
+
+    $(document).ready(function () {
+
+        $(".tabs-menu a").click(function (event) {
+            event.preventDefault();
+            $(this).parent().addClass("current");
+
+            $(this).parent().siblings().removeClass("current");
+
+            var tab = $(this).attr("href");
+            $(".tab-content-pass").not(tab).css("display", "none");
+            $(tab).fadeIn();
+        });
+
+        ref_load_shorts_employeerow();
+        load_shorts_blocks();
+       
+        
+    });
+    function populate_shorts() {
+        $('input[id*="shorts_"][disabled!=""]').val('1').addClass('changed');
+    }
+
+</script>

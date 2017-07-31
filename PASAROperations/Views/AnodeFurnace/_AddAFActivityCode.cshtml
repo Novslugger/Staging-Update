@@ -1,0 +1,65 @@
+﻿<div id="add_sfp_entry_cf" style="height: 80%;">
+    <b>AF Activity Code Entry Form</b> &nbsp;&nbsp;&nbsp;&nbsp;
+    <br />
+    <br />
+    <br />
+
+
+    <table>
+        <tbody>
+            <tr>
+                <td><b>Activity Name:</b></td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;<input type="text" id="actcode_input" style="width: 200px; height: 25px; display: inline;" />
+                    &nbsp;&nbsp;<br />
+                    <br />
+                </td>
+            </tr>
+            <tr>
+            <tr>
+                <td><b>Activity Description:</b></td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;<input type="text" id="actdesc_input" style="width: 200px; height: 25px; display: inline; text-transform: none !important" />
+                    &nbsp;&nbsp;<br />
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td><b>Activity Type:</b></td>
+            </tr>
+            <tr>
+                <td>&nbsp;&nbsp;@Html.DropDownList("activitytype_input", (SelectList)ViewBag.activitycode_list, new { @id = "activitytype_input" })
+                </td>
+            </tr>
+            
+            <tr>
+                <td></td>
+                <td><br /></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td>
+                    <input type="button" id="add_afactivity_btn_new" value="Add" />
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#add_afactivity_btn_new').on('click', function () {
+            add_activity_btn();
+        });
+
+    });
+
+
+</script>

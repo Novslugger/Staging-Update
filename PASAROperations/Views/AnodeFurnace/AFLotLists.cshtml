@@ -1,0 +1,106 @@
+﻿@*@{
+    ViewBag.Title = "NewAF";
+}*@
+
+@model IEnumerable<PASAROperations.Models.VWAF_Lot_ProdYearDetail> 
+@{
+    //ViewBag.Title = "Create Lot No";
+    ViewBag.Title = "AF Logsheet 2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+  @Scripts.Render("~/bundles/jquery") 
+<br />
+<div id="Dialog_CreateLotNum" style="overflow: hidden;"></div>
+@*<div id="Dialog_NewEditLotNum" style="overflow: hidden;"></div>*@
+<h4></h4>
+<div>
+      <div id="createlot_div">
+        <h6 id="">Create Lot Number </h6><br><img id="af_createlotnum_btn1" class="btn_label_span" width="20" height="20"  src="../Images/red_plus.png" />
+          <span title="Add new Lot" class="btn_label_span" id="createlot_link1"><b>Add Lot No</b></span>   
+    </div>
+
+        <div id="afcyc_1" class="afcyc">
+        <h5>AF 1</h5>
+        <div class="div_afcycles">
+        <table class="table_af1cycle">
+            <tr class="rowhead_afcycle">
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th class="smallth">Lote #</th>
+                <th>Status</th>
+               
+            </tr>
+
+        </table>
+            </div>
+    </div>
+
+  
+
+    <div id="afcyc_2" class="afcyc">
+          <h5>AF 2</h5>
+        <div class="div_afcycles">
+        <table class="table_af2cycle">
+            <tr class="rowhead_afcycle">
+                <th>Start Time</th>
+                <th>End Time</th>
+                <th class="smallth">Lot #</th>
+                <th>Status</th>
+                
+            </tr>
+
+        </table>
+            </div>
+    </div>
+
+</div>
+
+@Scripts.Render("~/bundles/jquery") 
+
+
+<script type="text/javascript">
+       
+    
+
+
+  //  alert('test');
+
+    $(document).ready(function () {
+
+
+        listofafcycles(1,'table_af1cycle',1);
+        listofafcycles(2,'table_af2cycle', 2);
+
+
+        $(function () {
+            $('#Dialog_CreateLotNum').dialog({
+                autoOpen: false,
+                width: 350,
+                height: 250,
+                resizable: false,
+                draggable: true,
+                title: 'Create Lot Number',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [850, 100]
+            });
+
+            $('#Dialog_NewEditLotNum').dialog({
+                autoOpen: false,
+                width: 350,
+                height: 250,
+                resizable: false,
+                draggable: true,
+                title: 'Update Lot Number 1',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [850, 100]
+            });
+
+        });
+
+    })
+
+</script>
+

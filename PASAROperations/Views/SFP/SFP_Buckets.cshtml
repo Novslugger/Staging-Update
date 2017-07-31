@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "SFP_Buckets";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@Scripts.Render("~/bundles/jquery")
+<div id="DialogSFPBuckets_Add" style="overflow: hidden;"></div>
+<div id="DialogSFPBuckets_Edit" style="overflow: hidden;"></div>
+<div id="targets_container">
+    <div id="top_div" style="left: 100px; width: 1300px;" >
+        <h6>Slag Flotation Plant Buckets</h6>
+        <span id="page_id"></span>
+        <label style="float: left; font-size: 10px;">Date Filter: </label>
+        <input type="text" id="buckets_date" style="float: left; margin-left: 10px; margin-right: 10px; border: solid 1px black; width: 100px;" title="Select Date" />
+        <img width="20" height="20" title="Add Now" id="add_bucketsitem_btn" onclick="load_partial_oldsfp(); return false;" src="../Images/red_plus.png">&nbsp;&nbsp;<span title="Add Now" onclick="load_partial_oldsfp(); return false;" class="btn_label_span" id="add_buckets_lnk">Add New Row </span> 
+        &nbsp;&nbsp;<img id="buckets_save_btn" class="save_btn" src="../Images/diskette.png" width="20" title="Save Changes" />
+        <div id="pageNavPosition" style="float: right;"></div>
+        <br />
+        <br />
+        <table class="af_tbl" id="buckets_tbl" style="width: 1300px;">
+            <tr>
+                <th colspan="16">Buckets</th>
+            </tr>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(function () {
+            $('#DialogSFPBuckets_Add').dialog({
+                autoOpen: false,
+                width: 300,
+                height: 150,
+                resizable: false,
+                draggable: true,
+                title: 'Old SFP Entry',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [850, 170]
+            });
+        });
+        $(function () {
+            $('#DialogSFPBuckets_Edit').dialog({
+                autoOpen: false,
+                width: 400,
+                height: 250,
+                resizable: false,
+                draggable: true,
+                title: 'Old SFP Edit',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [850, 170]
+            });
+        });
+        $("#buckets_date").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'MM yy',
+            showButtonPanel: true,
+            onClose: function () {
+                var iMonth = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                var iYear = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+                $(this).datepicker('refresh');
+                $('#tbody tr').filter(function () {
+                    return $(this).has('input');
+                }).remove();
+
+                var select = $(this).datepicker().val();
+                load_sfp_buckets();
+            },
+
+            beforeShow: function () {
+                if ((selDate = $(this).val()).length > 0) {
+                    iYear = selDate.substring(selDate.length - 4, selDate.length);
+                    iMonth = jQuery.inArray(selDate.substring(0, selDate.length - 5), $(this).datepicker('option', 'monthNames'));
+                    $(this).datepicker('option', 'defaultDate', new Date(iYear, iMonth, 1));
+                    $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+                }
+            }
+        });
+
+        $("#buckets_date").focus(function () {
+            $(".ui-datepicker-calendar").hide();
+            $("#ui-datepicker-div").position({
+                my: "center top",
+                at: "center bottom",
+                of: $(this)
+            });
+        });
+
+        $("#buckets_date").blur(function () {
+            $(".ui-datepicker-calendar").hide();
+        });
+
+        $('#buckets_date').datepicker('setDate', 'today');
+        var date = $('#buckets_date').val();
+        load_sfp_buckets();
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+        });
+        $('input').live('change', function () {
+            $(this).css({ 'background-color': '#DFD8D1' });
+            $(this).addClass('changed');
+        });
+        //$('#forecast_date').focus();
+    });
+</script>

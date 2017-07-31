@@ -1,0 +1,108 @@
+﻿@{
+    ViewBag.Title = "_DailyMQ";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/bundles/jquery")
+<div id="DialogEnergy_Add" style="overflow: hidden;"></div>
+<div class="container">
+    <div class="energy_left">
+        <img id="dailymg_save_btn" class="save_btn" src="../Images/diskette.png" width="20" title="Save Changes" /> 
+        &nbsp;&nbsp;<span title="Save Changes" class="btn_label_span" id="dailymg_save_lnk">Save Entries </span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        @*<img width="20" height="20" title="Add Now" id="add_item_btn" src="../Images/red_plus.png">&nbsp;&nbsp;<span title="Add Now" class="btn_label_span" id="add_item_lnk">Add Item </span>*@
+        
+        <div id="pageNavPosition"></div>
+        <br>
+        <br>
+        <table class="af_tbl" id="dailymg_tbl">
+            <thead>
+                <tr>
+                    <th colspan="8">Daily MQ</th>
+                </tr>
+                <tr id="dmg_date">
+
+                    <th colspan="8" style="width: 20% !important">
+                        <input id="dailymg_date" type="text" /> @*<input id="load_dmg" type="button" value="Load" />*@</th>
+                </tr>
+                @*<tr>
+                    <th style="width: 100px;">Date</th>
+                    <th>MQ Value</th>
+                    <th>UE Power</th>
+                    <th>Action</th>
+                </tr>*@
+            </thead>
+            <tbody id="tbody">
+                <tr style="display: none;"></tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(function () {
+            $('#DialogEnergy_Add').dialog({
+                autoOpen: false,
+                width: 300,
+                height: 150,
+                resizable: false,
+                draggable: true,
+                title: 'Daily MQ Entry',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [250, 170]
+            });
+        });
+        //load_dailymg_data();
+        $("#dailymg_date").datepicker({
+            changeMonth: true,
+            changeYear: true,
+            dateFormat: 'MM yy',
+            showButtonPanel: true,
+            onClose: function () {
+                var iMonth = $("#ui-datepicker-div .ui-datepicker-month :selected").val();
+                var iYear = $("#ui-datepicker-div .ui-datepicker-year :selected").val();
+                $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+                $(this).datepicker('refresh');
+                //alert($(this).datepicker().val());
+                $('thead #tr_param').remove();
+                $('#tbody tr').filter(function () {
+                    return $(this).has('input');
+                }).remove();
+                load_dailymg_data($(this).datepicker().val());
+                $('#dailymg_tbl tbody').append('<tr id="page_id"></tr>');
+            },
+
+            beforeShow: function () {
+                if ((selDate = $(this).val()).length > 0) {
+                    iYear = selDate.substring(selDate.length - 4, selDate.length);
+                    iMonth = jQuery.inArray(selDate.substring(0, selDate.length - 5), $(this).datepicker('option', 'monthNames'));
+                    $(this).datepicker('option', 'defaultDate', new Date(iYear, iMonth, 1));
+                    $(this).datepicker('setDate', new Date(iYear, iMonth, 1));
+                }
+            }
+        });
+
+        $("#dailymg_date").focus(function () {
+            $(".ui-datepicker-calendar").hide();
+            $("#ui-datepicker-div").position({
+                my: "center top",
+                at: "center bottom",
+                of: $(this)
+            });
+        });
+
+        $("#dailymg_date").blur(function () {
+            $(".ui-datepicker-calendar").hide();
+        });
+
+        $('#dailymg_date').datepicker('setDate', 'today');
+
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+        });
+
+        $('#dailymg_date').focus();
+    });
+
+</script>

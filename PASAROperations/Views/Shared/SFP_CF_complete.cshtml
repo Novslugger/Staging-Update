@@ -1,0 +1,71 @@
+﻿@Scripts.Render("~/bundles/jqueryui")
+<div id="DialogSFP_Edit" style="overflow: hidden;"></div>
+<div id="container">
+    <div id="sfp_div">
+        <h5>CF Completed Pots</h5>
+        <div id="pageNavPosition"></div>
+        <br>
+        <br>
+        <span id="page_id" value="">1</span>
+        <table class="af_tbl" id="sfp_tbl">
+            <thead>
+                <tr>
+                    <th>Initial Location<span></span></th>
+                    <th>Actual Location<span></span></th>
+                    <th style="width: 100px;">Date Delivered<span></span></th>
+                    <th>Pot No.<span></span></th>
+                    <th>Planned Cool Time(hrs)<span></span></th>
+                    <th>Actual Cool Time(hrs)<span></span></th>
+                    <th>Expected Dump Time<span></span></th>
+                    <th>For Breaking Time<span></span></th>
+                    <th>Actual Time<span></span></th>
+                    <th>Dumping Temperature<span></span></th>
+                    <th>Remarks<span></span></th>
+                    <th colspan="2">Actions<span></span></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var f = 1;
+        var $prev_th = null;
+        var $prev_span = null;
+
+        $("th").click(function () {
+            var $span = $(this).find('span');
+
+            if ($prev_th != null && $prev_th != $(this)) {
+                $prev_th.css({ "background": "white" });
+                $prev_span.text("");
+            }
+
+            $prev_span = $(this).find('span');
+            $prev_th = $(this);
+            $(this).css({ "background": "#99ccff" });
+
+            f *= -1;
+            var n = $(this).prevAll().length;
+            sortTable(f, n, "sfp_tbl", $span);
+        });
+
+        $('#ui-datepicker-div').remove();
+        load_sfp_complete_data(1);
+        $(function () {
+            $('#DialogSFP_Edit').dialog({
+                autoOpen: false,
+                width: 400,
+                height: 650,
+                resizable: false,
+                draggable: true,
+                title: 'Pots Edit',
+                closeText: 'Close[x]',
+                modal: true,
+                position: [1150, 170]
+            });
+        });
+    });
+</script>

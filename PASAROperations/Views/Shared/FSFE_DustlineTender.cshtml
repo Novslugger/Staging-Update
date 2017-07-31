@@ -1,0 +1,63 @@
+﻿<h6 id="h6_fsfe">Dust Line Tender</h6>
+<div id="interfaceid">6</div>
+<div id ="fsfe_shift_div">
+   <div id="fsfe_shift_left_div">
+
+       <b>Check-up of Conveyor Discharge</b> 
+        <br />
+        <div class="fsfe_cbox_group_div">
+       <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_29" disabled="disabled"/>&nbsp;&nbsp; &nbsp;CC-F01A</label>
+       <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_30" disabled="disabled"/>&nbsp;&nbsp; &nbsp;CC-F01B</label>
+       <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_31" disabled="disabled"/>&nbsp;&nbsp; &nbsp;CC-H13</label>
+       <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_32" disabled="disabled"/>&nbsp;&nbsp; &nbsp;CC-H46</label>
+       <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_33" disabled="disabled"/>&nbsp;&nbsp; &nbsp;CC-H15</label>
+       <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_34" disabled="disabled"/>&nbsp;&nbsp; &nbsp;CC-H53A/B/C</label>
+       <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_35" disabled="disabled"/>&nbsp;&nbsp; &nbsp;CC-H01</label>
+       <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_36" disabled="disabled"/>&nbsp;&nbsp; &nbsp;CC-H02</label>
+       <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_37" disabled="disabled"/>&nbsp;&nbsp; &nbsp;CC-H03</label>
+       <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_38" disabled="disabled"/>&nbsp;&nbsp; &nbsp;BK-H04</label>
+       <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_39" disabled="disabled"/>&nbsp;&nbsp; &nbsp;CC-H06</label>
+       <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_40" disabled="disabled"/>&nbsp;&nbsp; &nbsp;SC-H21</label>
+       </div>
+
+       <b>Check-up of Dust Bin Vibrators</b> 
+       <br />
+       <div class="fsfe_cbox_group_div">
+           <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_41"  disabled="disabled"/>&nbsp;&nbsp; &nbsp;VM-H32A</label>
+           <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_42"  disabled="disabled"/>&nbsp;&nbsp; &nbsp;VM-H32B</label>
+         
+           
+       </div>
+   
+        <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_43"  disabled="disabled"/>&nbsp;&nbsp; &nbsp;BL-H26 Exercise of Damper</label>
+        <label class="fsfe_cbox_italic"><input type="checkbox" id="cbox_44"  disabled="disabled"/>&nbsp;&nbsp; &nbsp;Check-up of bagfilter Solenoid Valves</label>
+   
+   </div>
+
+  <div id="fsfe_last_div">
+        <input id="fsfe_dustline_add_btn" type="button" value="Save" disabled="disabled"/>
+    </div>
+
+
+</div>
+          
+
+
+<script type="text/javascript">
+    // for validations (Save Button)
+    var checkboxes = $("input[type='checkbox']"),
+    submitButt = $("#fsfe_dustline_add_btn");
+
+    checkboxes.click(function () {
+        submitButt.attr("disabled", !checkboxes.is(":checked"));
+    });
+
+    //End
+
+    $(document).ready(function () {
+
+        load_fsfe_checklist(4);
+
+    });
+    
+</script>

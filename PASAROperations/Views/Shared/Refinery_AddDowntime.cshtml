@@ -1,0 +1,539 @@
+﻿<div id="add_new_downtimeid_div">
+    <h6>ADD MACHINE DOWNTIME</h6>
+    <p style="color:red; font-size:12px">Please fill out all the fields.</p>
+    <br />
+    
+    <div style="margin-left: 965px; margin-top: -39px">
+       <input id="search_idres" type="text" placeholder="&#x1f50d; Search here..." style="width: 160px; text-transform: inherit; border: 1px solid #e1e1e1;" />
+    </div>
+     <div style="margin-left: 1135px; margin-top:-16px"><span onclick="ref_loadallreason_dtime_def()" title="refresh" style="color:green; font-size:15px"><u>&#x21bb</u></span></div>
+     <div style="margin-left: 250px; margin-top: -10px"><span id="ref_addtreason_id" class="btn_label_span" onclick="AddTreason_Select()" style=" font-size:12px"><u>&#9820 Add Trouble</u></span></div>
+    <div style="margin-left: 358px; margin-top: -14px"><span id="ref_addtresp_id" class="btn_label_span" onclick="AddResponsible_Select()" style=" font-size:12px"><u>&#9937 Add Responsible</u></span></div>
+    <br />
+    <div id="container_dt" class="reflogsheet_pcaddtime" style="background-color: white; width: 461px; float: inherit;margin-top:2px">
+        <table style="font-size: 12px; background-color: white;">
+            <tr style="background-color: white;">
+                <td rowspan="2" style="vertical-align: bottom; width: 107px;font-weight:bold">Downtime Date</td>
+                <td class="label_date"><i><b>Date</b></i></td>
+                <td class="label_date"><i><b>Time[hh:mm]</b></i></td>
+            </tr>
+            <tr style="background-color: white;">
+
+                <td style="width: 140px;">
+                    <input id="ref_DowntimeAddCurrentDate_ID" type="text" style="outline: 0px; border: 1px solid rgb(225, 225, 225); border-image: none;font-size:14px; width: 100px; display:inline; height:22px;" value="@ViewBag.RefDowntime.ToString("MM/dd/yyyy")"/>
+                </td>
+                <td>
+                    <select id="load_RefCurrentTIDhour" style="width: 50px;font-size:14px">
+                        @{
+                            int load_RefCurrentTID_hr = Int32.Parse(ViewBag.RefDowntime.ToString("HH"));
+
+                            for (int x = 0; x <= 23; x++)
+                            {
+                                if (@x <= 9)
+                                {
+
+                                    if (@x == @load_RefCurrentTID_hr)
+                                    { <option value="@x" selected="selected">@("0" + @x)</option> }
+                                    else
+                                    { <option value="@x">@("0" + @x)</option> }
+                                }
+                                else
+                                {
+                                    if (@x == @load_RefCurrentTID_hr)
+                                    {  <option value="@x" selected="selected">@x</option> }
+                                    else
+                                    {  <option value="@x">@x</option> }
+                                }
+                            }}
+                    </select>&nbsp; :
+                 <select id="load_RefCurrentTIDminutes" style="width: 50px;font-size:14px">
+                     @{
+                         int load_RefCurrentTID_min = Int32.Parse(ViewBag.RefDowntime.ToString("mm"));
+
+
+                         for (int x = 0; x <= 59; x++)
+                         {
+                             if (@x <= 9)
+                             {
+
+                                 if (@x == @load_RefCurrentTID_min)
+                                 {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                 else
+                                 { <option value="@x">@("0" + @x)</option> }
+                             }
+                             else
+                             {
+                                 if (@x == @load_RefCurrentTID_min)
+                                 {  <option value="@x" selected="selected">@x</option> }
+                                 else
+                                 { <option value="@x">@x</option> }
+
+                             }
+                         }}
+                 </select>
+                </td>
+                <label id="save_flag" hidden="hidden">-</label>
+            </tr>
+        </table>
+
+        <table style="font-size: 12px; background-color: white;">
+            <tr>
+                <td style="width: 107px;font-weight:bold">Machine</td>
+                <td style="width: 139px;">@Html.DropDownList("ref_machinelist", (SelectList)ViewBag.machine_list, "Select Machine", new { @id = "ref_selMachineID", @class = "color:yellow;" })</td>
+            </tr>
+            <tr>
+               <td style="width: 107px;font-weight:bold">Machine Code</td>
+                <td>
+                    <label id="ref_machine_code" style="font-size:14px;font-weight:bold">-</label></td>
+            </tr>
+            <tr> 
+                <td style="width: 107px; font-weight:bold">Trouble Code</td>
+                 <td>
+                    <label id="ref_trouble_code" style="font-size:14px;font-weight:bold">-</label>
+                 </td>
+                <td>
+                    <label id="hidden_tcode_id" hidden="hidden"></label>
+                </td>
+            </tr>
+
+        </table>
+        <table style="font-size: 12px; background-color: white; margin-top:-24px">
+                @*<td style="width: 100px">@Html.DropDownList("ref_reasoncode", (SelectList)ViewBag.reason_list, "Select Code", new { @id = "ref_selreasonID", @class = "color:yellow" })</td>*@
+            <tr>
+                <td style="width: 107px;vertical-align: top;height:60px;font-weight:bold">Description</td>
+                <td style="vertical-align:top">
+                    <label id="ref_trouble_desc" style="font-weight:bold">-</label></td>
+            </tr>
+        </table>
+        <table style="font-size: 12px; background-color: white; margin-top:-22px">
+            <tr><td style="width: 107px;font-weight:bold">Responsible</td>
+                <td>@Html.DropDownList("ref_resplist", (SelectList)ViewBag.responsible_list, "--Select--", new { @id = "sel_tbl_list", @class = "color:yellow" })</td>
+            </tr>
+        </table>
+        <table style="margin-top:-15px;font-size: 12px; background-color: white;">
+            <tr>
+                <td rowspan="2" style="vertical-align: bottom;width:107px;font-weight:bold">TIME STOP:</td>
+                <td class="label_date"><b><i>Date</i></b></td>
+                <td class="label_date"><b><i>Time[hh:mm]</i></b></td>
+            </tr>
+            <tr>
+
+                <td>
+                    <input id="ref_DowntimeTimeStop_ID" type="text"  style="outline: 0px; border: 1px solid rgb(225, 225, 225); border-image: none;font-size:14px; width: 100px; display:inline; height:22px;" value="@ViewBag.RefDowntime.ToString("MM/dd/yyyy")" onchange="ref_downtime_diff()"/></td>
+                <td>
+                    <select id="load_TimeStophr" style="width: 50px;font-size:14px" onchange="ref_downtime_diff()">
+                        @{
+                            int load_TimeStophrId = Int32.Parse(ViewBag.RefDowntime.ToString("HH"));
+
+                            for (int x = 0; x <= 23; x++)
+                            {
+                                if (@x <= 9)
+                                {
+                                    if (@x == @load_TimeStophrId)
+                                    { <option value="@x" selected="selected">@("0" + @x)</option> }
+                                    else
+                                    { <option value="@x">@("0" + @x)</option> }
+                                }
+                                else
+                                {
+                                    if (@x == @load_TimeStophrId)
+                                    {  <option value="@x" selected="selected">@x</option> }
+                                    else
+                                    {  <option value="@x">@x</option> }
+                                }
+                            }}
+                    </select>&nbsp; :
+                 <select id="load_TimeStophrmin" style="width: 50px;font-size:14px" onchange="ref_downtime_diff()">
+                     @{
+                         int load_TimeStopminId = Int32.Parse(ViewBag.RefDowntime.ToString("mm"));
+
+
+                         for (int x = 0; x <= 59; x++)
+                         {
+                             if (@x <= 9)
+                             {
+
+                                 if (@x == @load_TimeStopminId)
+                                 {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                 else
+                                 { <option value="@x">@("0" + @x)</option> }
+                             }
+                             else
+                             {
+                                 if (@x == @load_TimeStopminId)
+                                 {  <option value="@x" selected="selected">@x</option> }
+                                 else
+                                 { <option value="@x">@x</option> }
+
+                             }
+                         }}
+                 </select>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2" style="vertical-align: bottom;width:107px;font-weight:bold">TIME START:</td>
+                <td class="label_date"><b><i>Date</i></b></td>
+                <td class="label_date"><b><i>Time[hh:mm]</i></b></td>
+            </tr>
+
+            <tr>
+
+                <td>
+                    <input id="ref_DowntimeStartTime_ID" type="text"  style="outline: 0px; border: 1px solid rgb(225, 225, 225); border-image: none;font-size:14px; width: 100px; display:inline; height:20px;" value="@ViewBag.RefDowntime.ToString("MM/dd/yyyy")" onchange="ref_downtime_diff()"/></td>
+                <td>
+                    <select id="load_StartTimehr" style="width: 50px;font-size:14px" onchange="ref_downtime_diff()">
+                        @{
+                            int load_StarttimehrId = Int32.Parse(ViewBag.RefDowntime.ToString("HH"));
+
+                            for (int x = 0; x <= 23; x++)
+                            {
+                                if (@x <= 9)
+                                {
+
+                                    if (@x == @load_StarttimehrId)
+                                    { <option value="@x" selected="selected">@("0" + @x)</option> }
+                                    else
+                                    { <option value="@x">@("0" + @x)</option> }
+                                }
+                                else
+                                {
+                                    if (@x == @load_StarttimehrId)
+                                    {  <option value="@x" selected="selected">@x</option> }
+                                    else
+                                    {  <option value="@x">@x</option> }
+                                }
+                            }}
+                    </select>&nbsp; :
+                 <select id="load_StartTimemin" style="width: 50px;font-size:14px" onchange="ref_downtime_diff()">
+                     @{
+                         int load_StarttimeminId = Int32.Parse(ViewBag.RefDowntime.ToString("mm"));
+
+
+                         for (int x = 0; x <= 59; x++)
+                         {
+                             if (@x <= 9)
+                             {
+
+                                 if (@x == @load_StarttimeminId)
+                                 {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                 else
+                                 { <option value="@x">@("0" + @x)</option> }
+                             }
+                             else
+                             {
+                                 if (@x == @load_StarttimeminId)
+                                 {  <option value="@x" selected="selected">@x</option> }
+                                 else
+                                 { <option value="@x">@x</option> }
+
+                             }
+                         }}
+                 </select>
+                </td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                 <td style="font-weight:bold">Total Downtime[mins]</td>
+                <td >
+                    <input type="text" placeholder="0" disabled="disabled" onchange="autochange_dt()"style="height:40px;font-size:20px;font-weight: bold; background-color: rgba(255, 255, 204, 1) !important;text-align:center"" id="ref_downtimemins_id" /></td>
+                <td>
+                    <input type="hidden" id="ref_downtime_id" />
+                   <label>DT Per. Resp</label>
+                </td>
+                <td> <label id="dt_eachid" style="font-size:20px; font-weight:bold"></label></td>
+            </tr>
+             </table>
+            <table style="margin-top:-19px;background-color: white">
+                <tr>
+                    <td><span  title="Click to add responsible"class="btn_label_span" id="resp_link">&#10010 Responsible</span></td>
+                    <td>@Html.DropDownList("ref_resplist", (SelectList)ViewBag.responsible_list, "--Select--", new { @id = "responsible_id", @class = "color:yellow" })</td>
+                    <td><label id="cnt_id" hidden="hidden"></label></td>
+                       @* <td><label id="hold_mdid">@ViewBag.</label></td>*@
+                </tr>
+                 <tr>
+                <td style="width: 107px; font-weight:bold">Remarks</td>
+                <td><textarea style="font-size: 11px;width:250px;background-color: rgba(255, 255, 204, 1) !important" cols="3" rows="2" id="ref_dtremarksid_" @*onkeyup="rem_keypress(this.id);*@"></textarea></td>
+                </tr>
+            </table>
+        <div style="margin-left:386px; margin-top:-30px; width:70px"><span title="Remove selected list from the table" class="btn_label_span" id="rem_link">&#9866 Remove</span></div>
+        <div  id="addmult" style="float:inherit; overflow: scroll;height:125px">
+            <table id="appendRes_id" style="font-size:11px">
+                <tr>
+                    <th><input type="checkbox" id="ckb_all" name="ckball" style="text-align: center"/></th>
+                    <th></th>
+                    <th style="width:164px">Responsible</th>
+                    <th style="width:20px">DT(Mins)</th>
+                    
+                </tr>
+            </table>
+       </div>
+        <br />
+        <input name="dt_add" type="button" value="Add" onclick="validate_add_dt()" id="ref_addDowntime_id" style="margin-left:385px;background-color:rgba(0, 73, 147, 1); color: White; padding: 4px 20px;" />
+    
+           
+            @*<table id="tbl_idcheckminrem" style="font-size: 12px; background-color: rgba(244, 244, 244, 1);margin-top:-22px;">
+            <tr>
+              <td>Responsibility:</td>
+                <td><input type="text" id="ref_dtresponsiblityid" style="width: 145px" /></td>
+                <td style="width: 110px;font-size: 12px; font-weight: bold">&#10004; Responsible</td>
+                <td style="width:95px;font-size: 12px; font-weight: bold">&#x1F551; Downtime</td>
+                <td style="font-size: 12px; font-weight: bold">&#x2261; Remarks</td>
+            </tr>
+            <tr>
+                <td><input name="chk_elec" id="elec_id" type="checkbox" value="Electrical" />&nbsp;Electrical</td>
+                <td><input id="dt_elec" type="text" placeholder="mins" style="width: 60px;vertical-align:top;background-color: rgba(255, 255, 204, 1) !important" /></td>
+                <td><textarea style="font-size: 11px;width:250px;background-color: rgba(255, 255, 204, 1) !important" cols="3" rows="2" id="ref_dtremarksid_0" onkeyup="rem_keypress(this.id);"></textarea></td>
+           </tr>
+            <tr>
+                <td><input name="chk_mech" id="mech_id" type="checkbox" value="Mechanical"/>&nbsp;Mechanical</td>
+                <td><input id="dt_mech" type="text" placeholder="mins" style="width: 60px;vertical-align:top;background-color: rgba(255, 255, 204, 1) !important" /></td>
+                <td><textarea style="font-size: 11px;width:250px;background-color: rgba(255, 255, 204, 1) !important" cols="3" rows="2" id="ref_dtremarksid_1" onkeyup="rem_keypress(this.id);"></textarea></td>
+            </tr> 
+            <tr>
+                <td><input name="chk_instru" id="instru_id" type="checkbox" value="Instrumentation" />&nbsp;Instrumentation</td>
+                <td><input id="dt_instru" type="text" placeholder="mins" style="width: 60px;vertical-align:top;background-color: rgba(255, 255, 204, 1) !important" /></td>
+                <td><textarea style="font-size: 11px;width:250px;background-color: rgba(255, 255, 204, 1) !important" cols="3" rows="2" id="ref_dtremarksid_2" onkeyup="rem_keypress(this.id);"></textarea></td>
+            </tr>
+            <tr>
+               <td><input name="chk_ops" id="ops_id" type="checkbox" value="Operation" />&nbsp;Operation</td>
+               <td><input id="dt_ops" type="text" placeholder="mins" style="width: 60px;vertical-align:top;background-color: rgba(255, 255, 204, 1) !important" /></td>
+               <td><textarea style="font-size: 11px;width:250px;background-color: rgba(255, 255, 204, 1) !important" cols="3" rows="2" id="ref_dtremarksid_3" onkeyup="rem_keypress(this.id);"></textarea></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td style="text-align:right"> <input name="dt_add" type="button" value="Add" onclick="validate_add_dt()" id="ref_addDowntime_id" style="color: Black; padding: 4px 20px; /*margin-top: 436px; margin-left: 2px*/" /></td>
+            </tr>
+        </table>*@
+       
+    </div>
+
+    <div id="reasonid_div" class="trouble_div_reflogsheet" style="width: 700px; margin-top: -620px; margin-left: 477px;float:inherit; overflow: scroll; height: 620px">
+        <h8>List of Code and Trouble description base on selected machine</h8>
+        <table id="ref_load_reasons" class="reflogsheet_pctrouble" >
+            <thead>
+            <tr>
+                <th style=" width:80px; border: 1px solid #e1e1e1 !important; padding: 8px;">TROUBLE</th>
+                <th style="width: 573px; border: 1px solid #e1e1e1 !important; padding: 8px;">TROUBLE DESCRIPTION</th>
+                <th style="width: 80px; border: 1px solid #e1e1e1 !important; padding: 8px;">RESPONSIBLE</th>
+            </tr>
+           </thead>
+            <tbody><tr></tr></tbody>
+        </table>
+    </div>
+    <div style="height: 80px">
+    </div>
+</div>
+<div id="Dialog_EditDTreason_Select" style="overflow: hidden;"></div>
+<div id="Dialog_AddTreason_Select" style="overflow: hidden;"></div>
+<div id="Dialog_AddResponsible_Select" style="overflow:hidden;"></div>
+<script type="text/javascript">
+    ref_loadallreason_dtime_def();
+    $(document).ready(function () {
+        $("#ref_DowntimeAddCurrentDate_ID").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: serverpath + '/Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: true
+
+        });
+        $('#ui-datepicker-div').css('display', 'none');
+        $('#ref_DowntimeAddCurrentDate_ID').datepicker('setDate', 'today');
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+        });
+    });
+    $(document).ready(function () {
+        $("#ref_DowntimeTimeStop_ID").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: serverpath + '/Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: true
+
+        });
+        $('#ui-datepicker-div').css('display', 'none');
+        $('#ref_DowntimeTimeStop_ID').datepicker('setDate', 'today');
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+        });
+    });
+    $(document).ready(function () {
+        $("#ref_DowntimeStartTime_ID").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: serverpath + '/Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: true
+
+        });
+        $('#ui-datepicker-div').css('display', 'none');
+        $('#ref_DowntimeStartTime_ID').datepicker('setDate', 'today');
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+        });
+    });
+    $('#ref_selMachineID').on('change', function () {
+
+        trigger_select();
+        ref_loadallreason_dtime();
+        trigger_machinecode_select();
+    });
+
+    //$('#ref_load_reasons *td').disabled=true
+    $('#dt_elec').prop("disabled", true)
+    $('#dt_mech').prop("disabled", true)
+    $('#dt_instru').prop("disabled", true)
+    $('#dt_ops').prop("disabled", true)
+    $('#ref_dtremarksid_0').prop("disabled", true)
+    $('#ref_dtremarksid_1').prop("disabled", true)
+    $('#ref_dtremarksid_2').prop("disabled", true)
+    $('#ref_dtremarksid_3').prop("disabled", true)
+    $("input[id='elec_id']").prop("disabled", true);
+    $("input[id='mech_id']").prop("disabled", true);
+    $("input[id='instru_id']").prop("disabled", true);
+    $("input[id='ops_id']").prop("disabled", true);
+    //$("#ref_addDowntime_id").prop("disabled", true);
+    $('#sel_tbl_list').prop("disabled", true);
+    $('#responsible_id').prop("disabled", true);
+
+
+    $("input[name*='chk_']").click(function () {
+        var get_respid = $(this).attr('id');//td resp id
+        if ($("#" + get_respid).prop("checked") == true) {
+            var nxt_td_mins = $('#' + get_respid).closest('td').next().find('input').attr('id');// td mins id
+            var nxt_td_rem = $('#' + nxt_td_mins).closest('td').next().find('textarea').attr('id');//get id for textarea remarks        
+            $("#" + nxt_td_mins).prop("disabled", false);
+            $("#" + nxt_td_rem).prop("disabled", false);
+            rem_keypress();
+        } else {
+            var nxt_td_mins = $('#' + get_respid).closest('td').next().find('input').attr('id');// td mins id
+            var nxt_td_rem = $('#' + nxt_td_mins).closest('td').next().find('textarea').attr('id');//get id for textarea remarks
+            $("#" + nxt_td_mins).prop("disabled", true);
+            $("#" + nxt_td_rem).prop("disabled", true);
+            $("#" + nxt_td_mins).val("");
+            $("#" + nxt_td_rem).val("");
+            rem_keypress();
+        }
+
+    });
+    $('#Dialog_EditDTreason_Select').dialog({
+        autoOpen: false,
+        width: 519,
+        height: 800,
+        resizable: false,
+        draggable: true,
+        title: '&#x270E',
+        closeText: 'Close[x]',
+        modal: true,
+        position: [800, 260],
+    })
+    $('#Dialog_AddTreason_Select').dialog({
+        autoOpen: false,
+        width: 470,
+        height: 450,
+        resizable: false,
+        draggable: true,
+        title: '&#10010',
+        closeText: 'Close[x]',
+        modal: true,
+        position: [800, 260],
+    })
+    $('#Dialog_AddResponsible_Select').dialog({
+        autoOpen: false,
+        width: 470,
+        height: 450,
+        resizable: false,
+        draggable: true,
+        title: '&#10010',
+        closeText: 'Close[x]',
+        modal: true,
+        position: [800, 260],
+    })
+    $('#search_idres').live('keyup', function () {
+
+        ref_searchany_dt('#search_idres', '#ref_load_reasons tbody tr');
+
+    });
+    var counter = 0;
+    $('#responsible_id').on('change', function (event) {
+        var resp1 = $('#sel_tbl_list').val();
+        var resp2 = $('#responsible_id').val();
+        if (resp2 == "") {
+        }
+        else if (resp1 == resp2) {
+            alert("Invalid selection!")
+        } else {
+            event.preventDefault();
+            counter++;
+            $('#cnt_id').text(counter);
+            var newRow = $('<tr><td><input  type="checkbox"  onchange="check_prop(' + counter + ')"id="ckbremove_' +
+                counter + '"/></td><td><input disabled="disabled" style="vertical-align:top;width:20px"type="text" id="append_resid_' +
+                counter + '"/></td><td><input disabled="disabled" style="vertical-align:top;width:110px"type="text" id="append_res_' +
+                counter + '"/><td><input style="font-weight:bold;background-color:rgba(255, 216, 0, 1);vertical-align:top"type="text" id="append_min_' +
+                counter + '"/><td></tr>');
+            $('#appendRes_id').append(newRow);
+            additional_resp();
+        }
+    });
+    $('#ref_selMachineID').on('change', function () {
+        $('#ref_trouble_code').text("-");
+        $('#ref_trouble_desc').text("-");
+        $('#sel_tbl_list').val("");
+    })
+    $(function () {
+        $("#ckb_all").click(function () {
+            $("input[id*='ckbremove_']").attr("checked", this.checked);
+        });
+
+        $("#rem_link").click(function () {
+            var count = $("input[id*='ckbremove_']:checked").length;
+            $("#ckb_all").removeAttr("checked");
+            if (count == 0) {
+                alert("No row(s) selected!");
+                return false
+            }
+            else {
+                $("#ckb_all").removeAttr("checked");
+                $('#appendRes_id').find("input[id*='ckbremove_']:checked").each(function () {
+                    if ($(this).val() != null || $(this).val() != "") {
+                        $(this).closest('tr').remove();
+                    }
+                });
+                var rows = $("input[id*='append_res_']").length;
+                rows += 1;
+                var totdtime = $('#ref_downtimemins_id').val();
+                var aresp_id = $('#responsible_id').val();
+                var q = totdtime / rows;
+                $('#appendRes_id').find("input[id*='append_min_']").each(function () {
+                    $(this).val(q.toFixed(2));
+                    $('#dt_eachid').text(q.toFixed(2));
+                });
+                if (rows == 1) {
+                    $('#dt_eachid').text("")
+                    $('#responsible_id').prop("disabled", true)
+                    $('#save_flag').text(rows);
+                }
+                return confirm(count + " row(s) remove!");
+            }
+        });
+    });
+    $('#resp_link').on('click', function () {
+        var test_mins = $('#ref_downtimemins_id').val();
+        var test_list = $('#sel_tbl_list').val();
+        if (test_list == "" || test_list == "0") {
+            alert("Please supply all the information above!")
+        } else if (test_mins == "" || test_mins <= 0) {
+            alert("Invalid downtime mins")
+        } else {
+            alert("Your adding other downtime responsible!");
+            $('#responsible_id').prop("disabled", false)
+        }
+
+    });
+</script>

@@ -1,0 +1,474 @@
+﻿@{
+    ViewBag.Title = "Energy";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@Scripts.Render("~/bundles/jquery")
+
+@*<div id="aflot_div"><br><b>Date :</b><br><br>
+    <input type="text" id="thedate" name="date" class="line" placeholder="Please select your date..."/>
+    <input id="select_date_energy" class="enable_btn" type="button" alt="Select Button" title="Select Date" value="Select" disabled="disabled"  />
+</div>*@
+@*<div id="afqig_div" class="container" style="padding-bottom: 1000px;">
+    <br>
+    <div id="afqig_div_title">
+        <h5>ENERGY LOGSHEET</h5>
+        <br>
+    </div>
+    <div id="en_log_wrapper">
+        <div id="fsfe_log_wrapper_left">
+            <div class="thetabs">
+
+                <div class="verticaltabs">
+
+                    <dl class="tabs vertical">
+                        <dd class="active"><a href="#" onclick="ddactive_energy('Energy_tbl');return false;">Energy</a></dd>
+                        <dd><a href="#" onclick="ddactive_energy('_DailyMG');return false;">Daily MG</a></dd>*@
+@*<dd><a href="#" onclick="ddactive_energy('EHSS');return false;">HSS</a></dd>
+                        <dd><a href="#" onclick="ddactive_energy('ELSS');return false;">LSS</a></dd>*@
+@*</dl>
+
+                </div>
+            </div>
+        </div>
+        <div id="fsfe_log_wrapper_right">
+            <div class="horizontaltabs">
+                <div class="tabs-content">
+
+                    <div class="content active" id="htab-panel1">*@
+@*@Html.Partial("~/Views/Energy/Energy_tbl.cshtml")*@
+@* @Html.Partial("~/Views/Energy/_DailyMG.cshtml")
+                    @*</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>*@
+
+
+<div class="container">
+    <div class="energy_left">
+        <img id="energy_save_btn" class="save_btn" src="../Images/diskette.png" width="20" title="Save Changes" />
+        <br>
+        <br>
+        <table id="engroup_1" class="af_tbl">
+            <tr class="header expand">
+                <th colspan="2">F S/S - Smelter Facilities No. 1 <span class="sign" style="float: right"></span></th>
+            </tr>
+            @*<tr>
+                <th>Area Equipment</th>
+                <th>Value</th>
+            </tr>*@
+            @* <tr>
+                <td id="paramname_1">[AC460V], [110V Emrgcy], [Power DP], [ES-H27C CP] 440V Emrgncy (1.89KW)</td>
+                <td id="paramid_1">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_2">CVCF Room Aircon 220V Emrgncy 16.4KW*24HRS</td>
+                <td id="paramid_2">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_3">Employees Canteen</td>
+                <td id="paramid_3">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_4">Environment 220V Coml</td>
+                <td id="paramid_4">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_5">ES-F20A MCC 440V Emrgncy</td>
+                <td id="paramid_5">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_6">Fire House Bldg. (Safety)</td>
+                <td id="paramid_6">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_7">For Fuel Oil Pump ES-F27F 440V Emrgncy 9.14KW*24HRS</td>
+                <td id="paramid_7">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_8">FOR POWER CENTER NO. 1 1250 kVA 3.3 kV / 230 V</td>
+                <td id="paramid_8">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_9">For PU-F08 WH40 440V Emrgncy</td>
+                <td id="paramid_9">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_10">FSFE Control Room Aircon 220V Emrgncy 31.4KW*24HRS</td>
+                <td id="paramid_10">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_11">FSFE WHB, Hammering Devices</td>
+                <td id="paramid_11">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_12">FSFE/FD Indoor Lightng 220V Emrgncy 30.5KW*24HRS</td>
+                <td id="paramid_12">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_13">IT Data Center</td>
+                <td id="paramid_13">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_14">MEMS 220V Coml</td>
+                <td id="paramid_14">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_14">Metlab & Sampling house 220V Coml</td>
+                <td id="paramid_15">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_16">Nerin Bunk house 1 & 2</td>
+                <td id="paramid_16">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_17">Nerin Bunk house 3 & 4</td>
+                <td id="paramid_17">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_18">Nerin Bunk house 5</td>
+                <td id="paramid_18">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_19">ODT 220V Coml (EXPANSION OFFICE)</td>
+                <td id="paramid_19">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_20">Safety 220V Coml</td>
+                <td id="paramid_20">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_21">Security Barracks [Probe Security Agency] 220V Coml 8.4KW*24HRS</td>
+                <td id="paramid_21">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_22">Security Bldg 220V Coml</td>
+                <td id="paramid_22">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_23">To ODT (Brick House) 220V </td>
+                <td id="paramid_23">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_24">Warehouse 220V Coml</td>
+                <td id="paramid_24">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_25">Warehouse Ext 220V Coml</td>
+                <td id="paramid_25">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>*@
+            @*<tr>
+                <td id="paramname_">Environment 220V Coml</td>
+                <td id="paramid_26">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>*@
+            @*<tr>
+                <td id="paramname_37">Warehouse Ext 220V Coml</td>
+                <td id="paramid_37">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_56">For BL-D56 3.3KV Coml</td>
+                <td id="paramid_56">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_57">Lepanto 220V Supply</td>
+                <td id="paramid_57">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>*@
+            @*<tr>
+            <td id="paramname_">Metlab & Sampling house 220V Coml</td>
+            <td id="paramid_15"><input type="number" onkeypress="return NumericOnly(event)"/></td>
+        </tr>
+        <tr>
+            <td id="paramname_">Security Barracks [Probe Security Agency] 220V Coml 8.4KW*24HRS</td>
+            <td id="paramid_"><input type="number" onkeypress="return NumericOnly(event)"/></td>
+        </tr>*@
+        </table>
+
+        <table id="engroup_2" class="af_tbl">
+            <tr class="header expand">
+                <th colspan="2">F2 S/S - Smelter Facilities No. 2 <span class="sign" style="float: right"></span></th>
+            </tr>
+            @*<tr>
+                <th>Area Equipment</th>
+                <th>Value</th>
+            </tr>*@
+            @*<tr>
+                <td id="paramname_26">[B S/S (ESB20 MCC)], [FD/FSFE/AF Gas Handling (ESF27 MCC)], [Service Water Pump (ESF27D)]  440V Coml</td>
+                <td id="paramid_26">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_27">[Street Lightng], [FD EP Lighting], [FSFE Hoist  & Ventilation Fan Panel], [Elevator] 220V </td>
+                <td id="paramid_27">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_28">ES-D26.SWGR</td>
+                <td id="paramid_28">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_29">For BL-B22 WH19 3.3KV Coml</td>
+                <td id="paramid_29">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_30">For BL-M06 WH18 3.3KV Coml</td>
+                <td id="paramid_30">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>*@
+        </table>
+        <table id="engroup_5" class="af_tbl">
+            <tr class="header expand">
+                <th colspan="2">F3 S/S - New Smelter Substation <span class="sign" style="float: right"></span></th>
+            </tr>
+            @*<tr>
+                <th>Area Equipment</th>
+                <th>Value</th>
+            </tr>
+            <tr>
+                <td id="paramname_62">/1112800 KVA TRANSFOR.NEW SMELTER SUBSTATION UTILITY SYSTEM</td>
+                <td id="paramid_62">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>*@
+        </table>
+        <table id="engroup_7" class="af_tbl">
+            <tr class="header expand">
+                <th colspan="2">Other Group <span class="sign" style="float: right"></span></th>
+            </tr>
+            @*<tr>
+                <th>Area Equipment</th>
+                <th>Value</th>
+            </tr>*@
+            @*<tr>
+                <td id="paramname_63">Main Substation Auxiliary Load (Lightings, ACU, Battery Charger etc.)</td>
+                <td id="paramid_63">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>*@
+        </table>
+    </div>
+    <div class="energy_right">
+        <table id="engroup_4" class="af_tbl">
+            <tr class="header expand">
+                <th colspan="2">H S/S - Compressed Air Substation <span class="sign" style="float: right"></span></th>
+            </tr>
+            @*<tr>
+                <th>Area Equipment</th>
+                <th>Value</th>
+            </tr>*@
+            @*<tr>
+                <td id="paramname_34">ADDITONAL LOAD: CR-L04/BM-L14/BM-L17</td>
+                <td id="paramid_34">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_35">FSF Cooling Tower</td>
+                <td id="paramid_35">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_36">CF dust Packing house</td>
+                <td id="paramid_36">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_38">220 V Dist Panel</td>
+                <td id="paramid_38">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_39">Blower HouseLighting</td>
+                <td id="paramid_39">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_40">New Load (expansion)</td>
+                <td id="paramid_40">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_41">ES-H27B.MCC CONE DAMPER MCC</td>
+                <td id="paramid_41">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_42">ES-H25.MCC FLUX & REVERTS HANDLING MCC</td>
+                <td id="paramid_42">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_43">ES-H28.MCC CF DUST TRANSPORTATION MCC</td>
+                <td id="paramid_43">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_44">ES-H26.DP AC 460/110V COMMERCIAL POWER DIST. PANEL</td>
+                <td id="paramid_44">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_45">ES-H27A.MCC CONVERTER FURNACE DAMPER MCC</td>
+                <td id="paramid_45">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_46">ES-H24C.MCC AUXILIARY EQUIPMENT MCC</td>
+                <td id="paramid_46">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_47">ES-A25B.MCC BLENDING CHARGE MCC</td>
+                <td id="paramid_47">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_48">EW-A72.CP BLENDING TRIPPER</td>
+                <td id="paramid_48">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_49">ES-A25C.MCC SILICEOUS ORE MCC</td>
+                <td id="paramid_49">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_50">ES-A25D.MCC BLENDING DISCHARGE MCC</td>
+                <td id="paramid_50">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_51">MOTORS, UNLOADER, CRANE, CONVEYOR MOTORS, LIGHTINGS AND AIRCON</td>
+                <td id="paramid_51">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_52">For SFP 440V CONSISTS: EWK60MCCA/MCCB/MCCC/MCCD/SFP IR COMPRESSOR</td>
+                <td id="paramid_52">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_53">For SFP 220V CONSISTS EWK60MCCF/LIGHTING DIST1 AND 2/WELDING BOX</td>
+                <td id="paramid_53">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_54">For A S/S 440V CONSISTS: ESA25A/ AND Sampling Concentrate Drying House</td>
+                <td id="paramid_54">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_55">For A S/S 220V CONTROL RM AND ELECTRICAL LIGITHING, STORAGE HOUSE LIGHTING,
+                    <br />
+                    STREET LIGHTING, WELDING BOX</td>
+                <td id="paramid_55">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>*@
+            @*<tr>
+            <td id="paramname_">For BL-D56 3.3KV Coml</td>
+            <td id="paramid_"><input type="number" onkeypress="return NumericOnly(event)"/></td>
+        </tr>*@
+        </table>
+
+        <table id="engroup_3" class="af_tbl">
+            <tr class="header expand">
+                <th colspan="2">L S/S - Refinery Tankhouse No. 1 <span class="sign" style="float: right"></span></th>
+            </tr>
+            @*<tr>
+                <th>Area Equipment</th>
+                <th>Value</th>
+            </tr>*@
+            @*<tr>
+                <td id="paramname_31">L S/S for 440V Motors in Ref [EWL60 MCC2, EWL60 MCC3, EWL65 MCC4, ESL24B, Batt Charger, CNS71/72/73 440V Coml 156.99KW*24HRS</td>
+                <td id="paramid_31">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_32">TO NEW DORE AND MRT SS</td>
+                <td id="paramid_32">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_33">Additional Load</td>
+                <td id="paramid_33">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_58">Additional Load BPP</td>
+                <td id="paramid_58">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>*@
+        </table>
+        <table id="engroup_6" class="af_tbl">
+            <tr class="header expand">
+                <th colspan="2">Self Generated Power <span class="sign" style="float: right"></span></th>
+            </tr>
+            @*<tr>
+                <th>Area Equipment</th>
+                <th>Value</th>
+            </tr>*@
+            @*<tr>
+                <td id="paramname_59">New DG # 1</td>
+                <td id="paramid_59">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_60">New DG # 2</td>
+                <td id="paramid_60">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>
+            <tr>
+                <td id="paramname_61">New DG # 3</td>
+                <td id="paramid_61">
+                    <input type="number" onkeypress="return NumericOnly(event)" /></td>
+            </tr>*@
+        </table>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        load_energy_tbl_names();
+        load_energy_tbl_data();
+
+        //$('.af_tbl tr').each(function () {
+        //    $(this).nextUntil('tr.header').hide();
+        //});
+
+        $('input').live('change', function () {
+            $(this).css({ 'background-color': '#DFD8D1' });
+            $(this).addClass('changed');
+        });
+
+
+    });
+</script>

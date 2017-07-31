@@ -1,0 +1,91 @@
+﻿@Scripts.Render("~/bundles/jqueryui")
+<div id="DialogSFP_Add" style="overflow: hidden;"></div>
+<div id="DialogSFP_Edit" style="overflow: hidden;"></div>
+<div id="container">
+    <div id="sfp_div">
+        <h5>FSF Active Pots</h5>
+        <img width="20" height="20" title="Add Now" id="add_sfp_entry_btn" src="../Images/red_plus.png">&nbsp;&nbsp;<span title="Add Now" class="btn_label_span" id="add_sfp_entry_lnk">Add Item </span>
+        <div id="pageNavPosition"></div>
+        <br>
+        <br>
+        <span id="page_id" value="">2</span>
+        <table class="af_tbl" id="sfp_tbl">
+            <thead>
+                <tr>
+                    <th>Initial Location<span></span></th>
+                    <th>Actual Location<span></span></th>
+                    <th>Date Delivered<span></span></th>
+                    <th>Pot No.<span></span></th>
+                    <th>Planned Cool Time(hrs)<span></span></th>
+                    <th>Expected Dump Time<span></span></th>
+                    <th>For Breaking Time<span></span></th>
+                    <th>Actual Time<span></span></th>
+                    <th>Dumping Temperature<span></span></th>
+                    <th>Remarks<span></span></th>
+                    <th colspan="2">Actions<span></span></th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        var f = 1;
+        var $prev_th = null;
+        var $prev_span = null;
+
+        $("th").click(function () {
+            var $span = $(this).find('span');
+
+            if ($prev_th != null && $prev_th != $(this)) {
+                $prev_th.css({ "background": "white" });
+                $prev_span.text("");
+            }
+
+            $prev_span = $(this).find('span');
+            $prev_th = $(this);
+            $(this).css({ "background": "#99ccff" });
+
+            f *= -1;
+            var n = $(this).prevAll().length;
+            sortTable(f, n, "sfp_tbl", $span);
+        });
+
+        $('#ui-datepicker-div').remove();
+        load_sfp_data(2);
+        $(function () {
+            $('#DialogSFP_Add').dialog({
+                autoOpen: false,
+                width: 400,
+                height: 650,
+                resizable: false,
+                draggable: true,
+                title: 'Pots Entry',
+                closeText: 'Close[x]',
+                modal: true,
+                open: function (event, ui) {
+                    $(event.target).parent().css('position', 'fixed');
+                    $(event.target).parent().css('top', '200px');
+                },
+            });
+        });
+        $(function () {
+            $('#DialogSFP_Edit').dialog({
+                autoOpen: false,
+                width: 400,
+                height: 650,
+                resizable: false,
+                draggable: true,
+                title: 'Pots Edit',
+                closeText: 'Close[x]',
+                modal: true,
+                open: function (event, ui) {
+                    $(event.target).parent().css('position', 'fixed');
+                    $(event.target).parent().css('top', '200px');
+                },
+            });
+        });
+    });
+</script>

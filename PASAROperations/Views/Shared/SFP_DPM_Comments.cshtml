@@ -1,0 +1,135 @@
+﻿<div id="sfp_comments_div">
+    <div id="top_div" style="left: 100px; width: 95%;">
+        <h6>SFP Daily DPM Comments</h6>
+        <hr />
+        <span id="page_id"></span>
+        <div id="sfp_log_header">
+            <label style="float: left; font-size: 12px;">Date: </label>
+            <input type="text" id="sfp_comments_date" style="float: left; margin-left: 10px; margin-right: 10px; border: solid 1px black; width: 150px !important;" title="Select Date" />
+            &nbsp;&nbsp;<img id="sfp_dpmcomments_save_btn" class="save_btn" src="../Images/diskette.png" width="20" title="Save Changes" />
+            <br />
+            <br />
+            <label style="float: left; font-size: 12px; margin-right: 10px;">Shift: </label>
+            <select id="sfp_shiftdate_select" style="font-size: 12px; height: 20px;">
+                <option></option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+            </select>
+            <input id="sfp_dpmshift_btn" disabled="disabled" type="button" value="Select" style="font-size: 12px;" />
+        </div>
+        <hr />
+        <div id="pageNavPosition" style="float: right;"></div>
+        <br />
+        <br />
+        <table class="af_tbl" id="dpm_comments_tbl" style="width: 100%;">
+            <thead>
+                <tr>
+                    <th colspan="16">DPM</th>
+                </tr>
+                <tr class="comment_tbl_header">
+                    <th>Parameters</th>
+                    <th>Remarks</th>
+                    <th>Turnover</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <th valign="top">Safety</th>
+                    <td id="paramid_286">
+                        <textarea rows="2" class="todolist"></textarea>
+                    </td>
+                    <td id="paramid_293">
+                        <textarea rows="2" class="todolist"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th valign="top">Runtime</th>
+                    <td id="paramid_287">
+                        <textarea rows="2" class="todolist"></textarea>
+                    </td>
+                    <td id="paramid_294">
+                        <textarea rows="2" class="todolist"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th valign="top">Copper Loss & Slag Conc</th>
+                    <td id="paramid_288">
+                        <textarea rows="2" class="todolist"></textarea>
+                    </td>
+                    <td id="paramid_295">
+                        <textarea rows="2" class="todolist"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th valign="top">Old SFP</th>
+                    <td id="paramid_289">
+                        <textarea rows="2" class="todolist"></textarea>
+                    </td>
+                    <td id="paramid_296">
+                        <textarea rows="2" class="todolist"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th valign="top">Cooling Yard</th>
+                    <td id="paramid_290">
+                        <textarea rows="2" class="todolist"></textarea>
+                    </td>
+                    <td id="paramid_297">
+                        <textarea rows="2" class="todolist"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th valign="top">Crushing, Milling, Flotation</th>
+                    <td id="paramid_291">
+                        <textarea rows="2" class="todolist"></textarea>
+                    </td>
+                    <td id="paramid_298">
+                        <textarea rows="2" class="todolist"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <th valign="top">Dewatering</th>
+                    <td id="paramid_292">
+                        <textarea rows="2" class="todolist"></textarea>
+                    </td>
+                    <td id="paramid_299">
+                        <textarea rows="2" class="todolist"></textarea>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("#sfp_comments_date").datepicker({
+            showOn: 'both',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: serverpath + '/Images/calendar.png',
+            dateFormat: 'MM dd yy',
+            constrainInput: true,
+            onClose: function () {
+                //load_sfp_dpmcomments();
+                $('#sfp_log_header').css({ "background": "#99c2ff" });
+                $('#sfp_shiftdate_select').val("");
+                $('#sfp_dpmshift_btn').attr('disabled', true);
+            }
+            
+        });
+
+        $('#sfp_comments_date').datepicker('setDate', 'today');
+        var date = $('#sfp_comments_date').val();
+        load_sfp_dpmcomments();
+        $(".ui-datepicker-trigger").mouseover(function () {
+            $(this).css('cursor', 'pointer');
+        });
+        $('input').live('change', function () {
+            $(this).css({ 'background-color': '#DFD8D1' });
+            $(this).addClass('changed');
+        });
+        
+
+    });
+</script>

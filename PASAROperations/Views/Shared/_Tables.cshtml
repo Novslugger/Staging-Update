@@ -1,0 +1,147 @@
+﻿    @{
+        ViewBag.Title = "_tables";
+}
+
+     <div id="inv_tabs-container">
+            <ul class="inv_tabs-menu">
+            </ul>
+        </div>
+   
+<span id="inv_lot_val" style="left: 320px; top: 320px; color: red; font-size:12px; visibility:hidden; position: absolute; ">Please enter Lot#.</span>
+<div class="left_div_tbl_inventory" id="left_div_tbl_inventory">
+
+        
+    @*<img id="af_inventory_imgbtn" class="save_btn" src="../Images/diskette.png" width="20" disabled="disabled"/> *@
+
+    @* <table id="inventory_lc_rw" class="af_tbl">
+                      
+         <tbody></tbody>  
+
+     </table>*@
+            
+        <div class="inv_tab">
+        </div>
+              
+                
+               
+                
+    </div>
+        
+                   
+             
+<div class="right_div_tbl" id="right_div_tbl">   
+            
+   @* <table id="total_anodeinventory_box" class="tbl_inventory_anode">
+         <tr>         
+        <thead>
+          <th colspan="12" style="" class="th_stage_label" rowspan=""> Total Anode Inventory</th>
+        </thead>
+        </tr>
+         <tr>         
+           <thead>
+             <th colspan="2">Grade A</th> 
+             <th colspan="2">Grade B</th>
+            <th colspan="2">Reworkable</th>
+            <th colspan="2">Reworked</th>
+            <th colspan="2">Reject</th>
+             <th colspan="2">Total</th>
+           </thead>
+        </tr>
+             
+         <tr>         
+            <td colspan="2" class="border_color df"><input type="text" class="total extratbl_input" id="gradeA_total" placeholder="0" onfocus="this.blur()" readonly="readonly"/></td>
+           
+             <td colspan="2" class="border_color df"><input type="text" class="total extratbl_input" id="gradeB_total" placeholder="0" onfocus="this.blur()" readonly="readonly"/></td>
+                
+             <td colspan="2" class="border_color df"><input type="text" class="total extratbl_input" id="rew_total" placeholder="0" onfocus="this.blur()" readonly="readonly"/></td>
+               
+             <td colspan="2" class="border_color df"><input type="text" class="total extratbl_input" id="reworked_total" placeholder="0" onfocus="this.blur()" readonly="readonly"/></td>           
+            
+             <td colspan="2" class="border_color df"><input type="text" class="total extratbl_input" id="rej_total" placeholder="0" onfocus="this.blur()" readonly="readonly"/></td>
+                
+             <td colspan="2" class="border_color df"><input type="text" class="total extratbl_input" id="total_total" placeholder="0" onfocus="this.blur()" readonly="readonly"/></td>
+        </tr>
+    </table>*@
+
+
+   <table id="total_dataper_location" class="tbl_inventory_anode">
+    <thead>
+         <tr>    
+            <th>Location</th>
+    <th>Grade A</th>
+    <th>Grade B</th>
+    <th>Reworkable</th>
+    <th>Reworked</th>
+    <th>Reject</th>
+    <th>Total</th>
+        </tr>
+   </thead>
+
+    <tbody></tbody>
+
+    </table>
+
+
+</div>
+
+<script type="text/javascript">
+             
+    //$("#af_qig_rework_tbl tr:not(:first)").each(function () {
+    //    row_total = 0;
+    //    $(".add:input", this).each(function () {
+    //        row_total += Number($(this).val());
+    //        });
+    //    $(".total", this).attr('value', row_total);
+    //    //alert(row_total);
+            
+    //});
+             
+
+    $(document).ready(function () {
+
+            
+           
+       load_inventory_tables();
+        //load_inventory();
+             
+        $('input').live('change', function () {
+            $(this).css({ 'background-color': '#DFD8D1' });
+            $(this).parents('td').css({ 'background-color': '#DFD8D1 !important' });
+            $(this).addClass('changed');
+        });
+        $(".inv_tabs-menu a").live('click', function (event) {
+            event.preventDefault();
+            $(this).parent().addClass("current");
+            $(this).parent().siblings().removeClass("current");
+            var tab = $(this).attr("href");
+            $(".inv_tab-content").not(tab).css("display", "none");
+            $(tab).fadeIn();
+        });
+            
+
+            
+           
+             
+                    $('td, input,textarea,select').blur(
+                    function () {
+                        $(this).css({ 'background-color': '#FFFFEEE' });
+                    });
+            
+                    $('td, input,textarea,select').change(
+                    function () {
+                        $(this).css({ 'background-color': '#DFD8D1' });
+                        $(this).addClass('changed');
+                    });
+
+            });
+
+
+
+
+    jQuery(function () {
+        jQuery('#btn_inv').click();
+    });
+
+    
+</script>
+

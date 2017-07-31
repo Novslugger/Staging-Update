@@ -1,0 +1,301 @@
+﻿<div id="edit_new_downtimeid_div">
+    <b>Edit Machine Downtime</b>
+    <br />
+    <br />
+      <div style="border: 1px solid #C0C0C0; height: 613px">
+        <table style="font-size: 12px;">
+            <tr>
+                <td rowspan="2" style="vertical-align: bottom; width: 107px; font-weight: bold">Downtime Date</td>
+                <td class="label_date"><b><i>Date</i></b></td>
+                <td class="label_date"><b><i>Time[hh:mm]</i></b></td>
+            </tr>
+            <tr>
+
+                <td style="width: 140px;">
+                    <input id="ref_editcurdate_id" type="text"  style="background-color:rgba(255, 255, 204, 1) !important;font-size:14px; width: 100px; display:inline; height:22px;" value="@ViewBag.ref_curdt.ToString("MM/dd/yyyy")" disabled="disabled"/>
+                </td>
+
+                <td>
+                    <select id="ref_curedit_hr" style="width: 50px; font-size: 14px" disabled="disabled">
+                        @{
+                            int load_curref_edit_hr = Int32.Parse(ViewBag.ref_curdt.ToString("HH"));
+
+                            for (int x = 0; x <= 23; x++)
+                            {
+                                if (@x <= 9)
+                                {
+
+                                    if (@x == @load_curref_edit_hr)
+                                    { <option value="@x" selected="selected">@("0" + @x)</option> }
+                                    else
+                                    { <option value="@x">@("0" + @x)</option> }
+                                }
+                                else
+                                {
+                                    if (@x == @load_curref_edit_hr)
+                                    {  <option value="@x" selected="selected">@x</option> }
+                                    else
+                                    {  <option value="@x">@x</option> }
+                                }
+                            }}
+                    </select>&nbsp; :
+                 <select id="ref_curedit_min" style="width: 50px; font-size: 14px" disabled="disabled">
+                     @{
+                         int load_curref_edit_min = Int32.Parse(ViewBag.ref_curdt.ToString("mm"));
+
+
+                         for (int x = 0; x <= 59; x++)
+                         {
+                             if (@x <= 9)
+                             {
+
+                                 if (@x == @load_curref_edit_min)
+                                 {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                 else
+                                 { <option value="@x">@("0" + @x)</option> }
+                             }
+                             else
+                             {
+                                 if (@x == @load_curref_edit_min)
+                                 {  <option value="@x" selected="selected">@x</option> }
+                                 else
+                                 { <option value="@x">@x</option> }
+
+                             }
+                         }}
+                 </select>
+                </td>
+            </tr>
+        </table>
+        <table style="font-size: 12px;">
+            <tr>
+                <td style="width: 107px; font-weight: bold">Machine</td>
+                <td>@Html.DropDownList("ref_machinelist", (SelectList)ViewBag.machine_lists, "Select Machine", new { @id = "ref_seleditmachineid", @class = "color", @disabled = "disabled" })</td>
+            </tr>
+            <tr>
+                <td style="width: 107px; font-weight: bold">Machine Code</td>
+                <td style="width: 107px;">
+                    <label id="ref_machine_code" style="font-size: 14px; font-weight: bold">@ViewBag.ref_machcode</label></td>
+            </tr>
+
+        </table>
+        <table style="font-size: 12px;">
+            <tr>
+                <td style="width: 107px; font-weight: bold">Trouble Code</td>
+                <td style="width: 107px;">@Html.DropDownList("ref_reasonlist1", (SelectList)ViewBag.trouble_code, "Select Trouble", new { @id = "ref_seleditreasonid", @class = "color:yellow" })</td>
+            </tr>
+        </table>
+        <table>
+            <tr>
+                <td style="width: 107px; vertical-align: top; height: 60px; font-weight: bold">Description</td>
+                <td style="vertical-align: top">
+                    <label id="ref_troubledesc" style="font-size: 11px; font-weight: bold">@ViewBag.ref_codedesc</label></td>
+            </tr>
+        </table>
+         <div style="margin-top: -17px">
+            <table style="font-size: 12px;">
+                @*    <tr>
+                <td style="width: 107px; font-weight: bold">Responsible</td>
+                <td>
+                    @Html.DropDownList("ref_resplist", (SelectList)ViewBag.resp_lists, "--Select--", new { @id = "ref_selResponsible", @class = "color:yellow" })</td>
+            </tr>*@
+            <tr>
+                <td rowspan="2" style="vertical-align: bottom; font-weight: bold; width: 107px;">TIME STOP:</td>
+                <td class="label_date"><b><i>Date</i></b></td>
+                <td class="label_date"><b><i>Time[hh:mm]</i></b></td>
+            </tr>
+            <tr>
+
+                <td>
+                    <input id="ref_editdtstop_id" type="text"  style="background-color:#FFFFCC;font-size:14px; width: 100px; display:inline; height:22px;" value="@ViewBag.ref_stopt.ToString("MM/dd/yyyy")" disabled="disabled"/></td>
+                <td>
+                    <select id="load_editTimeStophr" style="font-size: 14px; width: 50px" disabled="disabled">
+                        @{
+                            int load_edittimestop_hr = Int32.Parse(ViewBag.ref_stopt.ToString("HH"));
+
+                            for (int x = 0; x <= 23; x++)
+                            {
+                                if (@x <= 9)
+                                {
+                                    if (@x == @load_edittimestop_hr)
+                                    { <option value="@x" selected="selected">@("0" + @x)</option> }
+                                    else
+                                    { <option value="@x">@("0" + @x)</option> }
+                                }
+                                else
+                                {
+                                    if (@x == @load_edittimestop_hr)
+                                    {  <option value="@x" selected="selected">@x</option> }
+                                    else
+                                    {  <option value="@x">@x</option> }
+                                }
+                            }}
+                    </select>&nbsp; :
+                 <select id="load_editTimeStopmin" style="font-size: 14px; width: 50px" disabled="disabled">
+                     @{
+                         int load_edittimestop_min = Int32.Parse(ViewBag.ref_stopt.ToString("mm"));
+
+
+                         for (int x = 0; x <= 59; x++)
+                         {
+                             if (@x <= 9)
+                             {
+
+                                 if (@x == @load_edittimestop_min)
+                                 {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                 else
+                                 { <option value="@x">@("0" + @x)</option> }
+                             }
+                             else
+                             {
+                                 if (@x == @load_edittimestop_min)
+                                 {  <option value="@x" selected="selected">@x</option> }
+                                 else
+                                 { <option value="@x">@x</option> }
+
+                             }
+                         }}
+                 </select>
+                </td>
+            </tr>
+            <tr>
+                <td rowspan="2" style="vertical-align: bottom; font-weight: bold; width: 107px;">START TIME:</td>
+                <td class="label_date"><b><i>Date</i></b></td>
+                <td class="label_date"><b><i>Time[hh:mm]</i></b></td>
+            </tr>
+
+            <tr>
+
+                <td>
+                    <input id="ref_editdtstart_id" type="text"  style="font-size:14px; width: 100px; display:inline; height:22px;" value="@ViewBag.ref_startt.ToString("MM/dd/yyyy")" onchange="ref_editdowntime_diff()"/></td>
+                <td>
+                    <select id="load_editStartTimehr" style="font-size: 14px; width: 50px" onchange="ref_editdowntime_diff()">
+                        @{
+                            int load_editstarttime_hr = Int32.Parse(ViewBag.ref_startt.ToString("HH"));
+
+                            for (int x = 0; x <= 23; x++)
+                            {
+                                if (@x <= 9)
+                                {
+
+                                    if (@x == @load_editstarttime_hr)
+                                    { <option value="@x" selected="selected">@("0" + @x)</option> }
+                                    else
+                                    { <option value="@x">@("0" + @x)</option> }
+                                }
+                                else
+                                {
+                                    if (@x == @load_editstarttime_hr)
+                                    {  <option value="@x" selected="selected">@x</option> }
+                                    else
+                                    {  <option value="@x">@x</option> }
+                                }
+                            }}
+                    </select>&nbsp; :
+                 <select id="load_editStartTimemin" style="font-size: 14px; width: 50px" onchange="ref_editdowntime_diff()">
+                     @{
+                         int load_editstarttime_min = Int32.Parse(ViewBag.ref_startt.ToString("mm"));
+
+
+                         for (int x = 0; x <= 59; x++)
+                         {
+                             if (@x <= 9)
+                             {
+
+                                 if (@x == @load_editstarttime_min)
+                                 {  <option value="@x" selected="selected">@("0" + @x)</option> }
+                                 else
+                                 { <option value="@x">@("0" + @x)</option> }
+                             }
+                             else
+                             {
+                                 if (@x == @load_editstarttime_min)
+                                 {  <option value="@x" selected="selected">@x</option> }
+                                 else
+                                 { <option value="@x">@x</option> }
+
+                             }
+                         }}
+                 </select>
+                </td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+            <tr>
+                <td style="width: 107px; font-weight: bold">Downtime[mins]:</td>
+                <td>
+                    <input type="text" disabled="disabled" style="width:100px;height: 40px; text-align: center; font-size: 20px; font-weight: bold; background-color: rgba(255, 255, 204, 1) !important;" id="ref_editdowntimemins_id" value="@ViewBag.ref_dtmin" /></td>
+
+                <td>
+                    <input type="hidden" id="ref_downtime_id" /></td>
+            </tr>
+            <tr></tr>
+            <tr></tr>
+        </table>
+           </div>
+        <div style="width: 500px; margin-top: -20px"><b>Responsible</b>&nbsp;&nbsp;<span style="color: rgba(33, 125, 187, 1);" id="edit_add_resp" onclick="append_responsible_edit_add()"><u>&#9654;Click to Add Responsible(Avoid duplicate)</u></span> </div>
+        <div style="width: 490px; height: 113px; margin-top: 5px; overflow: scroll">
+
+            <table id="loadeditResp" style="margin-top: 20px; margin-left: 100px">
+                <tr>
+                    <th style="width: 111px"></th>
+                </tr>
+            </table>
+        </div>
+        <label id="track_cntRes" hidden="hidden"></label>
+        <label id="track_cntAddRes" hidden="hidden"></label>
+        <table style="font-size: 12px; margin-top: -1px">
+            <tr>
+                <td style="vertical-align: top; width: 107px; font-weight: bold">Remarks</td>
+                <td>
+                    <textarea style="font-size: 12px;" cols="8" rows="4" id="ref_editdtremarksid">@ViewBag.ref_rem</textarea></td>
+            </tr>
+        </table>
+        <div style="margin-top:-15px">
+            <input type="button" value="Edit" onclick="validate_edit_dt()" id="edit_downtimedata" style="margin-left: 416px; background-color: rgba(0, 73, 147, 1); color: White; padding: 4px 20px;" />
+        </div>
+        <div style="height: 80px">
+        </div>
+    </div>
+    <label hidden="hidden" id="hidden_machineid_edit">@ViewBag.hide_mid</label>
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        edit_resp_dt(@ViewBag.hide_mid);
+      
+       @* $("#Dialog_crop_edit_activity #cropid").val("@ViewBag.REFTH_CropNo");*@
+        //$("#ref_editcurdate_id").datepicker({
+        //    showOn: 'button',
+        //    buttonText: 'Show Date',
+        //    buttonImageOnly: true,
+        //    buttonImage: serverpath + '/Images/calendar.png',
+        //    dateFormat: 'mm/dd/yy',
+        //    constrainInput: false
+        //});
+
+        //$("#ref_editdtstop_id").datepicker({
+        //    showOn: 'button',
+        //    buttonText: 'Show Date',
+        //    buttonImageOnly: true,
+        //    buttonImage: serverpath + '/Images/calendar.png',
+        //    dateFormat: 'mm/dd/yy',
+        //    constrainInput: false
+        //});
+        $("#ref_editdtstart_id").datepicker({
+            showOn: 'button',
+            buttonText: 'Show Date',
+            buttonImageOnly: true,
+            buttonImage: serverpath + '/Images/calendar.png',
+            dateFormat: 'mm/dd/yy',
+            constrainInput: false
+        });
+        $('#ref_seleditreasonid').on('change', function () {
+
+            trigger_machinecode_select_edit();
+        });
+        $('#ref_seleditreasonid').on('change', function () {
+            selectlist_autochange();
+        });
+
+    });
+</script>

@@ -1,0 +1,55 @@
+﻿@*@model IEnumerable<PASAROperations.Models.AF_ActivityCode>*@
+<div id="add_new_reason_div">
+    <br />
+    <table>
+        <tr>
+            <td>New Reason Code:</td>
+            <td>
+                <input id="ref_reasoncode_id" type="text" style="width: 100px;text-transform:uppercase" /></td>
+        </tr>
+        <tr></tr>
+        <tr></tr>
+        <tr>
+            <td>Reason Description:</td>
+            <td>
+                <textarea id="ref_reasoncodedesc_id" cols="10" rows="2" style="width:500px;text-transform:capitalize"></textarea></td>
+        </tr>
+    </table>
+     <input type="button" id="ref_addreason_codeid" value="Add" style="color: Black; padding: 4px 20px; margin-left: 555px; margin-top: -5px" onclick="ref_val_reason()" />
+    <br />
+
+    <p>List of Reasons</p>
+   
+    <input id="load_newresid" onclick="ref_loadallreason_dt()" type="button" value="&#x21bb;" style="width: 30px; height: 25px; margin-top: -35px; margin-left: 458px" title="Refresh" /><input id="search_reason" type="text" placeholder="Search....." style="height: 25px; width: 180px; margin-top: -25px; margin-left: 500px" />
+    <br />
+    <div style="width: 700px; height: 290px; overflow: auto;">
+        <table border="1" id="ref_reason_id" style="border-width: medium; font-size: 11px; border-color: gray">
+            <thead>
+                <tr style="background-color: #0056ad; color: white; text-align: center;">
+                    <th style="width: 70px; line-height: 2.12rem; text-align: center; color: white;">CODE</th>
+                    <th style="width: 600px; line-height: 2.12rem; color: white; text-align: center;">CODE DESCRIPTION/TROUBLE</th>
+                    @* <td style="width: 40px; line-height: 2.12rem; text-align: center; color: white; text-align: center;">EDIT</td>*@
+                </tr>
+            </thead>
+            <tbody id="tbody"></tbody>
+            <tr></tr>
+        </table>
+    </div>
+
+    @*<div id="pageNavPosition" style="float: right;"></div>*@
+
+</div>
+<script type="text/javascript">
+    $(document).ready(function () {
+        ref_loadallreason_dt()
+    });
+    $('#search_reason').live('keyup', function () {
+        ref_searchany_reason('#search_reason', '#ref_reason_id tbody tr');
+
+    });
+    
+    //$('#load_newresid').live('click', function() {
+    //    //ref_loadallreason_dt();
+    //    $('#DialogADDnewdowntimereason_Select').dialog('open');
+    //});
+</script>
